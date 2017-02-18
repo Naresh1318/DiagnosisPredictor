@@ -1,5 +1,5 @@
 # DiagnosisPredictor
-Predicts chronic diseases using a patients previous history
+Predicts chronic diseases using a patients previous history.
 
 ## Get the data and install dependencies
 1. Get access to the [MIMIC 3 Database](https://mimic.physionet.org/gettingstarted/access/).
