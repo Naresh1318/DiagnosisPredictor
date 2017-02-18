@@ -1,0 +1,82 @@
+------------------------------Table------------------------------
+ICD9 : d_428    Probability : 0.24     Description : Heart failure
+ICD9 : d_276    Probability : 0.58     Description : Disorders of fluid, electrolyte, and acid-base balance
+ICD9 : d_427    Probability : 0.34     Description : Cardiac dysrhythmias
+ICD9 : d_250    Probability : 0.039    Description : Diabetes mellitus
+ICD9 : d_401    Probability : 0.76     Description : Essential hypertension
+ICD9 : d_518    Probability : 0.43     Description : Other diseases of lung
+ICD9 : d_414    Probability : 0.042    Description : Other forms of chronic ischemic heart disease
+ICD9 : d_285    Probability : 0.0093   Description : Other and unspecified anemias
+ICD9 : d_272    Probability : 0.013    Description : Disorders of lipoid metabolism
+ICD9 : d_584    Probability : 0.34     Description : Acute renal failure
+ICD9 : d_585    Probability : 0.0026   Description : Chronic kidney disease (CKD)
+ICD9 : d_403    Probability : 0.0012   Description : Hypertensive chronic kidney disease
+ICD9 : d_599    Probability : 6.6e-05  Description : Other disorders of urethra and urinary tract
+ICD9 : d_530    Probability : 0.0056   Description : Diseases of esophagus
+ICD9 : d_038    Probability : 0.1      Description : Septicemia
+ICD9 : d_707    Probability : 0.068    Description : Chronic ulcer of skin
+ICD9 : d_996    Probability : 0.17     Description : Complications peculiar to certain specified procedures
+ICD9 : d_995    Probability : 0.07     Description : Certain adverse effects not elsewhere classified
+ICD9 : d_998    Probability : 0.046    Description : Other complications of procedures, NEC
+ICD9 : d_041    Probability : 0.00035  Description : Bacterial infection in conditions classified elsewhere and of unspecified site
+ICD9 : d_244    Probability : 0.0042   Description : Acquired hypothyroidism
+ICD9 : d_486    Probability : 0.16     Description : Pneumonia, organism unspecified
+ICD9 : d_458    Probability : 0.39     Description : Hypotension
+ICD9 : d_424    Probability : 0.016    Description : Other diseases of endocardium
+ICD9 : d_496    Probability : 0.62     Description : Chronic airway obstruction, not elsewhere classified
+ICD9 : d_997    Probability : 0.41     Description : Complications affecting specified body systems, not elsewhere classified
+ICD9 : d_305    Probability : 0.0048   Description : Nondependent abuse of drugs
+ICD9 : d_410    Probability : 0.045    Description : Acute myocardial infarction
+ICD9 : d_287    Probability : 0.14     Description : Purpura and other hemorrhagic conditions
+ICD9 : d_571    Probability : 2e-05    Description : Chronic liver disease and cirrhosis
+ICD9 : d_493    Probability : 0.00028  Description : Asthma
+ICD9 : d_311    Probability : 0.00099  Description : Depressive disorder, not elsewhere classified
+ICD9 : d_412    Probability : 0.00032  Description : Old myocardial infarction
+ICD9 : d_070    Probability : 0.017    Description : Viral hepatitis
+ICD9 : d_511    Probability : 0.15     Description : Pleurisy
+ICD9 : d_507    Probability : 0.0035   Description : Pneumonitis due to solids and liquids
+ICD9 : d_416    Probability : 0.0047   Description : Chronic pulmonary heart disease
+ICD9 : d_327    Probability : 7.9e-05  Description : ORGANIC SLEEP DISORDERS
+ICD9 : d_733    Probability : 0.0058   Description : Other disorders of bone and cartilage
+ICD9 : d_300    Probability : 0.0049   Description : Anxiety, dissociative and somatoform disorders
+ICD9 : d_278    Probability : 0.0026   Description : Overweight, obesity and other hyperalimentation
+ICD9 : d_348    Probability : 0.003    Description : Other conditions of brain
+ICD9 : d_578    Probability : 0.012    Description : Gastrointestinal hemorrhage
+ICD9 : d_572    Probability : 0.4      Description : Liver abscess and sequelae of chronic liver disease
+ICD9 : d_482    Probability : 0.39     Description : Other bacterial pneumonia
+ICD9 : d_425    Probability : 0.0096   Description : Cardiomyopathy
+ICD9 : d_280    Probability : 0.00074  Description : Iron deficiency anemias
+ICD9 : d_274    Probability : 0.013    Description : Gout
+ICD9 : d_440    Probability : 7.9e-05  Description : Atherosclerosis
+ICD9 : d_357    Probability : 0.00026  Description : Inflammatory and toxic neuropathy
+ICD9 : d_198    Probability : 8.4e-06  Description : Secondary malignant neoplasm of other specified sites
+ICD9 : d_443    Probability : 0.028    Description : Other peripheral vascular disease
+ICD9 : d_197    Probability : 4.7e-05  Description : Secondary malignant neoplasm of respiratory and digestive systems
+ICD9 : d_008    Probability : 0.86     Description : Intestinal infections due to other organisms
+ICD9 : d_438    Probability : 2.1e-05  Description : Late effects of cerebrovascular disease
+ICD9 : d_303    Probability : 0.00044  Description : Alcohol dependence syndrome
+ICD9 : d_453    Probability : 0.47     Description : Other venous embolism and thrombosis
+ICD9 : d_345    Probability : 6.2e-05  Description : Epilepsy and recurrent seizures
+ICD9 : d_682    Probability : 4.4e-05  Description : Other cellulitis and abscess
+ICD9 : d_286    Probability : 0.031    Description : Coagulation defects
+ICD9 : d_560    Probability : 0.68     Description : Intestinal obstruction without mention of hernia
+ICD9 : d_112    Probability : 0.49     Description : Candidiasis
+ICD9 : d_491    Probability : 5.6e-07  Description : Chronic bronchitis
+ICD9 : d_288    Probability : 0.16     Description : Diseases of white blood cells
+ICD9 : d_600    Probability : 0.0013   Description : Hyperplasia of prostate
+ICD9 : d_577    Probability : 0.0022   Description : Diseases of pancreas
+ICD9 : d_362    Probability : 3.2e-05  Description : Other retinal disorders
+ICD9 : d_519    Probability : 0.00029  Description : Other diseases of respiratory system
+ICD9 : d_562    Probability : 0.00092  Description : Diverticula of intestine
+ICD9 : d_294    Probability : 0.00023  Description : Persistent mental disorders due to conditions classified elsewhere
+ICD9 : d_275    Probability : 0.00081  Description : Disorders of mineral metabolism
+ICD9 : d_E8798  Probability : 0.00055  Description : Not Found
+ICD9 : d_263    Probability : 4.6e-06  Description : Other and unspecified protein-calorie malnutrition
+ICD9 : d_441    Probability : 0.00046  Description : Aortic aneurysm and dissection
+ICD9 : d_569    Probability : 0.00051  Description : Other disorders of intestine
+ICD9 : d_564    Probability : 8.6e-05  Description : Functional digestive disorders, not elsewhere classified
+ICD9 : d_293    Probability : 1.7e-05  Description : Transient mental disorders due to conditions classified elsewhere
+ICD9 : d_338    Probability : 0.015    Description : PAIN
+ICD9 : d_456    Probability : 1.6e-07  Description : Varicose veins of other sites
+ICD9 : d_715    Probability : 0.00075  Description : Osteoarthrosis and allied disorders
+------------------------------End------------------------------

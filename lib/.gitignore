@@ -1,0 +1,12 @@
+*
+!*/
+!*.*
+!Makefile
+!README
+*.o
+
+*.swp
+.DS_Store
+*.pyc
+*.model
+__pycache__/

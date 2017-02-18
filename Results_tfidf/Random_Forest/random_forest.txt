@@ -1,0 +1,882 @@
+--------------------Training d_428 --------------------
+Errors for d_428    : 135426
+Accuracy for d_428  : 80.85%
+Precision for d_428 : 62.43%
+Recall for d_428    : 76.13%
+F1 Score for d_428  : 68.60%
+Confusion Matrix for d_428 :
+[[338  37]
+ [ 71 118]]
+ROC AUC for d_428 : 0.84
+Completed : 1/80
+--------------------Training d_276 --------------------
+Errors for d_276    : 130364
+Accuracy for d_276  : 62.23%
+Precision for d_276 : 18.48%
+Recall for d_276    : 48.75%
+F1 Score for d_276  : 26.80%
+Confusion Matrix for d_276 :
+[[312  41]
+ [172  39]]
+ROC AUC for d_276 : 0.61
+Completed : 2/80
+--------------------Training d_427 --------------------
+Errors for d_427    : 142528
+Accuracy for d_427  : 73.23%
+Precision for d_427 : 47.98%
+Recall for d_427    : 75.35%
+F1 Score for d_427  : 58.63%
+Confusion Matrix for d_427 :
+[[306  35]
+ [116 107]]
+ROC AUC for d_427 : 0.75
+Completed : 3/80
+--------------------Training d_250 --------------------
+Errors for d_250    : 119088
+Accuracy for d_250  : 81.03%
+Precision for d_250 : 47.13%
+Recall for d_250    : 84.54%
+F1 Score for d_250  : 60.52%
+Confusion Matrix for d_250 :
+[[375  15]
+ [ 92  82]]
+ROC AUC for d_250 : 0.85
+Completed : 4/80
+--------------------Training d_401 --------------------
+Errors for d_401    : 133938
+Accuracy for d_401  : 71.99%
+Precision for d_401 : 42.29%
+Recall for d_401    : 66.93%
+F1 Score for d_401  : 51.83%
+Confusion Matrix for d_401 :
+[[321  42]
+ [116  85]]
+ROC AUC for d_401 : 0.75
+Completed : 5/80
+--------------------Training d_518 --------------------
+Errors for d_518    : 110432
+Accuracy for d_518  : 67.91%
+Precision for d_518 : 12.29%
+Recall for d_518    : 47.83%
+F1 Score for d_518  : 19.56%
+Confusion Matrix for d_518 :
+[[361  24]
+ [157  22]]
+ROC AUC for d_518 : 0.62
+Completed : 6/80
+--------------------Training d_414 --------------------
+Errors for d_414    : 98702
+Accuracy for d_414  : 80.50%
+Precision for d_414 : 35.97%
+Recall for d_414    : 70.42%
+F1 Score for d_414  : 47.62%
+Confusion Matrix for d_414 :
+[[404  21]
+ [ 89  50]]
+ROC AUC for d_414 : 0.84
+Completed : 7/80
+--------------------Training d_285 --------------------
+Errors for d_285    : 94312
+Accuracy for d_285  : 71.99%
+Precision for d_285 : 10.96%
+Recall for d_285    : 36.36%
+F1 Score for d_285  : 16.84%
+Confusion Matrix for d_285 :
+[[390  28]
+ [130  16]]
+ROC AUC for d_285 : 0.61
+Completed : 8/80
+--------------------Training d_272 --------------------
+Errors for d_272    : 96268
+Accuracy for d_272  : 79.26%
+Precision for d_272 : 31.62%
+Recall for d_272    : 64.18%
+F1 Score for d_272  : 42.36%
+Confusion Matrix for d_272 :
+[[404  24]
+ [ 93  43]]
+ROC AUC for d_272 : 0.82
+Completed : 9/80
+--------------------Training d_584 --------------------
+Errors for d_584    : 104064
+Accuracy for d_584  : 71.10%
+Precision for d_584 : 14.46%
+Recall for d_584    : 53.33%
+F1 Score for d_584  : 22.75%
+Confusion Matrix for d_584 :
+[[377  21]
+ [142  24]]
+ROC AUC for d_584 : 0.67
+Completed : 10/80
+--------------------Training d_585 --------------------
+Errors for d_585    : 90886
+Accuracy for d_585  : 90.43%
+Precision for d_585 : 64.22%
+Recall for d_585    : 82.35%
+F1 Score for d_585  : 72.16%
+Confusion Matrix for d_585 :
+[[440  15]
+ [ 39  70]]
+ROC AUC for d_585 : 0.91
+Completed : 11/80
+--------------------Training d_403 --------------------
+Errors for d_403    : 78968
+Accuracy for d_403  : 88.65%
+Precision for d_403 : 49.00%
+Recall for d_403    : 79.03%
+F1 Score for d_403  : 60.49%
+Confusion Matrix for d_403 :
+[[451  13]
+ [ 51  49]]
+ROC AUC for d_403 : 0.88
+Completed : 12/80
+--------------------Training d_599 --------------------
+Errors for d_599    : 62030
+Accuracy for d_599  : 80.85%
+Precision for d_599 : 2.91%
+Recall for d_599    : 27.27%
+F1 Score for d_599  : 5.26%
+Confusion Matrix for d_599 :
+[[453   8]
+ [100   3]]
+ROC AUC for d_599 : 0.58
+Completed : 13/80
+--------------------Training d_530 --------------------
+Errors for d_530    : 56608
+Accuracy for d_530  : 86.35%
+Precision for d_530 : 17.65%
+Recall for d_530    : 68.18%
+F1 Score for d_530  : 28.04%
+Confusion Matrix for d_530 :
+[[472   7]
+ [ 70  15]]
+ROC AUC for d_530 : 0.73
+Completed : 14/80
+--------------------Training d_038 --------------------
+Errors for d_038    : 69740
+Accuracy for d_038  : 79.26%
+Precision for d_038 : 5.17%
+Recall for d_038    : 46.15%
+F1 Score for d_038  : 9.30%
+Confusion Matrix for d_038 :
+[[441   7]
+ [110   6]]
+ROC AUC for d_038 : 0.67
+Completed : 15/80
+--------------------Training d_707 --------------------
+Errors for d_707    : 36096
+Accuracy for d_707  : 88.65%
+Precision for d_707 : 0.00%
+Recall for d_707    : 0.00%
+F1 Score for d_707  : 0.00%
+Confusion Matrix for d_707 :
+[[500   0]
+ [ 64   0]]
+ROC AUC for d_707 : 0.66
+Completed : 16/80
+--------------------Training d_996 --------------------
+Errors for d_996    : 37840
+Accuracy for d_996  : 89.01%
+Precision for d_996 : 4.69%
+Recall for d_996    : 75.00%
+F1 Score for d_996  : 8.82%
+Confusion Matrix for d_996 :
+[[499   1]
+ [ 61   3]]
+ROC AUC for d_996 : 0.61
+Completed : 17/80
+--------------------Training d_995 --------------------
+Errors for d_995    : 59518
+Accuracy for d_995  : 82.27%
+Precision for d_995 : 5.15%
+Recall for d_995    : 38.46%
+F1 Score for d_995  : 9.09%
+Confusion Matrix for d_995 :
+[[459   8]
+ [ 92   5]]
+ROC AUC for d_995 : 0.67
+Completed : 18/80
+--------------------Training d_998 --------------------
+Errors for d_998    : 44962
+Accuracy for d_998  : 86.17%
+Precision for d_998 : 1.27%
+Recall for d_998    : 100.00%
+F1 Score for d_998  : 2.50%
+Confusion Matrix for d_998 :
+[[485   0]
+ [ 78   1]]
+ROC AUC for d_998 : 0.60
+Completed : 19/80
+--------------------Training d_041 --------------------
+Errors for d_041    : 39636
+Accuracy for d_041  : 87.41%
+Precision for d_041 : 0.00%
+Recall for d_041    : 0.00%
+F1 Score for d_041  : 0.00%
+Confusion Matrix for d_041 :
+[[493   3]
+ [ 68   0]]
+ROC AUC for d_041 : 0.59
+Completed : 20/80
+--------------------Training d_244 --------------------
+Errors for d_244    : 48538
+Accuracy for d_244  : 89.72%
+Precision for d_244 : 25.37%
+Recall for d_244    : 68.00%
+F1 Score for d_244  : 36.96%
+Confusion Matrix for d_244 :
+[[489   8]
+ [ 50  17]]
+ROC AUC for d_244 : 0.86
+Completed : 21/80
+--------------------Training d_486 --------------------
+Errors for d_486    : 38916
+Accuracy for d_486  : 87.77%
+Precision for d_486 : 0.00%
+Recall for d_486    : 0.00%
+F1 Score for d_486  : 0.00%
+Confusion Matrix for d_486 :
+[[495   0]
+ [ 69   0]]
+ROC AUC for d_486 : 0.58
+Completed : 22/80
+--------------------Training d_458 --------------------
+Errors for d_458    : 25380
+Accuracy for d_458  : 92.02%
+Precision for d_458 : 0.00%
+Recall for d_458    : 0.00%
+F1 Score for d_458  : 0.00%
+Confusion Matrix for d_458 :
+[[519   0]
+ [ 45   0]]
+ROC AUC for d_458 : 0.52
+Completed : 23/80
+--------------------Training d_424 --------------------
+Errors for d_424    : 24088
+Accuracy for d_424  : 92.38%
+Precision for d_424 : 0.00%
+Recall for d_424    : 0.00%
+F1 Score for d_424  : 0.00%
+Confusion Matrix for d_424 :
+[[521   2]
+ [ 41   0]]
+ROC AUC for d_424 : 0.72
+Completed : 24/80
+--------------------Training d_496 --------------------
+Errors for d_496    : 32488
+Accuracy for d_496  : 90.43%
+Precision for d_496 : 3.57%
+Recall for d_496    : 100.00%
+F1 Score for d_496  : 6.90%
+Confusion Matrix for d_496 :
+[[508   0]
+ [ 54   2]]
+ROC AUC for d_496 : 0.79
+Completed : 25/80
+--------------------Training d_997 --------------------
+Errors for d_997    : 22560
+Accuracy for d_997  : 92.91%
+Precision for d_997 : 0.00%
+Recall for d_997    : 0.00%
+F1 Score for d_997  : 0.00%
+Confusion Matrix for d_997 :
+[[524   0]
+ [ 40   0]]
+ROC AUC for d_997 : 0.54
+Completed : 26/80
+--------------------Training d_305 --------------------
+Errors for d_305    : 27540
+Accuracy for d_305  : 91.67%
+Precision for d_305 : 2.08%
+Recall for d_305    : 100.00%
+F1 Score for d_305  : 4.08%
+Confusion Matrix for d_305 :
+[[516   0]
+ [ 47   1]]
+ROC AUC for d_305 : 0.76
+Completed : 27/80
+--------------------Training d_410 --------------------
+Errors for d_410    : 20234
+Accuracy for d_410  : 93.97%
+Precision for d_410 : 2.86%
+Recall for d_410    : 100.00%
+F1 Score for d_410  : 5.56%
+Confusion Matrix for d_410 :
+[[529   0]
+ [ 34   1]]
+ROC AUC for d_410 : 0.76
+Completed : 28/80
+--------------------Training d_287 --------------------
+Errors for d_287    : 28008
+Accuracy for d_287  : 91.49%
+Precision for d_287 : 2.08%
+Recall for d_287    : 50.00%
+F1 Score for d_287  : 4.00%
+Confusion Matrix for d_287 :
+[[515   1]
+ [ 47   1]]
+ROC AUC for d_287 : 0.62
+Completed : 29/80
+--------------------Training d_571 --------------------
+Errors for d_571    : 21922
+Accuracy for d_571  : 95.74%
+Precision for d_571 : 27.59%
+Recall for d_571    : 72.73%
+F1 Score for d_571  : 40.00%
+Confusion Matrix for d_571 :
+[[532   3]
+ [ 21   8]]
+ROC AUC for d_571 : 0.90
+Completed : 30/80
+--------------------Training d_493 --------------------
+Errors for d_493    : 29100
+Accuracy for d_493  : 93.09%
+Precision for d_493 : 15.91%
+Recall for d_493    : 77.78%
+F1 Score for d_493  : 26.42%
+Confusion Matrix for d_493 :
+[[518   2]
+ [ 37   7]]
+ROC AUC for d_493 : 0.85
+Completed : 31/80
+--------------------Training d_311 --------------------
+Errors for d_311    : 24816
+Accuracy for d_311  : 92.20%
+Precision for d_311 : 0.00%
+Recall for d_311    : 0.00%
+F1 Score for d_311  : 0.00%
+Confusion Matrix for d_311 :
+[[520   0]
+ [ 44   0]]
+ROC AUC for d_311 : 0.63
+Completed : 32/80
+--------------------Training d_412 --------------------
+Errors for d_412    : 28476
+Accuracy for d_412  : 90.96%
+Precision for d_412 : 0.00%
+Recall for d_412    : 0.00%
+F1 Score for d_412  : 0.00%
+Confusion Matrix for d_412 :
+[[513   3]
+ [ 48   0]]
+ROC AUC for d_412 : 0.73
+Completed : 33/80
+--------------------Training d_070 --------------------
+Errors for d_070    : 22152
+Accuracy for d_070  : 95.04%
+Precision for d_070 : 17.65%
+Recall for d_070    : 100.00%
+F1 Score for d_070  : 30.00%
+Confusion Matrix for d_070 :
+[[530   0]
+ [ 28   6]]
+ROC AUC for d_070 : 0.89
+Completed : 34/80
+--------------------Training d_511 --------------------
+Errors for d_511    : 28102
+Accuracy for d_511  : 91.49%
+Precision for d_511 : 2.04%
+Recall for d_511    : 100.00%
+F1 Score for d_511  : 4.00%
+Confusion Matrix for d_511 :
+[[515   0]
+ [ 48   1]]
+ROC AUC for d_511 : 0.59
+Completed : 35/80
+--------------------Training d_507 --------------------
+Errors for d_507    : 24816
+Accuracy for d_507  : 92.20%
+Precision for d_507 : 0.00%
+Recall for d_507    : 0.00%
+F1 Score for d_507  : 0.00%
+Confusion Matrix for d_507 :
+[[520   0]
+ [ 44   0]]
+ROC AUC for d_507 : 0.61
+Completed : 36/80
+--------------------Training d_416 --------------------
+Errors for d_416    : 17986
+Accuracy for d_416  : 94.68%
+Precision for d_416 : 3.23%
+Recall for d_416    : 100.00%
+F1 Score for d_416  : 6.25%
+Confusion Matrix for d_416 :
+[[533   0]
+ [ 30   1]]
+ROC AUC for d_416 : 0.73
+Completed : 37/80
+--------------------Training d_327 --------------------
+Errors for d_327    : 20106
+Accuracy for d_327  : 94.33%
+Precision for d_327 : 6.06%
+Recall for d_327    : 66.67%
+F1 Score for d_327  : 11.11%
+Confusion Matrix for d_327 :
+[[530   1]
+ [ 31   2]]
+ROC AUC for d_327 : 0.88
+Completed : 38/80
+--------------------Training d_733 --------------------
+Errors for d_733    : 17778
+Accuracy for d_733  : 95.04%
+Precision for d_733 : 7.41%
+Recall for d_733    : 40.00%
+F1 Score for d_733  : 12.50%
+Confusion Matrix for d_733 :
+[[534   3]
+ [ 25   2]]
+ROC AUC for d_733 : 0.77
+Completed : 39/80
+--------------------Training d_300 --------------------
+Errors for d_300    : 20304
+Accuracy for d_300  : 93.62%
+Precision for d_300 : 0.00%
+Recall for d_300    : 0.00%
+F1 Score for d_300  : 0.00%
+Confusion Matrix for d_300 :
+[[528   0]
+ [ 36   0]]
+ROC AUC for d_300 : 0.71
+Completed : 40/80
+--------------------Training d_278 --------------------
+Errors for d_278    : 20796
+Accuracy for d_278  : 93.79%
+Precision for d_278 : 2.78%
+Recall for d_278    : 100.00%
+F1 Score for d_278  : 5.41%
+Confusion Matrix for d_278 :
+[[528   0]
+ [ 35   1]]
+ROC AUC for d_278 : 0.66
+Completed : 41/80
+--------------------Training d_348 --------------------
+Errors for d_348    : 17484
+Accuracy for d_348  : 94.50%
+Precision for d_348 : 0.00%
+Recall for d_348    : 0.00%
+F1 Score for d_348  : 0.00%
+Confusion Matrix for d_348 :
+[[533   0]
+ [ 31   0]]
+ROC AUC for d_348 : 0.56
+Completed : 42/80
+--------------------Training d_578 --------------------
+Errors for d_578    : 21432
+Accuracy for d_578  : 93.26%
+Precision for d_578 : 0.00%
+Recall for d_578    : 0.00%
+F1 Score for d_578  : 0.00%
+Confusion Matrix for d_578 :
+[[526   0]
+ [ 38   0]]
+ROC AUC for d_578 : 0.55
+Completed : 43/80
+--------------------Training d_572 --------------------
+Errors for d_572    : 16670
+Accuracy for d_572  : 95.74%
+Precision for d_572 : 12.00%
+Recall for d_572    : 60.00%
+F1 Score for d_572  : 20.00%
+Confusion Matrix for d_572 :
+[[537   2]
+ [ 22   3]]
+ROC AUC for d_572 : 0.82
+Completed : 44/80
+--------------------Training d_482 --------------------
+Errors for d_482    : 19110
+Accuracy for d_482  : 93.97%
+Precision for d_482 : 0.00%
+Recall for d_482    : 0.00%
+F1 Score for d_482  : 0.00%
+Confusion Matrix for d_482 :
+[[530   1]
+ [ 33   0]]
+ROC AUC for d_482 : 0.56
+Completed : 45/80
+--------------------Training d_425 --------------------
+Errors for d_425    : 19176
+Accuracy for d_425  : 93.97%
+Precision for d_425 : 0.00%
+Recall for d_425    : 0.00%
+F1 Score for d_425  : 0.00%
+Confusion Matrix for d_425 :
+[[530   0]
+ [ 34   0]]
+ROC AUC for d_425 : 0.80
+Completed : 46/80
+--------------------Training d_280 --------------------
+Errors for d_280    : 18612
+Accuracy for d_280  : 94.15%
+Precision for d_280 : 0.00%
+Recall for d_280    : 0.00%
+F1 Score for d_280  : 0.00%
+Confusion Matrix for d_280 :
+[[531   0]
+ [ 33   0]]
+ROC AUC for d_280 : 0.57
+Completed : 47/80
+--------------------Training d_274 --------------------
+Errors for d_274    : 19740
+Accuracy for d_274  : 93.79%
+Precision for d_274 : 0.00%
+Recall for d_274    : 0.00%
+F1 Score for d_274  : 0.00%
+Confusion Matrix for d_274 :
+[[529   0]
+ [ 35   0]]
+ROC AUC for d_274 : 0.81
+Completed : 48/80
+--------------------Training d_440 --------------------
+Errors for d_440    : 12408
+Accuracy for d_440  : 96.10%
+Precision for d_440 : 0.00%
+Recall for d_440    : 0.00%
+F1 Score for d_440  : 0.00%
+Confusion Matrix for d_440 :
+[[542   0]
+ [ 22   0]]
+ROC AUC for d_440 : 0.69
+Completed : 49/80
+--------------------Training d_357 --------------------
+Errors for d_357    : 16248
+Accuracy for d_357  : 95.57%
+Precision for d_357 : 7.41%
+Recall for d_357    : 100.00%
+F1 Score for d_357  : 13.79%
+Confusion Matrix for d_357 :
+[[537   0]
+ [ 25   2]]
+ROC AUC for d_357 : 0.75
+Completed : 50/80
+--------------------Training d_198 --------------------
+Errors for d_198    : 16632
+Accuracy for d_198  : 96.81%
+Precision for d_198 : 25.00%
+Recall for d_198    : 100.00%
+F1 Score for d_198  : 40.00%
+Confusion Matrix for d_198 :
+[[540   0]
+ [ 18   6]]
+ROC AUC for d_198 : 0.86
+Completed : 51/80
+--------------------Training d_443 --------------------
+Errors for d_443    : 15792
+Accuracy for d_443  : 95.04%
+Precision for d_443 : 0.00%
+Recall for d_443    : 0.00%
+F1 Score for d_443  : 0.00%
+Confusion Matrix for d_443 :
+[[536   0]
+ [ 28   0]]
+ROC AUC for d_443 : 0.66
+Completed : 52/80
+--------------------Training d_197 --------------------
+Errors for d_197    : 14568
+Accuracy for d_197  : 95.74%
+Precision for d_197 : 4.17%
+Recall for d_197    : 50.00%
+F1 Score for d_197  : 7.69%
+Confusion Matrix for d_197 :
+[[539   1]
+ [ 23   1]]
+ROC AUC for d_197 : 0.84
+Completed : 53/80
+--------------------Training d_008 --------------------
+Errors for d_008    : 18612
+Accuracy for d_008  : 94.15%
+Precision for d_008 : 0.00%
+Recall for d_008    : 0.00%
+F1 Score for d_008  : 0.00%
+Confusion Matrix for d_008 :
+[[531   0]
+ [ 33   0]]
+ROC AUC for d_008 : 0.63
+Completed : 54/80
+--------------------Training d_438 --------------------
+Errors for d_438    : 10152
+Accuracy for d_438  : 96.81%
+Precision for d_438 : 0.00%
+Recall for d_438    : 0.00%
+F1 Score for d_438  : 0.00%
+Confusion Matrix for d_438 :
+[[546   0]
+ [ 18   0]]
+ROC AUC for d_438 : 0.71
+Completed : 55/80
+--------------------Training d_303 --------------------
+Errors for d_303    : 8432
+Accuracy for d_303  : 97.34%
+Precision for d_303 : 0.00%
+Recall for d_303    : 0.00%
+F1 Score for d_303  : 0.00%
+Confusion Matrix for d_303 :
+[[549   1]
+ [ 14   0]]
+ROC AUC for d_303 : 0.81
+Completed : 56/80
+--------------------Training d_453 --------------------
+Errors for d_453    : 11844
+Accuracy for d_453  : 96.28%
+Precision for d_453 : 0.00%
+Recall for d_453    : 0.00%
+F1 Score for d_453  : 0.00%
+Confusion Matrix for d_453 :
+[[543   0]
+ [ 21   0]]
+ROC AUC for d_453 : 0.60
+Completed : 57/80
+--------------------Training d_345 --------------------
+Errors for d_345    : 16808
+Accuracy for d_345  : 95.04%
+Precision for d_345 : 3.57%
+Recall for d_345    : 50.00%
+F1 Score for d_345  : 6.67%
+Confusion Matrix for d_345 :
+[[535   1]
+ [ 27   1]]
+ROC AUC for d_345 : 0.85
+Completed : 58/80
+--------------------Training d_682 --------------------
+Errors for d_682    : 15792
+Accuracy for d_682  : 95.04%
+Precision for d_682 : 0.00%
+Recall for d_682    : 0.00%
+F1 Score for d_682  : 0.00%
+Confusion Matrix for d_682 :
+[[536   0]
+ [ 28   0]]
+ROC AUC for d_682 : 0.58
+Completed : 59/80
+--------------------Training d_286 --------------------
+Errors for d_286    : 14664
+Accuracy for d_286  : 95.39%
+Precision for d_286 : 0.00%
+Recall for d_286    : 0.00%
+F1 Score for d_286  : 0.00%
+Confusion Matrix for d_286 :
+[[538   0]
+ [ 26   0]]
+ROC AUC for d_286 : 0.59
+Completed : 60/80
+--------------------Training d_560 --------------------
+Errors for d_560    : 9024
+Accuracy for d_560  : 97.16%
+Precision for d_560 : 0.00%
+Recall for d_560    : 0.00%
+F1 Score for d_560  : 0.00%
+Confusion Matrix for d_560 :
+[[548   0]
+ [ 16   0]]
+ROC AUC for d_560 : 0.59
+Completed : 61/80
+--------------------Training d_112 --------------------
+Errors for d_112    : 18612
+Accuracy for d_112  : 94.15%
+Precision for d_112 : 0.00%
+Recall for d_112    : 0.00%
+F1 Score for d_112  : 0.00%
+Confusion Matrix for d_112 :
+[[531   0]
+ [ 33   0]]
+ROC AUC for d_112 : 0.55
+Completed : 62/80
+--------------------Training d_491 --------------------
+Errors for d_491    : 10152
+Accuracy for d_491  : 96.81%
+Precision for d_491 : 0.00%
+Recall for d_491    : 0.00%
+F1 Score for d_491  : 0.00%
+Confusion Matrix for d_491 :
+[[546   0]
+ [ 18   0]]
+ROC AUC for d_491 : 0.70
+Completed : 63/80
+--------------------Training d_288 --------------------
+Errors for d_288    : 9588
+Accuracy for d_288  : 96.99%
+Precision for d_288 : 0.00%
+Recall for d_288    : 0.00%
+F1 Score for d_288  : 0.00%
+Confusion Matrix for d_288 :
+[[547   0]
+ [ 17   0]]
+ROC AUC for d_288 : 0.67
+Completed : 64/80
+--------------------Training d_600 --------------------
+Errors for d_600    : 14614
+Accuracy for d_600  : 95.74%
+Precision for d_600 : 4.00%
+Recall for d_600    : 100.00%
+F1 Score for d_600  : 7.69%
+Confusion Matrix for d_600 :
+[[539   0]
+ [ 24   1]]
+ROC AUC for d_600 : 0.85
+Completed : 65/80
+--------------------Training d_577 --------------------
+Errors for d_577    : 7332
+Accuracy for d_577  : 97.70%
+Precision for d_577 : 0.00%
+Recall for d_577    : 0.00%
+F1 Score for d_577  : 0.00%
+Confusion Matrix for d_577 :
+[[551   0]
+ [ 13   0]]
+ROC AUC for d_577 : 0.75
+Completed : 66/80
+--------------------Training d_362 --------------------
+Errors for d_362    : 11736
+Accuracy for d_362  : 96.99%
+Precision for d_362 : 11.11%
+Recall for d_362    : 66.67%
+F1 Score for d_362  : 19.05%
+Confusion Matrix for d_362 :
+[[545   1]
+ [ 16   2]]
+ROC AUC for d_362 : 0.79
+Completed : 67/80
+--------------------Training d_519 --------------------
+Errors for d_519    : 13448
+Accuracy for d_519  : 96.45%
+Precision for d_519 : 9.09%
+Recall for d_519    : 100.00%
+F1 Score for d_519  : 16.67%
+Confusion Matrix for d_519 :
+[[542   0]
+ [ 20   2]]
+ROC AUC for d_519 : 0.82
+Completed : 68/80
+--------------------Training d_562 --------------------
+Errors for d_562    : 8432
+Accuracy for d_562  : 97.34%
+Precision for d_562 : 0.00%
+Recall for d_562    : 0.00%
+F1 Score for d_562  : 0.00%
+Confusion Matrix for d_562 :
+[[549   1]
+ [ 14   0]]
+ROC AUC for d_562 : 0.62
+Completed : 69/80
+--------------------Training d_294 --------------------
+Errors for d_294    : 10716
+Accuracy for d_294  : 96.63%
+Precision for d_294 : 0.00%
+Recall for d_294    : 0.00%
+F1 Score for d_294  : 0.00%
+Confusion Matrix for d_294 :
+[[545   0]
+ [ 19   0]]
+ROC AUC for d_294 : 0.74
+Completed : 70/80
+--------------------Training d_275 --------------------
+Errors for d_275    : 12408
+Accuracy for d_275  : 96.10%
+Precision for d_275 : 0.00%
+Recall for d_275    : 0.00%
+F1 Score for d_275  : 0.00%
+Confusion Matrix for d_275 :
+[[542   0]
+ [ 22   0]]
+ROC AUC for d_275 : 0.48
+Completed : 71/80
+--------------------Training d_E8798 --------------------
+Errors for d_E8798    : 10152
+Accuracy for d_E8798  : 96.81%
+Precision for d_E8798 : 0.00%
+Recall for d_E8798    : 0.00%
+F1 Score for d_E8798  : 0.00%
+Confusion Matrix for d_E8798 :
+[[546   0]
+ [ 18   0]]
+ROC AUC for d_E8798 : 0.63
+Completed : 72/80
+--------------------Training d_263 --------------------
+Errors for d_263    : 12408
+Accuracy for d_263  : 96.10%
+Precision for d_263 : 0.00%
+Recall for d_263    : 0.00%
+F1 Score for d_263  : 0.00%
+Confusion Matrix for d_263 :
+[[542   0]
+ [ 22   0]]
+ROC AUC for d_263 : 0.53
+Completed : 73/80
+--------------------Training d_441 --------------------
+Errors for d_441    : 7308
+Accuracy for d_441  : 98.05%
+Precision for d_441 : 8.33%
+Recall for d_441    : 100.00%
+F1 Score for d_441  : 15.38%
+Confusion Matrix for d_441 :
+[[552   0]
+ [ 11   1]]
+ROC AUC for d_441 : 0.83
+Completed : 74/80
+--------------------Training d_569 --------------------
+Errors for d_569    : 9588
+Accuracy for d_569  : 96.99%
+Precision for d_569 : 0.00%
+Recall for d_569    : 0.00%
+F1 Score for d_569  : 0.00%
+Confusion Matrix for d_569 :
+[[547   0]
+ [ 17   0]]
+ROC AUC for d_569 : 0.78
+Completed : 75/80
+--------------------Training d_564 --------------------
+Errors for d_564    : 7896
+Accuracy for d_564  : 97.52%
+Precision for d_564 : 0.00%
+Recall for d_564    : 0.00%
+F1 Score for d_564  : 0.00%
+Confusion Matrix for d_564 :
+[[550   0]
+ [ 14   0]]
+ROC AUC for d_564 : 0.54
+Completed : 76/80
+--------------------Training d_293 --------------------
+Errors for d_293    : 9024
+Accuracy for d_293  : 97.16%
+Precision for d_293 : 0.00%
+Recall for d_293    : 0.00%
+F1 Score for d_293  : 0.00%
+Confusion Matrix for d_293 :
+[[548   0]
+ [ 16   0]]
+ROC AUC for d_293 : 0.46
+Completed : 77/80
+--------------------Training d_338 --------------------
+Errors for d_338    : 11844
+Accuracy for d_338  : 96.28%
+Precision for d_338 : 0.00%
+Recall for d_338    : 0.00%
+F1 Score for d_338  : 0.00%
+Confusion Matrix for d_338 :
+[[543   0]
+ [ 21   0]]
+ROC AUC for d_338 : 0.63
+Completed : 78/80
+--------------------Training d_456 --------------------
+Errors for d_456    : 6204
+Accuracy for d_456  : 98.05%
+Precision for d_456 : 0.00%
+Recall for d_456    : 0.00%
+F1 Score for d_456  : 0.00%
+Confusion Matrix for d_456 :
+[[553   0]
+ [ 11   0]]
+ROC AUC for d_456 : 0.83
+Completed : 79/80
+--------------------Training d_715 --------------------
+Errors for d_715    : 7896
+Accuracy for d_715  : 97.52%
+Precision for d_715 : 0.00%
+Recall for d_715    : 0.00%
+F1 Score for d_715  : 0.00%
+Confusion Matrix for d_715 :
+[[550   0]
+ [ 14   0]]
+ROC AUC for d_715 : 0.80
+Completed : 80/80
+ROC Plot saved at ../Results_tfidf/Random_Forest/Plots/ROC_RF_criterion_entropy_n_estimators_10_size_1391
+--------------------Training Done!!!--------------------

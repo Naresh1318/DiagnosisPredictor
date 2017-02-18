@@ -1,0 +1,3465 @@
+(tensorflow) root@naresh-Lenovo-Z50-70:~/PycharmProjects/DiagnosisPredictor/Predictor# python3 dense_fully_connected.py
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcublas.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcudnn.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcufft.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcurand.so locally
+/usr/local/lib/python3.5/dist-packages/sklearn/cross_validation.py:44: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  "This module will be removed in 0.20.", DeprecationWarning)
+sys:1: DtypeWarning: Columns (101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180) have mixed types. Specify dtype option on import or set low_memory=False.
+--------------------Training d_428--------------------
+I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:925] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+I tensorflow/core/common_runtime/gpu/gpu_init.cc:102] Found device 0 with properties:
+name: GeForce 840M
+major: 5 minor: 0 memoryClockRate (GHz) 1.124
+pciBusID 0000:03:00.0
+Total memory: 3.95GiB
+Free memory: 3.31GiB
+I tensorflow/core/common_runtime/gpu/gpu_init.cc:126] DMA: 0
+I tensorflow/core/common_runtime/gpu/gpu_init.cc:136] 0:   Y
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_1
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.52795
+Training Step: 159  | total loss: 0.52795: 0.7528 | val_loss: 0.52780 - val_acc:| Adam | epoch: 001 | loss: 0.52795 - acc: 0.7528 | val_loss: 0.52780 - val_acc: 0.7504 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.60815
+Training Step: 318  | total loss: 0.60815: 0.6773 | val_loss: 0.52566 - val_acc:| Adam | epoch: 002 | loss: 0.60815 - acc: 0.6773 | val_loss: 0.52566 - val_acc: 0.7487 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.57923
+Training Step: 477  | total loss: 0.57923: 0.7229 | val_loss: 0.54511 - val_acc:| Adam | epoch: 003 | loss: 0.57923 - acc: 0.7229 | val_loss: 0.54511 - val_acc: 0.7168 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.57335
+Training Step: 500  | total loss: 0.57335: 0.7105 | val_loss: 0.52317 - val_acc:| Adam | epoch: 003 | loss: 0.57335 - acc: 0.7105 | val_loss: 0.52317 - val_acc: 0.7469 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.54981
+Training Step: 636  | total loss: 0.54981: 0.6999 | val_loss: 0.52250 - val_acc:| Adam | epoch: 004 | loss: 0.54981 - acc: 0.6999 | val_loss: 0.52250 - val_acc: 0.7451 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.53008
+Training Step: 795  | total loss: 0.53008: 0.7496 | val_loss: 0.52820 - val_acc:| Adam | epoch: 005 | loss: 0.53008 - acc: 0.7496 | val_loss: 0.52820 - val_acc: 0.7363 -- iter: 5080/5080
+--
+Errors for d_428    : 149
+Accuracy for d_428  : 73.63%
+Precision for d_428 : 70.37%
+Recall for d_428    : 46.57%
+F1 Score for d_428  : 56.05%
+Confusion Matrix for d_428 :
+[[321  40]
+ [109  95]]
+ROC AUC for d_428 : 0.80
+
+
+Completed : 1/80
+------------------d_428 Complete------------------
+
+
+--------------------Training d_276--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_2
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.65450
+Training Step: 159  | total loss: 0.65450: 0.6362 | val_loss: 0.65410 - val_acc:| Adam | epoch: 001 | loss: 0.65450 - acc: 0.6362 | val_loss: 0.65410 - val_acc: 0.6442 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.61737
+Training Step: 318  | total loss: 0.61737: 0.6856 | val_loss: 0.64927 - val_acc:| Adam | epoch: 002 | loss: 0.61737 - acc: 0.6856 | val_loss: 0.64927 - val_acc: 0.6407 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.63828
+Training Step: 477  | total loss: 0.63828: 0.6540 | val_loss: 0.64503 - val_acc:| Adam | epoch: 003 | loss: 0.63828 - acc: 0.6540 | val_loss: 0.64503 - val_acc: 0.6460 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.64900
+Training Step: 500  | total loss: 0.64900: 0.6392 | val_loss: 0.64997 - val_acc:| Adam | epoch: 003 | loss: 0.64900 - acc: 0.6392 | val_loss: 0.64997 - val_acc: 0.6354 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.62537
+Training Step: 636  | total loss: 0.62537: 0.6496 | val_loss: 0.64346 - val_acc:| Adam | epoch: 004 | loss: 0.62537 - acc: 0.6496 | val_loss: 0.64346 - val_acc: 0.6372 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.62363
+Training Step: 795  | total loss: 0.62363: 0.6625 | val_loss: 0.65222 - val_acc:| Adam | epoch: 005 | loss: 0.62363 - acc: 0.6625 | val_loss: 0.65222 - val_acc: 0.6389 -- iter: 5080/5080
+--
+Errors for d_276    : 204
+Accuracy for d_276  : 63.89%
+Precision for d_276 : 50.00%
+Recall for d_276    : 15.20%
+F1 Score for d_276  : 23.31%
+Confusion Matrix for d_276 :
+[[330  31]
+ [173  31]]
+ROC AUC for d_276 : 0.61
+
+
+Completed : 2/80
+------------------d_276 Complete------------------
+
+
+--------------------Training d_427--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_3
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.61084
+Training Step: 159  | total loss: 0.61084: 0.6662 | val_loss: 0.58253 - val_acc:| Adam | epoch: 001 | loss: 0.61084 - acc: 0.6662 | val_loss: 0.58253 - val_acc: 0.6938 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.61324
+Training Step: 318  | total loss: 0.61324: 0.6841 | val_loss: 0.60425 - val_acc:| Adam | epoch: 002 | loss: 0.61324 - acc: 0.6841 | val_loss: 0.60425 - val_acc: 0.6602 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.60481
+Training Step: 477  | total loss: 0.60481: 0.6896 | val_loss: 0.59101 - val_acc:| Adam | epoch: 003 | loss: 0.60481 - acc: 0.6896 | val_loss: 0.59101 - val_acc: 0.6850 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.59684
+Training Step: 500  | total loss: 0.59684: 0.7097 | val_loss: 0.58020 - val_acc:| Adam | epoch: 003 | loss: 0.59684 - acc: 0.7097 | val_loss: 0.58020 - val_acc: 0.7027 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.60889
+Training Step: 636  | total loss: 0.60889: 0.6856 | val_loss: 0.57635 - val_acc:| Adam | epoch: 004 | loss: 0.60889 - acc: 0.6856 | val_loss: 0.57635 - val_acc: 0.6991 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.57556
+Training Step: 795  | total loss: 0.57556: 0.7134 | val_loss: 0.57783 - val_acc:| Adam | epoch: 005 | loss: 0.57556 - acc: 0.7134 | val_loss: 0.57783 - val_acc: 0.7009 -- iter: 5080/5080
+--
+Errors for d_427    : 169
+Accuracy for d_427  : 70.09%
+Precision for d_427 : 64.93%
+Recall for d_427    : 41.63%
+F1 Score for d_427  : 50.73%
+Confusion Matrix for d_427 :
+[[309  47]
+ [122  87]]
+ROC AUC for d_427 : 0.74
+
+
+Completed : 3/80
+------------------d_427 Complete------------------
+
+
+--------------------Training d_250--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_4
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.54423
+Training Step: 159  | total loss: 0.54423: 0.7751 | val_loss: 0.51357 - val_acc:| Adam | epoch: 001 | loss: 0.54423 - acc: 0.7751 | val_loss: 0.51357 - val_acc: 0.7504 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.59126
+Training Step: 318  | total loss: 0.59126: 0.7262 | val_loss: 0.51834 - val_acc:| Adam | epoch: 002 | loss: 0.59126 - acc: 0.7262 | val_loss: 0.51834 - val_acc: 0.7540 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.57221
+Training Step: 477  | total loss: 0.57221: 0.7263 | val_loss: 0.51744 - val_acc:| Adam | epoch: 003 | loss: 0.57221 - acc: 0.7263 | val_loss: 0.51744 - val_acc: 0.7646 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.54694
+Training Step: 500  | total loss: 0.54694: 0.7355 | val_loss: 0.51981 - val_acc:| Adam | epoch: 003 | loss: 0.54694 - acc: 0.7355 | val_loss: 0.51981 - val_acc: 0.7522 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.53009
+Training Step: 636  | total loss: 0.53009: 0.7648 | val_loss: 0.51386 - val_acc:| Adam | epoch: 004 | loss: 0.53009 - acc: 0.7648 | val_loss: 0.51386 - val_acc: 0.7504 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.53238
+Training Step: 795  | total loss: 0.53238: 0.7568 | val_loss: 0.51588 - val_acc:| Adam | epoch: 005 | loss: 0.53238 - acc: 0.7568 | val_loss: 0.51588 - val_acc: 0.7575 -- iter: 5080/5080
+--
+Errors for d_250    : 137
+Accuracy for d_250  : 75.75%
+Precision for d_250 : 66.00%
+Recall for d_250    : 39.05%
+F1 Score for d_250  : 49.07%
+Confusion Matrix for d_250 :
+[[362  34]
+ [103  66]]
+ROC AUC for d_250 : 0.76
+
+
+Completed : 4/80
+------------------d_250 Complete------------------
+
+
+--------------------Training d_401--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_5
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.62180
+Training Step: 159  | total loss: 0.62180: 0.6370 | val_loss: 0.57586 - val_acc:| Adam | epoch: 001 | loss: 0.62180 - acc: 0.6370 | val_loss: 0.57586 - val_acc: 0.6850 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.62368
+Training Step: 318  | total loss: 0.62368: 0.6383 | val_loss: 0.58494 - val_acc:| Adam | epoch: 002 | loss: 0.62368 - acc: 0.6383 | val_loss: 0.58494 - val_acc: 0.6991 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.61030
+Training Step: 477  | total loss: 0.61030: 0.6550 | val_loss: 0.57594 - val_acc:| Adam | epoch: 003 | loss: 0.61030 - acc: 0.6550 | val_loss: 0.57594 - val_acc: 0.7062 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.62406
+Training Step: 500  | total loss: 0.62406: 0.6537 | val_loss: 0.57991 - val_acc:| Adam | epoch: 003 | loss: 0.62406 - acc: 0.6537 | val_loss: 0.57991 - val_acc: 0.7150 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.64539
+Training Step: 636  | total loss: 0.64539: 0.6258 | val_loss: 0.59508 - val_acc:| Adam | epoch: 004 | loss: 0.64539 - acc: 0.6258 | val_loss: 0.59508 - val_acc: 0.7044 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.62520
+Training Step: 795  | total loss: 0.62520: 0.6511 | val_loss: 0.57217 - val_acc:| Adam | epoch: 005 | loss: 0.62520 - acc: 0.6511 | val_loss: 0.57217 - val_acc: 0.6991 -- iter: 5080/5080
+--
+Errors for d_401    : 170
+Accuracy for d_401  : 69.91%
+Precision for d_401 : 64.06%
+Recall for d_401    : 21.81%
+F1 Score for d_401  : 32.54%
+Confusion Matrix for d_401 :
+[[354  23]
+ [147  41]]
+ROC AUC for d_401 : 0.72
+
+
+Completed : 5/80
+------------------d_401 Complete------------------
+
+
+--------------------Training d_518--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_6
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.59653
+Training Step: 159  | total loss: 0.59653: 0.7110 | val_loss: 0.60203 - val_acc:| Adam | epoch: 001 | loss: 0.59653 - acc: 0.7110 | val_loss: 0.60203 - val_acc: 0.7080 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.56549
+Training Step: 318  | total loss: 0.56549: 0.7249 | val_loss: 0.63327 - val_acc:| Adam | epoch: 002 | loss: 0.56549 - acc: 0.7249 | val_loss: 0.63327 - val_acc: 0.7097 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.63076
+Training Step: 477  | total loss: 0.63076: 0.6647 | val_loss: 0.59997 - val_acc:| Adam | epoch: 003 | loss: 0.63076 - acc: 0.6647 | val_loss: 0.59997 - val_acc: 0.7239 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.60534
+Training Step: 500  | total loss: 0.60534: 0.6961 | val_loss: 0.59777 - val_acc:| Adam | epoch: 003 | loss: 0.60534 - acc: 0.6961 | val_loss: 0.59777 - val_acc: 0.7204 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.58542
+Training Step: 636  | total loss: 0.58542: 0.7311 | val_loss: 0.60925 - val_acc:| Adam | epoch: 004 | loss: 0.58542 - acc: 0.7311 | val_loss: 0.60925 - val_acc: 0.7133 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.58636
+Training Step: 795  | total loss: 0.58636: 0.7053 | val_loss: 0.60065 - val_acc:| Adam | epoch: 005 | loss: 0.58636 - acc: 0.7053 | val_loss: 0.60065 - val_acc: 0.7204 -- iter: 5080/5080
+--
+Errors for d_518    : 158
+Accuracy for d_518  : 72.04%
+Precision for d_518 : 73.33%
+Recall for d_518    : 12.79%
+F1 Score for d_518  : 21.78%
+Confusion Matrix for d_518 :
+[[385   8]
+ [150  22]]
+ROC AUC for d_518 : 0.58
+
+
+Completed : 6/80
+------------------d_518 Complete------------------
+
+
+--------------------Training d_414--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_7
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.45763
+Training Step: 159  | total loss: 0.45763: 0.7800 | val_loss: 0.46279 - val_acc:| Adam | epoch: 001 | loss: 0.45763 - acc: 0.7800 | val_loss: 0.46279 - val_acc: 0.8018 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.51299
+Training Step: 318  | total loss: 0.51299: 0.7591 | val_loss: 0.46130 - val_acc:| Adam | epoch: 002 | loss: 0.51299 - acc: 0.7591 | val_loss: 0.46130 - val_acc: 0.8018 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.46004
+Training Step: 477  | total loss: 0.46004: 0.7776 | val_loss: 0.45646 - val_acc:| Adam | epoch: 003 | loss: 0.46004 - acc: 0.7776 | val_loss: 0.45646 - val_acc: 0.8035 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.51947
+Training Step: 500  | total loss: 0.51947: 0.7559 | val_loss: 0.47272 - val_acc:| Adam | epoch: 003 | loss: 0.51947 - acc: 0.7559 | val_loss: 0.47272 - val_acc: 0.7965 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.50774
+Training Step: 636  | total loss: 0.50774: 0.7507 | val_loss: 0.46298 - val_acc:| Adam | epoch: 004 | loss: 0.50774 - acc: 0.7507 | val_loss: 0.46298 - val_acc: 0.8018 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.49572
+Training Step: 795  | total loss: 0.49572: 0.7772 | val_loss: 0.45597 - val_acc:| Adam | epoch: 005 | loss: 0.49572 - acc: 0.7772 | val_loss: 0.45597 - val_acc: 0.7929 -- iter: 5080/5080
+--
+Errors for d_414    : 117
+Accuracy for d_414  : 79.29%
+Precision for d_414 : 62.86%
+Recall for d_414    : 17.46%
+F1 Score for d_414  : 27.33%
+Confusion Matrix for d_414 :
+[[426  13]
+ [104  22]]
+ROC AUC for d_414 : 0.78
+
+
+Completed : 7/80
+------------------d_414 Complete------------------
+
+
+--------------------Training d_285--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_8
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.60510
+Training Step: 159  | total loss: 0.60510: 0.7044 | val_loss: 0.59178 - val_acc:| Adam | epoch: 001 | loss: 0.60510 - acc: 0.7044 | val_loss: 0.59178 - val_acc: 0.7168 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.58957
+Training Step: 318  | total loss: 0.58957: 0.7181 | val_loss: 0.58859 - val_acc:| Adam | epoch: 002 | loss: 0.58957 - acc: 0.7181 | val_loss: 0.58859 - val_acc: 0.7274 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.61099
+Training Step: 477  | total loss: 0.61099: 0.6840 | val_loss: 0.59997 - val_acc:| Adam | epoch: 003 | loss: 0.61099 - acc: 0.6840 | val_loss: 0.59997 - val_acc: 0.7097 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.59070
+Training Step: 500  | total loss: 0.59070: 0.7020 | val_loss: 0.59918 - val_acc:| Adam | epoch: 003 | loss: 0.59070 - acc: 0.7020 | val_loss: 0.59918 - val_acc: 0.7150 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.55165
+Training Step: 636  | total loss: 0.55165: 0.7530 | val_loss: 0.59047 - val_acc:| Adam | epoch: 004 | loss: 0.55165 - acc: 0.7530 | val_loss: 0.59047 - val_acc: 0.7274 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.56399
+Training Step: 795  | total loss: 0.56399: 0.7360 | val_loss: 0.59115 - val_acc:| Adam | epoch: 005 | loss: 0.56399 - acc: 0.7360 | val_loss: 0.59115 - val_acc: 0.7204 -- iter: 5080/5080
+--
+Errors for d_285    : 158
+Accuracy for d_285  : 72.04%
+Precision for d_285 : 38.46%
+Recall for d_285    : 3.23%
+F1 Score for d_285  : 5.95%
+Confusion Matrix for d_285 :
+[[402   8]
+ [150   5]]
+ROC AUC for d_285 : 0.55
+
+
+Completed : 8/80
+------------------d_285 Complete------------------
+
+
+--------------------Training d_272--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_9
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.54804
+Training Step: 159  | total loss: 0.54804: 0.7465 | val_loss: 0.51773 - val_acc:| Adam | epoch: 001 | loss: 0.54804 - acc: 0.7465 | val_loss: 0.51773 - val_acc: 0.7752 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.54650
+Training Step: 318  | total loss: 0.54650: 0.7472 | val_loss: 0.51719 - val_acc:| Adam | epoch: 002 | loss: 0.54650 - acc: 0.7472 | val_loss: 0.51719 - val_acc: 0.7735 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.51790
+Training Step: 477  | total loss: 0.51790: 0.7743 | val_loss: 0.50079 - val_acc:| Adam | epoch: 003 | loss: 0.51790 - acc: 0.7743 | val_loss: 0.50079 - val_acc: 0.7735 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.56774
+Training Step: 500  | total loss: 0.56774: 0.7320 | val_loss: 0.51892 - val_acc:| Adam | epoch: 003 | loss: 0.56774 - acc: 0.7320 | val_loss: 0.51892 - val_acc: 0.7735 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.55138
+Training Step: 636  | total loss: 0.55138: 0.7361 | val_loss: 0.51006 - val_acc:| Adam | epoch: 004 | loss: 0.55138 - acc: 0.7361 | val_loss: 0.51006 - val_acc: 0.7788 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.53623
+Training Step: 795  | total loss: 0.53623: 0.7255 | val_loss: 0.50875 - val_acc:| Adam | epoch: 005 | loss: 0.53623 - acc: 0.7255 | val_loss: 0.50875 - val_acc: 0.7770 -- iter: 5080/5080
+--
+Errors for d_272    : 126
+Accuracy for d_272  : 77.70%
+Precision for d_272 : 53.57%
+Recall for d_272    : 11.72%
+F1 Score for d_272  : 19.23%
+Confusion Matrix for d_272 :
+[[424  13]
+ [113  15]]
+ROC AUC for d_272 : 0.67
+
+
+Completed : 9/80
+------------------d_272 Complete------------------
+
+
+--------------------Training d_584--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_10
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.57054
+Training Step: 159  | total loss: 0.57054: 0.7281 | val_loss: 0.60709 - val_acc:| Adam | epoch: 001 | loss: 0.57054 - acc: 0.7281 | val_loss: 0.60709 - val_acc: 0.6956 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.56080
+Training Step: 318  | total loss: 0.56080: 0.7355 | val_loss: 0.60911 - val_acc:| Adam | epoch: 002 | loss: 0.56080 - acc: 0.7355 | val_loss: 0.60911 - val_acc: 0.6920 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.57255
+Training Step: 477  | total loss: 0.57255: 0.7214 | val_loss: 0.60439 - val_acc:| Adam | epoch: 003 | loss: 0.57255 - acc: 0.7214 | val_loss: 0.60439 - val_acc: 0.7009 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.57401
+Training Step: 500  | total loss: 0.57401: 0.7161 | val_loss: 0.59528 - val_acc:| Adam | epoch: 003 | loss: 0.57401 - acc: 0.7161 | val_loss: 0.59528 - val_acc: 0.6991 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.55428
+Training Step: 636  | total loss: 0.55428: 0.7326 | val_loss: 0.60836 - val_acc:| Adam | epoch: 004 | loss: 0.55428 - acc: 0.7326 | val_loss: 0.60836 - val_acc: 0.6991 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.57550
+Training Step: 795  | total loss: 0.57550: 0.7293 | val_loss: 0.62842 - val_acc:| Adam | epoch: 005 | loss: 0.57550 - acc: 0.7293 | val_loss: 0.62842 - val_acc: 0.6885 -- iter: 5080/5080
+--
+Errors for d_584    : 176
+Accuracy for d_584  : 68.85%
+Precision for d_584 : 45.10%
+Recall for d_584    : 13.45%
+F1 Score for d_584  : 20.72%
+Confusion Matrix for d_584 :
+[[366  28]
+ [148  23]]
+ROC AUC for d_584 : 0.60
+
+
+Completed : 10/80
+------------------d_584 Complete------------------
+
+
+--------------------Training d_585--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_11
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.42862
+Training Step: 159  | total loss: 0.42862: 0.8316 | val_loss: 0.41035 - val_acc:| Adam | epoch: 001 | loss: 0.42862 - acc: 0.8316 | val_loss: 0.41035 - val_acc: 0.8106 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.43786
+Training Step: 318  | total loss: 0.43786: 0.8187 | val_loss: 0.39418 - val_acc:| Adam | epoch: 002 | loss: 0.43786 - acc: 0.8187 | val_loss: 0.39418 - val_acc: 0.8159 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.39843
+Training Step: 477  | total loss: 0.39843: 0.8300 | val_loss: 0.39350 - val_acc:| Adam | epoch: 003 | loss: 0.39843 - acc: 0.8300 | val_loss: 0.39350 - val_acc: 0.8230 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.41542
+Training Step: 500  | total loss: 0.41542: 0.8144 | val_loss: 0.40954 - val_acc:| Adam | epoch: 003 | loss: 0.41542 - acc: 0.8144 | val_loss: 0.40954 - val_acc: 0.8124 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.39594
+Training Step: 636  | total loss: 0.39594: 0.8272 | val_loss: 0.40295 - val_acc:| Adam | epoch: 004 | loss: 0.39594 - acc: 0.8272 | val_loss: 0.40295 - val_acc: 0.8106 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.42253
+Training Step: 795  | total loss: 0.42253: 0.8135 | val_loss: 0.39748 - val_acc:| Adam | epoch: 005 | loss: 0.42253 - acc: 0.8135 | val_loss: 0.39748 - val_acc: 0.8177 -- iter: 5080/5080
+--
+Errors for d_585    : 103
+Accuracy for d_585  : 81.77%
+Precision for d_585 : 80.00%
+Recall for d_585    : 27.69%
+F1 Score for d_585  : 41.14%
+Confusion Matrix for d_585 :
+[[426   9]
+ [ 94  36]]
+ROC AUC for d_585 : 0.85
+
+
+Completed : 11/80
+------------------d_585 Complete------------------
+
+
+--------------------Training d_403--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_12
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.40164
+Training Step: 159  | total loss: 0.40164: 0.8390 | val_loss: 0.38578 - val_acc:| Adam | epoch: 001 | loss: 0.40164 - acc: 0.8390 | val_loss: 0.38578 - val_acc: 0.8372 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.39040
+Training Step: 318  | total loss: 0.39040: 0.8445 | val_loss: 0.35411 - val_acc:| Adam | epoch: 002 | loss: 0.39040 - acc: 0.8445 | val_loss: 0.35411 - val_acc: 0.8442 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.38735
+Training Step: 477  | total loss: 0.38735: 0.8465 | val_loss: 0.35463 - val_acc:| Adam | epoch: 003 | loss: 0.38735 - acc: 0.8465 | val_loss: 0.35463 - val_acc: 0.8460 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.35885
+Training Step: 500  | total loss: 0.35885: 0.8474 | val_loss: 0.35381 - val_acc:| Adam | epoch: 003 | loss: 0.35885 - acc: 0.8474 | val_loss: 0.35381 - val_acc: 0.8425 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.42433
+Training Step: 636  | total loss: 0.42433: 0.8257 | val_loss: 0.36160 - val_acc:| Adam | epoch: 004 | loss: 0.42433 - acc: 0.8257 | val_loss: 0.36160 - val_acc: 0.8389 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.39071
+Training Step: 795  | total loss: 0.39071: 0.8417 | val_loss: 0.36619 - val_acc:| Adam | epoch: 005 | loss: 0.39071 - acc: 0.8417 | val_loss: 0.36619 - val_acc: 0.8372 -- iter: 5080/5080
+--
+Errors for d_403    : 92
+Accuracy for d_403  : 83.72%
+Precision for d_403 : 86.36%
+Recall for d_403    : 17.59%
+F1 Score for d_403  : 29.23%
+Confusion Matrix for d_403 :
+[[454   3]
+ [ 89  19]]
+ROC AUC for d_403 : 0.85
+
+
+Completed : 12/80
+------------------d_403 Complete------------------
+
+
+--------------------Training d_599--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_13
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.48361
+Training Step: 159  | total loss: 0.48361: 0.8093 | val_loss: 0.46339 - val_acc:| Adam | epoch: 001 | loss: 0.48361 - acc: 0.8093 | val_loss: 0.46339 - val_acc: 0.8248 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.46551
+Training Step: 318  | total loss: 0.46551: 0.8205 | val_loss: 0.45768 - val_acc:| Adam | epoch: 002 | loss: 0.46551 - acc: 0.8205 | val_loss: 0.45768 - val_acc: 0.8195 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.48753
+Training Step: 477  | total loss: 0.48753: 0.8067 | val_loss: 0.45021 - val_acc:| Adam | epoch: 003 | loss: 0.48753 - acc: 0.8067 | val_loss: 0.45021 - val_acc: 0.8248 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.44023
+Training Step: 500  | total loss: 0.44023: 0.8356 | val_loss: 0.45503 - val_acc:| Adam | epoch: 003 | loss: 0.44023 - acc: 0.8356 | val_loss: 0.45503 - val_acc: 0.8248 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.46088
+Training Step: 636  | total loss: 0.46088: 0.8209 | val_loss: 0.46077 - val_acc:| Adam | epoch: 004 | loss: 0.46088 - acc: 0.8209 | val_loss: 0.46077 - val_acc: 0.8230 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.47542
+Training Step: 795  | total loss: 0.47542: 0.8159 | val_loss: 0.45565 - val_acc:| Adam | epoch: 005 | loss: 0.47542 - acc: 0.8159 | val_loss: 0.45565 - val_acc: 0.8230 -- iter: 5080/5080
+--
+Errors for d_599    : 100
+Accuracy for d_599  : 82.30%
+Precision for d_599 : 0.00%
+Recall for d_599    : 0.00%
+F1 Score for d_599  : 0.00%
+Confusion Matrix for d_599 :
+[[465   1]
+ [ 99   0]]
+ROC AUC for d_599 : 0.63
+
+
+Completed : 13/80
+------------------d_599 Complete------------------
+
+
+--------------------Training d_530--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_14
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.47690
+Training Step: 159  | total loss: 0.47690: 0.8268 | val_loss: 0.44232 - val_acc:| Adam | epoch: 001 | loss: 0.47690 - acc: 0.8268 | val_loss: 0.44232 - val_acc: 0.8354 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.45181
+Training Step: 318  | total loss: 0.45181: 0.8339 | val_loss: 0.43126 - val_acc:| Adam | epoch: 002 | loss: 0.45181 - acc: 0.8339 | val_loss: 0.43126 - val_acc: 0.8389 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.42297
+Training Step: 477  | total loss: 0.42297: 0.8471 | val_loss: 0.42600 - val_acc:| Adam | epoch: 003 | loss: 0.42297 - acc: 0.8471 | val_loss: 0.42600 - val_acc: 0.8425 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.47670
+Training Step: 500  | total loss: 0.47670: 0.8230 | val_loss: 0.43330 - val_acc:| Adam | epoch: 003 | loss: 0.47670 - acc: 0.8230 | val_loss: 0.43330 - val_acc: 0.8407 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.41468
+Training Step: 636  | total loss: 0.41468: 0.8544 | val_loss: 0.43354 - val_acc:| Adam | epoch: 004 | loss: 0.41468 - acc: 0.8544 | val_loss: 0.43354 - val_acc: 0.8407 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.40484
+Training Step: 795  | total loss: 0.40484: 0.8579 | val_loss: 0.43450 - val_acc:| Adam | epoch: 005 | loss: 0.40484 - acc: 0.8579 | val_loss: 0.43450 - val_acc: 0.8407 -- iter: 5080/5080
+--
+Errors for d_530    : 90
+Accuracy for d_530  : 84.07%
+Precision for d_530 : 100.00%
+Recall for d_530    : 1.10%
+F1 Score for d_530  : 2.17%
+Confusion Matrix for d_530 :
+[[474   0]
+ [ 90   1]]
+ROC AUC for d_530 : 0.58
+
+
+Completed : 14/80
+------------------d_530 Complete------------------
+
+
+--------------------Training d_038--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_15
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.49249
+Training Step: 159  | total loss: 0.49249: 0.7966 | val_loss: 0.48220 - val_acc:| Adam | epoch: 001 | loss: 0.49249 - acc: 0.7966 | val_loss: 0.48220 - val_acc: 0.7947 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.45015
+Training Step: 318  | total loss: 0.45015: 0.8232 | val_loss: 0.48573 - val_acc:| Adam | epoch: 002 | loss: 0.45015 - acc: 0.8232 | val_loss: 0.48573 - val_acc: 0.7965 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.47739
+Training Step: 477  | total loss: 0.47739: 0.8047 | val_loss: 0.47744 - val_acc:| Adam | epoch: 003 | loss: 0.47739 - acc: 0.8047 | val_loss: 0.47744 - val_acc: 0.7947 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.47181
+Training Step: 500  | total loss: 0.47181: 0.7993 | val_loss: 0.46969 - val_acc:| Adam | epoch: 003 | loss: 0.47181 - acc: 0.7993 | val_loss: 0.46969 - val_acc: 0.8018 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.47968
+Training Step: 636  | total loss: 0.47968: 0.8017 | val_loss: 0.48668 - val_acc:| Adam | epoch: 004 | loss: 0.47968 - acc: 0.8017 | val_loss: 0.48668 - val_acc: 0.7947 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.48128
+Training Step: 795  | total loss: 0.48128: 0.7948 | val_loss: 0.48551 - val_acc:| Adam | epoch: 005 | loss: 0.48128 - acc: 0.7948 | val_loss: 0.48551 - val_acc: 0.7947 -- iter: 5080/5080
+--
+Errors for d_038    : 116
+Accuracy for d_038  : 79.47%
+Precision for d_038 : 100.00%
+Recall for d_038    : 0.85%
+F1 Score for d_038  : 1.69%
+Confusion Matrix for d_038 :
+[[448   0]
+ [116   1]]
+ROC AUC for d_038 : 0.66
+
+
+Completed : 15/80
+------------------d_038 Complete------------------
+
+
+--------------------Training d_707--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_16
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.38354
+Training Step: 159  | total loss: 0.38354: 0.8704 | val_loss: 0.33169 - val_acc:| Adam | epoch: 001 | loss: 0.38354 - acc: 0.8704 | val_loss: 0.33169 - val_acc: 0.8920 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.33785
+Training Step: 318  | total loss: 0.33785: 0.8868 | val_loss: 0.32385 - val_acc:| Adam | epoch: 002 | loss: 0.33785 - acc: 0.8868 | val_loss: 0.32385 - val_acc: 0.8973 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.31639
+Training Step: 477  | total loss: 0.31639: 0.8944 | val_loss: 0.33525 - val_acc:| Adam | epoch: 003 | loss: 0.31639 - acc: 0.8944 | val_loss: 0.33525 - val_acc: 0.8973 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.36663
+Training Step: 500  | total loss: 0.36663: 0.8791 | val_loss: 0.33069 - val_acc:| Adam | epoch: 003 | loss: 0.36663 - acc: 0.8791 | val_loss: 0.33069 - val_acc: 0.8903 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.27370
+Training Step: 636  | total loss: 0.27370: 0.9106 | val_loss: 0.33562 - val_acc:| Adam | epoch: 004 | loss: 0.27370 - acc: 0.9106 | val_loss: 0.33562 - val_acc: 0.8956 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.35448
+Training Step: 795  | total loss: 0.35448: 0.8765 | val_loss: 0.32861 - val_acc:| Adam | epoch: 005 | loss: 0.35448 - acc: 0.8765 | val_loss: 0.32861 - val_acc: 0.8938 -- iter: 5080/5080
+--
+Errors for d_707    : 60
+Accuracy for d_707  : 89.38%
+Precision for d_707 : 0.00%
+Recall for d_707    : 0.00%
+F1 Score for d_707  : 0.00%
+Confusion Matrix for d_707 :
+[[505   2]
+ [ 58   0]]
+ROC AUC for d_707 : 0.64
+
+
+Completed : 16/80
+------------------d_707 Complete------------------
+
+
+--------------------Training d_996--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_17
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.37881
+Training Step: 159  | total loss: 0.37881: 0.8677 | val_loss: 0.37442 - val_acc:| Adam | epoch: 001 | loss: 0.37881 - acc: 0.8677 | val_loss: 0.37442 - val_acc: 0.8690 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.35934
+Training Step: 318  | total loss: 0.35934: 0.8760 | val_loss: 0.35975 - val_acc:| Adam | epoch: 002 | loss: 0.35934 - acc: 0.8760 | val_loss: 0.35975 - val_acc: 0.8637 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.37337
+Training Step: 477  | total loss: 0.37337: 0.8682 | val_loss: 0.35560 - val_acc:| Adam | epoch: 003 | loss: 0.37337 - acc: 0.8682 | val_loss: 0.35560 - val_acc: 0.8673 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.35248
+Training Step: 500  | total loss: 0.35248: 0.8699 | val_loss: 0.35927 - val_acc:| Adam | epoch: 003 | loss: 0.35248 - acc: 0.8699 | val_loss: 0.35927 - val_acc: 0.8637 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.34018
+Training Step: 636  | total loss: 0.34018: 0.8761 | val_loss: 0.36221 - val_acc:| Adam | epoch: 004 | loss: 0.34018 - acc: 0.8761 | val_loss: 0.36221 - val_acc: 0.8637 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.38912
+Training Step: 795  | total loss: 0.38912: 0.8619 | val_loss: 0.36054 - val_acc:| Adam | epoch: 005 | loss: 0.38912 - acc: 0.8619 | val_loss: 0.36054 - val_acc: 0.8673 -- iter: 5080/5080
+--
+Errors for d_996    : 75
+Accuracy for d_996  : 86.73%
+Precision for d_996 : 66.67%
+Recall for d_996    : 5.19%
+F1 Score for d_996  : 9.64%
+Confusion Matrix for d_996 :
+[[486   2]
+ [ 73   4]]
+ROC AUC for d_996 : 0.75
+
+
+Completed : 17/80
+------------------d_996 Complete------------------
+
+
+--------------------Training d_995--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_18
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.43994
+Training Step: 159  | total loss: 0.43994: 0.8281 | val_loss: 0.45845 - val_acc:| Adam | epoch: 001 | loss: 0.43994 - acc: 0.8281 | val_loss: 0.45845 - val_acc: 0.8088 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.43476
+Training Step: 318  | total loss: 0.43476: 0.8246 | val_loss: 0.46020 - val_acc:| Adam | epoch: 002 | loss: 0.43476 - acc: 0.8246 | val_loss: 0.46020 - val_acc: 0.8124 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.40406
+Training Step: 477  | total loss: 0.40406: 0.8403 | val_loss: 0.46721 - val_acc:| Adam | epoch: 003 | loss: 0.40406 - acc: 0.8403 | val_loss: 0.46721 - val_acc: 0.8124 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.43822
+Training Step: 500  | total loss: 0.43822: 0.8324 | val_loss: 0.45664 - val_acc:| Adam | epoch: 003 | loss: 0.43822 - acc: 0.8324 | val_loss: 0.45664 - val_acc: 0.8142 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.42302
+Training Step: 636  | total loss: 0.42302: 0.8402 | val_loss: 0.46730 - val_acc:| Adam | epoch: 004 | loss: 0.42302 - acc: 0.8402 | val_loss: 0.46730 - val_acc: 0.8071 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.44507
+Training Step: 795  | total loss: 0.44507: 0.8272 | val_loss: 0.45672 - val_acc:| Adam | epoch: 005 | loss: 0.44507 - acc: 0.8272 | val_loss: 0.45672 - val_acc: 0.8071 -- iter: 5080/5080
+--
+Errors for d_995    : 109
+Accuracy for d_995  : 80.71%
+Precision for d_995 : 50.00%
+Recall for d_995    : 0.92%
+F1 Score for d_995  : 1.80%
+Confusion Matrix for d_995 :
+[[455   1]
+ [108   1]]
+ROC AUC for d_995 : 0.70
+
+
+Completed : 18/80
+------------------d_995 Complete------------------
+
+
+--------------------Training d_998--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_19
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.31146
+Training Step: 159  | total loss: 0.31146: 0.8975 | val_loss: 0.40193 - val_acc:| Adam | epoch: 001 | loss: 0.31146 - acc: 0.8975 | val_loss: 0.40193 - val_acc: 0.8566 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.39842
+Training Step: 318  | total loss: 0.39842: 0.8586 | val_loss: 0.37904 - val_acc:| Adam | epoch: 002 | loss: 0.39842 - acc: 0.8586 | val_loss: 0.37904 - val_acc: 0.8673 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.31794
+Training Step: 477  | total loss: 0.31794: 0.8900 | val_loss: 0.39190 - val_acc:| Adam | epoch: 003 | loss: 0.31794 - acc: 0.8900 | val_loss: 0.39190 - val_acc: 0.8637 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.35028
+Training Step: 500  | total loss: 0.35028: 0.8721 | val_loss: 0.38213 - val_acc:| Adam | epoch: 003 | loss: 0.35028 - acc: 0.8721 | val_loss: 0.38213 - val_acc: 0.8619 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.32701
+Training Step: 636  | total loss: 0.32701: 0.8869 | val_loss: 0.38447 - val_acc:| Adam | epoch: 004 | loss: 0.32701 - acc: 0.8869 | val_loss: 0.38447 - val_acc: 0.8655 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.33528
+Training Step: 795  | total loss: 0.33528: 0.8851 | val_loss: 0.39499 - val_acc:| Adam | epoch: 005 | loss: 0.33528 - acc: 0.8851 | val_loss: 0.39499 - val_acc: 0.8655 -- iter: 5080/5080
+--
+Errors for d_998    : 76
+Accuracy for d_998  : 86.55%
+Precision for d_998 : 0.00%
+Recall for d_998    : 0.00%
+F1 Score for d_998  : 0.00%
+Confusion Matrix for d_998 :
+[[489   3]
+ [ 73   0]]
+ROC AUC for d_998 : 0.59
+
+
+Completed : 19/80
+------------------d_998 Complete------------------
+
+
+--------------------Training d_041--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_20
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.38897
+Training Step: 159  | total loss: 0.38897: 0.8757 | val_loss: 0.35681 - val_acc:| Adam | epoch: 001 | loss: 0.38897 - acc: 0.8757 | val_loss: 0.35681 - val_acc: 0.8814 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.41047
+Training Step: 318  | total loss: 0.41047: 0.8600 | val_loss: 0.36260 - val_acc:| Adam | epoch: 002 | loss: 0.41047 - acc: 0.8600 | val_loss: 0.36260 - val_acc: 0.8832 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.38821
+Training Step: 477  | total loss: 0.38821: 0.8657 | val_loss: 0.34976 - val_acc:| Adam | epoch: 003 | loss: 0.38821 - acc: 0.8657 | val_loss: 0.34976 - val_acc: 0.8814 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.38877
+Training Step: 500  | total loss: 0.38877: 0.8665 | val_loss: 0.35131 - val_acc:| Adam | epoch: 003 | loss: 0.38877 - acc: 0.8665 | val_loss: 0.35131 - val_acc: 0.8796 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.34216
+Training Step: 636  | total loss: 0.34216: 0.8899 | val_loss: 0.35576 - val_acc:| Adam | epoch: 004 | loss: 0.34216 - acc: 0.8899 | val_loss: 0.35576 - val_acc: 0.8832 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.34768
+Training Step: 795  | total loss: 0.34768: 0.8874 | val_loss: 0.35427 - val_acc:| Adam | epoch: 005 | loss: 0.34768 - acc: 0.8874 | val_loss: 0.35427 - val_acc: 0.8832 -- iter: 5080/5080
+--
+/usr/local/lib/python3.5/dist-packages/sklearn/metrics/classification.py:1113: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples.
+  'precision', 'predicted', average, warn_for)
+/usr/local/lib/python3.5/dist-packages/sklearn/metrics/classification.py:1113: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 due to no predicted samples.
+  'precision', 'predicted', average, warn_for)
+Errors for d_041    : 66
+Accuracy for d_041  : 88.32%
+Precision for d_041 : 0.00%
+Recall for d_041    : 0.00%
+F1 Score for d_041  : 0.00%
+Confusion Matrix for d_041 :
+[[499   0]
+ [ 66   0]]
+ROC AUC for d_041 : 0.62
+
+
+Completed : 20/80
+------------------d_041 Complete------------------
+
+
+--------------------Training d_244--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_21
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.39007
+Training Step: 159  | total loss: 0.39007: 0.8659 | val_loss: 0.37283 - val_acc:| Adam | epoch: 001 | loss: 0.39007 - acc: 0.8659 | val_loss: 0.37283 - val_acc: 0.8726 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.42481
+Training Step: 318  | total loss: 0.42481: 0.8454 | val_loss: 0.37326 - val_acc:| Adam | epoch: 002 | loss: 0.42481 - acc: 0.8454 | val_loss: 0.37326 - val_acc: 0.8726 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.33738
+Training Step: 477  | total loss: 0.33738: 0.8860 | val_loss: 0.37086 - val_acc:| Adam | epoch: 003 | loss: 0.33738 - acc: 0.8860 | val_loss: 0.37086 - val_acc: 0.8708 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.42105
+Training Step: 500  | total loss: 0.42105: 0.8432 | val_loss: 0.37621 - val_acc:| Adam | epoch: 003 | loss: 0.42105 - acc: 0.8432 | val_loss: 0.37621 - val_acc: 0.8726 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.43717
+Training Step: 636  | total loss: 0.43717: 0.8498 | val_loss: 0.40463 - val_acc:| Adam | epoch: 004 | loss: 0.43717 - acc: 0.8498 | val_loss: 0.40463 - val_acc: 0.8690 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.39418
+Training Step: 795  | total loss: 0.39418: 0.8630 | val_loss: 0.37428 - val_acc:| Adam | epoch: 005 | loss: 0.39418 - acc: 0.8630 | val_loss: 0.37428 - val_acc: 0.8726 -- iter: 5080/5080
+--
+Errors for d_244    : 72
+Accuracy for d_244  : 87.26%
+Precision for d_244 : 0.00%
+Recall for d_244    : 0.00%
+F1 Score for d_244  : 0.00%
+Confusion Matrix for d_244 :
+[[493   0]
+ [ 72   0]]
+ROC AUC for d_244 : 0.62
+
+
+Completed : 21/80
+------------------d_244 Complete------------------
+
+
+--------------------Training d_486--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_22
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.39365
+Training Step: 159  | total loss: 0.39365: 0.8635 | val_loss: 0.36180 - val_acc:| Adam | epoch: 001 | loss: 0.39365 - acc: 0.8635 | val_loss: 0.36180 - val_acc: 0.8850 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.35714
+Training Step: 318  | total loss: 0.35714: 0.8815 | val_loss: 0.35617 - val_acc:| Adam | epoch: 002 | loss: 0.35714 - acc: 0.8815 | val_loss: 0.35617 - val_acc: 0.8867 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.31690
+Training Step: 477  | total loss: 0.31690: 0.9043 | val_loss: 0.35061 - val_acc:| Adam | epoch: 003 | loss: 0.31690 - acc: 0.9043 | val_loss: 0.35061 - val_acc: 0.8885 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.34861
+Training Step: 500  | total loss: 0.34861: 0.8909 | val_loss: 0.35049 - val_acc:| Adam | epoch: 003 | loss: 0.34861 - acc: 0.8909 | val_loss: 0.35049 - val_acc: 0.8885 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.34471
+Training Step: 636  | total loss: 0.34471: 0.8952 | val_loss: 0.34943 - val_acc:| Adam | epoch: 004 | loss: 0.34471 - acc: 0.8952 | val_loss: 0.34943 - val_acc: 0.8885 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.30243
+Training Step: 795  | total loss: 0.30243: 0.9130 | val_loss: 0.35367 - val_acc:| Adam | epoch: 005 | loss: 0.30243 - acc: 0.9130 | val_loss: 0.35367 - val_acc: 0.8867 -- iter: 5080/5080
+--
+Errors for d_486    : 64
+Accuracy for d_486  : 88.67%
+Precision for d_486 : 0.00%
+Recall for d_486    : 0.00%
+F1 Score for d_486  : 0.00%
+Confusion Matrix for d_486 :
+[[501   1]
+ [ 63   0]]
+ROC AUC for d_486 : 0.58
+
+
+Completed : 22/80
+------------------d_486 Complete------------------
+
+
+--------------------Training d_458--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_23
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.30139
+Training Step: 159  | total loss: 0.30139: 0.9094 | val_loss: 0.31857 - val_acc:| Adam | epoch: 001 | loss: 0.30139 - acc: 0.9094 | val_loss: 0.31857 - val_acc: 0.9044 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.36607
+Training Step: 318  | total loss: 0.36607: 0.8801 | val_loss: 0.31882 - val_acc:| Adam | epoch: 002 | loss: 0.36607 - acc: 0.8801 | val_loss: 0.31882 - val_acc: 0.9044 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.35967
+Training Step: 477  | total loss: 0.35967: 0.8865 | val_loss: 0.31203 - val_acc:| Adam | epoch: 003 | loss: 0.35967 - acc: 0.8865 | val_loss: 0.31203 - val_acc: 0.9044 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.36016
+Training Step: 500  | total loss: 0.36016: 0.8876 | val_loss: 0.31645 - val_acc:| Adam | epoch: 003 | loss: 0.36016 - acc: 0.8876 | val_loss: 0.31645 - val_acc: 0.9044 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.34050
+Training Step: 636  | total loss: 0.34050: 0.8947 | val_loss: 0.31830 - val_acc:| Adam | epoch: 004 | loss: 0.34050 - acc: 0.8947 | val_loss: 0.31830 - val_acc: 0.9044 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.32749
+Training Step: 795  | total loss: 0.32749: 0.9020 | val_loss: 0.31703 - val_acc:| Adam | epoch: 005 | loss: 0.32749 - acc: 0.9020 | val_loss: 0.31703 - val_acc: 0.9044 -- iter: 5080/5080
+--
+Errors for d_458    : 54
+Accuracy for d_458  : 90.44%
+Precision for d_458 : 0.00%
+Recall for d_458    : 0.00%
+F1 Score for d_458  : 0.00%
+Confusion Matrix for d_458 :
+[[511   0]
+ [ 54   0]]
+ROC AUC for d_458 : 0.50
+
+
+Completed : 23/80
+------------------d_458 Complete------------------
+
+
+--------------------Training d_424--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_24
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.28365
+Training Step: 159  | total loss: 0.28365: 0.9102 | val_loss: 0.29705 - val_acc:| Adam | epoch: 001 | loss: 0.28365 - acc: 0.9102 | val_loss: 0.29705 - val_acc: 0.9133 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.30084
+Training Step: 318  | total loss: 0.30084: 0.9050 | val_loss: 0.27654 - val_acc:| Adam | epoch: 002 | loss: 0.30084 - acc: 0.9050 | val_loss: 0.27654 - val_acc: 0.9133 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.25502
+Training Step: 477  | total loss: 0.25502: 0.9298 | val_loss: 0.27746 - val_acc:| Adam | epoch: 003 | loss: 0.25502 - acc: 0.9298 | val_loss: 0.27746 - val_acc: 0.9097 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.29178
+Training Step: 500  | total loss: 0.29178: 0.9148 | val_loss: 0.28090 - val_acc:| Adam | epoch: 003 | loss: 0.29178 - acc: 0.9148 | val_loss: 0.28090 - val_acc: 0.9150 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.24750
+Training Step: 636  | total loss: 0.24750: 0.9322 | val_loss: 0.28923 - val_acc:| Adam | epoch: 004 | loss: 0.24750 - acc: 0.9322 | val_loss: 0.28923 - val_acc: 0.9133 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.28642
+Training Step: 795  | total loss: 0.28642: 0.9129 | val_loss: 0.28095 - val_acc:| Adam | epoch: 005 | loss: 0.28642 - acc: 0.9129 | val_loss: 0.28095 - val_acc: 0.9133 -- iter: 5080/5080
+--
+Errors for d_424    : 49
+Accuracy for d_424  : 91.33%
+Precision for d_424 : 0.00%
+Recall for d_424    : 0.00%
+F1 Score for d_424  : 0.00%
+Confusion Matrix for d_424 :
+[[516   1]
+ [ 48   0]]
+ROC AUC for d_424 : 0.68
+
+
+Completed : 24/80
+------------------d_424 Complete------------------
+
+
+--------------------Training d_496--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_25
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.35951
+Training Step: 159  | total loss: 0.35951: 0.8691 | val_loss: 0.33169 - val_acc:| Adam | epoch: 001 | loss: 0.35951 - acc: 0.8691 | val_loss: 0.33169 - val_acc: 0.8920 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.35587
+Training Step: 318  | total loss: 0.35587: 0.8780 | val_loss: 0.33022 - val_acc:| Adam | epoch: 002 | loss: 0.35587 - acc: 0.8780 | val_loss: 0.33022 - val_acc: 0.8956 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.32644
+Training Step: 477  | total loss: 0.32644: 0.8879 | val_loss: 0.31231 - val_acc:| Adam | epoch: 003 | loss: 0.32644 - acc: 0.8879 | val_loss: 0.31231 - val_acc: 0.8938 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.36327
+Training Step: 500  | total loss: 0.36327: 0.8740 | val_loss: 0.31197 - val_acc:| Adam | epoch: 003 | loss: 0.36327 - acc: 0.8740 | val_loss: 0.31197 - val_acc: 0.8920 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.32196
+Training Step: 636  | total loss: 0.32196: 0.8866 | val_loss: 0.32506 - val_acc:| Adam | epoch: 004 | loss: 0.32196 - acc: 0.8866 | val_loss: 0.32506 - val_acc: 0.8956 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.34440
+Training Step: 795  | total loss: 0.34440: 0.8791 | val_loss: 0.31182 - val_acc:| Adam | epoch: 005 | loss: 0.34440 - acc: 0.8791 | val_loss: 0.31182 - val_acc: 0.8938 -- iter: 5080/5080
+--
+Errors for d_496    : 60
+Accuracy for d_496  : 89.38%
+Precision for d_496 : 33.33%
+Recall for d_496    : 1.69%
+F1 Score for d_496  : 3.23%
+Confusion Matrix for d_496 :
+[[504   2]
+ [ 58   1]]
+ROC AUC for d_496 : 0.71
+
+
+Completed : 25/80
+------------------d_496 Complete------------------
+
+
+--------------------Training d_997--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_26
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.24785
+Training Step: 159  | total loss: 0.24785: 0.9331 | val_loss: 0.35202 - val_acc:| Adam | epoch: 001 | loss: 0.24785 - acc: 0.9331 | val_loss: 0.35202 - val_acc: 0.8938 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.25289
+Training Step: 318  | total loss: 0.25289: 0.9316 | val_loss: 0.33293 - val_acc:| Adam | epoch: 002 | loss: 0.25289 - acc: 0.9316 | val_loss: 0.33293 - val_acc: 0.8920 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.22934
+Training Step: 477  | total loss: 0.22934: 0.9350 | val_loss: 0.35194 - val_acc:| Adam | epoch: 003 | loss: 0.22934 - acc: 0.9350 | val_loss: 0.35194 - val_acc: 0.8920 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.27945
+Training Step: 500  | total loss: 0.27945: 0.9137 | val_loss: 0.34448 - val_acc:| Adam | epoch: 003 | loss: 0.27945 - acc: 0.9137 | val_loss: 0.34448 - val_acc: 0.8920 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.28729
+Training Step: 636  | total loss: 0.28729: 0.9144 | val_loss: 0.33579 - val_acc:| Adam | epoch: 004 | loss: 0.28729 - acc: 0.9144 | val_loss: 0.33579 - val_acc: 0.8938 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.24636
+Training Step: 795  | total loss: 0.24636: 0.9329 | val_loss: 0.33236 - val_acc:| Adam | epoch: 005 | loss: 0.24636 - acc: 0.9329 | val_loss: 0.33236 - val_acc: 0.8938 -- iter: 5080/5080
+--
+Errors for d_997    : 60
+Accuracy for d_997  : 89.38%
+Precision for d_997 : 0.00%
+Recall for d_997    : 0.00%
+F1 Score for d_997  : 0.00%
+Confusion Matrix for d_997 :
+[[505   0]
+ [ 60   0]]
+ROC AUC for d_997 : 0.65
+
+
+Completed : 26/80
+------------------d_997 Complete------------------
+
+
+--------------------Training d_305--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_27
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.25046
+Training Step: 159  | total loss: 0.25046: 0.9242 | val_loss: 0.23699 - val_acc:| Adam | epoch: 001 | loss: 0.25046 - acc: 0.9242 | val_loss: 0.23699 - val_acc: 0.9327 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.27975
+Training Step: 318  | total loss: 0.27975: 0.9169 | val_loss: 0.22839 - val_acc:| Adam | epoch: 002 | loss: 0.27975 - acc: 0.9169 | val_loss: 0.22839 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.23143
+Training Step: 477  | total loss: 0.23143: 0.9333 | val_loss: 0.22649 - val_acc:| Adam | epoch: 003 | loss: 0.23143 - acc: 0.9333 | val_loss: 0.22649 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.23387
+Training Step: 500  | total loss: 0.23387: 0.9285 | val_loss: 0.23956 - val_acc:| Adam | epoch: 003 | loss: 0.23387 - acc: 0.9285 | val_loss: 0.23956 - val_acc: 0.9239 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.24133
+Training Step: 636  | total loss: 0.24133: 0.9253 | val_loss: 0.24406 - val_acc:| Adam | epoch: 004 | loss: 0.24133 - acc: 0.9253 | val_loss: 0.24406 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.23639
+Training Step: 795  | total loss: 0.23639: 0.9296 | val_loss: 0.23295 - val_acc:| Adam | epoch: 005 | loss: 0.23639 - acc: 0.9296 | val_loss: 0.23295 - val_acc: 0.9292 -- iter: 5080/5080
+--
+Errors for d_305    : 40
+Accuracy for d_305  : 92.92%
+Precision for d_305 : 50.00%
+Recall for d_305    : 5.00%
+F1 Score for d_305  : 9.09%
+Confusion Matrix for d_305 :
+[[523   2]
+ [ 38   2]]
+ROC AUC for d_305 : 0.76
+
+
+Completed : 27/80
+------------------d_305 Complete------------------
+
+
+--------------------Training d_410--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_28
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.26574
+Training Step: 159  | total loss: 0.26574: 0.9179 | val_loss: 0.25454 - val_acc:| Adam | epoch: 001 | loss: 0.26574 - acc: 0.9179 | val_loss: 0.25454 - val_acc: 0.9292 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.27974
+Training Step: 318  | total loss: 0.27974: 0.9167 | val_loss: 0.23676 - val_acc:| Adam | epoch: 002 | loss: 0.27974 - acc: 0.9167 | val_loss: 0.23676 - val_acc: 0.9292 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.28681
+Training Step: 477  | total loss: 0.28681: 0.9115 | val_loss: 0.24387 - val_acc:| Adam | epoch: 003 | loss: 0.28681 - acc: 0.9115 | val_loss: 0.24387 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.21847
+Training Step: 500  | total loss: 0.21847: 0.9422 | val_loss: 0.23687 - val_acc:| Adam | epoch: 003 | loss: 0.21847 - acc: 0.9422 | val_loss: 0.23687 - val_acc: 0.9310 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.22344
+Training Step: 636  | total loss: 0.22344: 0.9341 | val_loss: 0.24203 - val_acc:| Adam | epoch: 004 | loss: 0.22344 - acc: 0.9341 | val_loss: 0.24203 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.26421
+Training Step: 795  | total loss: 0.26421: 0.9241 | val_loss: 0.24168 - val_acc:| Adam | epoch: 005 | loss: 0.26421 - acc: 0.9241 | val_loss: 0.24168 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Errors for d_410    : 39
+Accuracy for d_410  : 93.10%
+Precision for d_410 : 0.00%
+Recall for d_410    : 0.00%
+F1 Score for d_410  : 0.00%
+Confusion Matrix for d_410 :
+[[526   1]
+ [ 38   0]]
+ROC AUC for d_410 : 0.65
+
+
+Completed : 28/80
+------------------d_410 Complete------------------
+
+
+--------------------Training d_287--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_29
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.29493
+Training Step: 159  | total loss: 0.29493: 0.9114 | val_loss: 0.30422 - val_acc:| Adam | epoch: 001 | loss: 0.29493 - acc: 0.9114 | val_loss: 0.30422 - val_acc: 0.9133 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.35021
+Training Step: 318  | total loss: 0.35021: 0.8820 | val_loss: 0.30966 - val_acc:| Adam | epoch: 002 | loss: 0.35021 - acc: 0.8820 | val_loss: 0.30966 - val_acc: 0.9044 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.32045
+Training Step: 477  | total loss: 0.32045: 0.8986 | val_loss: 0.30013 - val_acc:| Adam | epoch: 003 | loss: 0.32045 - acc: 0.8986 | val_loss: 0.30013 - val_acc: 0.9044 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.32837
+Training Step: 500  | total loss: 0.32837: 0.8963 | val_loss: 0.29981 - val_acc:| Adam | epoch: 003 | loss: 0.32837 - acc: 0.8963 | val_loss: 0.29981 - val_acc: 0.9080 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.33060
+Training Step: 636  | total loss: 0.33060: 0.8961 | val_loss: 0.30153 - val_acc:| Adam | epoch: 004 | loss: 0.33060 - acc: 0.8961 | val_loss: 0.30153 - val_acc: 0.9044 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.28615
+Training Step: 795  | total loss: 0.28615: 0.9147 | val_loss: 0.31685 - val_acc:| Adam | epoch: 005 | loss: 0.28615 - acc: 0.9147 | val_loss: 0.31685 - val_acc: 0.9044 -- iter: 5080/5080
+--
+Errors for d_287    : 54
+Accuracy for d_287  : 90.44%
+Precision for d_287 : 0.00%
+Recall for d_287    : 0.00%
+F1 Score for d_287  : 0.00%
+Confusion Matrix for d_287 :
+[[511   0]
+ [ 54   0]]
+ROC AUC for d_287 : 0.53
+
+
+Completed : 29/80
+------------------d_287 Complete------------------
+
+
+--------------------Training d_571--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_30
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.22896
+Training Step: 159  | total loss: 0.22896: 0.9333 | val_loss: 0.24558 - val_acc:| Adam | epoch: 001 | loss: 0.22896 - acc: 0.9333 | val_loss: 0.24558 - val_acc: 0.9150 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.18243
+Training Step: 318  | total loss: 0.18243: 0.9384 | val_loss: 0.22234 - val_acc:| Adam | epoch: 002 | loss: 0.18243 - acc: 0.9384 | val_loss: 0.22234 - val_acc: 0.9097 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.21112
+Training Step: 477  | total loss: 0.21112: 0.9311 | val_loss: 0.22623 - val_acc:| Adam | epoch: 003 | loss: 0.21112 - acc: 0.9311 | val_loss: 0.22623 - val_acc: 0.9115 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.20541
+Training Step: 500  | total loss: 0.20541: 0.9328 | val_loss: 0.27261 - val_acc:| Adam | epoch: 003 | loss: 0.20541 - acc: 0.9328 | val_loss: 0.27261 - val_acc: 0.9133 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.24464
+Training Step: 636  | total loss: 0.24464: 0.9197 | val_loss: 0.23289 - val_acc:| Adam | epoch: 004 | loss: 0.24464 - acc: 0.9197 | val_loss: 0.23289 - val_acc: 0.9062 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.20006
+Training Step: 795  | total loss: 0.20006: 0.9353 | val_loss: 0.22061 - val_acc:| Adam | epoch: 005 | loss: 0.20006 - acc: 0.9353 | val_loss: 0.22061 - val_acc: 0.9115 -- iter: 5080/5080
+--
+Errors for d_571    : 50
+Accuracy for d_571  : 91.15%
+Precision for d_571 : 53.33%
+Recall for d_571    : 15.69%
+F1 Score for d_571  : 24.24%
+Confusion Matrix for d_571 :
+[[507   7]
+ [ 43   8]]
+ROC AUC for d_571 : 0.89
+
+
+Completed : 30/80
+------------------d_571 Complete------------------
+
+
+--------------------Training d_493--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_31
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.24744
+Training Step: 159  | total loss: 0.24744: 0.9260 | val_loss: 0.28160 - val_acc:| Adam | epoch: 001 | loss: 0.24744 - acc: 0.9260 | val_loss: 0.28160 - val_acc: 0.9204 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.24242
+Training Step: 318  | total loss: 0.24242: 0.9331 | val_loss: 0.26815 - val_acc:| Adam | epoch: 002 | loss: 0.24242 - acc: 0.9331 | val_loss: 0.26815 - val_acc: 0.9239 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.28528
+Training Step: 477  | total loss: 0.28528: 0.9144 | val_loss: 0.26031 - val_acc:| Adam | epoch: 003 | loss: 0.28528 - acc: 0.9144 | val_loss: 0.26031 - val_acc: 0.9239 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.26939
+Training Step: 500  | total loss: 0.26939: 0.9222 | val_loss: 0.27305 - val_acc:| Adam | epoch: 003 | loss: 0.26939 - acc: 0.9222 | val_loss: 0.27305 - val_acc: 0.9239 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.23613
+Training Step: 636  | total loss: 0.23613: 0.9345 | val_loss: 0.25918 - val_acc:| Adam | epoch: 004 | loss: 0.23613 - acc: 0.9345 | val_loss: 0.25918 - val_acc: 0.9239 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.23845
+Training Step: 795  | total loss: 0.23845: 0.9316 | val_loss: 0.26171 - val_acc:| Adam | epoch: 005 | loss: 0.23845 - acc: 0.9316 | val_loss: 0.26171 - val_acc: 0.9239 -- iter: 5080/5080
+--
+Errors for d_493    : 43
+Accuracy for d_493  : 92.39%
+Precision for d_493 : 0.00%
+Recall for d_493    : 0.00%
+F1 Score for d_493  : 0.00%
+Confusion Matrix for d_493 :
+[[522   0]
+ [ 43   0]]
+ROC AUC for d_493 : 0.68
+
+
+Completed : 31/80
+------------------d_493 Complete------------------
+
+
+--------------------Training d_311--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_32
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.31039
+Training Step: 159  | total loss: 0.31039: 0.9166 | val_loss: 0.34994 - val_acc:| Adam | epoch: 001 | loss: 0.31039 - acc: 0.9166 | val_loss: 0.34994 - val_acc: 0.8973 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.23805
+Training Step: 318  | total loss: 0.23805: 0.9390 | val_loss: 0.30900 - val_acc:| Adam | epoch: 002 | loss: 0.23805 - acc: 0.9390 | val_loss: 0.30900 - val_acc: 0.8991 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.29648
+Training Step: 477  | total loss: 0.29648: 0.9077 | val_loss: 0.31492 - val_acc:| Adam | epoch: 003 | loss: 0.29648 - acc: 0.9077 | val_loss: 0.31492 - val_acc: 0.9009 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.28930
+Training Step: 500  | total loss: 0.28930: 0.9178 | val_loss: 0.31074 - val_acc:| Adam | epoch: 003 | loss: 0.28930 - acc: 0.9178 | val_loss: 0.31074 - val_acc: 0.9027 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.25025
+Training Step: 636  | total loss: 0.25025: 0.9342 | val_loss: 0.31067 - val_acc:| Adam | epoch: 004 | loss: 0.25025 - acc: 0.9342 | val_loss: 0.31067 - val_acc: 0.9027 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.31054
+Training Step: 795  | total loss: 0.31054: 0.9061 | val_loss: 0.31933 - val_acc:| Adam | epoch: 005 | loss: 0.31054 - acc: 0.9061 | val_loss: 0.31933 - val_acc: 0.9009 -- iter: 5080/5080
+--
+Errors for d_311    : 56
+Accuracy for d_311  : 90.09%
+Precision for d_311 : 40.00%
+Recall for d_311    : 3.64%
+F1 Score for d_311  : 6.67%
+Confusion Matrix for d_311 :
+[[507   3]
+ [ 53   2]]
+ROC AUC for d_311 : 0.60
+
+
+Completed : 32/80
+------------------d_311 Complete------------------
+
+
+--------------------Training d_412--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_33
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.29347
+Training Step: 159  | total loss: 0.29347: 0.9010 | val_loss: 0.22463 - val_acc:| Adam | epoch: 001 | loss: 0.29347 - acc: 0.9010 | val_loss: 0.22463 - val_acc: 0.9292 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.26366
+Training Step: 318  | total loss: 0.26366: 0.9228 | val_loss: 0.22519 - val_acc:| Adam | epoch: 002 | loss: 0.26366 - acc: 0.9228 | val_loss: 0.22519 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.28241
+Training Step: 477  | total loss: 0.28241: 0.9035 | val_loss: 0.22863 - val_acc:| Adam | epoch: 003 | loss: 0.28241 - acc: 0.9035 | val_loss: 0.22863 - val_acc: 0.9274 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.26190
+Training Step: 500  | total loss: 0.26190: 0.9212 | val_loss: 0.23363 - val_acc:| Adam | epoch: 003 | loss: 0.26190 - acc: 0.9212 | val_loss: 0.23363 - val_acc: 0.9363 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.29416
+Training Step: 636  | total loss: 0.29416: 0.9126 | val_loss: 0.23322 - val_acc:| Adam | epoch: 004 | loss: 0.29416 - acc: 0.9126 | val_loss: 0.23322 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.24867
+Training Step: 795  | total loss: 0.24867: 0.9152 | val_loss: 0.21957 - val_acc:| Adam | epoch: 005 | loss: 0.24867 - acc: 0.9152 | val_loss: 0.21957 - val_acc: 0.9345 -- iter: 5080/5080
+--
+Errors for d_412    : 37
+Accuracy for d_412  : 93.45%
+Precision for d_412 : 50.00%
+Recall for d_412    : 5.41%
+F1 Score for d_412  : 9.76%
+Confusion Matrix for d_412 :
+[[526   2]
+ [ 35   2]]
+ROC AUC for d_412 : 0.74
+
+
+Completed : 33/80
+------------------d_412 Complete------------------
+
+
+--------------------Training d_070--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_34
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.19893
+Training Step: 159  | total loss: 0.19893: 0.9420 | val_loss: 0.23046 - val_acc:| Adam | epoch: 001 | loss: 0.19893 - acc: 0.9420 | val_loss: 0.23046 - val_acc: 0.9257 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.21537
+Training Step: 318  | total loss: 0.21537: 0.9402 | val_loss: 0.24799 - val_acc:| Adam | epoch: 002 | loss: 0.21537 - acc: 0.9402 | val_loss: 0.24799 - val_acc: 0.9168 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.17508
+Training Step: 477  | total loss: 0.17508: 0.9490 | val_loss: 0.24409 - val_acc:| Adam | epoch: 003 | loss: 0.17508 - acc: 0.9490 | val_loss: 0.24409 - val_acc: 0.9257 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.15393
+Training Step: 500  | total loss: 0.15393: 0.9592 | val_loss: 0.22657 - val_acc:| Adam | epoch: 003 | loss: 0.15393 - acc: 0.9592 | val_loss: 0.22657 - val_acc: 0.9204 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.15864
+Training Step: 636  | total loss: 0.15864: 0.9602 | val_loss: 0.24121 - val_acc:| Adam | epoch: 004 | loss: 0.15864 - acc: 0.9602 | val_loss: 0.24121 - val_acc: 0.9274 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.23803
+Training Step: 795  | total loss: 0.23803: 0.9219 | val_loss: 0.23040 - val_acc:| Adam | epoch: 005 | loss: 0.23803 - acc: 0.9219 | val_loss: 0.23040 - val_acc: 0.9239 -- iter: 5080/5080
+--
+Errors for d_070    : 43
+Accuracy for d_070  : 92.39%
+Precision for d_070 : 25.00%
+Recall for d_070    : 2.44%
+F1 Score for d_070  : 4.44%
+Confusion Matrix for d_070 :
+[[521   3]
+ [ 40   1]]
+ROC AUC for d_070 : 0.77
+
+
+Completed : 34/80
+------------------d_070 Complete------------------
+
+
+--------------------Training d_511--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_35
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.31331
+Training Step: 159  | total loss: 0.31331: 0.9091 | val_loss: 0.34242 - val_acc:| Adam | epoch: 001 | loss: 0.31331 - acc: 0.9091 | val_loss: 0.34242 - val_acc: 0.8956 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.31934
+Training Step: 318  | total loss: 0.31934: 0.8990 | val_loss: 0.32062 - val_acc:| Adam | epoch: 002 | loss: 0.31934 - acc: 0.8990 | val_loss: 0.32062 - val_acc: 0.8973 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.31009
+Training Step: 477  | total loss: 0.31009: 0.9076 | val_loss: 0.32861 - val_acc:| Adam | epoch: 003 | loss: 0.31009 - acc: 0.9076 | val_loss: 0.32861 - val_acc: 0.8956 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.32148
+Training Step: 500  | total loss: 0.32148: 0.9026 | val_loss: 0.31888 - val_acc:| Adam | epoch: 003 | loss: 0.32148 - acc: 0.9026 | val_loss: 0.31888 - val_acc: 0.8956 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.26988
+Training Step: 636  | total loss: 0.26988: 0.9172 | val_loss: 0.35051 - val_acc:| Adam | epoch: 004 | loss: 0.26988 - acc: 0.9172 | val_loss: 0.35051 - val_acc: 0.8832 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.29160
+Training Step: 795  | total loss: 0.29160: 0.9220 | val_loss: 0.31982 - val_acc:| Adam | epoch: 005 | loss: 0.29160 - acc: 0.9220 | val_loss: 0.31982 - val_acc: 0.8973 -- iter: 5080/5080
+--
+Errors for d_511    : 58
+Accuracy for d_511  : 89.73%
+Precision for d_511 : 66.67%
+Recall for d_511    : 3.39%
+F1 Score for d_511  : 6.45%
+Confusion Matrix for d_511 :
+[[505   1]
+ [ 57   2]]
+ROC AUC for d_511 : 0.64
+
+
+Completed : 35/80
+------------------d_511 Complete------------------
+
+
+--------------------Training d_507--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_36
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.34050
+Training Step: 159  | total loss: 0.34050: 0.8983 | val_loss: 0.31374 - val_acc:| Adam | epoch: 001 | loss: 0.34050 - acc: 0.8983 | val_loss: 0.31374 - val_acc: 0.9062 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.26252
+Training Step: 318  | total loss: 0.26252: 0.9234 | val_loss: 0.34559 - val_acc:| Adam | epoch: 002 | loss: 0.26252 - acc: 0.9234 | val_loss: 0.34559 - val_acc: 0.9168 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.27991
+Training Step: 477  | total loss: 0.27991: 0.9149 | val_loss: 0.31810 - val_acc:| Adam | epoch: 003 | loss: 0.27991 - acc: 0.9149 | val_loss: 0.31810 - val_acc: 0.9168 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.30449
+Training Step: 500  | total loss: 0.30449: 0.9030 | val_loss: 0.30940 - val_acc:| Adam | epoch: 003 | loss: 0.30449 - acc: 0.9030 | val_loss: 0.30940 - val_acc: 0.9168 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.29472
+Training Step: 636  | total loss: 0.29472: 0.9082 | val_loss: 0.28864 - val_acc:| Adam | epoch: 004 | loss: 0.29472 - acc: 0.9082 | val_loss: 0.28864 - val_acc: 0.9168 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.32133
+Training Step: 795  | total loss: 0.32133: 0.8972 | val_loss: 0.28864 - val_acc:| Adam | epoch: 005 | loss: 0.32133 - acc: 0.8972 | val_loss: 0.28864 - val_acc: 0.9150 -- iter: 5080/5080
+--
+Errors for d_507    : 48
+Accuracy for d_507  : 91.50%
+Precision for d_507 : 0.00%
+Recall for d_507    : 0.00%
+F1 Score for d_507  : 0.00%
+Confusion Matrix for d_507 :
+[[517   1]
+ [ 47   0]]
+ROC AUC for d_507 : 0.57
+
+
+Completed : 36/80
+------------------d_507 Complete------------------
+
+
+--------------------Training d_416--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_37
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.27805
+Training Step: 159  | total loss: 0.27805: 0.9210 | val_loss: 0.21797 - val_acc:| Adam | epoch: 001 | loss: 0.27805 - acc: 0.9210 | val_loss: 0.21797 - val_acc: 0.9398 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.26374
+Training Step: 318  | total loss: 0.26374: 0.9205 | val_loss: 0.23243 - val_acc:| Adam | epoch: 002 | loss: 0.26374 - acc: 0.9205 | val_loss: 0.23243 - val_acc: 0.9327 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.26414
+Training Step: 477  | total loss: 0.26414: 0.9224 | val_loss: 0.22569 - val_acc:| Adam | epoch: 003 | loss: 0.26414 - acc: 0.9224 | val_loss: 0.22569 - val_acc: 0.9327 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.24443
+Training Step: 500  | total loss: 0.24443: 0.9275 | val_loss: 0.23507 - val_acc:| Adam | epoch: 003 | loss: 0.24443 - acc: 0.9275 | val_loss: 0.23507 - val_acc: 0.9345 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.23804
+Training Step: 636  | total loss: 0.23804: 0.9330 | val_loss: 0.22994 - val_acc:| Adam | epoch: 004 | loss: 0.23804 - acc: 0.9330 | val_loss: 0.22994 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.23903
+Training Step: 795  | total loss: 0.23903: 0.9300 | val_loss: 0.22118 - val_acc:| Adam | epoch: 005 | loss: 0.23903 - acc: 0.9300 | val_loss: 0.22118 - val_acc: 0.9345 -- iter: 5080/5080
+--
+Errors for d_416    : 37
+Accuracy for d_416  : 93.45%
+Precision for d_416 : 0.00%
+Recall for d_416    : 0.00%
+F1 Score for d_416  : 0.00%
+Confusion Matrix for d_416 :
+[[528   2]
+ [ 35   0]]
+ROC AUC for d_416 : 0.70
+
+
+Completed : 37/80
+------------------d_416 Complete------------------
+
+
+--------------------Training d_327--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_38
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.20273
+Training Step: 159  | total loss: 0.20273: 0.9360 | val_loss: 0.24740 - val_acc:| Adam | epoch: 001 | loss: 0.20273 - acc: 0.9360 | val_loss: 0.24740 - val_acc: 0.9186 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.25132
+Training Step: 318  | total loss: 0.25132: 0.9267 | val_loss: 0.20218 - val_acc:| Adam | epoch: 002 | loss: 0.25132 - acc: 0.9267 | val_loss: 0.20218 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.19729
+Training Step: 477  | total loss: 0.19729: 0.9483 | val_loss: 0.18212 - val_acc:| Adam | epoch: 003 | loss: 0.19729 - acc: 0.9483 | val_loss: 0.18212 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.24077
+Training Step: 500  | total loss: 0.24077: 0.9315 | val_loss: 0.20626 - val_acc:| Adam | epoch: 003 | loss: 0.24077 - acc: 0.9315 | val_loss: 0.20626 - val_acc: 0.9381 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.24876
+Training Step: 636  | total loss: 0.24876: 0.9326 | val_loss: 0.18804 - val_acc:| Adam | epoch: 004 | loss: 0.24876 - acc: 0.9326 | val_loss: 0.18804 - val_acc: 0.9451 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.24296
+Training Step: 795  | total loss: 0.24296: 0.9385 | val_loss: 0.20030 - val_acc:| Adam | epoch: 005 | loss: 0.24296 - acc: 0.9385 | val_loss: 0.20030 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Errors for d_327    : 32
+Accuracy for d_327  : 94.34%
+Precision for d_327 : 25.00%
+Recall for d_327    : 3.33%
+F1 Score for d_327  : 5.88%
+Confusion Matrix for d_327 :
+[[532   3]
+ [ 29   1]]
+ROC AUC for d_327 : 0.75
+
+
+Completed : 38/80
+------------------d_327 Complete------------------
+
+
+--------------------Training d_733--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_39
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.26780
+Training Step: 159  | total loss: 0.26780: 0.9320 | val_loss: 0.22367 - val_acc:| Adam | epoch: 001 | loss: 0.26780 - acc: 0.9320 | val_loss: 0.22367 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.21193
+Training Step: 318  | total loss: 0.21193: 0.9423 | val_loss: 0.23023 - val_acc:| Adam | epoch: 002 | loss: 0.21193 - acc: 0.9423 | val_loss: 0.23023 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.22639
+Training Step: 477  | total loss: 0.22639: 0.9395 | val_loss: 0.21389 - val_acc:| Adam | epoch: 003 | loss: 0.22639 - acc: 0.9395 | val_loss: 0.21389 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.16760
+Training Step: 500  | total loss: 0.16760: 0.9601 | val_loss: 0.24381 - val_acc:| Adam | epoch: 003 | loss: 0.16760 - acc: 0.9601 | val_loss: 0.24381 - val_acc: 0.9434 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.21800
+Training Step: 636  | total loss: 0.21800: 0.9479 | val_loss: 0.23821 - val_acc:| Adam | epoch: 004 | loss: 0.21800 - acc: 0.9479 | val_loss: 0.23821 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.21943
+Training Step: 795  | total loss: 0.21943: 0.9423 | val_loss: 0.23286 - val_acc:| Adam | epoch: 005 | loss: 0.21943 - acc: 0.9423 | val_loss: 0.23286 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Errors for d_733    : 32
+Accuracy for d_733  : 94.34%
+Precision for d_733 : 0.00%
+Recall for d_733    : 0.00%
+F1 Score for d_733  : 0.00%
+Confusion Matrix for d_733 :
+[[533   0]
+ [ 32   0]]
+ROC AUC for d_733 : 0.44
+
+
+Completed : 39/80
+------------------d_733 Complete------------------
+
+
+--------------------Training d_300--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_40
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.23706
+Training Step: 159  | total loss: 0.23706: 0.9349 | val_loss: 0.26810 - val_acc:| Adam | epoch: 001 | loss: 0.23706 - acc: 0.9349 | val_loss: 0.26810 - val_acc: 0.9257 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.24048
+Training Step: 318  | total loss: 0.24048: 0.9299 | val_loss: 0.24436 - val_acc:| Adam | epoch: 002 | loss: 0.24048 - acc: 0.9299 | val_loss: 0.24436 - val_acc: 0.9363 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.20545
+Training Step: 477  | total loss: 0.20545: 0.9478 | val_loss: 0.23518 - val_acc:| Adam | epoch: 003 | loss: 0.20545 - acc: 0.9478 | val_loss: 0.23518 - val_acc: 0.9398 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.19406
+Training Step: 500  | total loss: 0.19406: 0.9511 | val_loss: 0.24239 - val_acc:| Adam | epoch: 003 | loss: 0.19406 - acc: 0.9511 | val_loss: 0.24239 - val_acc: 0.9345 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.23604
+Training Step: 636  | total loss: 0.23604: 0.9312 | val_loss: 0.23128 - val_acc:| Adam | epoch: 004 | loss: 0.23604 - acc: 0.9312 | val_loss: 0.23128 - val_acc: 0.9363 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.25783
+Training Step: 795  | total loss: 0.25783: 0.9248 | val_loss: 0.24297 - val_acc:| Adam | epoch: 005 | loss: 0.25783 - acc: 0.9248 | val_loss: 0.24297 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Errors for d_300    : 39
+Accuracy for d_300  : 93.10%
+Precision for d_300 : 16.67%
+Recall for d_300    : 2.86%
+F1 Score for d_300  : 4.88%
+Confusion Matrix for d_300 :
+[[525   5]
+ [ 34   1]]
+ROC AUC for d_300 : 0.56
+
+
+Completed : 40/80
+------------------d_300 Complete------------------
+
+
+--------------------Training d_278--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_41
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.22287
+Training Step: 159  | total loss: 0.22287: 0.9419 | val_loss: 0.20045 - val_acc:| Adam | epoch: 001 | loss: 0.22287 - acc: 0.9419 | val_loss: 0.20045 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.20853
+Training Step: 318  | total loss: 0.20853: 0.9457 | val_loss: 0.18815 - val_acc:| Adam | epoch: 002 | loss: 0.20853 - acc: 0.9457 | val_loss: 0.18815 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.19780
+Training Step: 477  | total loss: 0.19780: 0.9453 | val_loss: 0.19560 - val_acc:| Adam | epoch: 003 | loss: 0.19780 - acc: 0.9453 | val_loss: 0.19560 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.18777
+Training Step: 500  | total loss: 0.18777: 0.9516 | val_loss: 0.21193 - val_acc:| Adam | epoch: 003 | loss: 0.18777 - acc: 0.9516 | val_loss: 0.21193 - val_acc: 0.9540 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.18278
+Training Step: 636  | total loss: 0.18278: 0.9550 | val_loss: 0.20409 - val_acc:| Adam | epoch: 004 | loss: 0.18278 - acc: 0.9550 | val_loss: 0.20409 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.21789
+Training Step: 795  | total loss: 0.21789: 0.9382 | val_loss: 0.19355 - val_acc:| Adam | epoch: 005 | loss: 0.21789 - acc: 0.9382 | val_loss: 0.19355 - val_acc: 0.9504 -- iter: 5080/5080
+--
+Errors for d_278    : 28
+Accuracy for d_278  : 95.04%
+Precision for d_278 : 25.00%
+Recall for d_278    : 3.85%
+F1 Score for d_278  : 6.67%
+Confusion Matrix for d_278 :
+[[536   3]
+ [ 25   1]]
+ROC AUC for d_278 : 0.61
+
+
+Completed : 41/80
+------------------d_278 Complete------------------
+
+
+--------------------Training d_348--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_42
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.25685
+Training Step: 159  | total loss: 0.25685: 0.9350 | val_loss: 0.26883 - val_acc:| Adam | epoch: 001 | loss: 0.25685 - acc: 0.9350 | val_loss: 0.26883 - val_acc: 0.9274 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.24036
+Training Step: 318  | total loss: 0.24036: 0.9412 | val_loss: 0.25428 - val_acc:| Adam | epoch: 002 | loss: 0.24036 - acc: 0.9412 | val_loss: 0.25428 - val_acc: 0.9292 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.26187
+Training Step: 477  | total loss: 0.26187: 0.9282 | val_loss: 0.26974 - val_acc:| Adam | epoch: 003 | loss: 0.26187 - acc: 0.9282 | val_loss: 0.26974 - val_acc: 0.9274 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.20569
+Training Step: 500  | total loss: 0.20569: 0.9473 | val_loss: 0.26643 - val_acc:| Adam | epoch: 003 | loss: 0.20569 - acc: 0.9473 | val_loss: 0.26643 - val_acc: 0.9274 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.16644
+Training Step: 636  | total loss: 0.16644: 0.9602 | val_loss: 0.27812 - val_acc:| Adam | epoch: 004 | loss: 0.16644 - acc: 0.9602 | val_loss: 0.27812 - val_acc: 0.9274 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.26875
+Training Step: 795  | total loss: 0.26875: 0.9218 | val_loss: 0.26638 - val_acc:| Adam | epoch: 005 | loss: 0.26875 - acc: 0.9218 | val_loss: 0.26638 - val_acc: 0.9221 -- iter: 5080/5080
+--
+Errors for d_348    : 44
+Accuracy for d_348  : 92.21%
+Precision for d_348 : 0.00%
+Recall for d_348    : 0.00%
+F1 Score for d_348  : 0.00%
+Confusion Matrix for d_348 :
+[[521   3]
+ [ 41   0]]
+ROC AUC for d_348 : 0.62
+
+
+Completed : 42/80
+------------------d_348 Complete------------------
+
+
+--------------------Training d_578--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_43
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.24471
+Training Step: 159  | total loss: 0.24471: 0.9341 | val_loss: 0.20964 - val_acc:| Adam | epoch: 001 | loss: 0.24471 - acc: 0.9341 | val_loss: 0.20964 - val_acc: 0.9451 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.26765
+Training Step: 318  | total loss: 0.26765: 0.9280 | val_loss: 0.20958 - val_acc:| Adam | epoch: 002 | loss: 0.26765 - acc: 0.9280 | val_loss: 0.20958 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.26228
+Training Step: 477  | total loss: 0.26228: 0.9292 | val_loss: 0.21263 - val_acc:| Adam | epoch: 003 | loss: 0.26228 - acc: 0.9292 | val_loss: 0.21263 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.23017
+Training Step: 500  | total loss: 0.23017: 0.9368 | val_loss: 0.22384 - val_acc:| Adam | epoch: 003 | loss: 0.23017 - acc: 0.9368 | val_loss: 0.22384 - val_acc: 0.9451 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.29448
+Training Step: 636  | total loss: 0.29448: 0.9137 | val_loss: 0.21584 - val_acc:| Adam | epoch: 004 | loss: 0.29448 - acc: 0.9137 | val_loss: 0.21584 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.28334
+Training Step: 795  | total loss: 0.28334: 0.9217 | val_loss: 0.21091 - val_acc:| Adam | epoch: 005 | loss: 0.28334 - acc: 0.9217 | val_loss: 0.21091 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Errors for d_578    : 29
+Accuracy for d_578  : 94.87%
+Precision for d_578 : 50.00%
+Recall for d_578    : 3.45%
+F1 Score for d_578  : 6.45%
+Confusion Matrix for d_578 :
+[[535   1]
+ [ 28   1]]
+ROC AUC for d_578 : 0.52
+
+
+Completed : 43/80
+------------------d_578 Complete------------------
+
+
+--------------------Training d_572--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_44
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.21123
+Training Step: 159  | total loss: 0.21123: 0.9421 | val_loss: 0.19132 - val_acc:| Adam | epoch: 001 | loss: 0.21123 - acc: 0.9421 | val_loss: 0.19132 - val_acc: 0.9381 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.17352
+Training Step: 318  | total loss: 0.17352: 0.9500 | val_loss: 0.18392 - val_acc:| Adam | epoch: 002 | loss: 0.17352 - acc: 0.9500 | val_loss: 0.18392 - val_acc: 0.9398 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.15843
+Training Step: 477  | total loss: 0.15843: 0.9488 | val_loss: 0.18569 - val_acc:| Adam | epoch: 003 | loss: 0.15843 - acc: 0.9488 | val_loss: 0.18569 - val_acc: 0.9381 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.16875
+Training Step: 500  | total loss: 0.16875: 0.9499 | val_loss: 0.20066 - val_acc:| Adam | epoch: 003 | loss: 0.16875 - acc: 0.9499 | val_loss: 0.20066 - val_acc: 0.9327 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.16959
+Training Step: 636  | total loss: 0.16959: 0.9463 | val_loss: 0.18623 - val_acc:| Adam | epoch: 004 | loss: 0.16959 - acc: 0.9463 | val_loss: 0.18623 - val_acc: 0.9381 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.14756
+Training Step: 795  | total loss: 0.14756: 0.9581 | val_loss: 0.18705 - val_acc:| Adam | epoch: 005 | loss: 0.14756 - acc: 0.9581 | val_loss: 0.18705 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Errors for d_572    : 32
+Accuracy for d_572  : 94.34%
+Precision for d_572 : 66.67%
+Recall for d_572    : 6.06%
+F1 Score for d_572  : 11.11%
+Confusion Matrix for d_572 :
+[[531   1]
+ [ 31   2]]
+ROC AUC for d_572 : 0.83
+
+
+Completed : 44/80
+------------------d_572 Complete------------------
+
+
+--------------------Training d_482--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_45
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.19440
+Training Step: 159  | total loss: 0.19440: 0.9495 | val_loss: 0.18423 - val_acc:| Adam | epoch: 001 | loss: 0.19440 - acc: 0.9495 | val_loss: 0.18423 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.20716
+Training Step: 318  | total loss: 0.20716: 0.9368 | val_loss: 0.19334 - val_acc:| Adam | epoch: 002 | loss: 0.20716 - acc: 0.9368 | val_loss: 0.19334 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.24981
+Training Step: 477  | total loss: 0.24981: 0.9317 | val_loss: 0.19051 - val_acc:| Adam | epoch: 003 | loss: 0.24981 - acc: 0.9317 | val_loss: 0.19051 - val_acc: 0.9558 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.22440
+Training Step: 500  | total loss: 0.22440: 0.9332 | val_loss: 0.18322 - val_acc:| Adam | epoch: 003 | loss: 0.22440 - acc: 0.9332 | val_loss: 0.18322 - val_acc: 0.9558 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.22549
+Training Step: 636  | total loss: 0.22549: 0.9352 | val_loss: 0.18211 - val_acc:| Adam | epoch: 004 | loss: 0.22549 - acc: 0.9352 | val_loss: 0.18211 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.22089
+Training Step: 795  | total loss: 0.22089: 0.9383 | val_loss: 0.18072 - val_acc:| Adam | epoch: 005 | loss: 0.22089 - acc: 0.9383 | val_loss: 0.18072 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Errors for d_482    : 26
+Accuracy for d_482  : 95.40%
+Precision for d_482 : 0.00%
+Recall for d_482    : 0.00%
+F1 Score for d_482  : 0.00%
+Confusion Matrix for d_482 :
+[[539   0]
+ [ 26   0]]
+ROC AUC for d_482 : 0.64
+
+
+Completed : 45/80
+------------------d_482 Complete------------------
+
+
+--------------------Training d_425--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_46
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.23091
+Training Step: 159  | total loss: 0.23091: 0.9380 | val_loss: 0.19938 - val_acc:| Adam | epoch: 001 | loss: 0.23091 - acc: 0.9380 | val_loss: 0.19938 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.22574
+Training Step: 318  | total loss: 0.22574: 0.9412 | val_loss: 0.19692 - val_acc:| Adam | epoch: 002 | loss: 0.22574 - acc: 0.9412 | val_loss: 0.19692 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.19332
+Training Step: 477  | total loss: 0.19332: 0.9448 | val_loss: 0.20245 - val_acc:| Adam | epoch: 003 | loss: 0.19332 - acc: 0.9448 | val_loss: 0.20245 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.22736
+Training Step: 500  | total loss: 0.22736: 0.9389 | val_loss: 0.20218 - val_acc:| Adam | epoch: 003 | loss: 0.22736 - acc: 0.9389 | val_loss: 0.20218 - val_acc: 0.9487 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.17527
+Training Step: 636  | total loss: 0.17527: 0.9544 | val_loss: 0.18992 - val_acc:| Adam | epoch: 004 | loss: 0.17527 - acc: 0.9544 | val_loss: 0.18992 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.16282
+Training Step: 795  | total loss: 0.16282: 0.9594 | val_loss: 0.19919 - val_acc:| Adam | epoch: 005 | loss: 0.16282 - acc: 0.9594 | val_loss: 0.19919 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Errors for d_425    : 30
+Accuracy for d_425  : 94.69%
+Precision for d_425 : 0.00%
+Recall for d_425    : 0.00%
+F1 Score for d_425  : 0.00%
+Confusion Matrix for d_425 :
+[[535   3]
+ [ 27   0]]
+ROC AUC for d_425 : 0.65
+
+
+Completed : 46/80
+------------------d_425 Complete------------------
+
+
+--------------------Training d_280--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_47
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.22586
+Training Step: 159  | total loss: 0.22586: 0.9459 | val_loss: 0.18848 - val_acc:| Adam | epoch: 001 | loss: 0.22586 - acc: 0.9459 | val_loss: 0.18848 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.23475
+Training Step: 318  | total loss: 0.23475: 0.9408 | val_loss: 0.19143 - val_acc:| Adam | epoch: 002 | loss: 0.23475 - acc: 0.9408 | val_loss: 0.19143 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.21052
+Training Step: 477  | total loss: 0.21052: 0.9434 | val_loss: 0.18978 - val_acc:| Adam | epoch: 003 | loss: 0.21052 - acc: 0.9434 | val_loss: 0.18978 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.24211
+Training Step: 500  | total loss: 0.24211: 0.9326 | val_loss: 0.21028 - val_acc:| Adam | epoch: 003 | loss: 0.24211 - acc: 0.9326 | val_loss: 0.21028 - val_acc: 0.9416 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.20948
+Training Step: 636  | total loss: 0.20948: 0.9456 | val_loss: 0.18253 - val_acc:| Adam | epoch: 004 | loss: 0.20948 - acc: 0.9456 | val_loss: 0.18253 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.21282
+Training Step: 795  | total loss: 0.21282: 0.9466 | val_loss: 0.19000 - val_acc:| Adam | epoch: 005 | loss: 0.21282 - acc: 0.9466 | val_loss: 0.19000 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Errors for d_280    : 26
+Accuracy for d_280  : 95.40%
+Precision for d_280 : 0.00%
+Recall for d_280    : 0.00%
+F1 Score for d_280  : 0.00%
+Confusion Matrix for d_280 :
+[[539   0]
+ [ 26   0]]
+ROC AUC for d_280 : 0.53
+
+
+Completed : 47/80
+------------------d_280 Complete------------------
+
+
+--------------------Training d_274--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_48
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.23393
+Training Step: 159  | total loss: 0.23393: 0.9403 | val_loss: 0.23969 - val_acc:| Adam | epoch: 001 | loss: 0.23393 - acc: 0.9403 | val_loss: 0.23969 - val_acc: 0.9310 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.20889
+Training Step: 318  | total loss: 0.20889: 0.9453 | val_loss: 0.23067 - val_acc:| Adam | epoch: 002 | loss: 0.20889 - acc: 0.9453 | val_loss: 0.23067 - val_acc: 0.9345 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.19839
+Training Step: 477  | total loss: 0.19839: 0.9385 | val_loss: 0.22876 - val_acc:| Adam | epoch: 003 | loss: 0.19839 - acc: 0.9385 | val_loss: 0.22876 - val_acc: 0.9345 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.17292
+Training Step: 500  | total loss: 0.17292: 0.9545 | val_loss: 0.22986 - val_acc:| Adam | epoch: 003 | loss: 0.17292 - acc: 0.9545 | val_loss: 0.22986 - val_acc: 0.9345 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.25863
+Training Step: 636  | total loss: 0.25863: 0.9246 | val_loss: 0.21913 - val_acc:| Adam | epoch: 004 | loss: 0.25863 - acc: 0.9246 | val_loss: 0.21913 - val_acc: 0.9327 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.17782
+Training Step: 795  | total loss: 0.17782: 0.9570 | val_loss: 0.23064 - val_acc:| Adam | epoch: 005 | loss: 0.17782 - acc: 0.9570 | val_loss: 0.23064 - val_acc: 0.9292 -- iter: 5080/5080
+--
+Errors for d_274    : 40
+Accuracy for d_274  : 92.92%
+Precision for d_274 : 0.00%
+Recall for d_274    : 0.00%
+F1 Score for d_274  : 0.00%
+Confusion Matrix for d_274 :
+[[525   4]
+ [ 36   0]]
+ROC AUC for d_274 : 0.71
+
+
+Completed : 48/80
+------------------d_274 Complete------------------
+
+
+--------------------Training d_440--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_49
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.13975
+Training Step: 159  | total loss: 0.13975: 0.9676 | val_loss: 0.15228 - val_acc:| Adam | epoch: 001 | loss: 0.13975 - acc: 0.9676 | val_loss: 0.15228 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.17343
+Training Step: 318  | total loss: 0.17343: 0.9606 | val_loss: 0.15257 - val_acc:| Adam | epoch: 002 | loss: 0.17343 - acc: 0.9606 | val_loss: 0.15257 - val_acc: 0.9628 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.20265
+Training Step: 477  | total loss: 0.20265: 0.9449 | val_loss: 0.15455 - val_acc:| Adam | epoch: 003 | loss: 0.20265 - acc: 0.9449 | val_loss: 0.15455 - val_acc: 0.9628 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.17779
+Training Step: 500  | total loss: 0.17779: 0.9586 | val_loss: 0.16492 - val_acc:| Adam | epoch: 003 | loss: 0.17779 - acc: 0.9586 | val_loss: 0.16492 - val_acc: 0.9611 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.19350
+Training Step: 636  | total loss: 0.19350: 0.9487 | val_loss: 0.14963 - val_acc:| Adam | epoch: 004 | loss: 0.19350 - acc: 0.9487 | val_loss: 0.14963 - val_acc: 0.9611 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.19098
+Training Step: 795  | total loss: 0.19098: 0.9528 | val_loss: 0.15181 - val_acc:| Adam | epoch: 005 | loss: 0.19098 - acc: 0.9528 | val_loss: 0.15181 - val_acc: 0.9611 -- iter: 5080/5080
+--
+Errors for d_440    : 22
+Accuracy for d_440  : 96.11%
+Precision for d_440 : 0.00%
+Recall for d_440    : 0.00%
+F1 Score for d_440  : 0.00%
+Confusion Matrix for d_440 :
+[[543   1]
+ [ 21   0]]
+ROC AUC for d_440 : 0.76
+
+
+Completed : 49/80
+------------------d_440 Complete------------------
+
+
+--------------------Training d_357--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_50
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.23428
+Training Step: 159  | total loss: 0.23428: 0.9442 | val_loss: 0.24608 - val_acc:| Adam | epoch: 001 | loss: 0.23428 - acc: 0.9442 | val_loss: 0.24608 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.20618
+Training Step: 318  | total loss: 0.20618: 0.9543 | val_loss: 0.21400 - val_acc:| Adam | epoch: 002 | loss: 0.20618 - acc: 0.9543 | val_loss: 0.21400 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.24471
+Training Step: 477  | total loss: 0.24471: 0.9544 | val_loss: 0.22501 - val_acc:| Adam | epoch: 003 | loss: 0.24471 - acc: 0.9544 | val_loss: 0.22501 - val_acc: 0.9451 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.24098
+Training Step: 500  | total loss: 0.24098: 0.9341 | val_loss: 0.24813 - val_acc:| Adam | epoch: 003 | loss: 0.24098 - acc: 0.9341 | val_loss: 0.24813 - val_acc: 0.9434 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.15328
+Training Step: 636  | total loss: 0.15328: 0.9610 | val_loss: 0.24218 - val_acc:| Adam | epoch: 004 | loss: 0.15328 - acc: 0.9610 | val_loss: 0.24218 - val_acc: 0.9416 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.16719
+Training Step: 795  | total loss: 0.16719: 0.9531 | val_loss: 0.21016 - val_acc:| Adam | epoch: 005 | loss: 0.16719 - acc: 0.9531 | val_loss: 0.21016 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Errors for d_357    : 32
+Accuracy for d_357  : 94.34%
+Precision for d_357 : 0.00%
+Recall for d_357    : 0.00%
+F1 Score for d_357  : 0.00%
+Confusion Matrix for d_357 :
+[[533   2]
+ [ 30   0]]
+ROC AUC for d_357 : 0.69
+
+
+Completed : 50/80
+------------------d_357 Complete------------------
+
+
+--------------------Training d_198--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_51
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.14249
+Training Step: 159  | total loss: 0.14249: 0.9602 | val_loss: 0.14812 - val_acc:| Adam | epoch: 001 | loss: 0.14249 - acc: 0.9602 | val_loss: 0.14812 - val_acc: 0.9451 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.17256
+Training Step: 318  | total loss: 0.17256: 0.9493 | val_loss: 0.17508 - val_acc:| Adam | epoch: 002 | loss: 0.17256 - acc: 0.9493 | val_loss: 0.17508 - val_acc: 0.9398 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.12800
+Training Step: 477  | total loss: 0.12800: 0.9670 | val_loss: 0.15436 - val_acc:| Adam | epoch: 003 | loss: 0.12800 - acc: 0.9670 | val_loss: 0.15436 - val_acc: 0.9398 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.12738
+Training Step: 500  | total loss: 0.12738: 0.9639 | val_loss: 0.13279 - val_acc:| Adam | epoch: 003 | loss: 0.12738 - acc: 0.9639 | val_loss: 0.13279 - val_acc: 0.9451 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.14470
+Training Step: 636  | total loss: 0.14470: 0.9564 | val_loss: 0.12961 - val_acc:| Adam | epoch: 004 | loss: 0.14470 - acc: 0.9564 | val_loss: 0.12961 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.14278
+Training Step: 795  | total loss: 0.14278: 0.9626 | val_loss: 0.14239 - val_acc:| Adam | epoch: 005 | loss: 0.14278 - acc: 0.9626 | val_loss: 0.14239 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Errors for d_198    : 30
+Accuracy for d_198  : 94.69%
+Precision for d_198 : 33.33%
+Recall for d_198    : 7.14%
+F1 Score for d_198  : 11.76%
+Confusion Matrix for d_198 :
+[[533   4]
+ [ 26   2]]
+ROC AUC for d_198 : 0.92
+
+
+Completed : 51/80
+------------------d_198 Complete------------------
+
+
+--------------------Training d_443--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_52
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.17371
+Training Step: 159  | total loss: 0.17371: 0.9555 | val_loss: 0.20205 - val_acc:| Adam | epoch: 001 | loss: 0.17371 - acc: 0.9555 | val_loss: 0.20205 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.17236
+Training Step: 318  | total loss: 0.17236: 0.9591 | val_loss: 0.17821 - val_acc:| Adam | epoch: 002 | loss: 0.17236 - acc: 0.9591 | val_loss: 0.17821 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.18258
+Training Step: 477  | total loss: 0.18258: 0.9566 | val_loss: 0.18506 - val_acc:| Adam | epoch: 003 | loss: 0.18258 - acc: 0.9566 | val_loss: 0.18506 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.17380
+Training Step: 500  | total loss: 0.17380: 0.9567 | val_loss: 0.19069 - val_acc:| Adam | epoch: 003 | loss: 0.17380 - acc: 0.9567 | val_loss: 0.19069 - val_acc: 0.9540 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.17869
+Training Step: 636  | total loss: 0.17869: 0.9551 | val_loss: 0.18451 - val_acc:| Adam | epoch: 004 | loss: 0.17869 - acc: 0.9551 | val_loss: 0.18451 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.15463
+Training Step: 795  | total loss: 0.15463: 0.9632 | val_loss: 0.19442 - val_acc:| Adam | epoch: 005 | loss: 0.15463 - acc: 0.9632 | val_loss: 0.19442 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Errors for d_443    : 26
+Accuracy for d_443  : 95.40%
+Precision for d_443 : 0.00%
+Recall for d_443    : 0.00%
+F1 Score for d_443  : 0.00%
+Confusion Matrix for d_443 :
+[[539   1]
+ [ 25   0]]
+ROC AUC for d_443 : 0.66
+
+
+Completed : 52/80
+------------------d_443 Complete------------------
+
+
+--------------------Training d_197--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_53
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.16560
+Training Step: 159  | total loss: 0.16560: 0.9489 | val_loss: 0.16060 - val_acc:| Adam | epoch: 001 | loss: 0.16560 - acc: 0.9489 | val_loss: 0.16060 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.13200
+Training Step: 318  | total loss: 0.13200: 0.9542 | val_loss: 0.13495 - val_acc:| Adam | epoch: 002 | loss: 0.13200 - acc: 0.9542 | val_loss: 0.13495 - val_acc: 0.9558 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.18259
+Training Step: 477  | total loss: 0.18259: 0.9426 | val_loss: 0.16060 - val_acc:| Adam | epoch: 003 | loss: 0.18259 - acc: 0.9426 | val_loss: 0.16060 - val_acc: 0.9451 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.14102
+Training Step: 500  | total loss: 0.14102: 0.9590 | val_loss: 0.15047 - val_acc:| Adam | epoch: 003 | loss: 0.14102 - acc: 0.9590 | val_loss: 0.15047 - val_acc: 0.9575 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.11002
+Training Step: 636  | total loss: 0.11002: 0.9656 | val_loss: 0.13092 - val_acc:| Adam | epoch: 004 | loss: 0.11002 - acc: 0.9656 | val_loss: 0.13092 - val_acc: 0.9558 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.15269
+Training Step: 795  | total loss: 0.15269: 0.9581 | val_loss: 0.13920 - val_acc:| Adam | epoch: 005 | loss: 0.15269 - acc: 0.9581 | val_loss: 0.13920 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Errors for d_197    : 27
+Accuracy for d_197  : 95.22%
+Precision for d_197 : 44.44%
+Recall for d_197    : 15.38%
+F1 Score for d_197  : 22.86%
+Confusion Matrix for d_197 :
+[[534   5]
+ [ 22   4]]
+ROC AUC for d_197 : 0.88
+
+
+Completed : 53/80
+------------------d_197 Complete------------------
+
+
+--------------------Training d_008--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_54
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.25762
+Training Step: 159  | total loss: 0.25762: 0.9282 | val_loss: 0.21801 - val_acc:| Adam | epoch: 001 | loss: 0.25762 - acc: 0.9282 | val_loss: 0.21801 - val_acc: 0.9504 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.18191
+Training Step: 318  | total loss: 0.18191: 0.9555 | val_loss: 0.20270 - val_acc:| Adam | epoch: 002 | loss: 0.18191 - acc: 0.9555 | val_loss: 0.20270 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.21665
+Training Step: 477  | total loss: 0.21665: 0.9393 | val_loss: 0.22205 - val_acc:| Adam | epoch: 003 | loss: 0.21665 - acc: 0.9393 | val_loss: 0.22205 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.26898
+Training Step: 500  | total loss: 0.26898: 0.9273 | val_loss: 0.21946 - val_acc:| Adam | epoch: 003 | loss: 0.26898 - acc: 0.9273 | val_loss: 0.21946 - val_acc: 0.9434 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.19909
+Training Step: 636  | total loss: 0.19909: 0.9431 | val_loss: 0.20925 - val_acc:| Adam | epoch: 004 | loss: 0.19909 - acc: 0.9431 | val_loss: 0.20925 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.17115
+Training Step: 795  | total loss: 0.17115: 0.9556 | val_loss: 0.21531 - val_acc:| Adam | epoch: 005 | loss: 0.17115 - acc: 0.9556 | val_loss: 0.21531 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Errors for d_008    : 29
+Accuracy for d_008  : 94.87%
+Precision for d_008 : 0.00%
+Recall for d_008    : 0.00%
+F1 Score for d_008  : 0.00%
+Confusion Matrix for d_008 :
+[[536   1]
+ [ 28   0]]
+ROC AUC for d_008 : 0.55
+
+
+Completed : 54/80
+------------------d_008 Complete------------------
+
+
+--------------------Training d_438--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_55
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.18834
+Training Step: 159  | total loss: 0.18834: 0.9541 | val_loss: 0.20540 - val_acc:| Adam | epoch: 001 | loss: 0.18834 - acc: 0.9541 | val_loss: 0.20540 - val_acc: 0.9504 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.17891
+Training Step: 318  | total loss: 0.17891: 0.9548 | val_loss: 0.20100 - val_acc:| Adam | epoch: 002 | loss: 0.17891 - acc: 0.9548 | val_loss: 0.20100 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.16672
+Training Step: 477  | total loss: 0.16672: 0.9573 | val_loss: 0.21161 - val_acc:| Adam | epoch: 003 | loss: 0.16672 - acc: 0.9573 | val_loss: 0.21161 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.18750
+Training Step: 500  | total loss: 0.18750: 0.9500 | val_loss: 0.18933 - val_acc:| Adam | epoch: 003 | loss: 0.18750 - acc: 0.9500 | val_loss: 0.18933 - val_acc: 0.9522 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.16069
+Training Step: 636  | total loss: 0.16069: 0.9617 | val_loss: 0.20454 - val_acc:| Adam | epoch: 004 | loss: 0.16069 - acc: 0.9617 | val_loss: 0.20454 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.19864
+Training Step: 795  | total loss: 0.19864: 0.9463 | val_loss: 0.19064 - val_acc:| Adam | epoch: 005 | loss: 0.19864 - acc: 0.9463 | val_loss: 0.19064 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Errors for d_438    : 27
+Accuracy for d_438  : 95.22%
+Precision for d_438 : 0.00%
+Recall for d_438    : 0.00%
+F1 Score for d_438  : 0.00%
+Confusion Matrix for d_438 :
+[[538   0]
+ [ 27   0]]
+ROC AUC for d_438 : 0.62
+
+
+Completed : 55/80
+------------------d_438 Complete------------------
+
+
+--------------------Training d_303--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_56
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.18094
+Training Step: 159  | total loss: 0.18094: 0.9525 | val_loss: 0.17166 - val_acc:| Adam | epoch: 001 | loss: 0.18094 - acc: 0.9525 | val_loss: 0.17166 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.16712
+Training Step: 318  | total loss: 0.16712: 0.9485 | val_loss: 0.17110 - val_acc:| Adam | epoch: 002 | loss: 0.16712 - acc: 0.9485 | val_loss: 0.17110 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.17007
+Training Step: 477  | total loss: 0.17007: 0.9525 | val_loss: 0.17666 - val_acc:| Adam | epoch: 003 | loss: 0.17007 - acc: 0.9525 | val_loss: 0.17666 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.15972
+Training Step: 500  | total loss: 0.15972: 0.9580 | val_loss: 0.15995 - val_acc:| Adam | epoch: 003 | loss: 0.15972 - acc: 0.9580 | val_loss: 0.15995 - val_acc: 0.9611 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.12234
+Training Step: 636  | total loss: 0.12234: 0.9688 | val_loss: 0.20410 - val_acc:| Adam | epoch: 004 | loss: 0.12234 - acc: 0.9688 | val_loss: 0.20410 - val_acc: 0.9558 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.14798
+Training Step: 795  | total loss: 0.14798: 0.9644 | val_loss: 0.16017 - val_acc:| Adam | epoch: 005 | loss: 0.14798 - acc: 0.9644 | val_loss: 0.16017 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Errors for d_303    : 26
+Accuracy for d_303  : 95.40%
+Precision for d_303 : 0.00%
+Recall for d_303    : 0.00%
+F1 Score for d_303  : 0.00%
+Confusion Matrix for d_303 :
+[[539   1]
+ [ 25   0]]
+ROC AUC for d_303 : 0.74
+
+
+Completed : 56/80
+------------------d_303 Complete------------------
+
+
+--------------------Training d_453--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_57
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.21280
+Training Step: 159  | total loss: 0.21280: 0.9524 | val_loss: 0.20493 - val_acc:| Adam | epoch: 001 | loss: 0.21280 - acc: 0.9524 | val_loss: 0.20493 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.15741
+Training Step: 318  | total loss: 0.15741: 0.9638 | val_loss: 0.19443 - val_acc:| Adam | epoch: 002 | loss: 0.15741 - acc: 0.9638 | val_loss: 0.19443 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.14279
+Training Step: 477  | total loss: 0.14279: 0.9670 | val_loss: 0.19755 - val_acc:| Adam | epoch: 003 | loss: 0.14279 - acc: 0.9670 | val_loss: 0.19755 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.21492
+Training Step: 500  | total loss: 0.21492: 0.9469 | val_loss: 0.19469 - val_acc:| Adam | epoch: 003 | loss: 0.21492 - acc: 0.9469 | val_loss: 0.19469 - val_acc: 0.9540 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.23661
+Training Step: 636  | total loss: 0.23661: 0.9380 | val_loss: 0.19559 - val_acc:| Adam | epoch: 004 | loss: 0.23661 - acc: 0.9380 | val_loss: 0.19559 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.16179
+Training Step: 795  | total loss: 0.16179: 0.9620 | val_loss: 0.18445 - val_acc:| Adam | epoch: 005 | loss: 0.16179 - acc: 0.9620 | val_loss: 0.18445 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Errors for d_453    : 26
+Accuracy for d_453  : 95.40%
+Precision for d_453 : 0.00%
+Recall for d_453    : 0.00%
+F1 Score for d_453  : 0.00%
+Confusion Matrix for d_453 :
+[[539   0]
+ [ 26   0]]
+ROC AUC for d_453 : 0.59
+
+
+Completed : 57/80
+------------------d_453 Complete------------------
+
+
+--------------------Training d_345--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_58
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.22504
+Training Step: 159  | total loss: 0.22504: 0.9433 | val_loss: 0.16795 - val_acc:| Adam | epoch: 001 | loss: 0.22504 - acc: 0.9433 | val_loss: 0.16795 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.16553
+Training Step: 318  | total loss: 0.16553: 0.9588 | val_loss: 0.14518 - val_acc:| Adam | epoch: 002 | loss: 0.16553 - acc: 0.9588 | val_loss: 0.14518 - val_acc: 0.9611 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.20844
+Training Step: 477  | total loss: 0.20844: 0.9374 | val_loss: 0.15417 - val_acc:| Adam | epoch: 003 | loss: 0.20844 - acc: 0.9374 | val_loss: 0.15417 - val_acc: 0.9628 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.18935
+Training Step: 500  | total loss: 0.18935: 0.9529 | val_loss: 0.16388 - val_acc:| Adam | epoch: 003 | loss: 0.18935 - acc: 0.9529 | val_loss: 0.16388 - val_acc: 0.9611 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.19883
+Training Step: 636  | total loss: 0.19883: 0.9415 | val_loss: 0.15043 - val_acc:| Adam | epoch: 004 | loss: 0.19883 - acc: 0.9415 | val_loss: 0.15043 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.18417
+Training Step: 795  | total loss: 0.18417: 0.9504 | val_loss: 0.14792 - val_acc:| Adam | epoch: 005 | loss: 0.18417 - acc: 0.9504 | val_loss: 0.14792 - val_acc: 0.9611 -- iter: 5080/5080
+--
+Errors for d_345    : 22
+Accuracy for d_345  : 96.11%
+Precision for d_345 : 0.00%
+Recall for d_345    : 0.00%
+F1 Score for d_345  : 0.00%
+Confusion Matrix for d_345 :
+[[543   2]
+ [ 20   0]]
+ROC AUC for d_345 : 0.71
+
+
+Completed : 58/80
+------------------d_345 Complete------------------
+
+
+--------------------Training d_682--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_59
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.15719
+Training Step: 159  | total loss: 0.15719: 0.9686 | val_loss: 0.17005 - val_acc:| Adam | epoch: 001 | loss: 0.15719 - acc: 0.9686 | val_loss: 0.17005 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.11166
+Training Step: 318  | total loss: 0.11166: 0.9781 | val_loss: 0.16629 - val_acc:| Adam | epoch: 002 | loss: 0.11166 - acc: 0.9781 | val_loss: 0.16629 - val_acc: 0.9575 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.20519
+Training Step: 477  | total loss: 0.20519: 0.9509 | val_loss: 0.16019 - val_acc:| Adam | epoch: 003 | loss: 0.20519 - acc: 0.9509 | val_loss: 0.16019 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.20130
+Training Step: 500  | total loss: 0.20130: 0.9505 | val_loss: 0.15273 - val_acc:| Adam | epoch: 003 | loss: 0.20130 - acc: 0.9505 | val_loss: 0.15273 - val_acc: 0.9646 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.19322
+Training Step: 636  | total loss: 0.19322: 0.9526 | val_loss: 0.16058 - val_acc:| Adam | epoch: 004 | loss: 0.19322 - acc: 0.9526 | val_loss: 0.16058 - val_acc: 0.9628 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.16715
+Training Step: 795  | total loss: 0.16715: 0.9611 | val_loss: 0.15523 - val_acc:| Adam | epoch: 005 | loss: 0.16715 - acc: 0.9611 | val_loss: 0.15523 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Errors for d_682    : 20
+Accuracy for d_682  : 96.46%
+Precision for d_682 : 0.00%
+Recall for d_682    : 0.00%
+F1 Score for d_682  : 0.00%
+Confusion Matrix for d_682 :
+[[545   0]
+ [ 20   0]]
+ROC AUC for d_682 : 0.52
+
+
+Completed : 59/80
+------------------d_682 Complete------------------
+
+
+--------------------Training d_286--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_60
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.24370
+Training Step: 159  | total loss: 0.24370: 0.9405 | val_loss: 0.22065 - val_acc:| Adam | epoch: 001 | loss: 0.24370 - acc: 0.9405 | val_loss: 0.22065 - val_acc: 0.9451 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.18238
+Training Step: 318  | total loss: 0.18238: 0.9556 | val_loss: 0.24222 - val_acc:| Adam | epoch: 002 | loss: 0.18238 - acc: 0.9556 | val_loss: 0.24222 - val_acc: 0.9327 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.18586
+Training Step: 477  | total loss: 0.18586: 0.9576 | val_loss: 0.20620 - val_acc:| Adam | epoch: 003 | loss: 0.18586 - acc: 0.9576 | val_loss: 0.20620 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.24263
+Training Step: 500  | total loss: 0.24263: 0.9299 | val_loss: 0.21253 - val_acc:| Adam | epoch: 003 | loss: 0.24263 - acc: 0.9299 | val_loss: 0.21253 - val_acc: 0.9398 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.23446
+Training Step: 636  | total loss: 0.23446: 0.9380 | val_loss: 0.22353 - val_acc:| Adam | epoch: 004 | loss: 0.23446 - acc: 0.9380 | val_loss: 0.22353 - val_acc: 0.9398 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.17269
+Training Step: 795  | total loss: 0.17269: 0.9567 | val_loss: 0.20553 - val_acc:| Adam | epoch: 005 | loss: 0.17269 - acc: 0.9567 | val_loss: 0.20553 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Errors for d_286    : 30
+Accuracy for d_286  : 94.69%
+Precision for d_286 : 0.00%
+Recall for d_286    : 0.00%
+F1 Score for d_286  : 0.00%
+Confusion Matrix for d_286 :
+[[535   0]
+ [ 30   0]]
+ROC AUC for d_286 : 0.58
+
+
+Completed : 60/80
+------------------d_286 Complete------------------
+
+
+--------------------Training d_560--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_61
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.18589
+Training Step: 159  | total loss: 0.18589: 0.9531 | val_loss: 0.19923 - val_acc:| Adam | epoch: 001 | loss: 0.18589 - acc: 0.9531 | val_loss: 0.19923 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.16757
+Training Step: 318  | total loss: 0.16757: 0.9580 | val_loss: 0.21378 - val_acc:| Adam | epoch: 002 | loss: 0.16757 - acc: 0.9580 | val_loss: 0.21378 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.15412
+Training Step: 477  | total loss: 0.15412: 0.9645 | val_loss: 0.20954 - val_acc:| Adam | epoch: 003 | loss: 0.15412 - acc: 0.9645 | val_loss: 0.20954 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.17151
+Training Step: 500  | total loss: 0.17151: 0.9614 | val_loss: 0.21652 - val_acc:| Adam | epoch: 003 | loss: 0.17151 - acc: 0.9614 | val_loss: 0.21652 - val_acc: 0.9487 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.19914
+Training Step: 636  | total loss: 0.19914: 0.9505 | val_loss: 0.20335 - val_acc:| Adam | epoch: 004 | loss: 0.19914 - acc: 0.9505 | val_loss: 0.20335 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.14276
+Training Step: 795  | total loss: 0.14276: 0.9667 | val_loss: 0.19943 - val_acc:| Adam | epoch: 005 | loss: 0.14276 - acc: 0.9667 | val_loss: 0.19943 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Errors for d_560    : 29
+Accuracy for d_560  : 94.87%
+Precision for d_560 : 0.00%
+Recall for d_560    : 0.00%
+F1 Score for d_560  : 0.00%
+Confusion Matrix for d_560 :
+[[536   0]
+ [ 29   0]]
+ROC AUC for d_560 : 0.62
+
+
+Completed : 61/80
+------------------d_560 Complete------------------
+
+
+--------------------Training d_112--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_62
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.23197
+Training Step: 159  | total loss: 0.23197: 0.9428 | val_loss: 0.17259 - val_acc:| Adam | epoch: 001 | loss: 0.23197 - acc: 0.9428 | val_loss: 0.17259 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.18688
+Training Step: 318  | total loss: 0.18688: 0.9513 | val_loss: 0.19118 - val_acc:| Adam | epoch: 002 | loss: 0.18688 - acc: 0.9513 | val_loss: 0.19118 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.20411
+Training Step: 477  | total loss: 0.20411: 0.9480 | val_loss: 0.16983 - val_acc:| Adam | epoch: 003 | loss: 0.20411 - acc: 0.9480 | val_loss: 0.16983 - val_acc: 0.9575 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.20730
+Training Step: 500  | total loss: 0.20730: 0.9484 | val_loss: 0.17480 - val_acc:| Adam | epoch: 003 | loss: 0.20730 - acc: 0.9484 | val_loss: 0.17480 - val_acc: 0.9575 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.17279
+Training Step: 636  | total loss: 0.17279: 0.9600 | val_loss: 0.16744 - val_acc:| Adam | epoch: 004 | loss: 0.17279 - acc: 0.9600 | val_loss: 0.16744 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.20145
+Training Step: 795  | total loss: 0.20145: 0.9482 | val_loss: 0.17360 - val_acc:| Adam | epoch: 005 | loss: 0.20145 - acc: 0.9482 | val_loss: 0.17360 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Errors for d_112    : 23
+Accuracy for d_112  : 95.93%
+Precision for d_112 : 0.00%
+Recall for d_112    : 0.00%
+F1 Score for d_112  : 0.00%
+Confusion Matrix for d_112 :
+[[542   0]
+ [ 23   0]]
+ROC AUC for d_112 : 0.51
+
+
+Completed : 62/80
+------------------d_112 Complete------------------
+
+
+--------------------Training d_491--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_63
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.15179
+Training Step: 159  | total loss: 0.15179: 0.9629 | val_loss: 0.17437 - val_acc:| Adam | epoch: 001 | loss: 0.15179 - acc: 0.9629 | val_loss: 0.17437 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.17326
+Training Step: 318  | total loss: 0.17326: 0.9562 | val_loss: 0.15837 - val_acc:| Adam | epoch: 002 | loss: 0.17326 - acc: 0.9562 | val_loss: 0.15837 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.17513
+Training Step: 477  | total loss: 0.17513: 0.9555 | val_loss: 0.15592 - val_acc:| Adam | epoch: 003 | loss: 0.17513 - acc: 0.9555 | val_loss: 0.15592 - val_acc: 0.9558 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.16515
+Training Step: 500  | total loss: 0.16515: 0.9560 | val_loss: 0.16292 - val_acc:| Adam | epoch: 003 | loss: 0.16515 - acc: 0.9560 | val_loss: 0.16292 - val_acc: 0.9593 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.13325
+Training Step: 636  | total loss: 0.13325: 0.9711 | val_loss: 0.16184 - val_acc:| Adam | epoch: 004 | loss: 0.13325 - acc: 0.9711 | val_loss: 0.16184 - val_acc: 0.9575 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.15027
+Training Step: 795  | total loss: 0.15027: 0.9635 | val_loss: 0.15480 - val_acc:| Adam | epoch: 005 | loss: 0.15027 - acc: 0.9635 | val_loss: 0.15480 - val_acc: 0.9558 -- iter: 5080/5080
+--
+Errors for d_491    : 25
+Accuracy for d_491  : 95.58%
+Precision for d_491 : 25.00%
+Recall for d_491    : 4.35%
+F1 Score for d_491  : 7.41%
+Confusion Matrix for d_491 :
+[[539   3]
+ [ 22   1]]
+ROC AUC for d_491 : 0.72
+
+
+Completed : 63/80
+------------------d_491 Complete------------------
+
+
+--------------------Training d_288--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_64
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.19959
+Training Step: 159  | total loss: 0.19959: 0.9519 | val_loss: 0.20575 - val_acc:| Adam | epoch: 001 | loss: 0.19959 - acc: 0.9519 | val_loss: 0.20575 - val_acc: 0.9416 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.18272
+Training Step: 318  | total loss: 0.18272: 0.9539 | val_loss: 0.21336 - val_acc:| Adam | epoch: 002 | loss: 0.18272 - acc: 0.9539 | val_loss: 0.21336 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.15532
+Training Step: 477  | total loss: 0.15532: 0.9619 | val_loss: 0.19823 - val_acc:| Adam | epoch: 003 | loss: 0.15532 - acc: 0.9619 | val_loss: 0.19823 - val_acc: 0.9434 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.14999
+Training Step: 500  | total loss: 0.14999: 0.9644 | val_loss: 0.19643 - val_acc:| Adam | epoch: 003 | loss: 0.14999 - acc: 0.9644 | val_loss: 0.19643 - val_acc: 0.9487 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.16404
+Training Step: 636  | total loss: 0.16404: 0.9595 | val_loss: 0.19320 - val_acc:| Adam | epoch: 004 | loss: 0.16404 - acc: 0.9595 | val_loss: 0.19320 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.15425
+Training Step: 795  | total loss: 0.15425: 0.9627 | val_loss: 0.19137 - val_acc:| Adam | epoch: 005 | loss: 0.15425 - acc: 0.9627 | val_loss: 0.19137 - val_acc: 0.9469 -- iter: 5080/5080
+--
+Errors for d_288    : 30
+Accuracy for d_288  : 94.69%
+Precision for d_288 : 0.00%
+Recall for d_288    : 0.00%
+F1 Score for d_288  : 0.00%
+Confusion Matrix for d_288 :
+[[535   1]
+ [ 29   0]]
+ROC AUC for d_288 : 0.68
+
+
+Completed : 64/80
+------------------d_288 Complete------------------
+
+
+--------------------Training d_600--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_65
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.19551
+Training Step: 159  | total loss: 0.19551: 0.9546 | val_loss: 0.21333 - val_acc:| Adam | epoch: 001 | loss: 0.19551 - acc: 0.9546 | val_loss: 0.21333 - val_acc: 0.9540 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.15237
+Training Step: 318  | total loss: 0.15237: 0.9672 | val_loss: 0.18209 - val_acc:| Adam | epoch: 002 | loss: 0.15237 - acc: 0.9672 | val_loss: 0.18209 - val_acc: 0.9575 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.15514
+Training Step: 477  | total loss: 0.15514: 0.9641 | val_loss: 0.17696 - val_acc:| Adam | epoch: 003 | loss: 0.15514 - acc: 0.9641 | val_loss: 0.17696 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.15259
+Training Step: 500  | total loss: 0.15259: 0.9647 | val_loss: 0.16778 - val_acc:| Adam | epoch: 003 | loss: 0.15259 - acc: 0.9647 | val_loss: 0.16778 - val_acc: 0.9611 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.15324
+Training Step: 636  | total loss: 0.15324: 0.9649 | val_loss: 0.17045 - val_acc:| Adam | epoch: 004 | loss: 0.15324 - acc: 0.9649 | val_loss: 0.17045 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.17026
+Training Step: 795  | total loss: 0.17026: 0.9619 | val_loss: 0.16701 - val_acc:| Adam | epoch: 005 | loss: 0.17026 - acc: 0.9619 | val_loss: 0.16701 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Errors for d_600    : 23
+Accuracy for d_600  : 95.93%
+Precision for d_600 : 0.00%
+Recall for d_600    : 0.00%
+F1 Score for d_600  : 0.00%
+Confusion Matrix for d_600 :
+[[542   0]
+ [ 23   0]]
+ROC AUC for d_600 : 0.63
+
+
+Completed : 65/80
+------------------d_600 Complete------------------
+
+
+--------------------Training d_577--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_66
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.11401
+Training Step: 159  | total loss: 0.11401: 0.9741 | val_loss: 0.12229 - val_acc:| Adam | epoch: 001 | loss: 0.11401 - acc: 0.9741 | val_loss: 0.12229 - val_acc: 0.9770 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.15687
+Training Step: 318  | total loss: 0.15687: 0.9627 | val_loss: 0.11459 - val_acc:| Adam | epoch: 002 | loss: 0.15687 - acc: 0.9627 | val_loss: 0.11459 - val_acc: 0.9770 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.12509
+Training Step: 477  | total loss: 0.12509: 0.9724 | val_loss: 0.10843 - val_acc:| Adam | epoch: 003 | loss: 0.12509 - acc: 0.9724 | val_loss: 0.10843 - val_acc: 0.9770 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.13538
+Training Step: 500  | total loss: 0.13538: 0.9737 | val_loss: 0.11069 - val_acc:| Adam | epoch: 003 | loss: 0.13538 - acc: 0.9737 | val_loss: 0.11069 - val_acc: 0.9770 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.14661
+Training Step: 636  | total loss: 0.14661: 0.9636 | val_loss: 0.11108 - val_acc:| Adam | epoch: 004 | loss: 0.14661 - acc: 0.9636 | val_loss: 0.11108 - val_acc: 0.9770 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.12649
+Training Step: 795  | total loss: 0.12649: 0.9726 | val_loss: 0.11319 - val_acc:| Adam | epoch: 005 | loss: 0.12649 - acc: 0.9726 | val_loss: 0.11319 - val_acc: 0.9770 -- iter: 5080/5080
+--
+Errors for d_577    : 13
+Accuracy for d_577  : 97.70%
+Precision for d_577 : 0.00%
+Recall for d_577    : 0.00%
+F1 Score for d_577  : 0.00%
+Confusion Matrix for d_577 :
+[[552   0]
+ [ 13   0]]
+ROC AUC for d_577 : 0.57
+
+
+Completed : 66/80
+------------------d_577 Complete------------------
+
+
+--------------------Training d_362--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_67
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.13312
+Training Step: 159  | total loss: 0.13312: 0.9672 | val_loss: 0.12190 - val_acc:| Adam | epoch: 001 | loss: 0.13312 - acc: 0.9672 | val_loss: 0.12190 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.24569
+Training Step: 318  | total loss: 0.24569: 0.9529 | val_loss: 0.14897 - val_acc:| Adam | epoch: 002 | loss: 0.24569 - acc: 0.9529 | val_loss: 0.14897 - val_acc: 0.9699 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.12156
+Training Step: 477  | total loss: 0.12156: 0.9695 | val_loss: 0.12303 - val_acc:| Adam | epoch: 003 | loss: 0.12156 - acc: 0.9695 | val_loss: 0.12303 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.11316
+Training Step: 500  | total loss: 0.11316: 0.9748 | val_loss: 0.12817 - val_acc:| Adam | epoch: 003 | loss: 0.11316 - acc: 0.9748 | val_loss: 0.12817 - val_acc: 0.9699 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.13256
+Training Step: 636  | total loss: 0.13256: 0.9679 | val_loss: 0.14410 - val_acc:| Adam | epoch: 004 | loss: 0.13256 - acc: 0.9679 | val_loss: 0.14410 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.11553
+Training Step: 795  | total loss: 0.11553: 0.9692 | val_loss: 0.11075 - val_acc:| Adam | epoch: 005 | loss: 0.11553 - acc: 0.9692 | val_loss: 0.11075 - val_acc: 0.9752 -- iter: 5080/5080
+--
+Errors for d_362    : 14
+Accuracy for d_362  : 97.52%
+Precision for d_362 : 33.33%
+Recall for d_362    : 7.69%
+F1 Score for d_362  : 12.50%
+Confusion Matrix for d_362 :
+[[550   2]
+ [ 12   1]]
+ROC AUC for d_362 : 0.87
+
+
+Completed : 67/80
+------------------d_362 Complete------------------
+
+
+--------------------Training d_519--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_68
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.19204
+Training Step: 159  | total loss: 0.19204: 0.9542 | val_loss: 0.15177 - val_acc:| Adam | epoch: 001 | loss: 0.19204 - acc: 0.9542 | val_loss: 0.15177 - val_acc: 0.9628 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.21186
+Training Step: 318  | total loss: 0.21186: 0.9457 | val_loss: 0.13490 - val_acc:| Adam | epoch: 002 | loss: 0.21186 - acc: 0.9457 | val_loss: 0.13490 - val_acc: 0.9681 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.14686
+Training Step: 477  | total loss: 0.14686: 0.9649 | val_loss: 0.12145 - val_acc:| Adam | epoch: 003 | loss: 0.14686 - acc: 0.9649 | val_loss: 0.12145 - val_acc: 0.9664 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.13074
+Training Step: 500  | total loss: 0.13074: 0.9679 | val_loss: 0.12165 - val_acc:| Adam | epoch: 003 | loss: 0.13074 - acc: 0.9679 | val_loss: 0.12165 - val_acc: 0.9681 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.15352
+Training Step: 636  | total loss: 0.15352: 0.9583 | val_loss: 0.12749 - val_acc:| Adam | epoch: 004 | loss: 0.15352 - acc: 0.9583 | val_loss: 0.12749 - val_acc: 0.9681 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.12787
+Training Step: 795  | total loss: 0.12787: 0.9684 | val_loss: 0.12332 - val_acc:| Adam | epoch: 005 | loss: 0.12787 - acc: 0.9684 | val_loss: 0.12332 - val_acc: 0.9681 -- iter: 5080/5080
+--
+Errors for d_519    : 18
+Accuracy for d_519  : 96.81%
+Precision for d_519 : 50.00%
+Recall for d_519    : 5.56%
+F1 Score for d_519  : 10.00%
+Confusion Matrix for d_519 :
+[[546   1]
+ [ 17   1]]
+ROC AUC for d_519 : 0.78
+
+
+Completed : 68/80
+------------------d_519 Complete------------------
+
+
+--------------------Training d_562--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_69
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.15484
+Training Step: 159  | total loss: 0.15484: 0.9672 | val_loss: 0.12698 - val_acc:| Adam | epoch: 001 | loss: 0.15484 - acc: 0.9672 | val_loss: 0.12698 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.15358
+Training Step: 318  | total loss: 0.15358: 0.9649 | val_loss: 0.12072 - val_acc:| Adam | epoch: 002 | loss: 0.15358 - acc: 0.9649 | val_loss: 0.12072 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.14010
+Training Step: 477  | total loss: 0.14010: 0.9692 | val_loss: 0.13419 - val_acc:| Adam | epoch: 003 | loss: 0.14010 - acc: 0.9692 | val_loss: 0.13419 - val_acc: 0.9699 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.09693
+Training Step: 500  | total loss: 0.09693: 0.9800 | val_loss: 0.12298 - val_acc:| Adam | epoch: 003 | loss: 0.09693 - acc: 0.9800 | val_loss: 0.12298 - val_acc: 0.9735 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.17736
+Training Step: 636  | total loss: 0.17736: 0.9601 | val_loss: 0.11884 - val_acc:| Adam | epoch: 004 | loss: 0.17736 - acc: 0.9601 | val_loss: 0.11884 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.12995
+Training Step: 795  | total loss: 0.12995: 0.9710 | val_loss: 0.12200 - val_acc:| Adam | epoch: 005 | loss: 0.12995 - acc: 0.9710 | val_loss: 0.12200 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Errors for d_562    : 15
+Accuracy for d_562  : 97.35%
+Precision for d_562 : 0.00%
+Recall for d_562    : 0.00%
+F1 Score for d_562  : 0.00%
+Confusion Matrix for d_562 :
+[[550   0]
+ [ 15   0]]
+ROC AUC for d_562 : 0.63
+
+
+Completed : 69/80
+------------------d_562 Complete------------------
+
+
+--------------------Training d_294--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_70
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.18860
+Training Step: 159  | total loss: 0.18860: 0.9541 | val_loss: 0.17255 - val_acc:| Adam | epoch: 001 | loss: 0.18860 - acc: 0.9541 | val_loss: 0.17255 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.14297
+Training Step: 318  | total loss: 0.14297: 0.9685 | val_loss: 0.17109 - val_acc:| Adam | epoch: 002 | loss: 0.14297 - acc: 0.9685 | val_loss: 0.17109 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.16109
+Training Step: 477  | total loss: 0.16109: 0.9646 | val_loss: 0.18524 - val_acc:| Adam | epoch: 003 | loss: 0.16109 - acc: 0.9646 | val_loss: 0.18524 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.11473
+Training Step: 500  | total loss: 0.11473: 0.9752 | val_loss: 0.16515 - val_acc:| Adam | epoch: 003 | loss: 0.11473 - acc: 0.9752 | val_loss: 0.16515 - val_acc: 0.9593 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.13689
+Training Step: 636  | total loss: 0.13689: 0.9643 | val_loss: 0.17899 - val_acc:| Adam | epoch: 004 | loss: 0.13689 - acc: 0.9643 | val_loss: 0.17899 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.14035
+Training Step: 795  | total loss: 0.14035: 0.9659 | val_loss: 0.17289 - val_acc:| Adam | epoch: 005 | loss: 0.14035 - acc: 0.9659 | val_loss: 0.17289 - val_acc: 0.9593 -- iter: 5080/5080
+--
+Errors for d_294    : 23
+Accuracy for d_294  : 95.93%
+Precision for d_294 : 0.00%
+Recall for d_294    : 0.00%
+F1 Score for d_294  : 0.00%
+Confusion Matrix for d_294 :
+[[542   0]
+ [ 23   0]]
+ROC AUC for d_294 : 0.61
+
+
+Completed : 70/80
+------------------d_294 Complete------------------
+
+
+--------------------Training d_275--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_71
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.14512
+Training Step: 159  | total loss: 0.14512: 0.9714 | val_loss: 0.14382 - val_acc:| Adam | epoch: 001 | loss: 0.14512 - acc: 0.9714 | val_loss: 0.14382 - val_acc: 0.9664 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.13693
+Training Step: 318  | total loss: 0.13693: 0.9718 | val_loss: 0.15897 - val_acc:| Adam | epoch: 002 | loss: 0.13693 - acc: 0.9718 | val_loss: 0.15897 - val_acc: 0.9664 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.12780
+Training Step: 477  | total loss: 0.12780: 0.9642 | val_loss: 0.14270 - val_acc:| Adam | epoch: 003 | loss: 0.12780 - acc: 0.9642 | val_loss: 0.14270 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.16368
+Training Step: 500  | total loss: 0.16368: 0.9630 | val_loss: 0.15083 - val_acc:| Adam | epoch: 003 | loss: 0.16368 - acc: 0.9630 | val_loss: 0.15083 - val_acc: 0.9664 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.15092
+Training Step: 636  | total loss: 0.15092: 0.9636 | val_loss: 0.15105 - val_acc:| Adam | epoch: 004 | loss: 0.15092 - acc: 0.9636 | val_loss: 0.15105 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.13353
+Training Step: 795  | total loss: 0.13353: 0.9724 | val_loss: 0.14997 - val_acc:| Adam | epoch: 005 | loss: 0.13353 - acc: 0.9724 | val_loss: 0.14997 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Errors for d_275    : 20
+Accuracy for d_275  : 96.46%
+Precision for d_275 : 0.00%
+Recall for d_275    : 0.00%
+F1 Score for d_275  : 0.00%
+Confusion Matrix for d_275 :
+[[545   1]
+ [ 19   0]]
+ROC AUC for d_275 : 0.49
+
+
+Completed : 71/80
+------------------d_275 Complete------------------
+
+
+--------------------Training d_E8798--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_72
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.17082
+Training Step: 159  | total loss: 0.17082: 0.9639 | val_loss: 0.16754 - val_acc:| Adam | epoch: 001 | loss: 0.17082 - acc: 0.9639 | val_loss: 0.16754 - val_acc: 0.9451 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.16870
+Training Step: 318  | total loss: 0.16870: 0.9596 | val_loss: 0.14444 - val_acc:| Adam | epoch: 002 | loss: 0.16870 - acc: 0.9596 | val_loss: 0.14444 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.13514
+Training Step: 477  | total loss: 0.13514: 0.9720 | val_loss: 0.15323 - val_acc:| Adam | epoch: 003 | loss: 0.13514 - acc: 0.9720 | val_loss: 0.15323 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.17552
+Training Step: 500  | total loss: 0.17552: 0.9564 | val_loss: 0.17103 - val_acc:| Adam | epoch: 003 | loss: 0.17552 - acc: 0.9564 | val_loss: 0.17103 - val_acc: 0.9646 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.18475
+Training Step: 636  | total loss: 0.18475: 0.9560 | val_loss: 0.16218 - val_acc:| Adam | epoch: 004 | loss: 0.18475 - acc: 0.9560 | val_loss: 0.16218 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.17778
+Training Step: 795  | total loss: 0.17778: 0.9541 | val_loss: 0.14473 - val_acc:| Adam | epoch: 005 | loss: 0.17778 - acc: 0.9541 | val_loss: 0.14473 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Errors for d_E8798    : 20
+Accuracy for d_E8798  : 96.46%
+Precision for d_E8798 : 0.00%
+Recall for d_E8798    : 0.00%
+F1 Score for d_E8798  : 0.00%
+Confusion Matrix for d_E8798 :
+[[545   0]
+ [ 20   0]]
+ROC AUC for d_E8798 : 0.63
+
+
+Completed : 72/80
+------------------d_E8798 Complete------------------
+
+
+--------------------Training d_263--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_73
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.17593
+Training Step: 159  | total loss: 0.17593: 0.9549 | val_loss: 0.21909 - val_acc:| Adam | epoch: 001 | loss: 0.17593 - acc: 0.9549 | val_loss: 0.21909 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.19242
+Training Step: 318  | total loss: 0.19242: 0.9577 | val_loss: 0.22474 - val_acc:| Adam | epoch: 002 | loss: 0.19242 - acc: 0.9577 | val_loss: 0.22474 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.15566
+Training Step: 477  | total loss: 0.15566: 0.9619 | val_loss: 0.18695 - val_acc:| Adam | epoch: 003 | loss: 0.15566 - acc: 0.9619 | val_loss: 0.18695 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.15725
+Training Step: 500  | total loss: 0.15725: 0.9655 | val_loss: 0.18516 - val_acc:| Adam | epoch: 003 | loss: 0.15725 - acc: 0.9655 | val_loss: 0.18516 - val_acc: 0.9487 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.14578
+Training Step: 636  | total loss: 0.14578: 0.9665 | val_loss: 0.19100 - val_acc:| Adam | epoch: 004 | loss: 0.14578 - acc: 0.9665 | val_loss: 0.19100 - val_acc: 0.9487 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.17154
+Training Step: 795  | total loss: 0.17154: 0.9576 | val_loss: 0.18235 - val_acc:| Adam | epoch: 005 | loss: 0.17154 - acc: 0.9576 | val_loss: 0.18235 - val_acc: 0.9522 -- iter: 5080/5080
+--
+Errors for d_263    : 27
+Accuracy for d_263  : 95.22%
+Precision for d_263 : 100.00%
+Recall for d_263    : 6.90%
+F1 Score for d_263  : 12.90%
+Confusion Matrix for d_263 :
+[[536   0]
+ [ 27   2]]
+ROC AUC for d_263 : 0.73
+
+
+Completed : 73/80
+------------------d_263 Complete------------------
+
+
+--------------------Training d_441--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_74
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.13115
+Training Step: 159  | total loss: 0.13115: 0.9708 | val_loss: 0.12690 - val_acc:| Adam | epoch: 001 | loss: 0.13115 - acc: 0.9708 | val_loss: 0.12690 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.17606
+Training Step: 318  | total loss: 0.17606: 0.9577 | val_loss: 0.12742 - val_acc:| Adam | epoch: 002 | loss: 0.17606 - acc: 0.9577 | val_loss: 0.12742 - val_acc: 0.9717 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.14044
+Training Step: 477  | total loss: 0.14044: 0.9667 | val_loss: 0.12445 - val_acc:| Adam | epoch: 003 | loss: 0.14044 - acc: 0.9667 | val_loss: 0.12445 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.15885
+Training Step: 500  | total loss: 0.15885: 0.9594 | val_loss: 0.12513 - val_acc:| Adam | epoch: 003 | loss: 0.15885 - acc: 0.9594 | val_loss: 0.12513 - val_acc: 0.9717 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.11823
+Training Step: 636  | total loss: 0.11823: 0.9732 | val_loss: 0.11805 - val_acc:| Adam | epoch: 004 | loss: 0.11823 - acc: 0.9732 | val_loss: 0.11805 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.10151
+Training Step: 795  | total loss: 0.10151: 0.9785 | val_loss: 0.12005 - val_acc:| Adam | epoch: 005 | loss: 0.10151 - acc: 0.9785 | val_loss: 0.12005 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Errors for d_441    : 15
+Accuracy for d_441  : 97.35%
+Precision for d_441 : 0.00%
+Recall for d_441    : 0.00%
+F1 Score for d_441  : 0.00%
+Confusion Matrix for d_441 :
+[[550   0]
+ [ 15   0]]
+ROC AUC for d_441 : 0.71
+
+
+Completed : 74/80
+------------------d_441 Complete------------------
+
+
+--------------------Training d_569--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_75
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.19617
+Training Step: 159  | total loss: 0.19617: 0.9523 | val_loss: 0.15360 - val_acc:| Adam | epoch: 001 | loss: 0.19617 - acc: 0.9523 | val_loss: 0.15360 - val_acc: 0.9628 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.11357
+Training Step: 318  | total loss: 0.11357: 0.9772 | val_loss: 0.15455 - val_acc:| Adam | epoch: 002 | loss: 0.11357 - acc: 0.9772 | val_loss: 0.15455 - val_acc: 0.9628 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.16091
+Training Step: 477  | total loss: 0.16091: 0.9567 | val_loss: 0.16940 - val_acc:| Adam | epoch: 003 | loss: 0.16091 - acc: 0.9567 | val_loss: 0.16940 - val_acc: 0.9611 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.13967
+Training Step: 500  | total loss: 0.13967: 0.9656 | val_loss: 0.16482 - val_acc:| Adam | epoch: 003 | loss: 0.13967 - acc: 0.9656 | val_loss: 0.16482 - val_acc: 0.9628 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.17931
+Training Step: 636  | total loss: 0.17931: 0.9545 | val_loss: 0.15631 - val_acc:| Adam | epoch: 004 | loss: 0.17931 - acc: 0.9545 | val_loss: 0.15631 - val_acc: 0.9575 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.15877
+Training Step: 795  | total loss: 0.15877: 0.9671 | val_loss: 0.15373 - val_acc:| Adam | epoch: 005 | loss: 0.15877 - acc: 0.9671 | val_loss: 0.15373 - val_acc: 0.9628 -- iter: 5080/5080
+--
+Errors for d_569    : 21
+Accuracy for d_569  : 96.28%
+Precision for d_569 : 0.00%
+Recall for d_569    : 0.00%
+F1 Score for d_569  : 0.00%
+Confusion Matrix for d_569 :
+[[544   0]
+ [ 21   0]]
+ROC AUC for d_569 : 0.68
+
+
+Completed : 75/80
+------------------d_569 Complete------------------
+
+
+--------------------Training d_564--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_76
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.14850
+Training Step: 159  | total loss: 0.14850: 0.9625 | val_loss: 0.14388 - val_acc:| Adam | epoch: 001 | loss: 0.14850 - acc: 0.9625 | val_loss: 0.14388 - val_acc: 0.9717 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.14483
+Training Step: 318  | total loss: 0.14483: 0.9695 | val_loss: 0.13837 - val_acc:| Adam | epoch: 002 | loss: 0.14483 - acc: 0.9695 | val_loss: 0.13837 - val_acc: 0.9717 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.11731
+Training Step: 477  | total loss: 0.11731: 0.9748 | val_loss: 0.13869 - val_acc:| Adam | epoch: 003 | loss: 0.11731 - acc: 0.9748 | val_loss: 0.13869 - val_acc: 0.9717 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.15686
+Training Step: 500  | total loss: 0.15686: 0.9607 | val_loss: 0.13717 - val_acc:| Adam | epoch: 003 | loss: 0.15686 - acc: 0.9607 | val_loss: 0.13717 - val_acc: 0.9699 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.13574
+Training Step: 636  | total loss: 0.13574: 0.9687 | val_loss: 0.13604 - val_acc:| Adam | epoch: 004 | loss: 0.13574 - acc: 0.9687 | val_loss: 0.13604 - val_acc: 0.9699 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.14298
+Training Step: 795  | total loss: 0.14298: 0.9676 | val_loss: 0.13864 - val_acc:| Adam | epoch: 005 | loss: 0.14298 - acc: 0.9676 | val_loss: 0.13864 - val_acc: 0.9681 -- iter: 5080/5080
+--
+Errors for d_564    : 18
+Accuracy for d_564  : 96.81%
+Precision for d_564 : 0.00%
+Recall for d_564    : 0.00%
+F1 Score for d_564  : 0.00%
+Confusion Matrix for d_564 :
+[[547   2]
+ [ 16   0]]
+ROC AUC for d_564 : 0.51
+
+
+Completed : 76/80
+------------------d_564 Complete------------------
+
+
+--------------------Training d_293--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_77
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.13699
+Training Step: 159  | total loss: 0.13699: 0.9658 | val_loss: 0.13057 - val_acc:| Adam | epoch: 001 | loss: 0.13699 - acc: 0.9658 | val_loss: 0.13057 - val_acc: 0.9699 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.13717
+Training Step: 318  | total loss: 0.13717: 0.9729 | val_loss: 0.14115 - val_acc:| Adam | epoch: 002 | loss: 0.13717 - acc: 0.9729 | val_loss: 0.14115 - val_acc: 0.9699 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.13515
+Training Step: 477  | total loss: 0.13515: 0.9721 | val_loss: 0.12921 - val_acc:| Adam | epoch: 003 | loss: 0.13515 - acc: 0.9721 | val_loss: 0.12921 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.17569
+Training Step: 500  | total loss: 0.17569: 0.9587 | val_loss: 0.12960 - val_acc:| Adam | epoch: 003 | loss: 0.17569 - acc: 0.9587 | val_loss: 0.12960 - val_acc: 0.9735 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.14553
+Training Step: 636  | total loss: 0.14553: 0.9676 | val_loss: 0.12712 - val_acc:| Adam | epoch: 004 | loss: 0.14553 - acc: 0.9676 | val_loss: 0.12712 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.10769
+Training Step: 795  | total loss: 0.10769: 0.9784 | val_loss: 0.13210 - val_acc:| Adam | epoch: 005 | loss: 0.10769 - acc: 0.9784 | val_loss: 0.13210 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Errors for d_293    : 15
+Accuracy for d_293  : 97.35%
+Precision for d_293 : 0.00%
+Recall for d_293    : 0.00%
+F1 Score for d_293  : 0.00%
+Confusion Matrix for d_293 :
+[[550   0]
+ [ 15   0]]
+ROC AUC for d_293 : 0.45
+
+
+Completed : 77/80
+------------------d_293 Complete------------------
+
+
+--------------------Training d_338--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_78
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.14165
+Training Step: 159  | total loss: 0.14165: 0.9687 | val_loss: 0.11714 - val_acc:| Adam | epoch: 001 | loss: 0.14165 - acc: 0.9687 | val_loss: 0.11714 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.13479
+Training Step: 318  | total loss: 0.13479: 0.9688 | val_loss: 0.11496 - val_acc:| Adam | epoch: 002 | loss: 0.13479 - acc: 0.9688 | val_loss: 0.11496 - val_acc: 0.9752 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.15905
+Training Step: 477  | total loss: 0.15905: 0.9591 | val_loss: 0.13045 - val_acc:| Adam | epoch: 003 | loss: 0.15905 - acc: 0.9591 | val_loss: 0.13045 - val_acc: 0.9752 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.11768
+Training Step: 500  | total loss: 0.11768: 0.9777 | val_loss: 0.11863 - val_acc:| Adam | epoch: 003 | loss: 0.11768 - acc: 0.9777 | val_loss: 0.11863 - val_acc: 0.9752 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.11173
+Training Step: 636  | total loss: 0.11173: 0.9750 | val_loss: 0.11578 - val_acc:| Adam | epoch: 004 | loss: 0.11173 - acc: 0.9750 | val_loss: 0.11578 - val_acc: 0.9752 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.16183
+Training Step: 795  | total loss: 0.16183: 0.9650 | val_loss: 0.11401 - val_acc:| Adam | epoch: 005 | loss: 0.16183 - acc: 0.9650 | val_loss: 0.11401 - val_acc: 0.9735 -- iter: 5080/5080
+--
+Errors for d_338    : 15
+Accuracy for d_338  : 97.35%
+Precision for d_338 : 0.00%
+Recall for d_338    : 0.00%
+F1 Score for d_338  : 0.00%
+Confusion Matrix for d_338 :
+[[550   1]
+ [ 14   0]]
+ROC AUC for d_338 : 0.66
+
+
+Completed : 78/80
+------------------d_338 Complete------------------
+
+
+--------------------Training d_456--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_79
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.17745
+Training Step: 159  | total loss: 0.17745: 0.9601 | val_loss: 0.15764 - val_acc:| Adam | epoch: 001 | loss: 0.17745 - acc: 0.9601 | val_loss: 0.15764 - val_acc: 0.9628 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.10104
+Training Step: 318  | total loss: 0.10104: 0.9783 | val_loss: 0.14217 - val_acc:| Adam | epoch: 002 | loss: 0.10104 - acc: 0.9783 | val_loss: 0.14217 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.09019
+Training Step: 477  | total loss: 0.09019: 0.9787 | val_loss: 0.14239 - val_acc:| Adam | epoch: 003 | loss: 0.09019 - acc: 0.9787 | val_loss: 0.14239 - val_acc: 0.9664 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.12002
+Training Step: 500  | total loss: 0.12002: 0.9734 | val_loss: 0.13933 - val_acc:| Adam | epoch: 003 | loss: 0.12002 - acc: 0.9734 | val_loss: 0.13933 - val_acc: 0.9664 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.10504
+Training Step: 636  | total loss: 0.10504: 0.9786 | val_loss: 0.15990 - val_acc:| Adam | epoch: 004 | loss: 0.10504 - acc: 0.9786 | val_loss: 0.15990 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.10629
+Training Step: 795  | total loss: 0.10629: 0.9748 | val_loss: 0.13840 - val_acc:| Adam | epoch: 005 | loss: 0.10629 - acc: 0.9748 | val_loss: 0.13840 - val_acc: 0.9646 -- iter: 5080/5080
+--
+Errors for d_456    : 20
+Accuracy for d_456  : 96.46%
+Precision for d_456 : 50.00%
+Recall for d_456    : 5.00%
+F1 Score for d_456  : 9.09%
+Confusion Matrix for d_456 :
+[[544   1]
+ [ 19   1]]
+ROC AUC for d_456 : 0.78
+
+
+Completed : 79/80
+------------------d_456 Complete------------------
+
+
+--------------------Training d_715--------------------
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:838] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce 840M, pci bus id: 0000:03:00.0)
+---------------------------------
+Run id: model_and_weights_80
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 5080
+Validation samples: 565
+--
+Training Step: 159  | total loss: 0.11079
+Training Step: 159  | total loss: 0.11079: 0.9742 | val_loss: 0.12976 - val_acc:| Adam | epoch: 001 | loss: 0.11079 - acc: 0.9742 | val_loss: 0.12976 - val_acc: 0.9788 -- iter: 5080/5080
+--
+Training Step: 318  | total loss: 0.13113
+Training Step: 318  | total loss: 0.13113: 0.9743 | val_loss: 0.11453 - val_acc:| Adam | epoch: 002 | loss: 0.13113 - acc: 0.9743 | val_loss: 0.11453 - val_acc: 0.9770 -- iter: 5080/5080
+--
+Training Step: 477  | total loss: 0.13853
+Training Step: 477  | total loss: 0.13853: 0.9681 | val_loss: 0.10478 - val_acc:| Adam | epoch: 003 | loss: 0.13853 - acc: 0.9681 | val_loss: 0.10478 - val_acc: 0.9788 -- iter: 5080/5080
+--
+Training Step: 500  | total loss: 0.14744
+Training Step: 500  | total loss: 0.14744: 0.9657 | val_loss: 0.10090 - val_acc:| Adam | epoch: 003 | loss: 0.14744 - acc: 0.9657 | val_loss: 0.10090 - val_acc: 0.9788 -- iter: 0736/5080
+--
+Training Step: 636  | total loss: 0.13796
+Training Step: 636  | total loss: 0.13796: 0.9697 | val_loss: 0.10924 - val_acc:| Adam | epoch: 004 | loss: 0.13796 - acc: 0.9697 | val_loss: 0.10924 - val_acc: 0.9788 -- iter: 5080/5080
+--
+Training Step: 795  | total loss: 0.14515
+Training Step: 795  | total loss: 0.14515: 0.9690 | val_loss: 0.10656 - val_acc:| Adam | epoch: 005 | loss: 0.14515 - acc: 0.9690 | val_loss: 0.10656 - val_acc: 0.9788 -- iter: 5080/5080
+--
+Errors for d_715    : 12
+Accuracy for d_715  : 97.88%
+Precision for d_715 : 0.00%
+Recall for d_715    : 0.00%
+F1 Score for d_715  : 0.00%
+Confusion Matrix for d_715 :
+[[553   0]
+ [ 12   0]]
+ROC AUC for d_715 : 0.48
+
+
+Completed : 80/80
+------------------d_715 Complete------------------
+
+
+ROC Plot saved at ../Results/Dense_fully_connected/Plots/ROC_FC_n_epoch_5_batch_size_32_size_100_window_30_5645_
+--------------------Training Done!!!--------------------
+Time Taken : 2271.18 s
