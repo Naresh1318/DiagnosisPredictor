@@ -50,7 +50,7 @@ Running the decision tree predictor:
 The results are stored at `Results_tfidf/Random_Forest`.
 
 ROC curve for random forest predictor looks something like this :
-
+![random forest roc](https://raw.githubusercontent.com/Naresh1318/DiagnosisPredictor/master/Results_tfidf/Random_Forest/Plots/ROC_RF_criterion_entropy_n_estimators_10_size_1391.png)
     
 
 
