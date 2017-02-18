@@ -44,6 +44,7 @@ we are trying to predict.
 ### 2. Time to run the predictors
 
 Running the decision tree predictor:
+
     cd ../Predictor_Tfidf
     python3 decision_tree.py
     
@@ -52,6 +53,13 @@ The results are stored at `Results_tfidf/Random_Forest`.
 ROC curve for random forest predictor looks something like this :
 ![random forest roc](https://raw.githubusercontent.com/Naresh1318/DiagnosisPredictor/master/Results_tfidf/Random_Forest/Plots/ROC_RF_criterion_entropy_n_estimators_10_size_1391.png)
     
+Similarly other algorithms such as fully connected network(Multilayer layer perceptron)
+can be run as follows : 
 
+    python3 dense_fully_connected.py
+    
+The results are stored at `Results_tfidf/Dense_fully_connected`.
 
+ROC curve for random forest predictor looks something like this :
+![dense fully connected](https://raw.githubusercontent.com/Naresh1318/DiagnosisPredictor/master/Results_tfidf/Dense_fully_connected/Plots/ROC_FC_n_epoch_10_batch_size_32_size_1391_5645_tfidf.png)
 
