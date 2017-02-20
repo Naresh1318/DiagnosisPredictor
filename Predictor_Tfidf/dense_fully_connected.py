@@ -110,7 +110,8 @@ for c, d in enumerate(uniq_diag):
         regression = tflearn.regression(output, optimizer='adam', loss='categorical_crossentropy', learning_rate=.001)
 
         # Define model with checkpoint (autosave)
-        model = tflearn.DNN(regression, tensorboard_verbose=3)
+        model = tflearn.DNN(regression, tensorboard_verbose=3,
+                            tensorboard_dir='Saved_Models/Fully_Connected_n_epochs_{}/'.format(d))
 
         # Train model with checkpoint every epoch and every 500 steps
         model.fit(X_train_sd, Y_train, n_epoch=n_epoch, show_metric=True, snapshot_epoch=True, snapshot_step=500,
