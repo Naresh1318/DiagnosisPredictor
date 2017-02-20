@@ -1,14 +1,11 @@
 import pandas as pd
 import numpy as np
+import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.externals import joblib
 
 # Parameters
 size = 1391  # Size of each sequence vector
-window = 30  # Window for Word2Vec
-min_count = 1  # min_count must be 1 for Doc2Vec
-workers = 4  # Number of threads to be utilized
-
 sequence = []  # Stores the sequences of each patient
 column_names = np.arange(size)  # The column names of the 100 vector sequence
 diagnosis_req = {}  # Used to store the patients diagnosed with a particular disease
@@ -50,5 +47,9 @@ print('Data Prepared!')
 print('CSV file saved at Data/mimic_diagnosis_tfidf')
 
 # Save the tfidf model
+# Create the Transformation_Models dir
+if 'Transformation_Models' not in os.listdir():
+    os.mkdir('Transformation_Models')
+
 joblib.dump(vect, 'Transformation_Models/tfidf_fitted.pkl')
 print('TFIDF Model saved at Transformation_Models/tfidf_fitted.pkl')

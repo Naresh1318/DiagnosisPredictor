@@ -124,7 +124,7 @@ for c, d in enumerate(uniq_diag):
 
         plt.plot(fpr, tpr, lw=2, label='ROC for %s (area = %.2f)' % (diag_to_desc[d], roc_auc), color=colors[d])
 
-print('ROC Plot saved at ../Results/Decision_Tree/sd/Plots/ROC_' + name)
+print('ROC Plot saved at ../Results_word2vec/Decision_Tree/sd/Plots/ROC_' + name)
 print("--------------------Training Done!!!--------------------")
 
 plt.plot([0, 1], [0, 1], lw=2, linestyle='--', color=(0.6, 0.6, 0.6), label='Random guessing (area = 0.5)')
@@ -135,4 +135,4 @@ plt.xlabel('false positive rate', fontsize=25)
 plt.ylabel('true positive rate', fontsize=25)
 plt.title('Receiver Operator Characteristics', fontsize=25)
 plt.legend(loc='lower right', fontsize=16)
-plt.savefig('../Results/Decision_Tree/sd/Plots/ROC_' + name + '.png')
+plt.savefig('../Results_word2vec/Decision_Tree/sd/Plots/ROC_' + name + '.png')

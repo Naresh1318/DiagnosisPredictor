@@ -1,36 +1,35 @@
-import os
-import sys
-import time
-
-lib_path = os.path.abspath(os.path.join('../', 'lib'))
-sys.path.append(lib_path)
-
+"""Use an ANN to find the probability of occurrence of diseases"""
 import tflearn
-from tflearn.layers.core import input_data, dropout, fully_connected
-from tflearn.layers.conv import conv_2d, max_pool_2d
-from tflearn.layers.estimator import regression
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from sklearn.cross_validation import train_test_split
-from sklearn.metrics import accuracy_score, recall_score, f1_score, precision_score, confusion_matrix, roc_curve, auc, \
-    roc_auc_score
+from sklearn.metrics import accuracy_score, recall_score, f1_score, precision_score, \
+    confusion_matrix, roc_curve, auc, roc_auc_score
 from sklearn.preprocessing import StandardScaler
-from icd9 import ICD9
 from tflearn.data_utils import to_categorical
+from sklearn.externals import joblib
+import os
+import sys
+import time
+import tflearn.helpers.summarizer as s
+
+lib_path = os.path.abspath(os.path.join('../', 'lib'))
+sys.path.append(lib_path)
+from icd9 import ICD9
 
 # Start time
 t1 = time.time()
 
 # Parameters
 diag_to_desc = {}
-n_epoch = 5
+n_epoch = 10
 batch_size = 32
 size = 100  # Size of each sequence vector
-window = 30  # Window for Word2Vec
-name = 'CNN_n_epoch_' + str(n_epoch) + '_batch_size_' + str(batch_size) \
-       + '_size_' + str(size) + '_window_5645' + str(window)  # name of ROC Plot
+window = 10  # Window for Word2Vec
+name = 'FC_n_epoch_' + str(n_epoch) + '_batch_size_' + str(batch_size) \
+       + '_size_' + str(size) + '_window_' + str(window) + '_5645_'  # name of ROC Plot
 
 
 def generate_icd9_lookup():
@@ -60,7 +59,7 @@ def generate_icd9_lookup():
 
 
 # Load the data
-df = pd.read_csv('../Data/mimic_diagnosis/diagnosis_size_100_window_30_5645_pat.csv', header=None)
+df = pd.read_csv('../Data/mimic_diagnosis/diagnosis_size_100_window_10_5645_pat.csv', header=None)
 X = df.iloc[1:, 1:101].values
 
 # Change later
@@ -78,7 +77,8 @@ for d, i in zip(uniq_diag, range(101, len(uniq_diag) + 101)):
 model = {}
 # Figure for ROC
 plt.figure(figsize=(17, 17), dpi=400)
-for c, d in enumerate(uniq_diag[:8]):
+
+for c, d in enumerate(uniq_diag):
 
     # Display the training diagnosis
     print("--------------------Training {}--------------------".format(d))
@@ -95,28 +95,30 @@ for c, d in enumerate(uniq_diag[:8]):
         # Standardize the data
         sc = StandardScaler()
         sc.fit(X_train)
+
+        # Save the Standardizer
+        joblib.dump(sc, 'Saved_Models/Dense_Fully_Connected/sd/standard.pkl')
+
         X_train_sd = sc.transform(X_train)
         X_test_sd = sc.transform(X_test)
 
-        X_test_sd = X_test_sd.reshape([-1, 10, 10, 1])
-        X_train_sd = X_train_sd.reshape([-1, 10, 10, 1])
-
-        # Building convolutional network
-        network = input_data(shape=[None, 10, 10, 1], name='input')
-        network = conv_2d(network, 32, 3, activation='relu', regularizer="L2")
-        network = max_pool_2d(network, 2)
-        network = fully_connected(network, 256, activation='tanh')
-        network = dropout(network, 0.8)
-        network = fully_connected(network, 2, activation='softmax')
-        network = regression(network, optimizer='adam', learning_rate=0.001,
-                             loss='categorical_crossentropy', name='target')
+        # Model
+        input_layer = tflearn.input_data(shape=[None, 100], name='input')
+        dense1 = tflearn.fully_connected(input_layer, 128, activation='linear', name='dense1')
+        dropout1 = tflearn.dropout(dense1, 0.8)
+        dense2 = tflearn.fully_connected(dropout1, 128, activation='linear', name='dense2')
+        dropout2 = tflearn.dropout(dense2, 0.8)
+        output = tflearn.fully_connected(dropout2, 2, activation='softmax', name='output')
+        regression = tflearn.regression(output, optimizer='adam', loss='categorical_crossentropy',
+                                        learning_rate=.001)
 
         # Define model with checkpoint (autosave)
-        model = tflearn.DNN(network, tensorboard_verbose=3)
+        model = tflearn.DNN(regression, tensorboard_verbose=3, tensorboard_dir="Saved_Models/Dense_Fully_Connected/sd/")
 
         # Train model with checkpoint every epoch and every 500 steps
         model.fit(X_train_sd, Y_train, n_epoch=n_epoch, show_metric=True, snapshot_epoch=True, snapshot_step=500,
-                  run_id='conv_diag', validation_set=(X_test_sd, Y_test), batch_size=batch_size)
+                  run_id='model_and_weights_{}'.format(d),
+                  validation_set=(X_test_sd, Y_test), batch_size=batch_size)
 
         # Find the probability of outputs
         y_pred_prob = np.array(model.predict(X_test_sd))[:, 1]
@@ -148,7 +150,7 @@ for c, d in enumerate(uniq_diag[:8]):
         print("ROC AUC for %s : %.2f" % (d, roc_area))
 
         # Save the final model
-        model.save('Saved_Models/CNN/CNN_{}.tfl'.format(d))
+        model.save('Saved_Models/Dense_Fully_Connected/sd/dense_fully_connected_dropout_5645_{}.tfl'.format(d))
 
         generate_icd9_lookup()  # generate the lookup for each diagnosis
 
@@ -164,7 +166,7 @@ for c, d in enumerate(uniq_diag[:8]):
         print('--------------------{} Complete--------------------'.format(d))
         print('\n')
 
-print('ROC Plot saved at ../Results/CNN/Plots/ROC_' + name)
+print('ROC Plot saved at ../Results_word2vec/Dense_fully_connected/Plots/ROC_' + name)
 print("--------------------Training Done!!!--------------------")
 plt.plot([0, 1], [0, 1], lw=2, linestyle='--', color=(0.6, 0.6, 0.6), label='Random guessing (area = 0.5)')
 plt.plot([0, 0, 1], [0, 1, 1], lw=2, linestyle=':', label='Prefect performance (area = 1.0)')
@@ -174,7 +176,7 @@ plt.xlabel('false positive rate', fontsize=25)
 plt.ylabel('true positive rate', fontsize=25)
 plt.title('Receiver Operator Characteristics', fontsize=25)
 plt.legend(loc='lower right', fontsize=16)
-plt.savefig('../Results/CNN/Plots/ROC_' + name + '.png')
+plt.savefig('../Results_word2vec/Dense_fully_connected/Plots/ROC_' + name + '.png')
 
 # Calculate time
 t2 = time.time()

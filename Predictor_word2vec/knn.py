@@ -1,4 +1,4 @@
-"""Performs Logistic Regression to find the probability of occurrence of diseases"""
+"""Performs KNN to find the probability of occurrence of diseases"""
 
 import sys
 import os
@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cross_validation import train_test_split
-from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, recall_score, f1_score, precision_score, confusion_matrix, roc_curve, auc, \
     roc_auc_score
 from sklearn.preprocessing import StandardScaler
@@ -19,13 +19,12 @@ from sklearn.externals import joblib
 
 # Parameters
 diag_to_desc = {}
-penalty = 'l2'
-C = 1.0
-max_iter = 1000
+n_neighbors = 5
+p = 2
+metric = 'minkowski'
 size = 100  # Size of each sequence vector
-window = 10  # Window for Word2Vec
-name = 'LR_pen_' + penalty + '_C_' + str(C) + '_iter_' + \
-       str(max_iter) + '_size_' + str(size) + '_window_' + str(window)  # name of ROC Plot
+name = 'KNN_nn_' + str(n_neighbors) + '_p_' + str(p) + '_metric_' + \
+       metric + '_size_' + str(size)  # name of ROC Plot
 
 
 def generate_icd9_lookup():
@@ -81,18 +80,17 @@ for c, d in enumerate(uniq_diag):
     sc.fit(X_train)
 
     # Save the Standardizer
-    joblib.dump(sc, 'Saved_Models/Logistic_Regression/sd/standard.pkl')
+    joblib.dump(sc, 'Saved_Models/knn/sd/standard.pkl')
 
     X_train_sd = sc.transform(X_train)
     X_test_sd = sc.transform(X_test)
 
-    lr = LogisticRegression(penalty=penalty, C=C, max_iter=max_iter, n_jobs=-1)
-    lr.fit(X_train_sd, Y_train)
-
+    knn = KNeighborsClassifier(n_neighbors=5, p=2, metric='minkowski', n_jobs=-1)
+    knn.fit(X_train_sd, Y_train)
     # Save the model
-    joblib.dump(lr, 'Saved_Models/Logistic_Regression/sd/lr_{}.pkl'.format(d))
+    joblib.dump(knn, 'Saved_Models/knn/sd/knn_{}.pkl'.format(d))
 
-    Y_pred_lr = lr.predict(X_test_sd)
+    Y_pred_lr = knn.predict(X_test_sd)
     errors = (Y_pred_lr != Y_test).sum()
     acc = accuracy_score(Y_pred_lr, Y_test) * 100
     ps = precision_score(Y_pred_lr, Y_test) * 100
@@ -110,7 +108,7 @@ for c, d in enumerate(uniq_diag):
 
     # Input to roc_curve must be Target scores, can either be
     # probability estimates of the positive class, confidence values, or non-thresholded measure of decisions
-    Y_prob = lr.predict_proba(X_test_sd)
+    Y_prob = knn.predict_proba(X_test_sd)
     Y_prob_c = Y_prob[:, 1]  # Probability of positive class
     fpr, tpr, _ = roc_curve(Y_test, Y_prob_c)  # Find true positive and false positive rate
     roc_auc = auc(fpr, tpr)
@@ -127,7 +125,7 @@ for c, d in enumerate(uniq_diag):
 
         plt.plot(fpr, tpr, lw=2, label='ROC for %s (area = %.2f)' % (diag_to_desc[d], roc_auc), color=colors[d])
 
-print('ROC Plot saved at ../Results/Logistic_regression/sd/Plots/ROC_' + name)
+print('ROC Plot saved at ../Results_word2vec/knn/sd/Plots/ROC_' + name)
 print("--------------------Training Done!!!--------------------")
 
 plt.plot([0, 1], [0, 1], lw=2, linestyle='--', color=(0.6, 0.6, 0.6), label='Random guessing (area = 0.5)')
@@ -138,4 +136,4 @@ plt.xlabel('false positive rate', fontsize=25)
 plt.ylabel('true positive rate', fontsize=25)
 plt.title('Receiver Operator Characteristics', fontsize=25)
 plt.legend(loc='lower right', fontsize=16)
-plt.savefig('../Results/Logistic_regression/sd/Plots/ROC_' + name + '.png')
+plt.savefig('../Results_word2vec/knn/sd/Plots/ROC_' + name + '.png')

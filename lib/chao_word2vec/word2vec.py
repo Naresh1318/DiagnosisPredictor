@@ -563,7 +563,7 @@ class Word2Vec(utils.SaveLoad):
 
         Calling with `dry_run=True` will only simulate the provided settings and
         report the size of the retained vocabulary, effective corpus length, and
-        estimated memory requirements. Results are both printed via logging and
+        estimated memory requirements. Results_word2vec are both printed via logging and
         returned as a dict.
 
         Delete the raw vocabulary after the scaling is done to free up RAM,
