@@ -2,15 +2,17 @@ import pandas as pd
 import numpy as np
 from collections import namedtuple
 from gensim.models import doc2vec
+import os
 import sklearn.manifold
 import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Parameters
 size = 100  # Size of each sequence vector
-window = 10  # Window for Word2Vec
+window = 30  # Window for Word2Vec
 min_count = 1  # min_count must be 1 for Doc2Vec
 workers = 4  # Number of threads to be utilized
+iterations = 10
 
 sequence = []  # Stores the sequences of each patient
 column_names = np.arange(size)  # The column names of the 100 vector sequence
@@ -47,7 +49,7 @@ for i, text in enumerate(sequence):
     docs.append(analyzedDocument(words, tags))
 
 # Train the Doc2Vec model to get the vector representation for the sequences
-model = doc2vec.Doc2Vec(size=size, window=window, min_count=min_count, workers=workers, iter=50)
+model = doc2vec.Doc2Vec(size=size, window=window, min_count=min_count, workers=workers, iter=iterations)
 
 # Build the vocabulary
 model.build_vocab(docs)
@@ -64,6 +66,10 @@ for i, text in enumerate(sequence):
 
     df = df.append(pd.DataFrame([np.append(model.infer_vector(words), pat_res)],
                                 columns=np.append(column_names, uniq_diag)))
+
+# Create the Transformation_Models dir
+if 'Transformation_Models' not in os.listdir():
+    os.mkdir('Transformation_Models')
 
 # Save the model
 model.save('Transformation_Models/Doc2Vec_diagnosis_predictor.d2v')
@@ -104,5 +110,3 @@ ax = points.plot.scatter("x", "y", s=35, figsize=(20, 12))
 for i, point in points.iterrows():
     ax.text(point.x + 0.005, point.y + 0.005, point.word, fontsize=7)
     '''
-from mpl_toolkits.mplot3d import Axes3D
-Axes3D.scatter()
