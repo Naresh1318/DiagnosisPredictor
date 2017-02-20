@@ -75,9 +75,9 @@ if 'Transformation_Models' not in os.listdir():
 model.save('Transformation_Models/Doc2Vec_diagnosis_predictor.d2v')
 
 # Generate a CSV file from the DataFrame
-df.to_csv('../Data/mimic_diagnosis/diagnosis_size_{0}_window_{1}_5645_pat.csv'.format(size, window))
+df.to_csv('../Data/mimic_diagnosis_word2vec/diagnosis_size_{0}_window_{1}_5645_pat.csv'.format(size, window))
 print('Data Prepared!')
-print('CSV file saved in Data/mimic_diagnosis')
+print('CSV file saved in Data/mimic_diagnosis_word2vec')
 
 # TODO: Run this on a console
 '''
