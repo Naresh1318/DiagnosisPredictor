@@ -57,7 +57,7 @@ def generate_icd9_lookup():
 
 
 # Load the data
-df = pd.read_csv('../Data/mimic_diagnosis/diagnosis_size_100_window_30_5645_pat.csv', header=None)
+df = pd.read_csv('../Data/mimic_diagnosis_word2vec/diagnosis_size_100_window_30_5645_pat.csv', header=None)
 X = df.iloc[1:, 1:101].values
 
 # Change later

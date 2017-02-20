@@ -23,10 +23,10 @@ t1 = time.time()
 
 # Parameters
 diag_to_desc = {}
-n_epoch = 5
+n_epoch = 10
 batch_size = 32
 size = 100  # Size of each sequence vector
-window = 10  # Window for Word2Vec
+window = 30  # Window for Word2Vec
 name = 'LSTM_n_epoch_' + str(n_epoch) + '_batch_size_' + str(batch_size) \
        + '_size_' + str(size) + '_window_5645' + str(window)  # name of ROC Plot
 
@@ -58,7 +58,7 @@ def generate_icd9_lookup():
 
 
 # Load the data
-df = pd.read_csv('../Data/mimic_diagnosis/diagnosis_size_100_window_10_5645_pat.csv', header=None)
+df = pd.read_csv('../Data/mimic_diagnosis_word2vec/diagnosis_size_100_window_30_5645_pat.csv', header=None)
 X = df.iloc[1:, 1:101].values
 
 # Change later
@@ -76,7 +76,7 @@ for d, i in zip(uniq_diag, range(101, len(uniq_diag) + 101)):
 model = {}
 # Figure for ROC
 plt.figure(figsize=(17, 17), dpi=400)
-for c, d in enumerate(uniq_diag[:8]):
+for c, d in enumerate(uniq_diag):
 
     # Display the training diagnosis
     print("--------------------Training {}--------------------".format(d))
@@ -95,7 +95,7 @@ for c, d in enumerate(uniq_diag[:8]):
         sc.fit(X_train)
 
         # Save the Standardizer
-        joblib.dump(sc, 'Saved_Models/LSTM/sd/standard.pkl')
+        joblib.dump(sc, 'Saved_Models/LSTM/standard.pkl')
 
         X_train_sd = sc.transform(X_train)
         X_test_sd = sc.transform(X_test)
@@ -113,11 +113,12 @@ for c, d in enumerate(uniq_diag[:8]):
                                  loss='categorical_crossentropy')
 
         # Define model with checkpoint (autosave)
-        model = tflearn.DNN(net, tensorboard_verbose=3, tensorboard_dir='Saved_Models/LSTM/sd/')
+        model = tflearn.DNN(net, tensorboard_verbose=3,
+                            tensorboard_dir='Saved_Models/LSTM/tensorflow')
 
         # Train model with checkpoint every epoch and every 500 steps
         model.fit(X_train_sd, Y_train, n_epoch=n_epoch, show_metric=True, snapshot_epoch=True, snapshot_step=500,
-                  run_id='model_and_weights_{}'.format(d), validation_set=(X_test_sd, Y_test), batch_size=batch_size)
+                  run_id='lstm_{}'.format(d), validation_set=(X_test_sd, Y_test), batch_size=batch_size)
 
         # Find the probability of outputs
         y_pred_prob = np.array(model.predict(X_test_sd))[:, 1]
@@ -149,7 +150,7 @@ for c, d in enumerate(uniq_diag[:8]):
         print("ROC AUC for %s : %.2f" % (d, roc_area))
 
         # Save the final model
-        model.save('Saved_Models/LSTM/sd/LSTM_{}.tfl'.format(d))
+        model.save('Saved_Models/LSTM/LSTM_{}.tfl'.format(d))
 
         generate_icd9_lookup()  # generate the lookup for each diagnosis
 

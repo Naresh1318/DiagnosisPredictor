@@ -54,7 +54,7 @@ def generate_icd9_lookup():
 
 
 # Read the CSV file and get the inputs and outputs
-df = pd.read_csv('../Data/mimic_diagnosis/diagnosis_size_100_window_10_5645_pat.csv', header=None)
+df = pd.read_csv('../Data/mimic_diagnosis_word2vec/diagnosis_size_100_window_30_5645_pat.csv', header=None)
 X = df.iloc[1:, 1:101].values
 Y = {}
 
@@ -80,7 +80,7 @@ for c, d in enumerate(uniq_diag):
     sc.fit(X_train)
 
     # Save the Standardizer
-    joblib.dump(sc, 'Saved_Models/knn/sd/standard.pkl')
+    joblib.dump(sc, 'Saved_Models/knn/standard.pkl')
 
     X_train_sd = sc.transform(X_train)
     X_test_sd = sc.transform(X_test)
@@ -88,7 +88,7 @@ for c, d in enumerate(uniq_diag):
     knn = KNeighborsClassifier(n_neighbors=5, p=2, metric='minkowski', n_jobs=-1)
     knn.fit(X_train_sd, Y_train)
     # Save the model
-    joblib.dump(knn, 'Saved_Models/knn/sd/knn_{}.pkl'.format(d))
+    joblib.dump(knn, 'Saved_Models/knn/knn_{}.pkl'.format(d))
 
     Y_pred_lr = knn.predict(X_test_sd)
     errors = (Y_pred_lr != Y_test).sum()
@@ -125,7 +125,7 @@ for c, d in enumerate(uniq_diag):
 
         plt.plot(fpr, tpr, lw=2, label='ROC for %s (area = %.2f)' % (diag_to_desc[d], roc_auc), color=colors[d])
 
-print('ROC Plot saved at ../Results_word2vec/knn/sd/Plots/ROC_' + name)
+print('ROC Plot saved at ../Results_word2vec/knn/Plots/ROC_' + name)
 print("--------------------Training Done!!!--------------------")
 
 plt.plot([0, 1], [0, 1], lw=2, linestyle='--', color=(0.6, 0.6, 0.6), label='Random guessing (area = 0.5)')
@@ -136,4 +136,4 @@ plt.xlabel('false positive rate', fontsize=25)
 plt.ylabel('true positive rate', fontsize=25)
 plt.title('Receiver Operator Characteristics', fontsize=25)
 plt.legend(loc='lower right', fontsize=16)
-plt.savefig('../Results_word2vec/knn/sd/Plots/ROC_' + name + '.png')
+plt.savefig('../Results_word2vec/knn/Plots/ROC_' + name + '.png')

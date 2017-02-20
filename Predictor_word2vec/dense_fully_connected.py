@@ -27,7 +27,7 @@ diag_to_desc = {}
 n_epoch = 10
 batch_size = 32
 size = 100  # Size of each sequence vector
-window = 10  # Window for Word2Vec
+window = 30  # Window for Word2Vec
 name = 'FC_n_epoch_' + str(n_epoch) + '_batch_size_' + str(batch_size) \
        + '_size_' + str(size) + '_window_' + str(window) + '_5645_'  # name of ROC Plot
 
@@ -59,10 +59,9 @@ def generate_icd9_lookup():
 
 
 # Load the data
-df = pd.read_csv('../Data/mimic_diagnosis/diagnosis_size_100_window_10_5645_pat.csv', header=None)
+df = pd.read_csv('../Data/mimic_diagnosis_word2vec/diagnosis_size_100_window_30_5645_pat.csv', header=None)
 X = df.iloc[1:, 1:101].values
 
-# Change later
 # Convert label to categorical to train with tflearn
 Y = {}
 
@@ -97,7 +96,7 @@ for c, d in enumerate(uniq_diag):
         sc.fit(X_train)
 
         # Save the Standardizer
-        joblib.dump(sc, 'Saved_Models/Dense_Fully_Connected/sd/standard.pkl')
+        joblib.dump(sc, 'Saved_Models/Dense_Fully_Connected/standard.pkl')
 
         X_train_sd = sc.transform(X_train)
         X_test_sd = sc.transform(X_test)
@@ -113,11 +112,12 @@ for c, d in enumerate(uniq_diag):
                                         learning_rate=.001)
 
         # Define model with checkpoint (autosave)
-        model = tflearn.DNN(regression, tensorboard_verbose=3, tensorboard_dir="Saved_Models/Dense_Fully_Connected/sd/")
+        model = tflearn.DNN(regression, tensorboard_verbose=3,
+                            tensorboard_dir="Saved_Models/Dense_Fully_Connected/tensorboard")
 
         # Train model with checkpoint every epoch and every 500 steps
         model.fit(X_train_sd, Y_train, n_epoch=n_epoch, show_metric=True, snapshot_epoch=True, snapshot_step=500,
-                  run_id='model_and_weights_{}'.format(d),
+                  run_id='dfn_{}'.format(d),
                   validation_set=(X_test_sd, Y_test), batch_size=batch_size)
 
         # Find the probability of outputs
@@ -150,7 +150,7 @@ for c, d in enumerate(uniq_diag):
         print("ROC AUC for %s : %.2f" % (d, roc_area))
 
         # Save the final model
-        model.save('Saved_Models/Dense_Fully_Connected/sd/dense_fully_connected_dropout_5645_{}.tfl'.format(d))
+        model.save('Saved_Models/Dense_Fully_Connected/dense_fully_connected_dropout_5645_{}.tfl'.format(d))
 
         generate_icd9_lookup()  # generate the lookup for each diagnosis
 

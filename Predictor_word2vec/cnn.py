@@ -60,7 +60,7 @@ def generate_icd9_lookup():
 
 
 # Load the data
-df = pd.read_csv('../Data/mimic_diagnosis/diagnosis_size_100_window_30_5645_pat.csv', header=None)
+df = pd.read_csv('../Data/mimic_diagnosis_word2vec/diagnosis_size_100_window_30_5645_pat.csv', header=None)
 X = df.iloc[1:, 1:101].values
 
 # Change later
@@ -78,7 +78,7 @@ for d, i in zip(uniq_diag, range(101, len(uniq_diag) + 101)):
 model = {}
 # Figure for ROC
 plt.figure(figsize=(17, 17), dpi=400)
-for c, d in enumerate(uniq_diag[:8]):
+for c, d in enumerate(uniq_diag):
 
     # Display the training diagnosis
     print("--------------------Training {}--------------------".format(d))
@@ -112,11 +112,11 @@ for c, d in enumerate(uniq_diag[:8]):
                              loss='categorical_crossentropy', name='target')
 
         # Define model with checkpoint (autosave)
-        model = tflearn.DNN(network, tensorboard_verbose=3)
+        model = tflearn.DNN(network, tensorboard_verbose=3, tensorboard_dir='Saved_Models/CNN/tensorboard/')
 
         # Train model with checkpoint every epoch and every 500 steps
         model.fit(X_train_sd, Y_train, n_epoch=n_epoch, show_metric=True, snapshot_epoch=True, snapshot_step=500,
-                  run_id='conv_diag', validation_set=(X_test_sd, Y_test), batch_size=batch_size)
+                  run_id='conv_diag_{}'.format(d), validation_set=(X_test_sd, Y_test), batch_size=batch_size)
 
         # Find the probability of outputs
         y_pred_prob = np.array(model.predict(X_test_sd))[:, 1]
