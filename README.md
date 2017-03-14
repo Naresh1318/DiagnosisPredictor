@@ -94,7 +94,7 @@ Loads the saved models from dense fully connected model and make predictions.
     python3 app.py
     
 Output:
-![Website]()
+![Website](https://raw.githubusercontent.com/Naresh1318/DiagnosisPredictor/master/Results_tfidf/website.png)
 
 ##Credits
 * [A Predictive Model for Medical Events Based on Contextual Embedding of Temporal Sequences](http://medinform.jmir.org/2016/4/e39/)
