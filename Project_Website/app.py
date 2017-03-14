@@ -8,6 +8,7 @@ sys.path.append(lib_path)
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     return render_template('index_form.html')
@@ -18,10 +19,6 @@ def hello():
     if request.method == 'POST':
         input_seq = request.form['text']
         length = dense_fully_connected_tfidf.predict(input_seq)
-        # length = [len(input_seq)]
-        #length = ['ICD9 : d_560    Probability : 0.59     Description : Intestinal obstruction without mention of hernia',
-         #'ICD9 : d_286    Probability : 0.62     Description : Coagulation defects']
-
         seq = []
         for each_seq in length:
             word = ''
@@ -37,6 +34,6 @@ def hello():
         name = request.form['name']
         return render_template('results_page.html', input_seq=input_seq, length=seq, name=name)
 
-
+# TODO: debug=False when the app is deployed
 if __name__ == '__main__':
     app.run(debug=True)

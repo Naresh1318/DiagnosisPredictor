@@ -9,5 +9,5 @@ Pillow==3.1.2
 psycopg2==2.6.2
 scikit-learn==0.18
 scipy==0.18.1
-tensorflow==0.10.0
-tflearn==0.2.1
+Flask==0.12
+gensim==0.13.4.1

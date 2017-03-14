@@ -16,11 +16,11 @@ Predicts chronic diseases using a patients previous history.
 
  * tensorflow
  * tflearn
- * argparse>=1.2.1
- * numpy>=1.10.4
+ * argparse
+ * numpy
  * sklearn
- * gensim>=0.12.4
- * scipy>=0.17.0
+ * gensim
+ * scipy
  * nltk
  * pandas
  * matplotlib
