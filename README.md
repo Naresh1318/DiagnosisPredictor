@@ -1,6 +1,8 @@
 # DiagnosisPredictor
 Predicts chronic diseases using a patients previous history.
 
+**Checkout the website: http://naresh1318.pythonanywhere.com/**
+
 ## Get the data and install dependencies
 1. Get access to the [MIMIC 3 Database](https://mimic.physionet.org/gettingstarted/access/).
 
@@ -12,7 +14,7 @@ Predicts chronic diseases using a patients previous history.
 
 *Note : The code was written using python 3 not guaranteed to work on python 2.*
 
- * tensorflow (https://www.tensorflow.org/versions/r0.10/get_started/os_setup)
+ * tensorflow
  * tflearn
  * argparse>=1.2.1
  * numpy>=1.10.4
@@ -24,7 +26,29 @@ Predicts chronic diseases using a patients previous history.
  * matplotlib
  * seaborn
  * psycopg2
+ * Flask
+ * gensim
  
+## Installing the dependencies
+Install virtualenv:
+
+    pip install virtualenv
+    pip install virtualenvwrapper
+    export WORKON_HOME=~/Envs
+    source /usr/local/bin/virtualenvwrapper.sh
+   
+Create a virtual environment and install the dependencies:
+    
+    mkvirtualenv --python=/usr/bin/python3.5 tf
+    workon tf
+    pip3 install -r requirements.txt
+    
+*Note:*
+
+ * *All the above steps must be execute from the DiagnosisPredictor directory.*     
+ * *Install tensorflow version r.10 follow [this](https://www.tensorflow.org/versions/r0.10/get_started/os_setup#virtualenv_installation) guide.*
+ * ***It is recommended that you install GPU version of tensorflow if you don't want to wait for days for all the models to be trained.***  
+ * *Install tflearn after installing tensorflow. `pip3 install tflearn`*
 ## Run the predictor
 
 ### 1. Data Preparation
@@ -63,3 +87,15 @@ The results are stored at `Results_tfidf/Dense_fully_connected`.
 ROC curve for random forest predictor looks something like this :
 ![dense fully connected](https://raw.githubusercontent.com/Naresh1318/DiagnosisPredictor/master/Results_tfidf/Dense_fully_connected/Plots/ROC_FC_n_epoch_10_batch_size_32_size_1391_5645_tfidf.png)
 
+## Running the website server
+Loads the saved models from dense fully connected model and make predictions.
+    
+    cd Project_Website
+    python3 app.py
+    
+Output:
+![Website]()
+
+##Credits
+* [A Predictive Model for Medical Events Based on Contextual Embedding of Temporal Sequences](http://medinform.jmir.org/2016/4/e39/)
+* [Doc2Vec](https://github.com/linanqiu/word2vec-sentiments/blob/master/word2vec-sentiment.ipynb)
