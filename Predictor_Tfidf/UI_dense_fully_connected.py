@@ -16,10 +16,6 @@ t1 = time.time()
 # Parameters
 diag_to_desc = {}
 n_epoch = 10
-batch_size = 32
-size = 1391  # Size of each sequence vector
-name = 'FC_n_epoch_' + str(n_epoch) + '_batch_size_' + str(batch_size) \
-       + '_size_' + str(size) + '_5645_tfidf'  # name of ROC Plot
 
 
 def generate_icd9_lookup():
@@ -59,7 +55,7 @@ patient_seq = vect.transform([input_patient])  # Unstandardized value of patient
 
 # Standardizing the patient sequence
 sc = joblib.load('../Data_Preparation/Transformation_Models/standard.pkl')
-patient_seq = sc.transform(patient_seq.toarray())
+patient_seq = sc.transform(patient_seq.toarray())  # Convert the sequence to array or sc will give an error
 
 Prediction_for_patient_prob = {}
 Prediction_for_patient = {}

@@ -166,7 +166,7 @@ for c, d in enumerate(uniq_diag):
         print('--------------------{} Complete--------------------'.format(d))
         print('\n')
 
-print('ROC Plot saved at ../Results_word2vec/Dense_fully_connected/Plots/ROC_' + name)
+print('ROC Plot saved at ../Results_word2vec/Dense_Fully_Connected/Plots/ROC_' + name)
 print("--------------------Training Done!!!--------------------")
 plt.plot([0, 1], [0, 1], lw=2, linestyle='--', color=(0.6, 0.6, 0.6), label='Random guessing (area = 0.5)')
 plt.plot([0, 0, 1], [0, 1, 1], lw=2, linestyle=':', label='Prefect performance (area = 1.0)')
@@ -176,7 +176,7 @@ plt.xlabel('false positive rate', fontsize=25)
 plt.ylabel('true positive rate', fontsize=25)
 plt.title('Receiver Operator Characteristics', fontsize=25)
 plt.legend(loc='lower right', fontsize=16)
-plt.savefig('../Results_word2vec/Dense_fully_connected/Plots/ROC_' + name + '.png')
+plt.savefig('../Results_word2vec/Dense_Fully_Connected/Plots/ROC_' + name + '.png')
 
 # Calculate time
 t2 = time.time()

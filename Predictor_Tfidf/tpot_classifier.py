@@ -63,7 +63,7 @@ for d, i in zip(uniq_diag, range(1392, len(uniq_diag) + 1392)):
     Y[d] = df[i].values[1:]
 
 # Perform binary classification for each of the 80 common diagnosis
-for c, d in enumerate(uniq_diag):
+for c, d in enumerate(uniq_diag[:8]):
     y = Y[d].astype(np.float32)
     y = y[5:]  # First 5 patients are used during training and testing
     #y = y.reshape(-1, 1)
@@ -84,7 +84,7 @@ for c, d in enumerate(uniq_diag):
     tpot = TPOTClassifier(generations=5, population_size=20, verbosity=2)
     tpot.fit(X_train, Y_train)
 
-    Y_pred = tpot.predict(X_test)
+    #Y_pred = tpot.predict(X_test)
 
     print("CV Score : {}".format(tpot.score(X_test, Y_test)))
 

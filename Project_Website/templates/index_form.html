@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title> Diagnosis Predictor</title>
+<meta charset="UTF-8">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#404040" />
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#4285f4">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/gif/png" href="https://cdn2.iconfinder.com/data/icons/medical-icons-6/48/4-512.png">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+    height: 100%;
+    color: #777;
+    line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+    background-image: url('http://www.indiacityblog.com/wp-content/uploads/2016/09/hospital.jpg');
+    min-height: 60%;
+
+}
+
+/* Second image (Application) */
+.bgimg-2 {
+    background-image: url("http://blog.addthiscdn.com/wp-content/uploads/2015/08/code-cleanup.png");
+    min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+    background-image: url("https://static.pexels.com/photos/220197/pexels-photo-220197.jpeg");
+    min-height: 400px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+.small_div{
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media screen and (min-width: 480px) {
+    .small_div {
+      width: 60%
+    }
+}
+
+/* Button transition */
+.trans{
+transition: 0.4s;
+}
+/* loader */
+.loader {
+  border: 7px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 7px solid #3498db;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <ul class="w3-navbar" id="myNavbar">
+    <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+      <a class="w3-hover-black" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+        <i class="fa fa-bars"></i>
+      </a>
+    </li>
+    <li class="w3-left-align w3-dark-grey "><a href="#home">HOME</a></li>
+  </ul>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
+    <ul class="w3-navbar w3-left-align w3-white">
+      <li><a href="#about" onclick="toggleFunction()">About</a></li>
+      <li><a href="#application" onclick="toggleFunction()">Application</a></li>
+      <li><a href="#contact" onclick="toggleFunction()">Contact</a></li>
+
+      </li>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container" id="home">
+  <div class="w3-display-middle" style="white-space:now rap;">
+    <span class="w3-center w3-padding-xlarge w3-dark-grey w3-xlarge w3-wide">Diagnosis <span class="w3-hide-small">Predictor</span></span>
+  </div>
+</div>
+
+
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+  <h3 class="w3-center">About  </h3>
+  <p>Diagnosis Predictor is an application designed to take abnormal lab tests, prescriptions and diagnosis of a patient
+    in the previous year and predict his future diagnosis and also give out the necessary precautionary measures.
+    The inputs given are in the form of a string which should be a sequence of abnormal lab tests, prescriptions and diagnosis.
+    The result is a table which gives the ICD-9(International Classification of diseases)
+    code of the predicted Diagnosis and also the probability of the patient having it. A set of steps
+    to reduce the deleterious effect of the diagnosis is displayed as well.</p>
+</div>
+
+
+<!-- Add the 80 common diagnosis link -->
+<div class="w3-content w3-container " id="example">
+  <h3 class="w3-center">Example</h3>
+ <div class="w3-panel w3-leftbar">
+   <p><b>Name :</b> Walter White </p>
+   <p><b>Previous History :</b> l_51275 l_50868 l_50882 l_50931 l_51006 l_51244 l_51254 l_51256 l_51265 l_50809 l_50893 l_50902
+     l_50960 l_51221 l_51222 l_51279 l_51493 l_50970 l_51277 d_250 d_250 d_276 d_311 d_362 d_530 d_648 d_648 l_50809
+     l_50811 l_50931 l_51006 l_51221 l_51222 l_51256 l_51275 l_51277 l_51279 l_50893 l_51249 l_50862 l_50882 l_50902
+     l_50960 l_50970 l_51301 l_50971 l_50912 l_51250 l_51206 l_50868 l_51214 l_51274 l_51283 l_51265 l_50954 l_51248
+     d_250 d_362 d_442 d_530 d_531 d_540 d_666 d_997 d_E8798</p>
+</div>
+  The input diagnosis must be the ICD 9 code assigned to the patient within the past year.
+  Only the <a href="">80 most common chronic diseases</a>  can be predicted with an average AUC ROC of about 0.7.
+  <p><b><i>Note :</i></b> Use <b><i>d_</i></b> for diagnosis ICD 9 codes, <b><i>l_</i></b> for labtests and
+    <b><i>p_</i></b> for prescriptions</p>
+
+</div>
+
+<div class="w3-row-padding w3-center w3-section trans">
+  <a href="#application" class="w3-btn w3-padding w3-light-grey w3-hover-grey ">Take Me To The App
+    <span class="fa fa-angle-double-down"></span></a>
+
+</div>
+
+<!-- Second Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container w3-opacity-min" id="application">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-white w3-wide w3-animate-opacity">Application</span>
+  </div>
+</div>
+
+  <br>
+
+<!--Input from the user -->
+  <p class="w3-center"><em>All the best!!</em></p>
+<div class="small_div">
+  <div class="w3-card-4">
+    <div class="w3-container w3-dark-grey">
+      <h2>Here we go</h2>
+    </div>
+    <form class="w3-container" action="/results" method="POST">
+      <p>
+      <input class="w3-input w3-hover-light-grey w3-border-0" name="name" type="text" placeholder="Name"></p>
+      <p>
+      <input class="w3-input w3-hover-light-grey w3-border-0" name="text" type="text" placeholder="Previous History"></p>
+      <p>
+      <input class="w3-btn w3-dark-grey" type="submit" name="submit_btn" value="predict"></p>
+    </form>
+  </div>
+  <div class="w3-panel w3-leftbar">
+      <p><b><i>Note : </i></b> It usually takes about 2 minutes to get the output,
+        so you can continue what you were doing.</p>
+  </div>
+
+</div>
+
+  <br>
+  <br>
+
+<!-- Third Parallax Image with Portfolio Text -->
+<div class="bgimg-3 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-light-grey w3-wide">CONTACT</span>
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div class="w3-content w3-container w3-padding-64" id="contact">
+  <p class="w3-center"><em>We'd love your feedback!</em></p>
+
+  <div class="w3-row w3-padding-32 w3-section">
+    <div class="w3-col m4 w3-container">
+      <!-- Add Google Maps -->
+      <div id="googleMap" class="w3-round-large" style="width:100%;height:400px;"></div>
+    </div>
+    <div class="w3-col m8 w3-container w3-section">
+      <div class="w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Bangalore, India<br>
+        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +91 8123727433<br>
+        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: rnaresh.n@gmail.com<br>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-btn w3-padding w3-light-grey w3-hover-grey trans"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xxxlarge w3-section">
+    <a href="https://naresh1318.github.io/DiagnosisPredictor/"><i class="fa fa-github w3-hover-text-indigo"></i></a>
+  </div>
+  <p> By Harshith, Naresh, Nishank and Puneeth</p>
+</footer>
+
+<script>
+  function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+
+function myMap()
+{
+  myCenter=new google.maps.LatLng(13.030979, 77.565170);
+  var mapOptions= {
+    center:myCenter,
+    zoom:15, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaeH36VG6il24i0R4HcvUG_FBfJCobNpQ&callback=myMap"></script>
+
+</body>
+</html>

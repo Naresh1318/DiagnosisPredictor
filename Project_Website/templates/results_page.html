@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title> Diagnosis Predictor</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/gif/png" href="https://cdn2.iconfinder.com/data/icons/medical-icons-6/48/4-512.png">
+<style>
+.small_div{
+  width: 90%
+}
+
+.small_div_header{
+  width: 80%
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media screen and (min-width: 480px) {
+    .small_div {
+      width: 60%
+    }
+    .small_div_header{
+      width: 30%
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<section class="w3-container w3-center" style="max-with:600px">
+  <h2 class="w3-wide">Here's your diagnosis {{name}}</h2>
+  <p class="w3-opacity"><i>hope it's not too bad</i></p>
+</section>
+
+<div class="w3-container" style="margin-left: auto; margin-right: auto;" class="small_div">
+<div class="w3-panel w3-card-8 w3-center">
+
+  <p><span class="w3-wide"> Previous History </span>
+        <br>
+
+      {{input_seq}}<br>
+
+  </p>
+
+</div>
+</div>
+
+<br>
+
+<!-- Header of diagnosis -->
+<div class="w3-container w3-center small_div_header" style="margin-left: auto; margin-right: auto;">
+    <div class="w3-panel w3-card-8 w3-dark-grey">
+
+        <p><span class="w3-wide">Predicted Diagnosis</span> </p>
+    </div>
+
+</div>
+
+<!-- Rows of predicted diagnosis -->
+<div class="w3-container">
+    <div class="w3-panel w3-card-8" style="margin-left: auto; margin-right: auto; width: 83%">
+        <pre>  ICD    |     Probability          |               Description</pre>
+    </div>
+</div>
+
+    {% for row in length %}
+<div class="w3-container">
+
+    <div class="w3-panel w3-card-12 w3-hover-shadow " style="margin-left: auto; margin-right: auto; width: 85%">
+            <pre>{{row[0]}}           {{row[1]}}                  {{row[2]}} </pre>
+    </div>
+
+</div>
+    {% endfor %}
+
+<br>
+<footer class="w3-center w3-black w3-padding-24 w3-opacity w3-hover-opacity-off">
+      <div class="w3-xxxlarge w3-section">
+    <a href="https://naresh1318.github.io/DiagnosisPredictor/"><i class="fa fa-github w3-hover-text-indigo"></i></a>
+      </div>
+    <h5>By Harshith, Naresh, Nishank and Puneeth</h5>
+</footer>
+
+
+
+<script>
+function myFunction(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+
+
+
+
+</html>
