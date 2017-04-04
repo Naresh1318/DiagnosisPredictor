@@ -80,8 +80,15 @@ transition: 0.4s;
 }
 
 textarea{
-  resize: none;
-  overflow: hidden;
+    border: 1px solid #EEEEEE;
+    box-shadow: 1px 1px 0 #DDDDDD;
+    display: block;
+    font-size: 14px;
+    margin: 2% auto;
+    padding: 11px 20px 0 70px;
+    resize: none;
+    height: 5%;
+    width: 95%;
 }
 
 /* loader */
@@ -241,7 +248,7 @@ textarea{
 
       <p onclick="myFunction('diagnosis_text_ex')" class="w3-text-white w3-large"> Diagnosis </p>
 
-      <textarea name="diagnosis_text" id="diagnosis_text_ex" rows="4" cols="104" class="w3-hover-light-grey w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes">250,362,442,530,531,540,666,997,E8798,250,250,276,311,362,530,648,648</textarea>
+      <textarea name="diagnosis_text" id="diagnosis_text_ex" rows="4" cols="104" class="w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes">250,362,442,530,531,540,666,997,E8798,250,250,276,311,362,530,648,648</textarea>
 
     </div>
 
@@ -249,7 +256,7 @@ textarea{
 
       <p onclick="myFunction('labtests_text_ex')" class="w3-text-white w3-large"> Lab Tests </p>
 
-      <textarea name="labtests_text" id="labtests_text_ex" rows="4" cols="104" class="w3-hover-light-gray w3-margin-bottom w3-animate-right" placeholder="Lab test codes">51275,50868,50882,50931,51006,51244,51254,51256,51265,50809,50893,50902,50960,51221,51222,51279,51493,50970,51277,50809,50811,50931,51006,51221,51222,51256,51275,51277,51279,50893,51249,50862,50882,50902,50960,50970,51301,50971,50912,51250,51206,50868,51214,51274,51283,51265,50954,51248</textarea>
+      <textarea name="labtests_text" id="labtests_text_ex" rows="4" cols="104" class="w3-margin-bottom w3-animate-right" placeholder="Lab test codes">51275,50868,50882,50931,51006,51244,51254,51256,51265,50809,50893,50902,50960,51221,51222,51279,51493,50970,51277,50809,50811,50931,51006,51221,51222,51256,51275,51277,51279,50893,51249,50862,50882,50902,50960,50970,51301,50971,50912,51250,51206,50868,51214,51274,51283,51265,50954,51248</textarea>
 
     </div>
 
@@ -318,7 +325,7 @@ textarea{
 
       <p onclick="myFunction('diagnosis_text')" class="w3-text-white w3-large"> Diagnosis </p>
 
-      <textarea name="diagnosis_text" id="diagnosis_text" rows="4" cols="100" class="w3-hover-light-grey w3-hide w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes"></textarea>
+      <textarea name="diagnosis_text" id="diagnosis_text" rows="4" cols="100" class="w3-hide w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes"></textarea>
 
     </div>
 
@@ -327,7 +334,7 @@ textarea{
 
       <p onclick="myFunction('labtests_text')" class="w3-text-white w3-large"> Lab Tests </p>
 
-      <textarea name="labtests_text" id="labtests_text" rows="4" cols="100" class="w3-hover-light-gray w3-hide w3-margin-bottom w3-animate-right" placeholder="Lab test codes"></textarea>
+      <textarea name="labtests_text" id="labtests_text" rows="4" cols="100" class="w3-hide w3-margin-bottom w3-animate-right" placeholder="Lab test codes"></textarea>
 
     </div>
 

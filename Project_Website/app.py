@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from flask_mail import Mail, Message
-#import dense_fully_connected_tfidf
+# import dense_fully_connected_tfidf
 import test
 import os
 import sys
@@ -8,7 +8,7 @@ import sys
 app = Flask(__name__)
 
 # Parameters for Flask-mail
-app.config['MAIL_SERVER'] ='smtp.gmail.com'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'compvisionnn@gmail.com'
 app.config['MAIL_PASSWORD'] = 'chzmbufftnjnyfah'
@@ -29,8 +29,8 @@ def index():
 def results():
     if request.method == 'POST':
         input_seq = ""
-        lab_text = request.form['labtests_text']
-        diagnosis_text = request.form['diagnosis_text']
+        lab_text = request.form['labtests_text']  # Used for summary
+        diagnosis_text = request.form['diagnosis_text']  # Used for summary
         name = request.form['name']
 
         # Convert the input string numbers to the desired format
@@ -64,6 +64,45 @@ def results():
 
         return render_template('results_page.html', input_seq=input_seq, length=seq, name=name,
                                lab_text=lab_text, diagnosis_text=diagnosis_text)
+
+
+@app.route('/feedback', methods=['POST'])
+def feedback():
+    if request.method == 'POST':
+        name = request.form['name']
+        input_seq = request.form['input_sequence']
+        lab_text = request.form['lab_text_feedback']
+        diagnosis_text = request.form['diagnosis_text_feedback']
+        return render_template('feedback.html', name=name, input_seq=input_seq,
+                               lab_text=lab_text, diagnosis_text=diagnosis_text)
+
+
+@app.route('/thankyou', methods=['POST'])
+def thankyou():
+    if request.method == 'POST':
+        print(request.form)
+        input_seq = request.form['input_seq']
+        actual_diagnosis_temp = request.form['diagnosis_feedback']
+
+        actual_diagnosis = ""
+        # Add the d_ for diagnosis
+        for i in actual_diagnosis_temp.split(','):
+            actual_diagnosis += 'd_' + i + " "
+
+        feedback_text = input_seq + '|' + actual_diagnosis
+        feedback_text = feedback_text.strip()
+
+        # Save the previous sequences in the file
+        with open('data/feedback.txt', 'r') as fb:
+            temp_text = fb.readlines()
+        print(temp_text)
+        with open('data/feedback.txt', 'w') as fb:
+            temp_text.append(feedback_text)
+            print(temp_text)
+            for i in temp_text:
+                fb.write(i + '\n')
+
+        return render_template('thankyou.html')
 
 
 def sendMail(emailID, name, input_seq, seq):
@@ -112,7 +151,7 @@ def sendMail(emailID, name, input_seq, seq):
     '.format(name, input_seq, seq)
 
     msg.html = html_message
-    #with open('templates/email.html', 'r') as e:
+    # with open('templates/email.html', 'r') as e:
     #    msg.html = e.read()
     mail.send(msg)
 
@@ -140,8 +179,9 @@ def get_disease_info(ICD):
                          'doctor to look at your intestine and at scar tissue if you have adhesions.',
             'potential_complications': ['Infection', 'Tissue Death', 'Intestinal Perforation', 'Sepsis',
                                         'Multisystem organ failure', 'Death'],
-            'prevention' : "Eat a balanced diet low in fat with plenty of vegetables and fruits, don't smoke, "
-                           "and see your doctor for colorectal cancer screening once a year after age 50."}
+            'prevention': "Eat a balanced diet low in fat with plenty of vegetables and fruits, don't smoke, "
+                          "and see your doctor for colorectal cancer screening once a year after age 50."}
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -28,6 +28,18 @@
     }
 }
 
+textarea{
+    border: 1px solid #EEEEEE;
+    box-shadow: 1px 1px 0 #DDDDDD;
+    display: block;
+    font-size: 14px;
+    margin: 2% auto;
+    padding: 11px 20px 0 70px;
+    resize: none;
+    height: 5%;
+    width: 100%;
+}
+
 </style>
 </head>
 
@@ -35,10 +47,18 @@
 
 <!-- Header -->
 <section class="w3-container w3-center" style="max-with:600px">
-  <h2 class="w3-wide">Here's your diagnosis {{name}}</h2>
-  <p class="w3-opacity"><i>hope it's not too bad</i></p>
+  <h2 class="w3-wide">Feedback</h2>
+  <p class="w3-opacity"></p>
 </section>
 
+<!-- Name -->
+<div class="w3-container w3-center small_div_header" style="margin-left: auto; margin-right: auto;">
+    <div class="w3-panel w3-card-8 w3-white">
+        <p><span class="w3-wide">{{name}}</span> </p>
+    </div>
+</div>
+
+<!-- Previous history -->
 <div class="w3-container" style="margin-left: auto; margin-right: auto;" class="small_div">
 
     <!-- Header of diagnosis -->
@@ -85,93 +105,30 @@
 
 <br>
 
+
 <!-- Header of diagnosis -->
 <div class="w3-container w3-center small_div_header" style="margin-left: auto; margin-right: auto;">
     <div class="w3-panel w3-card-8 w3-dark-grey">
-
-        <p><span class="w3-wide">Predicted Diagnosis</span> </p>
-    </div>
-
-</div>
-
-
-<!-- Rows of predicted diagnosis -->
-<div class="w3-container">
-    <div class="w3-panel w3-card-8 w3-cell-row" style="margin-left: auto; margin-right: auto; width: 83%">
-      <div class="w3-container w3-cell" style="width: 20%; text-align:left;">
-        <p> <b>ICD</b> </p>
-      </div>
-
-      <div class="w3-container w3-cell" style="width: 20%; text-align:left;">
-        <p> <b>Probability</b> </p>
-      </div>
-      <div class="w3-container w3-cell" style="width: 60%; text-align:left;">
-        <p> <b>Description</b> </p>
-      </div>
+        <p><span class="w3-wide">Actual Diagnosis</span> </p>
     </div>
 </div>
 
-{% for row in length %}
-<div class="w3-container">
-
-
-    <div class="w3-panel w3-card-12 w3-hover-shadow w3-btn w3-white w3-cell-row" style="margin-left: auto; margin-right: auto; width: 85%" onclick="myFunction('demo-{{ loop.index }}')">
-            <div class="w3-container w3-cell" style="width: 20%">
-              <p style="font-family:courier; text-align:left;"> {{row[0]}}  </p>
-            </div>
-
-            <div class="w3-container w3-cell" style="width: 20%">
-              <p style="font-family:courier; text-align:left;"> {{row[1]}} </p>
-            </div>
-            <div class="w3-container w3-cell" style="width: 60%">
-              <p style="font-family:courier; text-align:left;"> {{row[2]}} </p>
-            </div>
+<form class="w3-container" method="POST" action="/thankyou">
+    <p class="w3-text-dark-grey w3-center">Please enter the icd 9 codes</p>
+    <textarea class="w3-hide" name="input_seq" id="input_seq">{{input_seq}}</textarea>
+    <div class="w3-card-8" style="width:50%; margin-left: auto; margin-right: auto">
+        <textarea name="diagnosis_feedback" id="diagnosis_feedback" rows="4" cols="100" class="w3-hover-light-grey w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes"></textarea>
     </div>
+    <input class="w3-btn w3-dark-grey w3-center" type="submit" style="margin-left: 25%" value="Submit"/>
+</form>
 
 
-    <div id="demo-{{ loop.index }}" class="w3-hide w3-animate-bottom w3-left-align w3-container w3-card-12" style="margin-left: auto; margin-right: auto; width: 85%">
-      <h3> Description: </h3>
-      <p>
-        {{ row[3]['description'] }}<br />
-      </p>
-      <h3> Symptoms: </h3>
-      {% for i in row[3]['symptoms'] %}
-        <li> {{ i }} </li>
-        {% endfor %}
-        <h3> Diagnosis: </h3>
-        <p>
-        {{ row[3]['diagnosis'] }}
-        </p>
-        <h3> Potential Complications: </h3>
-          {% for i in row[3]['potential_complications'] %}
-        <li> {{ i }} </li>
-        {% endfor %}
-        <h3> Prevention: </h3>
-        <p>
-        {{ row[3]['prevention'] }}
-        </p>
-    </div>
 
 
-</div>
-{% endfor %}
 
 <br>
 
-<!-- Feedback -->
-<div class="w3-container w3-center">
-    <form class="w3-container" action="/feedback" method="POST" id="feedback_form">
-        <textarea class="w3-hide" name="name" id="name">{{name}}</textarea>
-        <textarea class="w3-hide" name="input_sequence" id="input_sequence">{{input_seq}}</textarea>
-        <textarea class="w3-hide" name="lab_text_feedback" id="lab_text_feedback">{{lab_text}}</textarea>
-        <textarea class="w3-hide" name="diagnosis_text_feedback" id="diagnosis_text_feedback">{{diagnosis_text}}</textarea>
-        <input class="w3-container w3-card-8 w3-btn w3-white w3-padding w3-hover-shadow" type="submit" style="width:30%; margin-left: 55%;" value="Help us improve the results!"/>
-    </form>
-    <br />
-</div>
 
-
-<!-- footer -->
 <footer class="w3-center w3-black w3-padding-24 w3-opacity w3-hover-opacity-off">
       <div class="w3-xxxlarge w3-section">
     <a href="https://naresh1318.github.io/DiagnosisPredictor/"><i class="fa fa-github w3-hover-text-indigo"></i></a>
