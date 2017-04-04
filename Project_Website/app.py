@@ -26,15 +26,15 @@ def index():
 
 
 @app.route('/results', methods=['POST'])
-def hello():
+def results():
     if request.method == 'POST':
         input_seq = ""
-        lab_tests = request.form['labtests_text']
+        lab_text = request.form['labtests_text']
         diagnosis_text = request.form['diagnosis_text']
         name = request.form['name']
 
         # Convert the input string numbers to the desired format
-        for i in lab_tests.split(","):
+        for i in lab_text.split(","):
             input_seq = input_seq + 'l_' + i + ' '
 
         for i in diagnosis_text.split(","):
@@ -62,7 +62,8 @@ def hello():
         if emailID != '':
             sendMail(emailID, name, input_seq, length)
 
-        return render_template('results_page.html', input_seq=input_seq, length=seq, name=name)
+        return render_template('results_page.html', input_seq=input_seq, length=seq, name=name,
+                               lab_text=lab_text, diagnosis_text=diagnosis_text)
 
 
 def sendMail(emailID, name, input_seq, seq):
