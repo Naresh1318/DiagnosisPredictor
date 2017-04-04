@@ -5,6 +5,7 @@ import test
 import os
 import sys
 
+
 app = Flask(__name__)
 
 # Parameters for Flask-mail
