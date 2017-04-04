@@ -96,6 +96,6 @@ Loads the saved models from dense fully connected model and make predictions.
 Output:
 ![Website]()
 
-##Credits
+## Credits
 * [A Predictive Model for Medical Events Based on Contextual Embedding of Temporal Sequences](http://medinform.jmir.org/2016/4/e39/)
 * [Doc2Vec](https://github.com/linanqiu/word2vec-sentiments/blob/master/word2vec-sentiment.ipynb)

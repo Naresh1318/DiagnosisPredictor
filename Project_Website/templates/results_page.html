@@ -63,22 +63,67 @@
 
 </div>
 
+
 <!-- Rows of predicted diagnosis -->
 <div class="w3-container">
-    <div class="w3-panel w3-card-8" style="margin-left: auto; margin-right: auto; width: 83%">
-        <pre>  ICD    |     Probability          |               Description</pre>
+    <div class="w3-panel w3-card-8 w3-cell-row" style="margin-left: auto; margin-right: auto; width: 83%">
+      <div class="w3-container w3-cell" style="width: 20% text-align:left;">
+        <p> <b>ICD</b> </p>
+      </div>
+
+      <div class="w3-container w3-cell" style="width: 20% text-align:left;">
+        <p> <b>Probability</b> </p>
+      </div>
+      <div class="w3-container w3-cell" style="width: 60% text-align:left;">
+        <p> <b>Description</b> </p>
+      </div>
     </div>
 </div>
 
-    {% for row in length %}
+{% for row in length %}
 <div class="w3-container">
 
-    <div class="w3-panel w3-card-12 w3-hover-shadow " style="margin-left: auto; margin-right: auto; width: 85%">
-            <pre>{{row[0]}}           {{row[1]}}                  {{row[2]}} </pre>
+
+    <div class="w3-panel w3-card-12 w3-hover-shadow w3-btn w3-white w3-cell-row" style="margin-left: auto; margin-right: auto; width: 85%" onclick="myFunction('demo-{{ loop.index }}')">
+            <div class="w3-container w3-cell" style="width: 20%">
+              <p style="font-family:courier; text-align:left;"> {{row[0]}}  </p>
+            </div>
+
+            <div class="w3-container w3-cell" style="width: 20%">
+              <p style="font-family:courier; text-align:left;"> {{row[1]}} </p>
+            </div>
+            <div class="w3-container w3-cell" style="width: 60%">
+              <p style="font-family:courier; text-align:left;"> {{row[2]}} </p>
+            </div>
     </div>
 
+
+    <div id="demo-{{ loop.index }}" class="w3-hide w3-animate-bottom w3-left-align w3-container w3-card-12" style="margin-left: auto; margin-right: auto; width: 85%">
+      <h3> Description: </h3>
+      <p>
+        {{ row[3]['description'] }}<br />
+      </p>
+      <h3> Symptoms: </h3>
+      {% for i in row[3]['symptoms'] %}
+        <li> {{ i }} </li>
+        {% endfor %}
+        <h3> Diagnosis: </h3>
+        <p>
+        {{ row[3]['diagnosis'] }}
+        </p>
+        <h3> Potential Complications: </h3>
+          {% for i in row[3]['potential_complications'] %}
+        <li> {{ i }} </li>
+        {% endfor %}
+        <h3> Prevention: </h3>
+        <p>
+        {{ row[3]['prevention'] }}
+        </p>
+    </div>
+
+
 </div>
-    {% endfor %}
+{% endfor %}
 
 <br>
 <footer class="w3-center w3-black w3-padding-24 w3-opacity w3-hover-opacity-off">
