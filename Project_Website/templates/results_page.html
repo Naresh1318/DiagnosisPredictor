@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <title> Diagnosis Predictor</title>
+<title> Diagnosis Predictor</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='//fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+<link href='//fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
 <link rel="icon" type="image/gif/png" href="https://cdn2.iconfinder.com/data/icons/medical-icons-6/48/4-512.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <style>
 .small_div{
   width: 90%
@@ -27,15 +29,54 @@
       width: 30%
     }
 }
+.container {
+  position: relative;
+  width: 100%;
+}
 
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #ffffff;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: #000000;
+  font-size: 15px;
+  position: absolute;
+
+}
+.font-paragraph{
+  font-family: Ubuntu;
+}
+
+.font-heading{
+  font-family: Merriweather;
+}
 </style>
 </head>
 
 <body>
 
 <!-- Header -->
-<section class="w3-container w3-center" style="max-with:600px">
-  <h2 class="w3-wide">Here's your diagnosis {{name}}</h2>
+<section class="w3-container w3-center" style="max-with:600px" id="home">
+  <h2 class="w3-wide font-heading">Here's your diagnosis {{name}}</h2>
   <p class="w3-opacity"><i>hope it's not too bad</i></p>
 </section>
 
@@ -44,7 +85,7 @@
     <!-- Header of diagnosis -->
     <div class="w3-container w3-center small_div_header" style="margin-left: auto; margin-right: auto;">
         <div class="w3-panel w3-card-8 w3-dark-grey">
-            <p><span class="w3-wide">Previous History</span> </p>
+            <p><span class="w3-wide font-heading">Previous History</span> </p>
         </div>
     </div>
 
@@ -54,7 +95,7 @@
 
       <div class="w3-modal-content w3-card-8" style="width:50%">
       <header class="w3-container w3-dark-grey">
-        <h2> Lab Tests </h2>
+        <h2 class="font-heading"> Lab Tests </h2>
       </header>
 
         <div id="id1" class="w3-responsive">
@@ -71,7 +112,7 @@
         <div id="id2" class="w3-responsive">
 
        <header class="w3-container w3-dark-grey">
-        <h2> Diagnosis </h2>
+        <h2 class="font-heading"> Diagnosis </h2>
       </header>
 
         <table id="diagnosistable" class="w3-table w3-card-4">
@@ -89,7 +130,7 @@
 <div class="w3-container w3-center small_div_header" style="margin-left: auto; margin-right: auto;">
     <div class="w3-panel w3-card-8 w3-dark-grey">
 
-        <p><span class="w3-wide">Predicted Diagnosis</span> </p>
+        <p><span class="w3-wide font-heading">Predicted Diagnosis</span> </p>
     </div>
 
 </div>
@@ -115,7 +156,7 @@
 <div class="w3-container">
 
 
-    <div class="w3-panel w3-card-12 w3-hover-shadow w3-btn w3-white w3-cell-row" style="margin-left: auto; margin-right: auto; width: 85%" onclick="myFunction('demo-{{ loop.index }}')">
+    <div class="w3-panel w3-card-12 w3-hover-shadow w3-btn w3-white w3-cell-row" style="margin-left: auto; margin-right: auto; width: 85%" onclick="myFunction('demo1{{loop.index}}')">
             <div class="w3-container w3-cell" style="width: 20%">
               <p style="font-family:courier; text-align:left;"> {{row[0]}}  </p>
             </div>
@@ -128,34 +169,18 @@
             </div>
     </div>
 
-
-    <div id="demo-{{ loop.index }}" class="w3-hide w3-animate-bottom w3-left-align w3-container w3-card-12" style="margin-left: auto; margin-right: auto; width: 85%">
-      <h3> Description: </h3>
-      <p>
-        {{ row[3]['description'] }}<br />
-      </p>
-      <h3> Symptoms: </h3>
-      {% for i in row[3]['symptoms'] %}
-        <li> {{ i }} </li>
-        {% endfor %}
-        <h3> Diagnosis: </h3>
-        <p>
-        {{ row[3]['diagnosis'] }}
-        </p>
-        <h3> Potential Complications: </h3>
-          {% for i in row[3]['potential_complications'] %}
-        <li> {{ i }} </li>
-        {% endfor %}
-        <h3> Prevention: </h3>
-        <p>
-        {{ row[3]['prevention'] }}
-        </p>
+    <div id="demo1{{loop.index}}" class="w3-hide w3-animate-bottom w3-container w3-card-12 w3-animate-opacity w3-left-align w3-container" style="margin-left: auto; margin-right: auto; width: 85%">
+        <div class="container">
+            <img src={{row[3][0]}} alt="Avatar" class="image">
+            <div class="overlay">
+                <div class="text">{{row[3][1]}}</div>
+            </div>
+        </div>
     </div>
 
 
 </div>
 {% endfor %}
-
 <br>
 
 <!-- Feedback -->
@@ -165,7 +190,7 @@
         <textarea class="w3-hide" name="input_sequence" id="input_sequence">{{input_seq}}</textarea>
         <textarea class="w3-hide" name="lab_text_feedback" id="lab_text_feedback">{{lab_text}}</textarea>
         <textarea class="w3-hide" name="diagnosis_text_feedback" id="diagnosis_text_feedback">{{diagnosis_text}}</textarea>
-        <input class="w3-container w3-card-8 w3-btn w3-white w3-padding w3-hover-shadow" type="submit" style="width:30%; margin-left: 55%;" value="Help us improve the results!"/>
+        <input class="w3-container w3-card-8 w3-btn w3-white w3-padding w3-hover-shadow font-heading" type="submit" style="width:30%; margin-left: 55%;" value="Help us improve the results!" />
     </form>
     <br />
 </div>
@@ -173,10 +198,11 @@
 
 <!-- footer -->
 <footer class="w3-center w3-black w3-padding-24 w3-opacity w3-hover-opacity-off">
+      <a href="#home" class="w3-btn w3-padding w3-light-grey w3-hover-grey trans font-heading"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
       <div class="w3-xxxlarge w3-section">
     <a href="https://naresh1318.github.io/DiagnosisPredictor/"><i class="fa fa-github w3-hover-text-indigo"></i></a>
       </div>
-    <h5>By Harshith, Naresh, Nishank and Puneeth</h5>
+    <h5 style="font-family: Courgette">By Harshith, Naresh, Nishank and Puneeth</h5>
 </footer>
 
 <script>
@@ -228,6 +254,31 @@ function get_summary(labtests_id, diagnosis_id){
     row1.insertCell(1).innerHTML = '<b> Name </b>';
 }
 get_summary('lab_text', 'diagnosis_text')
+
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
 </script>
 
 </body>

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">
-</script>
 <head>
 <title> Diagnosis Predictor</title>
 <meta charset="UTF-8">
@@ -12,9 +10,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+<link href='//fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+<link href='//fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/gif/png" href="https://cdn2.iconfinder.com/data/icons/medical-icons-6/48/4-512.png">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <style>
 
 body,h1,h2,h3,h4,h5,h6 {
@@ -37,19 +38,19 @@ body, html {
 
 /* First image (Logo. Full height) */
 .bgimg-1 {
-    background-image: url('http://www.indiacityblog.com/wp-content/uploads/2016/09/hospital.jpg');
+    background-image: url('../static/images/drop_5.gif');
     min-height: 60%;
 }
 
 /* Second image (Application) */
 .bgimg-2 {
-    background-image: url("http://blog.addthiscdn.com/wp-content/uploads/2015/08/code-cleanup.png");
+    background-image: url("../static/images/code.jpeg");
     min-height: 400px;
 }
 
 /* Third image (Contact) */
 .bgimg-3 {
-    background-image: url("https://static.pexels.com/photos/220197/pexels-photo-220197.jpeg");
+    background-image: url("https://s-media-cache-ak0.pinimg.com/originals/1b/74/ed/1b74ed53670b66f50f4a0a2d4c59f7f5.gif");
     min-height: 400px;
 }
 
@@ -77,6 +78,14 @@ body, html {
 /* Button transition */
 .trans{
 transition: 0.4s;
+}
+
+.font-paragraph{
+  font-family: Ubuntu;
+}
+
+.font-heading{
+  font-family: Merriweather;
 }
 
 textarea{
@@ -129,7 +138,7 @@ textarea{
         <i class="fa fa-bars"></i>
       </a>
     </li>
-    <li class="w3-left-align w3-dark-grey "><a href="#home">HOME</a></li>
+    <li class="w3-left-align w3-black font-heading"><a href="#home">Home</a></li>
   </ul>
 
 
@@ -147,15 +156,16 @@ textarea{
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container" id="home">
   <div class="w3-display-middle" style="white-space:now rap;">
-    <span class="w3-center w3-padding-xlarge w3-dark-grey w3-xlarge w3-wide">Diagnosis <span class="w3-hide-small">Predictor</span></span>
+    <span class="w3-center w3-padding-xlarge w3-transparent w3-text-white font-heading"
+          style="font-size: 50px">Diagnosis <span class="w3-hide-small">Predictor</span></span>
   </div>
 </div>
 
 
 <!-- Container (About Section) -->
 <div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center">About  </h3>
-  <p>Diagnosis Predictor is an application designed to take abnormal lab tests, prescriptions and diagnosis of a patient
+  <h3 class="w3-center font-heading">About  </h3>
+  <p class="font-paragraph">Diagnosis Predictor is an application designed to take abnormal lab tests, prescriptions and diagnosis of a patient
     in the previous year and predict his future diagnosis and also give out the necessary precautionary measures.
     The inputs given are in the form of a string which should be a sequence of abnormal lab tests, prescriptions and diagnosis.
     The result is a table which gives the ICD-9 (International Classification of diseases)
@@ -166,19 +176,23 @@ textarea{
 
 <!-- Add the 80 common diagnosis link -->
 <div class="w3-content w3-container " id="example">
-  <h3 class="w3-center">Example</h3>
+  <h3 class="w3-center font-heading">Example</h3>
+    <p>
+        This section has an example patient sequence which could we used to train the model or make predictions based
+        the previous history.
+    </p>
  <div class="w3-panel w3-leftbar">
-   <p><b>Name :</b> Walter White </p>
-   <p><b>Previous History :</b> l_51275 l_50868 l_50882 l_50931 l_51006 l_51244 l_51254 l_51256 l_51265 l_50809 l_50893 l_50902
+   <p class="font-paragraph"><b>Name :</b> Walter White </p>
+   <p class="font-paragraph"><b>Previous History :</b> l_51275 l_50868 l_50882 l_50931 l_51006 l_51244 l_51254 l_51256 l_51265 l_50809 l_50893 l_50902
      l_50960 l_51221 l_51222 l_51279 l_51493 l_50970 l_51277 d_250 d_250 d_276 d_311 d_362 d_530 d_648 d_648 l_50809
      l_50811 l_50931 l_51006 l_51221 l_51222 l_51256 l_51275 l_51277 l_51279 l_50893 l_51249 l_50862 l_50882 l_50902
      l_50960 l_50970 l_51301 l_50971 l_50912 l_51250 l_51206 l_50868 l_51214 l_51274 l_51283 l_51265 l_50954 l_51248
      d_250 d_362 d_442 d_530 d_531 d_540 d_666 d_997 d_E8798</p>
 </div>
 
-  The input diagnosis must be the ICD 9 code assigned to the patient within the past year.
-  Only the <a href="">80 most common chronic diseases</a>  can be predicted with an average AUC ROC of about 0.7.
-  <p><b><i>Note :</i></b> Use <b><i>d_</i></b> for diagnosis ICD 9 codes, <b><i>l_</i></b> for labtests and
+  <p class="font-paragraph">The input diagnosis must be the ICD 9 code assigned to the patient within the past year.
+    Only the <a href="">80 most common chronic diseases</a>  can be predicted with an average AUC ROC of about 0.7.</p>
+  <p class="font-paragraph"><b><i>Note :</i></b> Use <b><i>d_</i></b> for diagnosis ICD 9 codes, <b><i>l_</i></b> for labtests and
     <b><i>p_</i></b> for prescriptions</p>
 
 </div>
@@ -186,7 +200,7 @@ textarea{
 
 <!-- Take me top button -->
 <div class="w3-row-padding w3-center w3-section trans">
-  <a href="#application" class="w3-btn w3-padding w3-light-grey w3-hover-grey ">Take Me To The App
+  <a href="#application" class="w3-btn w3-padding w3-light-grey w3-hover-grey font-heading">Take Me To The App
     <span class="fa fa-angle-double-down"></span></a>
 </div>
 
@@ -194,7 +208,7 @@ textarea{
 <!-- Second Parallax Image with Portfolio Text -->
 <div class="bgimg-2 w3-display-container w3-opacity-min" id="application">
   <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide w3-animate-opacity">Application</span>
+    <span class="w3-xxlarge w3-text-white w3-wide w3-animate-opacity font-heading"><b>Application</b></span>
   </div>
 </div>
 
@@ -208,45 +222,77 @@ textarea{
       <header class="w3-container w3-dark-grey">
         <span onclick="document.getElementById('id01').style.display='none'"
         class="w3-closebtn">&times;</span>
-        <h2>Predicting ....</h2>
+        <h2 class="font-heading">Predicting ....</h2>
       </header>
       <div class="w3-container">
   <center>
   <div id="loading" style="width:50%"><img src="https://d13yacurqjgara.cloudfront.net/users/12755/screenshots/1037374/hex-loader2.gif" alt="" style="width:250px"/> </div>
   </center>
       </div>
-      <footer class="w3-container w3-dark-grey">
-        <p>It usually takes about 2 minutes to get the output.</p>
+      <footer class="w3-container w3-dark-grey font-paragraph">
+        <p class="font-paragraph">It usually takes about 3 minutes to get the output.</p>
       </footer>
     </div>
   </div>
 
 <!-- Content entry -->
 <div class="w3-container w3-content">
-  <p class="w3-center"> Description <br/> <br/> </p>
-  <p>
-    Try out the Walter White example which contains pre filled values. This application can is trained only on these
-    <a href="#">200 lab tests</a> and <a href="#">1271 diagnosis</a>.
-  </p>
+  <h3 class="w3-center font-heading"> Description <br/> <br/> </h3>
+    <p class="font-paragraph">
+      This application is trained only on these
+    <a href="#">200 lab tests</a> and <a href="#">1271 diagnosis</a>. You can refer these links to know the labtest codes and
+      the diagnosis icd 9 codes.<br />
+    </p>
+
+
+    <ul class="font-paragraph">
+        <li>
+            Make sure you separate both icd codes and lab codes using a comma, enter the icd 9 codes of the patient in the diagnosis section and enter the lab test which have abnormal results in the lab tests section.
+        </li>
+        <li>
+        Click the summary button which shows the patient summary containing the numeric value and its corresponding description. The d_ and l_ for diagnosis and lab tests are added automatically.
+        </li>
+        <li>
+        Verify if the previous history entered is correct and click on the predict button to predict the most likely future
+            diagnosis. It most me noted that the prediction and take as long as 3 minutes.
+        </li>
+        <li>
+            You can hover over the results in the results page to get further information about the diagnosis.
+        </li>
+        <li>
+            Please give a feedback if you find the results to be inaccurate.
+        </li>
+    <li>
+        Try out the Walter White example which contains pre filled values if you are still not able to wrap your head around this by clicking on the Walter White Example button.
+
+    </li>
+    </ul>
+    <br />
+
+
 
   <div class="w3-container w3-dark-grey w3-card-8">
-      <h2>Here we go</h2>
+      <h2 class="font-heading">Here we go</h2>
   </div>
 
   <div class="w3-container w3-card-8 w3-hover-shadow w3-btn w3-white" style="width: 100%" onclick="myFunction('content_entry_ex'); content_text('content_text_ex')">
-    <p id="content_text_ex" class="w3-center w3-text-dark-grey w3-large"> Walter White Example</p>
+    <p id="content_text_ex" class="w3-center w3-text-dark-grey w3-large font-heading"> Walter White Example</p>
   </div>
 
   <!-- First Example -->
   <div id="content_entry_ex" class="w3-hide w3-animate-right w3-left-align w3-container w3-card-8" style="margin-top: 2%">
 
    <form class="w3-container" action="/results" method="POST" id="res_ex">
-      <p><input class="w3-input w3-hover-light-grey w3-border-0" name="name" type="text" placeholder="Name" value="Walter White"></p>
-      <p><input class="w3-input w3-hover-light-grey w3-border-0" name="email" type="text" placeholder="Email-ID (Optional)" value="rnaresh.n@gmail.com"></p>
+      <p>
+         <input class="w3-input w3-hover-light-grey w3-border-0" name="name" type="text" placeholder="Name" value="Walter               White">
+      </p>
+      <p>
+          <input class="w3-input w3-hover-light-grey w3-border-0" name="email" type="text" placeholder="Email-ID (Optional)" >
+      </p>
 
     <div class="w3-white w3-block w3-margin-top w3-btn w3-dark-gray">
 
-      <p onclick="myFunction('diagnosis_text_ex')" class="w3-text-white w3-large"> Diagnosis </p>
+      <p onclick="myFunction('diagnosis_text_ex')" class="w3-text-white w3-large font-heading" > Diagnosis </p>
 
       <textarea name="diagnosis_text" id="diagnosis_text_ex" rows="4" cols="104" class="w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes">250,362,442,530,531,540,666,997,E8798,250,250,276,311,362,530,648,648</textarea>
 
@@ -254,7 +300,7 @@ textarea{
 
      <div class="w3-white w3-block w3-margin-top w3-btn w3-dark-gray">
 
-      <p onclick="myFunction('labtests_text_ex')" class="w3-text-white w3-large"> Lab Tests </p>
+      <p onclick="myFunction('labtests_text_ex')" class="w3-text-white w3-large font-heading"> Lab Tests </p>
 
       <textarea name="labtests_text" id="labtests_text_ex" rows="4" cols="104" class="w3-margin-bottom w3-animate-right" placeholder="Lab test codes">51275,50868,50882,50931,51006,51244,51254,51256,51265,50809,50893,50902,50960,51221,51222,51279,51493,50970,51277,50809,50811,50931,51006,51221,51222,51256,51275,51277,51279,50893,51249,50862,50882,50902,50960,50970,51301,50971,50912,51250,51206,50868,51214,51274,51283,51265,50954,51248</textarea>
 
@@ -267,18 +313,18 @@ textarea{
       <header class="w3-container w3-dark-grey">
         <span onclick="document.getElementById('summary').style.display='none'"
         class="w3-closebtn">&times;</span>
-        <h2>Summary</h2>
+        <h2 class="font-heading">Summary</h2>
       </header>
 
       <div class="w3-container">
 
         <div id="id1" class="w3-responsive">
 
-        <h3> Lab Tests </h3>
+        <h3 class="font-heading"> Lab Tests </h3>
         <table id="labtable" class="w3-table w3-card-4">
         </table>
 
-        <h3> Diagnosis </h3>
+        <h3 class="font-heading"> Diagnosis </h3>
         <table id="diagnosistable" class="w3-table w3-card-4">
         </table>
 
@@ -286,20 +332,20 @@ textarea{
 
 
         <p>
-          <input class="w3-btn w3-dark-grey" type="submit" name="submit_btn" value="predict" onclick="document.getElementById('id01').style.display='block'; document.getElementById('summary').style.display='none'">
+          <input class="w3-btn w3-dark-grey font-heading" type="submit" name="submit_btn" value="predict" onclick="document.getElementById('id01').style.display='block'; document.getElementById('summary').style.display='none'">
         </p>
 
       </div>
 
       <footer class="w3-container w3-dark-grey">
-        <p>It usually takes about 2 minutes to get the output.</p>
+        <p class="font-paragraph">It usually takes about 2 minutes to get the output.</p>
       </footer>
 
     </div>
   </div>
 
     <p>
-      <div id="predict_btn" class="w3-btn w3-dark-grey" onclick="document.getElementById('summary').style.display='block'; get_summary('labtests_text_ex', 'diagnosis_text_ex')"> Summary </div>
+      <div id="predict_btn" class="w3-btn w3-dark-grey font-heading" onclick="document.getElementById('summary').style.display='block'; get_summary('labtests_text_ex', 'diagnosis_text_ex')"> Summary </div>
     </p>
 
    </form>
@@ -307,7 +353,7 @@ textarea{
   </div>
 
   <div class="w3-container w3-card-8 w3-hover-shadow w3-btn w3-white" style="width: 100%" onclick="myFunction('content_entry'); content_text('content_text')">
-    <p id="content_text" class="w3-center w3-text-dark-grey w3-large"> Add patient details &nbsp;&nbsp;<<<<</p>
+    <p id="content_text" class="w3-center w3-text-dark-grey w3-large font-heading"> Add patient details &nbsp;&nbsp;<<<<</p>
   </div>
 
 
@@ -323,7 +369,7 @@ textarea{
        <!-- Text for diagnosis -->
     <div class="w3-white w3-block w3-container w3-margin-top w3-btn w3-dark-gray">
 
-      <p onclick="myFunction('diagnosis_text')" class="w3-text-white w3-large"> Diagnosis </p>
+      <p onclick="myFunction('diagnosis_text')" class="w3-text-white w3-large font-heading"> Diagnosis </p>
 
       <textarea name="diagnosis_text" id="diagnosis_text" rows="4" cols="100" class="w3-hide w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes"></textarea>
 
@@ -332,7 +378,7 @@ textarea{
        <!-- Text for lab tests -->
      <div class="w3-white w3-block w3-container w3-margin-top w3-btn w3-dark-gray">
 
-      <p onclick="myFunction('labtests_text')" class="w3-text-white w3-large"> Lab Tests </p>
+      <p onclick="myFunction('labtests_text')" class="w3-text-white w3-large font-heading"> Lab Tests </p>
 
       <textarea name="labtests_text" id="labtests_text" rows="4" cols="100" class="w3-hide w3-margin-bottom w3-animate-right" placeholder="Lab test codes"></textarea>
 
@@ -345,18 +391,18 @@ textarea{
       <header class="w3-container w3-dark-grey">
         <span onclick="document.getElementById('summary_pat').style.display='none'"
         class="w3-closebtn">&times;</span>
-        <h2>Summary</h2>
+        <h2 class="font-heading">Summary</h2>
       </header>
 
       <div class="w3-container">
 
         <div id="id2" class="w3-responsive">
 
-        <h3> Lab Tests </h3>
+        <h3 class="font-heading"> Lab Tests </h3>
         <table id="labtable1" class="w3-table w3-card-4">
         </table>
 
-        <h3> Diagnosis </h3>
+        <h3 class="font-heading"> Diagnosis </h3>
         <table id="diagnosistable1" class="w3-table w3-card-4">
         </table>
 
@@ -364,20 +410,20 @@ textarea{
 
 
         <p>
-          <input class="w3-btn w3-dark-grey" type="submit" name="submit_btn" value="predict" onclick="document.getElementById('id01').style.display='block'; document.getElementById('summary_pat').style.display='none'">
+          <input class="w3-btn w3-dark-grey font-heading" type="submit" name="submit_btn" value="predict" onclick="document.getElementById('id01').style.display='block'; document.getElementById('summary_pat').style.display='none'">
         </p>
 
       </div>
 
       <footer class="w3-container w3-dark-grey">
-        <p>It usually takes about 2 minutes to get the output.</p>
+        <p class="font-paragraph">It usually takes about 2 minutes to get the output.</p>
       </footer>
 
     </div>
   </div>
 
     <p>
-      <div id="predict_btn_1" class="w3-btn w3-dark-grey" onclick="document.getElementById('summary_pat').style.display='block'; get_summary('labtests_text', 'diagnosis_text')"> Summary </div>
+      <div id="predict_btn_1" class="w3-btn w3-dark-grey font-heading" onclick="document.getElementById('summary_pat').style.display='block'; get_summary('labtests_text', 'diagnosis_text')"> Summary </div>
     </p>
    </form>
 
@@ -385,7 +431,7 @@ textarea{
 
 
   <div class="w3-panel w3-leftbar">
-      <p><b><i>Note : </i></b> It usually takes about 2 minutes to get the output,
+      <p class="font-paragraph"><b><i>Note : </i></b> It usually takes about 2 minutes to get the output,
         so you can continue what you were doing.</p>
   </div>
 
@@ -399,14 +445,14 @@ textarea{
 <!-- Third Parallax Image with Portfolio Text -->
 <div class="bgimg-3 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-light-grey w3-wide w3-animate-opacity">CONTACT</span>
+     <span class="w3-xxlarge w3-text-light-grey w3-animate-opacity w3-wide font-heading"><b>Contact</b></span>
   </div>
 </div>
 
 
 <!-- Container (Contact Section) -->
 <div class="w3-content w3-container w3-padding-64" id="contact">
-  <p class="w3-center"><em>We'd love your feedback!</em></p>
+  <p class="w3-center font-heading"><em>We'd love your feedback!</em></p>
 
   <div class="w3-row w3-padding-32 w3-section">
     <div class="w3-col m4 w3-container">
@@ -414,7 +460,7 @@ textarea{
       <div id="googleMap" class="w3-round-large" style="width:100%;height:400px;"></div>
     </div>
     <div class="w3-col m8 w3-container w3-section">
-      <div class="w3-large w3-margin-bottom">
+      <div class="w3-large w3-margin-bottom font-paragraph">
         <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Bangalore, India<br>
         <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +91 8123727433<br>
         <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: rnaresh.n@gmail.com<br>
@@ -425,12 +471,12 @@ textarea{
 
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="#home" class="w3-btn w3-padding w3-light-grey w3-hover-grey trans"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <div class="w3-xxxlarge w3-section">
+<footer class="w3-center w3-black w3-padding-24 w3-opacity w3-hover-opacity-off">
+      <a href="#home" class="w3-btn w3-padding w3-light-grey w3-hover-grey trans font-heading"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+      <div class="w3-xxxlarge w3-section">
     <a href="https://naresh1318.github.io/DiagnosisPredictor/"><i class="fa fa-github w3-hover-text-indigo"></i></a>
-  </div>
-  <p> By Harshith, Naresh, Nishank and Puneeth</p>
+      </div>
+    <h5 style="font-family: Courgette">By Harshith, Naresh, Nishank and Puneeth</h5>
 </footer>
 
 
@@ -523,6 +569,31 @@ function get_summary(labtests_id, diagnosis_id){
     row1.insertCell(0).innerHTML = '<b> ICD 9 </b>';
     row1.insertCell(1).innerHTML = '<b> Name </b>';
 }
+
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaeH36VG6il24i0R4HcvUG_FBfJCobNpQ&callback=myMap"></script>

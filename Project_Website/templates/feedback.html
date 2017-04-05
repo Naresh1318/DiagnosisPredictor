@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <title> Diagnosis Predictor</title>
+<title> Diagnosis Predictor</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link href='//fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
+<link href='//fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+<link href='//fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/gif/png" href="https://cdn2.iconfinder.com/data/icons/medical-icons-6/48/4-512.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <style>
 .small_div{
   width: 90%
@@ -39,7 +42,13 @@ textarea{
     height: 5%;
     width: 100%;
 }
+.font-paragraph{
+  font-family: Ubuntu;
+}
 
+.font-heading{
+  font-family: Merriweather;
+}
 </style>
 </head>
 
@@ -47,14 +56,14 @@ textarea{
 
 <!-- Header -->
 <section class="w3-container w3-center" style="max-with:600px">
-  <h2 class="w3-wide">Feedback</h2>
+  <h2 class="w3-wide font-heading">Feedback Form</h2>
   <p class="w3-opacity"></p>
 </section>
 
 <!-- Name -->
 <div class="w3-container w3-center small_div_header" style="margin-left: auto; margin-right: auto;">
     <div class="w3-panel w3-card-8 w3-white">
-        <p><span class="w3-wide">{{name}}</span> </p>
+        <p><span class="w3-wide font-heading">{{name}}</span> </p>
     </div>
 </div>
 
@@ -64,7 +73,7 @@ textarea{
     <!-- Header of diagnosis -->
     <div class="w3-container w3-center small_div_header" style="margin-left: auto; margin-right: auto;">
         <div class="w3-panel w3-card-8 w3-dark-grey">
-            <p><span class="w3-wide">Previous History</span> </p>
+            <p><span class="w3-wide font-heading">Previous History</span> </p>
         </div>
     </div>
 
@@ -74,7 +83,7 @@ textarea{
 
       <div class="w3-modal-content w3-card-8" style="width:50%">
       <header class="w3-container w3-dark-grey">
-        <h2> Lab Tests </h2>
+        <h2 class="font-heading"> Lab Tests </h2>
       </header>
 
         <div id="id1" class="w3-responsive">
@@ -91,7 +100,7 @@ textarea{
         <div id="id2" class="w3-responsive">
 
        <header class="w3-container w3-dark-grey">
-        <h2> Diagnosis </h2>
+        <h2 class="font-heading"> Diagnosis </h2>
       </header>
 
         <table id="diagnosistable" class="w3-table w3-card-4">
@@ -109,17 +118,17 @@ textarea{
 <!-- Header of diagnosis -->
 <div class="w3-container w3-center small_div_header" style="margin-left: auto; margin-right: auto;">
     <div class="w3-panel w3-card-8 w3-dark-grey">
-        <p><span class="w3-wide">Actual Diagnosis</span> </p>
+        <p><span class="w3-wide font-heading">Actual Diagnosis</span> </p>
     </div>
 </div>
 
 <form class="w3-container" method="POST" action="/thankyou">
-    <p class="w3-text-dark-grey w3-center">Please enter the icd 9 codes</p>
+    <p class="w3-text-dark-grey w3-center font-heading">Please enter the icd 9 codes</p>
     <textarea class="w3-hide" name="input_seq" id="input_seq">{{input_seq}}</textarea>
     <div class="w3-card-8" style="width:50%; margin-left: auto; margin-right: auto">
         <textarea name="diagnosis_feedback" id="diagnosis_feedback" rows="4" cols="100" class="w3-hover-light-grey w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes"></textarea>
     </div>
-    <input class="w3-btn w3-dark-grey w3-center" type="submit" style="margin-left: 25%" value="Submit"/>
+    <input class="w3-btn w3-dark-grey w3-center font-heading" type="submit" style="margin-left: 25%;" value="Submit"/>
 </form>
 
 
@@ -129,11 +138,14 @@ textarea{
 <br>
 
 
+<!-- Footer -->
 <footer class="w3-center w3-black w3-padding-24 w3-opacity w3-hover-opacity-off">
+      <a href="#home" class="w3-btn w3-padding w3-light-grey w3-hover-grey trans font-heading
+"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
       <div class="w3-xxxlarge w3-section">
     <a href="https://naresh1318.github.io/DiagnosisPredictor/"><i class="fa fa-github w3-hover-text-indigo"></i></a>
       </div>
-    <h5>By Harshith, Naresh, Nishank and Puneeth</h5>
+    <h5 style="font-family: Courgette">By Harshith, Naresh, Nishank and Puneeth</h5>
 </footer>
 
 <script>
@@ -185,6 +197,32 @@ function get_summary(labtests_id, diagnosis_id){
     row1.insertCell(1).innerHTML = '<b> Name </b>';
 }
 get_summary('lab_text', 'diagnosis_text')
+
+
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
 </script>
 
 </body>
