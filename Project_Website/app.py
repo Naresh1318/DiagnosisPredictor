@@ -80,7 +80,6 @@ def feedback():
 @app.route('/thankyou', methods=['POST'])
 def thankyou():
     if request.method == 'POST':
-        print(request.form)
         input_seq = request.form['input_seq']
         actual_diagnosis_temp = request.form['diagnosis_feedback']
 
@@ -90,17 +89,15 @@ def thankyou():
             actual_diagnosis += 'd_' + i + " "
 
         feedback_text = input_seq + '|' + actual_diagnosis
-        feedback_text = feedback_text.strip()
+        feedback_text = feedback_text.strip() + '\n'
 
         # Save the previous sequences in the file
         with open('data/feedback.txt', 'r') as fb:
             temp_text = fb.readlines()
-        print(temp_text)
         with open('data/feedback.txt', 'w') as fb:
             temp_text.append(feedback_text)
-            print(temp_text)
             for i in temp_text:
-                fb.write(i + '\n')
+                fb.write(i)
 
         return render_template('thankyou.html')
 
