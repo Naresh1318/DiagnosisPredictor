@@ -102,6 +102,11 @@ def thankyou():
         return render_template('thankyou.html')
 
 
+@app.route('/diagnosis.html')
+def diagnosis_desc():
+    return render_template('diagnosis.html')
+
+
 def sendMail(emailID, name, input_seq, seq):
     msg = Message('Your Predicted Diagnosis', sender='compvisionnn@gmail.com', recipients=[emailID])
     html_message = '\
