@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 <head>
 <title> Diagnosis Predictor</title>
 <meta charset="UTF-8">
 <!-- Chrome, Firefox OS and Opera -->
-<meta name="theme-color" content="#404040" />
+<meta name="theme-color" content="#000000" />
 <!-- iOS Safari -->
-<meta name="apple-mobile-web-app-status-bar-style" content="#404040">
+<meta name="apple-mobile-web-app-status-bar-style" content="#000000">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -174,7 +174,7 @@ textarea{
 </div>
 
 
-<!-- Add the 80 common diagnosis link -->
+<!-- Example explanation -->
 <div class="w3-content w3-container " id="example">
   <h3 class="w3-center font-heading">Example</h3>
     <p>
@@ -191,7 +191,7 @@ textarea{
 </div>
 
   <p class="font-paragraph">The input diagnosis must be the ICD 9 code assigned to the patient within the past year.
-    Only the <a href="">80 most common chronic diseases</a>  can be predicted with an average AUC ROC of about 0.7.</p>
+    Only the <a href="diagnosis.html">80 most common chronic diseases</a>  can be predicted with an average AUC ROC of about 0.7.</p>
   <p class="font-paragraph"><b><i>Note :</i></b> Use <b><i>d_</i></b> for diagnosis ICD 9 codes, <b><i>l_</i></b> for labtests and
     <b><i>p_</i></b> for prescriptions</p>
 
@@ -284,7 +284,8 @@ textarea{
 
    <form class="w3-container" action="/results" method="POST" id="res_ex">
       <p>
-         <input class="w3-input w3-hover-light-grey w3-border-0" name="name" type="text" placeholder="Name" value="Walter               White">
+         <input class="w3-input w3-hover-light-grey w3-border-0" name="name" type="text" placeholder="Name"
+                value="Walter White">
       </p>
       <p>
           <input class="w3-input w3-hover-light-grey w3-border-0" name="email" type="text" placeholder="Email-ID (Optional)" >
@@ -338,7 +339,7 @@ textarea{
       </div>
 
       <footer class="w3-container w3-dark-grey">
-        <p class="font-paragraph">It usually takes about 2 minutes to get the output.</p>
+        <p class="font-paragraph">It usually takes about 3 minutes to get the output.</p>
       </footer>
 
     </div>
