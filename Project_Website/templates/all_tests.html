@@ -3,69 +3,21 @@
 <head>
 <title> Diagnosis Predictor</title>
 <meta charset="UTF-8">
-<!-- Chrome, Firefox OS and Opera -->
-<meta name="theme-color" content="#000000" />
-<!-- iOS Safari -->
-<meta name="apple-mobile-web-app-status-bar-style" content="#000000">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href='//fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
 <link href='//fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/gif/png" href="https://cdn2.iconfinder.com/data/icons/medical-icons-6/48/4-512.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <style>
-
-body,h1,h2,h3,h4,h5,h6 {
-  font-family: "Lato", sans-serif;
-}
-
-body, html {
-    height: 100%;
-    color: #777;
-    line-height: 1.8;
-}
-
-/* Create a Parallax Effect */
-.bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* First image (Logo. Full height) */
-.bgimg-1 {
-    background-image: url('../static/images/drop_5.gif');
-    min-height: 60%;
-}
-
-/* Second image (Application) */
-.bgimg-2 {
-    background-image: url("../static/images/code.jpeg");
-    min-height: 400px;
-}
-
-/* Third image (Contact) */
-.bgimg-3 {
-    background-image: url("https://s-media-cache-ak0.pinimg.com/originals/1b/74/ed/1b74ed53670b66f50f4a0a2d4c59f7f5.gif");
-    min-height: 400px;
-}
-
-.w3-wide {
-  letter-spacing: 10px;
-}
-
-.w3-hover-opacity {
-  cursor: pointer;
-}
-
 .small_div{
-  margin-left: auto;
-  margin-right: auto;
-  width: 95%
+  width: 90%
+}
+
+.small_div_header{
+  width: 80%
 }
 
 /* Turn off parallax scrolling for tablets and phones */
@@ -73,13 +25,43 @@ body, html {
     .small_div {
       width: 60%
     }
+    .small_div_header{
+      width: 30%
+    }
+}
+.container {
+  position: relative;
+  width: 100%;
 }
 
-/* Button transition */
-.trans{
-transition: 0.4s;
+.image {
+  width: 100%;
+  height: auto;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #ffffff;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: #000000;
+  font-size: 15px;
+  position: absolute;
+
+}
 .font-paragraph{
   font-family: Ubuntu;
 }
@@ -87,391 +69,54 @@ transition: 0.4s;
 .font-heading{
   font-family: Merriweather;
 }
-
-textarea{
-    border: 1px solid #EEEEEE;
-    box-shadow: 1px 1px 0 #DDDDDD;
-    display: block;
-    font-size: 14px;
-    margin: 2% auto;
-    padding: 11px 20px 0 70px;
-    resize: none;
-    height: 5%;
-    width: 95%;
-}
-
-/* loader */
-.loader {
-  border: 7px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 7px solid #3498db;
-  width: 30px;
-  height: 30px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-
-}
-
-
 </style>
 </head>
 
-
 <body>
 
+<!-- Header -->
+<section class="w3-container w3-center" style="max-with:600px" id="home">
+  <h2 class="w3-wide font-heading">This page contains all inputs accepted by diagnosis predictor</h2>
+  <p class="w3-opacity"><i>200 lab tests and 1271 diagnosis</i></p>
+</section>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <ul class="w3-navbar" id="myNavbar">
-    <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
-      <a class="w3-hover-black" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
-        <i class="fa fa-bars"></i>
-      </a>
-    </li>
-    <li class="w3-left-align w3-black font-heading"><a href="#home">Home</a></li>
-  </ul>
+<!-- Lab tests and diagnosis tables -->
+<div class="w3-container" style="margin-left: auto; margin-right: auto;" class="small_div">
 
-
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
-    <ul class="w3-navbar w3-left-align w3-white">
-      <li><a href="#about" onclick="toggleFunction()">About</a></li>
-      <li><a href="#application" onclick="toggleFunction()">Application</a></li>
-      <li><a href="#contact" onclick="toggleFunction()">Contact</a></li>
-    </ul>
-  </div>
-</div>
-
-
-<!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container" id="home">
-  <div class="w3-display-middle" style="white-space:now rap;">
-    <span class="w3-center w3-padding-xlarge w3-transparent w3-text-white font-heading"
-          style="font-size: 50px">Diagnosis <span class="w3-hide-small">Predictor</span></span>
-  </div>
-</div>
-
-
-<!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center font-heading">About  </h3>
-  <p class="font-paragraph">Diagnosis Predictor is an application designed to take abnormal lab tests, prescriptions and diagnosis of a patient
-    in the previous year and predict his future diagnosis and also give out the necessary precautionary measures.
-    The inputs given are in the form of a string which should be a sequence of abnormal lab tests, prescriptions and diagnosis.
-    The result is a table which gives the ICD-9 (International Classification of diseases)
-    code of the predicted Diagnosis and also the probability of the patient having it. A set of steps
-    to reduce the deleterious effect of the diagnosis is displayed as well.</p>
-</div>
-
-
-<!-- Example explanation -->
-<div class="w3-content w3-container " id="example">
-  <h3 class="w3-center font-heading">Example</h3>
-    <p>
-        This section has an example patient sequence which could we used to train the model or make predictions based
-        the previous history.
-    </p>
- <div class="w3-panel w3-leftbar">
-   <p class="font-paragraph"><b>Name :</b> Walter White </p>
-   <p class="font-paragraph"><b>Previous History :</b> l_51275 l_50868 l_50882 l_50931 l_51006 l_51244 l_51254 l_51256 l_51265 l_50809 l_50893 l_50902
-     l_50960 l_51221 l_51222 l_51279 l_51493 l_50970 l_51277 d_250 d_250 d_276 d_311 d_362 d_530 d_648 d_648 l_50809
-     l_50811 l_50931 l_51006 l_51221 l_51222 l_51256 l_51275 l_51277 l_51279 l_50893 l_51249 l_50862 l_50882 l_50902
-     l_50960 l_50970 l_51301 l_50971 l_50912 l_51250 l_51206 l_50868 l_51214 l_51274 l_51283 l_51265 l_50954 l_51248
-     d_250 d_362 d_442 d_530 d_531 d_540 d_666 d_997 d_E8798</p>
-</div>
-
-  <p class="font-paragraph">The input diagnosis must be the ICD 9 code assigned to the patient within the past year.
-    Only the <a href="diagnosis.html">80 most common chronic diseases</a>  can be predicted with an average AUC ROC of about 0.7.</p>
-  <p class="font-paragraph"><b><i>Note :</i></b> Use <b><i>d_</i></b> for diagnosis ICD 9 codes, <b><i>l_</i></b> for labtests and
-    <b><i>p_</i></b> for prescriptions</p>
-
-</div>
-
-
-<!-- Take me top button -->
-<div class="w3-row-padding w3-center w3-section trans">
-  <a href="#application" class="w3-btn w3-padding w3-light-grey w3-hover-grey font-heading">Take Me To The App
-    <span class="fa fa-angle-double-down"></span></a>
-</div>
-
-
-<!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min" id="application">
-  <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide w3-animate-opacity font-heading"><b>Application</b></span>
-  </div>
-</div>
-
-
-  <br />
-
-
-<!--loading screen -->
-  <div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-card-8" style="width:50%">
+      <div class="w3-modal-content w3-card-8" style="width:50%">
       <header class="w3-container w3-dark-grey">
-        <span onclick="document.getElementById('id01').style.display='none'"
-        class="w3-closebtn">&times;</span>
-        <h2 class="font-heading">Predicting ....</h2>
+        <h2 class="font-heading"> Lab Tests </h2>
       </header>
-      <div class="w3-container">
-  <center>
-  <div id="loading" style="width:50%"><img src="https://d13yacurqjgara.cloudfront.net/users/12755/screenshots/1037374/hex-loader2.gif" alt="" style="width:250px"/> </div>
-  </center>
-      </div>
-      <footer class="w3-container w3-dark-grey font-paragraph">
-        <p class="font-paragraph">It usually takes about 3 minutes to get the output.</p>
-      </footer>
-    </div>
-  </div>
-
-<!-- Content entry -->
-<div class="w3-container w3-content">
-  <h3 class="w3-center font-heading"> Description <br/> <br/> </h3>
-    <p class="font-paragraph">
-      This application is trained only on these
-    <a href="all_tests.html">200 lab tests</a> and <a href="all_tests.html">1271 diagnosis</a>. You can refer these links to know the labtest codes and
-      the diagnosis icd 9 codes.<br />
-    </p>
-
-
-    <ul class="font-paragraph">
-        <li>
-            Make sure you separate both icd codes and lab codes using a comma, enter the icd 9 codes of the patient in the diagnosis section and enter the lab test which have abnormal results in the lab tests section.
-        </li>
-        <li>
-        Click the summary button which shows the patient summary containing the numeric value and its corresponding description. The d_ and l_ for diagnosis and lab tests are added automatically.
-        </li>
-        <li>
-        Verify if the previous history entered is correct and click on the predict button to predict the most likely future
-            diagnosis. It most me noted that the prediction and take as long as 3 minutes.
-        </li>
-        <li>
-            You can hover over the results in the results page to get further information about the diagnosis.
-        </li>
-        <li>
-            Please give a feedback if you find the results to be inaccurate.
-        </li>
-    <li>
-        Try out the Walter White example which contains pre filled values if you are still not able to wrap your head around this by clicking on the Walter White Example button.
-
-    </li>
-    </ul>
-    <br />
-
-
-
-  <div class="w3-container w3-dark-grey w3-card-8">
-      <h2 class="font-heading">Here we go</h2>
-  </div>
-
-  <div class="w3-container w3-card-8 w3-hover-shadow w3-btn w3-white" style="width: 100%" onclick="myFunction('content_entry_ex'); content_text('content_text_ex')">
-    <p id="content_text_ex" class="w3-center w3-text-dark-grey w3-large font-heading"> Walter White Example</p>
-  </div>
-
-  <!-- First Example -->
-  <div id="content_entry_ex" class="w3-hide w3-animate-right w3-left-align w3-container w3-card-8" style="margin-top: 2%">
-
-   <form class="w3-container" action="/results" method="POST" id="res_ex">
-      <p>
-         <input class="w3-input w3-hover-light-grey w3-border-0" name="name" type="text" placeholder="Name"
-                value="Walter White">
-      </p>
-      <p>
-          <input class="w3-input w3-hover-light-grey w3-border-0" name="email" type="text" placeholder="Email-ID (Optional)" >
-      </p>
-
-    <div class="w3-white w3-block w3-margin-top w3-btn w3-dark-gray">
-
-      <p onclick="myFunction('diagnosis_text_ex')" class="w3-text-white w3-large font-heading" > Diagnosis </p>
-
-      <textarea name="diagnosis_text" id="diagnosis_text_ex" rows="4" cols="104" class="w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes">250,362,442,530,531,540,666,997,E8798,250,250,276,311,362,530,648,648</textarea>
-
-    </div>
-
-     <div class="w3-white w3-block w3-margin-top w3-btn w3-dark-gray">
-
-      <p onclick="myFunction('labtests_text_ex')" class="w3-text-white w3-large font-heading"> Lab Tests </p>
-
-      <textarea name="labtests_text" id="labtests_text_ex" rows="4" cols="104" class="w3-margin-bottom w3-animate-right" placeholder="Lab test codes">51275,50868,50882,50931,51006,51244,51254,51256,51265,50809,50893,50902,50960,51221,51222,51279,51493,50970,51277,50809,50811,50931,51006,51221,51222,51256,51275,51277,51279,50893,51249,50862,50882,50902,50960,50970,51301,50971,50912,51250,51206,50868,51214,51274,51283,51265,50954,51248</textarea>
-
-    </div>
-
-  <!-- summary -->
-   <div id="summary" class="w3-modal">
-    <div class="w3-modal-content w3-card-8" style="width:50%">
-
-      <header class="w3-container w3-dark-grey">
-        <span onclick="document.getElementById('summary').style.display='none'"
-        class="w3-closebtn">&times;</span>
-        <h2 class="font-heading">Summary</h2>
-      </header>
-
-      <div class="w3-container">
 
         <div id="id1" class="w3-responsive">
 
-        <h3 class="font-heading"> Lab Tests </h3>
         <table id="labtable" class="w3-table w3-card-4">
         </table>
 
-        <h3 class="font-heading"> Diagnosis </h3>
+        </div>
+
+      </div>
+
+    <br />
+
+    <div class="w3-modal-content w3-card-8" style="width:50%">
+        <div id="id2" class="w3-responsive">
+
+       <header class="w3-container w3-dark-grey">
+        <h2 class="font-heading"> Diagnosis </h2>
+      </header>
+
         <table id="diagnosistable" class="w3-table w3-card-4">
         </table>
 
         </div>
-
-
-        <p>
-          <input class="w3-btn w3-dark-grey font-heading" type="submit" name="submit_btn" value="predict" onclick="document.getElementById('id01').style.display='block'; document.getElementById('summary').style.display='none'">
-        </p>
-
-      </div>
-
-      <footer class="w3-container w3-dark-grey">
-        <p class="font-paragraph">It usually takes about 3 minutes to get the output.</p>
-      </footer>
-
     </div>
-  </div>
-
-    <p>
-      <div id="predict_btn" class="w3-btn w3-dark-grey font-heading" onclick="document.getElementById('summary').style.display='block'; get_summary('labtests_text_ex', 'diagnosis_text_ex')"> Summary </div>
-    </p>
-
-   </form>
-
-  </div>
-
-  <div class="w3-container w3-card-8 w3-hover-shadow w3-btn w3-white" style="width: 100%" onclick="myFunction('content_entry'); content_text('content_text')">
-    <p id="content_text" class="w3-center w3-text-dark-grey w3-large font-heading"> Add patient details &nbsp;&nbsp;<<<<</p>
-  </div>
-
-
-
-  <!-- User enters the details -->
-
-  <div id="content_entry" class="w3-hide w3-animate-right w3-left-align w3-container w3-card-8" style="margin-top: 2%">
-
-   <form class="w3-container" action="/results" method="POST" id="res">
-      <p><input class="w3-input w3-hover-light-grey w3-border-0" name="name" type="text" placeholder="Name"></p>
-      <p><input class="w3-input w3-hover-light-grey w3-border-0" name="email" type="text" placeholder="Email-ID (Optional)"></p>
-
-       <!-- Text for diagnosis -->
-    <div class="w3-white w3-block w3-container w3-margin-top w3-btn w3-dark-gray">
-
-      <p onclick="myFunction('diagnosis_text')" class="w3-text-white w3-large font-heading"> Diagnosis </p>
-
-      <textarea name="diagnosis_text" id="diagnosis_text" rows="4" cols="100" class="w3-hide w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes"></textarea>
-
-    </div>
-
-       <!-- Text for lab tests -->
-     <div class="w3-white w3-block w3-container w3-margin-top w3-btn w3-dark-gray">
-
-      <p onclick="myFunction('labtests_text')" class="w3-text-white w3-large font-heading"> Lab Tests </p>
-
-      <textarea name="labtests_text" id="labtests_text" rows="4" cols="100" class="w3-hide w3-margin-bottom w3-animate-right" placeholder="Lab test codes"></textarea>
-
-    </div>
-
-     <!-- summary -->
-   <div id="summary_pat" class="w3-modal">
-    <div class="w3-modal-content w3-card-8" style="width:50%">
-
-      <header class="w3-container w3-dark-grey">
-        <span onclick="document.getElementById('summary_pat').style.display='none'"
-        class="w3-closebtn">&times;</span>
-        <h2 class="font-heading">Summary</h2>
-      </header>
-
-      <div class="w3-container">
-
-        <div id="id2" class="w3-responsive">
-
-        <h3 class="font-heading"> Lab Tests </h3>
-        <table id="labtable1" class="w3-table w3-card-4">
-        </table>
-
-        <h3 class="font-heading"> Diagnosis </h3>
-        <table id="diagnosistable1" class="w3-table w3-card-4">
-        </table>
-
-        </div>
-
-
-        <p>
-          <input class="w3-btn w3-dark-grey font-heading" type="submit" name="submit_btn" value="predict" onclick="document.getElementById('id01').style.display='block'; document.getElementById('summary_pat').style.display='none'">
-        </p>
-
-      </div>
-
-      <footer class="w3-container w3-dark-grey">
-        <p class="font-paragraph">It usually takes about 2 minutes to get the output.</p>
-      </footer>
-
-    </div>
-  </div>
-
-    <p>
-      <div id="predict_btn_1" class="w3-btn w3-dark-grey font-heading" onclick="document.getElementById('summary_pat').style.display='block'; get_summary('labtests_text', 'diagnosis_text')"> Summary </div>
-    </p>
-   </form>
-
-  </div>
-
-
-  <div class="w3-panel w3-leftbar">
-      <p class="font-paragraph"><b><i>Note : </i></b> It usually takes about 2 minutes to get the output,
-        so you can continue what you were doing.</p>
-  </div>
-
 </div>
 
-
-  <br>
-  <br>
+<br>
 
 
-<!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-light-grey w3-animate-opacity w3-wide font-heading"><b>Contact</b></span>
-  </div>
-</div>
-
-
-<!-- Container (Contact Section) -->
-<div class="w3-content w3-container w3-padding-64" id="contact">
-  <p class="w3-center font-heading"><em>We'd love your feedback!</em></p>
-
-  <div class="w3-row w3-padding-32 w3-section">
-    <div class="w3-col m4 w3-container">
-      <!-- Add Google Maps -->
-      <div id="googleMap" class="w3-round-large" style="width:100%;height:400px;"></div>
-    </div>
-    <div class="w3-col m8 w3-container w3-section">
-      <div class="w3-large w3-margin-bottom font-paragraph">
-        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Bangalore, India<br>
-        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +91 8123727433<br>
-        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: rnaresh.n@gmail.com<br>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Footer -->
+<!-- footer -->
 <footer class="w3-center w3-black w3-padding-24 w3-opacity w3-hover-opacity-off">
       <a href="#home" class="w3-btn w3-padding w3-light-grey w3-hover-grey trans font-heading"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
       <div class="w3-xxxlarge w3-section">
@@ -480,33 +125,7 @@ textarea{
     <h5 style="font-family: Courgette">By Harshith, Naresh, Nishank and Puneeth</h5>
 </footer>
 
-
 <script>
-  function toggleFunction() {
-    var x = document.getElementById("navDemo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
-
-function myMap()
-{
-  myCenter=new google.maps.LatLng(13.030979, 77.565170);
-  var mapOptions= {
-    center:myCenter,
-    zoom:15, scrollwheel: false, draggable: false,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
-
-  var marker = new google.maps.Marker({
-    position: myCenter,
-  });
-  marker.setMap(map);
-}
-
 function myFunction(id) {
     var x = document.getElementById(id);
     if (x.className.indexOf("w3-show") == -1) {
@@ -516,30 +135,15 @@ function myFunction(id) {
     }
 }
 
-function content_text(id){
-    var x = document.getElementById(id);
-    if (x.innerHTML != 'Close X'){
-          x.innerHTML = 'Close X';
-    }
-    else{
-        if (id == 'content_text_ex'){
-            x.innerHTML = 'Walter White Example';
-        }
-        else {
-             x.innerHTML = 'Add patient details &nbsp;&nbsp;<<<<';
-        }
-    }
-}
-
-
-function get_summary(labtests_id, diagnosis_id){
+function get_summary(){
   diagnosis_desc = {'422': 'Acute myocarditis', 'V1301': 'Not Found', '070': 'Viral hepatitis', 'V453': 'Not Found', '502': 'Pneumoconiosis due to other silica or silicates', '921': 'Contusion of eye and adnexa', 'E9502': 'Not Found', '135': 'Sarcoidosis', '271': 'Disorders of carbohydrate transport and metabolism', '966': 'Poisoning by anticonvulsants and anti-Parkinsonism drugs', '7964': 'Not Found', 'V142': 'Not Found', '435': 'Transient cerebral ischemia', '482': 'Other bacterial pneumonia', '769': 'Respiratory distress syndrome', 'V1589': 'Not Found', '758': 'Not Found', '862': 'Injury to other and unspecified intrathoracic organs', '7840': 'Not Found', 'V1072': 'Not Found', 'E882': 'Fall from or out of building or other structure', '123': 'Other cestode infection', '518': 'Other diseases of lung', '286': 'Coagulation defects', 'V5416': 'Not Found', 'V550': 'Not Found', 'V1079': 'Not Found', '79022': 'Not Found', 'V632': 'Not Found', 'E888': 'Other and unspecified fall', '78551': 'Not Found', '303': 'Alcohol dependence syndrome', '975': 'Poisoning by agents primarily acting on the smooth and skeletal muscles and respiratory system', '78009': 'Not Found', '991': 'Effects of reduced temperature', '459': 'Other disorders of circulatory system', 'V153': 'Not Found', 'V1351': 'Not Found', '383': 'Mastoiditis and related conditions', 'E8501': 'Not Found', '285': 'Other and unspecified anemias', '78652': 'Not Found', '156': 'Malignant neoplasm of gallbladder and extrahepatic bile ducts', '117': 'Other mycoses', 'E8705': 'Not Found', 'V0253': 'Not Found', 'V1051': 'Not Found', 'E8792': 'Not Found', '310': 'Specific nonpsychotic mental disorders due to brain damage', '902': 'Injury to blood vessels of abdomen and pelvis', '78001': 'Not Found', '7863': 'Not Found', '619': 'Fistula involving female genital tract', '78449': 'Not Found', '436': 'Acute, but ill-defined, cerebrovascular disease', '806': 'Fracture of vertebral column with spinal cord injury', '78052': 'Not Found', '7906': 'Not Found', '78820': 'Not Found', '7837': 'Not Found', '879': 'Open wound of other and unspecified sites, except limbs', '800': 'Fracture of vault of skull', 'E8161': 'Not Found', '959': 'Injury, other and unspecified', '78096': 'Not Found', '621': 'Disorders of uterus, not elsewhere classified', '78904': 'Not Found', 'E8580': 'Not Found', 'V8812': 'Not Found', '7907': 'Not Found', 'E8136': 'Not Found', 'V3100': 'Not Found', '261': 'Nutritional marasmus', '420': 'Acute pericarditis', '7831': 'Not Found', '79029': 'Not Found', '255': 'Disorders of adrenal glands', '924': 'Contusion of lower limb and of other and unspecified sites', 'V5863': 'Not Found', '272': 'Disorders of lipoid metabolism', '78194': 'Not Found', 'V1081': 'Not Found', '599': 'Other disorders of urethra and urinary tract', 'V4586': 'Not Found', 'V2652': 'Not Found', '882': 'Open wound of hand except finger(s) alone', '596': 'Other disorders of bladder', '910': 'Not Found', 'E9413': 'Not Found', '78939': 'Not Found', 'E8799': 'Not Found', '874': 'Open wound of neck', '324': 'Intracranial and intraspinal abscess', 'V860': 'Not Found', '141': 'Malignant neoplasm of tongue', '78039': 'Not Found', '911': 'Not Found', '745': 'Not Found', 'V596': 'Not Found', 'E9300': 'Not Found', '155': 'Malignant neoplasm of liver and intrahepatic bile ducts', 'V427': 'Not Found', '7821': 'Not Found', 'V1006': 'Not Found', '801': 'Fracture of base of skull', '7866': 'Not Found', 'E9278': 'Not Found', '369': 'Blindness and low vision', '997': 'Complications affecting specified body systems, not elsewhere classified', '451': 'Phlebitis and thrombophlebitis', 'V4283': 'Not Found', '242': 'Thyrotoxicosis with or without goiter', '405': 'Secondary hypertension', 'V1242': 'Not Found', '880': 'Open wound of shoulder and upper arm', '906': 'Late effects of injuries to skin and subcutaneous tissues', 'E8230': 'Not Found', 'V1253': 'Not Found', 'E9288': 'Not Found', '78901': 'Not Found', 'E9507': 'Not Found', '192': 'Malignant neoplasm of other and unspecified parts of nervous system', 'V0251': 'Not Found', '7876': 'Not Found', '7891': 'Not Found', '133': 'Acariasis', '707': 'Chronic ulcer of skin', 'V1084': 'Not Found', '78442': 'Not Found', '7948': 'Not Found', 'E8782': 'Not Found', '319': 'Unspecified mental retardation', '836': 'Dislocation of knee', '78321': 'Not Found', 'E9412': 'Not Found', '425': 'Cardiomyopathy', 'V1588': 'Not Found', '312': 'Disturbance of conduct, not elsewhere classified', '295': 'Schizophrenic disorders', '027': 'Other zoonotic bacterial diseases', '410': 'Acute myocardial infarction', 'V5861': 'Not Found', 'E8849': 'Not Found', 'V1007': 'Not Found', '281': 'Not Found', '570': 'Acute and subacute necrosis of liver', 'V4509': 'Not Found', '886': 'Traumatic amputation of other finger(s) (complete) (partial)', 'E9588': 'Not Found', '337': 'Disorders of the autonomic nervous system', 'E969': 'Late effects of injury purposely inflicted by other person', '161': 'Malignant neoplasm of larynx', '442': 'Other aneurysm', 'V290': 'Not Found', '923': 'Contusion of upper limb', '506': 'Respiratory conditions due to chemical fumes and vapors', 'V3000': 'Not Found', '490': 'Bronchitis, not specified as acute or chronic', 'E9422': 'Not Found', '78099': 'Not Found', 'E8538': 'Not Found', '7804': 'Not Found', '244': 'Acquired hypothyroidism', '743': 'Not Found', '79389': 'Not Found', '138': 'Late effects of acute poliomyelitis', 'E9420': 'Not Found', '227': 'Benign neoplasm of other endocrine glands and related structures', '756': 'Not Found', '434': 'Occlusion of cerebral arteries', 'E8844': 'Not Found', 'V160': 'Not Found', '78651': 'Not Found', 'E8542': 'Not Found', '7859': 'Not Found', 'E9650': 'Not Found', '933': 'Foreign body in pharynx and larynx', '78094': 'Not Found', 'V8801': 'Not Found', '956': 'Injury to peripheral nerve(s) of pelvic girdle and lower limb', '585': 'Chronic kidney disease (CKD)', '78340': 'Not Found', '291': 'Alcohol-induced mental disorders', '372': 'Disorders of conjunctiva', '417': 'Other diseases of pulmonary circulation', '994': 'Effects of other external causes', '378': 'Strabismus and other disorders of binocular eye movements', 'V5413': 'Not Found', '7808': 'Not Found', '78863': 'Not Found', 'E8790': 'Not Found', 'V641': 'Not Found', 'V8523': 'Not Found', '484': 'Pneumonia in infectious diseases classified elsewhere', 'E8842': 'Not Found', 'V8544': 'Not Found', '465': 'Acute upper respiratory infections of multiple or unspecified sites', '189': 'Malignant neoplasm of kidney and other and unspecified urinary organs', 'V5811': 'Not Found', 'E9804': 'Not Found', 'E9290': 'Not Found', 'V6441': 'Not Found', '78609': 'Not Found', 'V8545': 'Not Found', '903': 'Injury to blood vessels of upper extremity', '157': 'Malignant neoplasm of pancreas', 'V551': 'Not Found', 'V6284': 'Not Found', '415': 'Acute pulmonary heart disease', '403': 'Hypertensive chronic kidney disease', '079': 'Viral and chlamydial infection in conditions classified elsewhere and of unspecified site', '980': 'Toxic effect of alcohol', 'V0382': 'Not Found', '7823': 'Not Found', 'E8548': 'Not Found', 'V560': 'Not Found', '240': 'Simple and unspecified goiter', 'E8888': 'Not Found', 'E915': 'Foreign body accidentally entering other orifice', '78659': 'Not Found', '586': 'Renal failure, unspecified', 'V1201': 'Not Found', '572': 'Liver abscess and sequelae of chronic liver disease', 'V5411': 'Not Found', '110': 'Dermatophytosis', '7816': 'Not Found', '038': 'Septicemia', '429': 'Ill-defined descriptions and complications of heart disease', 'V8536': 'Not Found', 'E9384': 'Not Found', '7990': 'Not Found', 'E9393': 'Not Found', '78722': 'Not Found', '907': 'Late effects of injuries to the nervous system', '508': 'Respiratory conditions due to other and unspecified external agents', '824': 'Fracture of ankle', '200': 'Lymphosarcoma and reticulosarcoma and other specified malignant tumors of lymphatic tissue', '7856': 'Not Found', '7895': 'Not Found', '581': 'Nephrotic syndrome', 'E8160': 'Not Found', 'V441': 'Not Found', '729': 'Other disorders of soft tissues', 'E9391': 'Not Found', '872': 'Open wound of ear', '692': 'Contact dermatitis and other eczema', 'V4588': 'Not Found', '049': 'Other non-arthropod-borne viral diseases of central nervous system', '78071': 'Not Found', '78093': 'Not Found', '524': 'Dentofacial anomalies, including malocclusion', '681': 'Cellulitis and abscess of finger and toe', '900': 'Injury to blood vessels of head and neck', '357': 'Inflammatory and toxic neuropathy', '530': 'Diseases of esophagus', '823': 'Fracture of tibia and fibula', 'V8741': 'Not Found', 'E8540': 'Not Found', '711': 'Arthropathy associated with infections', '7868': 'Not Found', '78702': 'Not Found', '202': 'Other malignant neoplasms of lymphoid and histiocytic tissue', '437': 'Other and ill-defined cerebrovascular disease', '774': 'Other perinatal jaundice', '964': 'Poisoning by agents primarily affecting blood constituents', 'E9426': 'Not Found', '884': 'Multiple and unspecified open wound of upper limb', 'V5419': 'Not Found', 'V430': 'Not Found', '870': 'Open wound of ocular adnexa', '150': 'Malignant neoplasm of esophagus', '452': 'Portal vein thrombosis', 'V581': 'Not Found', '269': 'Other nutritional deficiencies', '208': 'Leukemia of unspecified cell type', '353': 'Nerve root and plexus disorders', '7836': 'Not Found', '373': 'Inflammation of eyelids', 'V113': 'Not Found', '908': 'Late effects of other and unspecified injuries', '78199': 'Not Found', 'V4572': 'Not Found', 'E9550': 'Not Found', '777': 'Perinatal disorders of digestive system', '702': 'Other dermatoses', '990': 'Effects of radiation, unspecified', '241': 'Nontoxic nodular goiter', 'E9194': 'Not Found', 'V1053': 'Not Found', 'E9330': 'Not Found', '892': 'Open wound of foot except toe(s) alone', '574': 'Cholelithiasis', 'V090': 'Not Found', '735': 'Acquired deformities of toe', 'E9309': 'Not Found', '713': 'Arthropathy associated with other disorders classified elsewhere', '747': 'Not Found', '320': 'Bacterial meningitis', 'V1087': 'Not Found', '845': 'Sprains and strains of ankle and foot', '191': 'Malignant neoplasm of brain', 'V556': 'Not Found', '341': 'Other demyelinating diseases of central nervous system', '158': 'Malignant neoplasm of retroperitoneum and peritoneum', '890': 'Open wound of hip and thigh', '438': 'Late effects of cerebrovascular disease', '397': 'Diseases of other endocardial structures', '958': 'Certain early complications of trauma', 'V148': 'Not Found', '342': 'Hemiplegia and hemiparesis', 'V5332': 'Not Found', '290': 'Dementias', '171': 'Malignant neoplasm of connective and other soft tissue', '211': 'Benign neoplasm of other parts of digestive system', '78607': 'Not Found', 'V443': 'Not Found', '294': 'Persistent mental disorders due to conditions classified elsewhere', 'V140': 'Not Found', '470': 'Deviated nasal septum', '7818': 'Not Found', '78703': 'Not Found', '7960': 'Not Found', '7801': 'Not Found', '912': 'Not Found', '674': 'Other and unspecified complications of the puerperium, not elsewhere classified', '519': 'Other diseases of respiratory system', 'V1541': 'Not Found', 'V1389': 'Not Found', '394': 'Diseases of mitral valve', '576': 'Other disorders of biliary tract', '501': 'Asbestosis', 'V1049': 'Not Found', 'E9654': 'Not Found', 'E8788': 'Not Found', 'E911': 'Inhalation and ingestion of food causing obstruction of respiratory tract or suffocation', 'E8785': 'Not Found', 'E9688': 'Not Found', 'E0010': 'Not Found', '534': 'Gastrojejunal ulcer', '256': 'Ovarian dysfunction', '322': 'Meningitis of unspecified cause', '351': 'Facial nerve disorders', '926': 'Crushing injury of trunk', '515': 'Postinflammatory pulmonary fibrosis', '934': 'Foreign body in trachea, bronchus, and lung', 'V4561': 'Not Found', '365': 'Glaucoma', '404': 'Hypertensive heart and chronic kidney disease', 'E9421': 'Not Found', '205': 'Myeloid leukemia', 'E887': 'Fracture, cause unspecified', '088': 'Other arthropod-borne diseases', 'V1642': 'Not Found', '731': 'Osteitis deformans and osteopathies associated with other disorders classified elsewhere', '802': 'Fracture of face bones', 'V8541': 'Not Found', '78057': 'Not Found', '617': 'Endometriosis', '78842': 'Not Found', '494': 'Bronchiectasis', 'E9323': 'Not Found', '188': 'Malignant neoplasm of bladder', '447': 'Other disorders of arteries and arterioles', 'V1002': 'Not Found', '920': 'Contusion of face, scalp, and neck except eye(s)', 'E8550': 'Not Found', '237': 'Neoplasm of uncertain behavior of endocrine glands and nervous system', 'V444': 'Not Found', '571': 'Chronic liver disease and cirrhosis', '78606': 'Not Found', '615': 'Inflammatory diseases of uterus, except cervix', 'V1271': 'Not Found', '7921': 'Not Found', '7962': 'Not Found', '199': 'Malignant neoplasm without specification of site', 'E9068': 'Not Found', 'E8789': 'Not Found', '78650': 'Not Found', '746': 'Not Found', '7852': 'Not Found', '375': 'Disorders of lacrimal system', '755': 'Not Found', '223': 'Benign neoplasm of kidney and other urinary organs', '79415': 'Not Found', 'V1011': 'Not Found', 'E8497': 'Not Found', '967': 'Poisoning by sedatives and hypnotics', '270': 'Disorders of amino-acid transport and metabolism', 'E8846': 'Not Found', 'E8780': 'Not Found', 'E9424': 'Not Found', '423': 'Other diseases of pericardium', '265': 'Thiamine and niacin deficiency states', '760': 'Fetus or newborn affected by maternal conditions which may be unrelated to present pregnancy', '832': 'Dislocation of elbow', '955': 'Injury to peripheral nerve(s) of shoulder girdle and upper limb', '804': 'Multiple fractures involving skull or face with other bones', '550': 'Inguinal hernia', '041': 'Bacterial infection in conditions classified elsewhere and of unspecified site', 'V4589': 'Not Found', 'E9248': 'Not Found', '424': 'Other diseases of endocardium', '883': 'Open wound of finger(s)', '558': 'Other and unspecified noninfectious gastroenteritis and colitis', '78050': 'Not Found', '722': 'Intervertebral disc disorders', '764': 'Slow fetal growth and fetal malnutrition', 'E9283': 'Not Found', '370': 'Keratitis', '112': 'Candidiasis', '904': 'Injury to blood vessels of lower extremity and unspecified sites', 'V161': 'Not Found', '541': 'Appendicitis, unqualified', '039': 'Actinomycotic infections', '592': 'Calculus of kidney and ureter', '257': 'Testicular dysfunction', '349': 'Other and unspecified disorders of the nervous system', 'E8162': 'Not Found', '7961': 'Not Found', '666': 'Postpartum hemorrhage', 'V1584': 'Not Found', '78951': 'Not Found', 'V5831': 'Not Found', '127': 'Other intestinal helminthiases', 'V642': 'Not Found', 'V694': 'Not Found', '812': 'Fracture of humerus', '844': 'Sprains and strains of knee and leg', '446': 'Polyarteritis nodosa and allied conditions', '153': 'Malignant neoplasm of colon', '871': 'Open wound of eyeball', '605': 'Redundant prepuce and phimosis', '78821': 'Not Found', '7810': 'Not Found', '380': 'Disorders of external ear', '209': 'NEUROENDOCRINE TUMORS ', 'V171': 'Not Found', '477': 'Allergic rhinitis', 'E8796': 'Not Found', '183': 'Malignant neoplasm of ovary and other uterine adnexa', '182': 'Malignant neoplasm of body of uterus', 'V1021': 'Not Found', '315': 'Specific delays in development', '359': 'Muscular dystrophies and other myopathies', 'E9379': 'Not Found', '543': 'Other diseases of appendix', 'V5339': 'Not Found', '398': 'Other rheumatic heart disease', '346': 'Migraine', '644': 'Early or threatened labor', '512': 'Pneumothorax', 'E8794': 'Not Found', '521': 'Diseases of hard tissues of teeth', '263': 'Other and unspecified protein-calorie malnutrition', '608': 'Other disorders of male genital organs', 'V170': 'Not Found', '7944': 'Not Found', '7919': 'Not Found', 'V1279': 'Not Found', 'V442': 'Not Found', '274': 'Gout', 'E8783': 'Not Found', 'V4459': 'Not Found', 'E9457': 'Not Found', '78033': 'Not Found', '277': 'Other and unspecified disorders of metabolism', '600': 'Hyperplasia of prostate', '595': 'Cystitis', '526': 'Diseases of the jaws', '388': 'Other disorders of ear', '414': 'Other forms of chronic ischemic heart disease', '603': 'Hydrocele', '922': 'Contusion of trunk', '623': 'Noninflammatory disorders of vagina', 'V1259': 'Not Found', '78831': 'Not Found', 'V0481': 'Not Found', 'E956': 'Suicide and self-inflicted injury by cutting and piercing instrument', '172': 'Malignant melanoma of skin', '78838': 'Not Found', 'E918': 'Caught accidentally in or between objects', '301': 'Personality disorders', '860': 'Traumatic pneumothorax and hemothorax', 'E9501': 'Not Found', 'E9358': 'Not Found', '7842': 'Not Found', '347': 'Cataplexy and narcolepsy', '999': 'Complications of medical care, not elsewhere classified', '340': 'Multiple sclerosis', '701': 'Other hypertrophic and atrophic conditions of skin', '742': 'Not Found', '620': 'Noninflammatory disorders of ovary, fallopian tube, and broad ligament', '426': 'Conduction disorders', '723': 'Other disorders of cervical region', '690': 'Erythematosquamous dermatosis', '728': 'Disorders of muscle, ligament, and fascia', 'E9319': 'Not Found', '78639': 'Not Found', 'V4975': 'Not Found', '7937': 'Not Found', '715': 'Osteoarthrosis and allied disorders', '79902': 'Not Found', 'E9108': 'Not Found', '382': 'Suppurative and unspecified otitis media', '936': 'Foreign body in intestine and colon', 'E9348': 'Not Found', '709': 'Other disorders of skin and subcutaneous tissue', '7847': 'Not Found', '766': 'Disorders relating to long gestation and high birthweight', 'E9198': 'Not Found', '748': 'Not Found', '356': 'Hereditary and idiopathic peripheral neuropathy', '998': 'Other complications of procedures, NEC', 'E9306': 'Not Found', 'E9398': 'Not Found', '834': 'Dislocation of finger', '626': 'Disorders of menstruation and other abnormal bleeding from female genital tract', '78899': 'Not Found', '694': 'Bullous dermatoses', '443': 'Other peripheral vascular disease', '78930': 'Not Found', 'V202': 'Not Found', '053': 'Herpes zoster', 'V850': 'Not Found', '362': 'Other retinal disorders', '7935': 'Not Found', '719': 'Other and unspecified disorders of joint', 'V0482': 'Not Found', 'V4511': 'Not Found', 'V1505': 'Not Found', 'V553': 'Not Found', 'E8798': 'Not Found', 'V298': 'Not Found', '170': 'Malignant neoplasm of bone and articular cartilage', 'V151': 'Not Found', 'V4364': 'Not Found', 'V5862': 'Not Found', 'V4973': 'Not Found', 'E8859': 'Not Found', 'E8528': 'Not Found', 'V4611': 'Not Found', '416': 'Chronic pulmonary heart disease', 'V4361': 'Not Found', '78760': 'Not Found', '493': 'Asthma', '768': 'Intrauterine hypoxia and birth asphyxia', '7955': 'Not Found', 'V1255': 'Not Found', 'E8529': 'Not Found', '807': 'Fracture of rib(s), sternum, larynx, and trachea', 'V5867': 'Not Found', '273': 'Disorders of plasma protein metabolism', '486': 'Pneumonia, organism unspecified', '820': 'Fracture of neck of femur', 'V1504': 'Not Found', '7910': 'Not Found', '79439': 'Not Found', 'E9359': 'Not Found', '402': 'Hypertensive heart disease', '302': 'Sexual and gender identity disorders', '432': 'Other and unspecified intracranial hemorrhage', '250': 'Diabetes mellitus', 'E8502': 'Not Found', 'E8830': 'Not Found', 'V4962': 'Not Found', '327': 'ORGANIC SLEEP DISORDERS ', '759': 'Not Found', 'E8889': 'Not Found', 'E8881': 'Not Found', '314': 'Hyperkinetic syndrome of childhood', '78829': 'Not Found', 'V3001': 'Not Found', 'E8706': 'Not Found', 'E9299': 'Not Found', '364': 'Disorders of iris and ciliary body', '557': 'Vascular insufficiency of intestine', 'E9344': 'Not Found', 'E9682': 'Not Found', 'V554': 'Not Found', 'V292': 'Not Found', 'V0991': 'Not Found', '483': 'Pneumonia due to other specified organism', '865': 'Injury to spleen', '296': 'Episodic mood disorders', '284': 'Aplastic anemia and other bone marrow failure syndrome', '627': 'Menopausal and postmenopausal disorders', '040': 'Other bacterial diseases', '972': 'Poisoning by agents primarily affecting the cardiovascular system', '821': 'Fracture of other and unspecified parts of femur', 'V1552': 'Not Found', '7813': 'Not Found', 'E9444': 'Not Found', 'V8542': 'Not Found', 'V643': 'Not Found', 'E9293': 'Not Found', 'E9353': 'Not Found', 'V5417': 'Not Found', 'V4987': 'Not Found', 'V1042': 'Not Found', '507': 'Pneumonitis due to solids and liquids', 'E8132': 'Not Found', 'E8494': 'Not Found', '776': 'Hematological disorders of newborn', '582': 'Chronic glomerulonephritis', 'E9289': 'Not Found', 'V451': 'Not Found', 'E9504': 'Not Found', '7949': 'Not Found', '180': 'Malignant neoplasm of cervix uteri', '830': 'Dislocation of jaw', '564': 'Functional digestive disorders, not elsewhere classified', '7892': 'Not Found', 'V1062': 'Not Found', 'V4571': 'Not Found', '323': 'Encephalitis, myelitis, and encephalomyelitis', '7873': 'Not Found', '331': 'Other cerebral degenerations', '962': 'Poisoning by hormones and synthetic substitutes', '708': 'Urticaria', '7963': 'Not Found', '78903': 'Not Found', '556': 'Ulcerative colitis', 'V4282': 'Not Found', 'V5412': 'Not Found', 'E9800': 'Not Found', 'V1202': 'Not Found', '358': 'Myoneural disorders', 'V061': 'Not Found', 'V431': 'Not Found', '7861': 'Not Found', 'E9317': 'Not Found', 'V4976': 'Not Found', '977': 'Poisoning by other and unspecified drugs and medicinal substances', 'V0254': 'Not Found', '721': 'Spondylosis and allied disorders', '863': 'Injury to gastrointestinal tract', '840': 'Sprains and strains of shoulder and upper arm', '968': 'Poisoning by other central nervous system depressants and anesthetics', '345': 'Epilepsy and recurrent seizures', 'E8496': 'Not Found', 'V1582': 'Not Found', 'V1241': 'Not Found', 'E8809': 'Not Found', 'V721': 'Not Found', 'V4984': 'Not Found', '7843': 'Not Found', 'V1649': 'Not Found', '567': 'Peritonitis and retroperitoneal infections', '7945': 'Not Found', '034': 'Streptococcal sore throat and scarlet fever', 'E912': 'Inhalation and ingestion of other object causing obstruction of respiratory tract or suffocation', 'E8791': 'Not Found', '725': 'Polymyalgia rheumatica', '78441': 'Not Found', '527': 'Diseases of the salivary glands', '616': 'Inflammatory disease of cervix, vagina, and vulva', '282': 'Not Found', '348': 'Other conditions of brain', 'V434': 'Not Found', '197': 'Secondary malignant neoplasm of respiratory and digestive systems', '174': 'Malignant neoplasm of female breast', 'V1000': 'Not Found', 'E8122': 'Not Found', '305': 'Nondependent abuse of drugs', 'E8843': 'Not Found', '225': 'Benign neoplasm of brain and other parts of nervous system', 'V707': 'Not Found', '262': 'Other severe protein-calorie malnutrition', '317': 'Mild mental retardation', '7902': 'Not Found', '462': 'Acute pharyngitis', 'E8810': 'Not Found', '052': 'Chickenpox', '78630': 'Not Found', '578': 'Gastrointestinal hemorrhage', '246': 'Other disorders of thyroid', 'V452': 'Not Found', 'E8508': 'Not Found', '730': 'Osteomyelitis, periostitis, and other infections involving bone', '720': 'Ankylosing spondylitis and other inflammatory spondylopathies', '421': 'Acute and subacute endocarditis', '813': 'Fracture of radius and ulna', '292': 'Drug-induced mental disorders', '706': 'Diseases of sebaceous glands', '054': 'Herpes simplex', '396': 'Diseases of mitral and aortic valves', 'E8500': 'Not Found', '763': 'Fetus or newborn affected by other complications of labor and delivery', '736': 'Other acquired deformities of limbs', '485': 'Bronchopneumonia, organism unspecified', 'V1251': 'Not Found', 'V4986': 'Not Found', '866': 'Injury to kidney', '7824': 'Not Found', '919': 'Not Found', '455': 'Hemorrhoids', 'E8190': 'Not Found', 'V1001': 'Not Found', '7885': 'Not Found', 'V4502': 'Not Found', 'E9401': 'Not Found', '852': 'Subarachnoid, subdural, and extradural hemorrhage, following injury', '517': 'Lung involvement in conditions classified elsewhere', 'V1009': 'Not Found', '591': 'Hydronephrosis', 'V1003': 'Not Found', '147': 'Malignant neoplasm of nasopharynx', '935': 'Foreign body in mouth, esophagus, and stomach', 'V1047': 'Not Found', 'V163': 'Not Found', '78559': 'Not Found', '553': 'Other hernia of abdominal cavity without mention of obstruction or gangrene', '491': 'Chronic bronchitis', '198': 'Secondary malignant neoplasm of other specified sites', 'V8539': 'Not Found', '496': 'Chronic airway obstruction, not elsewhere classified', '78905': 'Not Found', 'V8543': 'Not Found', '7991': 'Not Found', 'E8700': 'Not Found', '413': 'Angina pectoris', 'V0981': 'Not Found', '440': 'Atherosclerosis', 'E9174': 'Not Found', '173': 'Other malignant neoplasm of skin', '78723': 'Not Found', '839': 'Other, multiple, and ill-defined dislocations', '79311': 'Not Found', '614': 'Inflammatory disease of ovary, fallopian tube, pelvic cellular tissue, and peritoneum', '194': 'Malignant neoplasm of other endocrine glands and related structures', 'V183': 'Not Found', '7993': 'Not Found', '811': 'Fracture of scapula', '523': 'Gingival and periodontal diseases', '204': 'Lymphoid leukemia', '78059': 'Not Found', 'V8531': 'Not Found', 'V6549': 'Not Found', '691': 'Atopic dermatitis and related conditions', 'V0262': 'Not Found', '458': 'Hypotension', '78062': 'Not Found', 'E9378': 'Not Found', 'E8199': 'Not Found', '737': 'Curvature of spine', '528': 'Diseases of the oral soft tissues, excluding lesions specific for gingiva and tongue', '727': 'Other disorders of synovium, tendon, and bursa', '580': 'Acute glomerulonephritis', '7802': 'Not Found', 'V433': 'Not Found', '695': 'Erythematous conditions', 'E8499': 'Not Found', '607': 'Disorders of penis', '778': 'Conditions involving the integument and temperature regulation of fetus and newborn', 'V166': 'Not Found', '808': 'Fracture of pelvis', 'V626': 'Not Found', 'V1091': 'Not Found', 'E8261': 'Not Found', 'E0009': 'Not Found', 'V180': 'Not Found', 'V4579': 'Not Found', '79099': 'Not Found', '803': 'Other and unqualified skull fractures', '520': 'Disorders of tooth development and eruption', '684': 'Impetigo', '78839': 'Not Found', 'V1089': 'Not Found', 'E9307': 'Not Found', 'E9385': 'Not Found', 'V0179': 'Not Found', 'V1052': 'Not Found', 'V1529': 'Not Found', '433': 'Occlusion and stenosis of precerebral arteries', '235': 'Not Found', '472': 'Chronic pharyngitis and nasopharyngitis', '395': 'Diseases of aortic valve', 'V462': 'Not Found', 'V8533': 'Not Found', '308': 'Acute reaction to stress', 'V066': 'Not Found', 'V1254': 'Not Found', '78791': 'Not Found', 'V011': 'Not Found', 'E9301': 'Not Found', 'V422': 'Not Found', 'E9310': 'Not Found', 'E927': 'Overexertion and strenuous and repetitive movements or loads', '249': 'Secondary diabetes mellitus', 'E9298': 'Not Found', '478': 'Other diseases of upper respiratory tract', 'E8600': 'Not Found', '376': 'Disorders of the orbit', 'V1082': 'Not Found', 'E8130': 'Not Found', '963': 'Poisoning by primarily systemic agents', '579': 'Intestinal malabsorption', '78830': 'Not Found', 'V1272': 'Not Found', '601': 'Inflammatory diseases of prostate', 'V1046': 'Not Found', 'E8786': 'Not Found', '078': 'Other diseases due to viruses and Chlamydiae', '867': 'Injury to pelvic organs', '814': 'Fracture of carpal bone(s)', 'E8150': 'Not Found', '577': 'Diseases of pancreas', '78701': 'Not Found', '868': 'Injury to other intra-abdominal organs', 'V625': 'Not Found', '810': 'Fracture of clavicle', 'V8535': 'Not Found', '861': 'Injury to heart and lung', '79989': 'Not Found', 'V1581': 'Not Found', 'E8781': 'Not Found', 'E9479': 'Not Found', '7862': 'Not Found', '598': 'Urethral stricture', 'V3101': 'Not Found', '78065': 'Not Found', '79579': 'Not Found', '535': 'Gastritis and duodenitis', '775': 'Endocrine and metabolic disturbances specific to the fetus and newborn', '007': 'Other protozoal intestinal diseases', '78909': 'Not Found', 'V5331': 'Not Found', 'E9305': 'Not Found', '411': 'Other acute and subacute forms of ischemic heart disease', '243': 'Congenital hypothyroidism', '130': 'Toxoplasmosis', '770': 'Other respiratory conditions of fetus and newborn', '696': 'Psoriasis and similar disorders', 'V103': 'Not Found', '238': 'Neoplasm of uncertain behavior of other and unspecified sites and tissues', 'V440': 'Not Found', '78603': 'Not Found', '78843': 'Not Found', '309': 'Adjustment reaction', 'V420': 'Not Found', '826': 'Fracture of one or more phalanges of foot', '253': 'Disorders of the pituitary gland and its hypothalamic control', '162': 'Malignant neoplasm of trachea, bronchus, and lung', 'V5869': 'Not Found', '773': 'Hemolytic disease of fetus or newborn, due to isoimmunization', '965': 'Poisoning by analgesics, antipyretics, and antirheumatics', '78060': 'Not Found', '78604': 'Not Found', 'V653': 'Not Found', 'V620': 'Not Found', 'E9503': 'Not Found', '575': 'Other disorders of gallbladder', 'V1261': 'Not Found', '537': 'Other disorders of stomach and duodenum', '531': 'Gastric ulcer', 'V2651': 'Not Found', '011': 'Pulmonary tuberculosis', '042': 'Human immunodeficiency virus [HIV] disease', '750': 'Not Found', '336': 'Other diseases of spinal cord', 'E8784': 'Not Found', '816': 'Fracture of one or more phalanges of hand', '326': 'Late effects of intracranial abscess or pyogenic infection', '772': 'Fetal and neonatal hemorrhage', 'E8498': 'Not Found', '7851': 'Not Found', '203': 'Multiple myeloma and immunoproliferative neoplasms', '918': 'Not Found', '226': 'Benign neoplasm of thyroid glands', '492': 'Emphysema', '970': 'Poisoning by central nervous system stimulants', 'V8538': 'Not Found', '78729': 'Not Found', '969': 'Poisoning by psychotropic agents', 'V293': 'Not Found', 'E9173': 'Not Found', 'E8880': 'Not Found', '835': 'Dislocation of hip', 'V3401': 'Not Found', '385': 'Other disorders of middle ear and mastoid', '741': 'Not Found', '228': 'Hemangioma and lymphangioma, any site', '350': 'Trigeminal nerve disorders', '587': 'Renal sclerosis, unspecified', '148': 'Malignant neoplasm of hypopharynx', 'E8704': 'Not Found', '952': 'Spinal cord injury without evidence of spinal bone injury', '584': 'Acute renal failure', 'E9443': 'Not Found', '361': 'Retinal detachments and defects', 'V146': 'Not Found', 'E9670': 'Not Found', '7850': 'Not Found', '287': 'Purpura and other hemorrhagic conditions', '78061': 'Not Found', '754': 'Not Found', 'V5883': 'Not Found', 'E9411': 'Not Found', '705': 'Disorders of sweat glands', '7854': 'Not Found', '338': 'PAIN ', '604': 'Orchitis and epididymitis', '354': 'Mononeuritis of upper limb and mononeuritis multiplex', '79093': 'Not Found', 'E9600': 'Not Found', 'E9430': 'Not Found', '588': 'Disorders resulting from impaired renal function', 'E9010': 'Not Found', 'V4971': 'Not Found', 'E9351': 'Not Found', '536': 'Disorders of function of stomach', 'E9352': 'Not Found', '881': 'Open wound of elbow, forearm, and wrist', 'V5865': 'Not Found', '453': 'Other venous embolism and thrombosis', '765': 'Disorders relating to short gestation and low birthweight', 'V1209': 'Not Found', '431': 'Intracerebral hemorrhage', '464': 'Acute laryngitis and tracheitis', 'V4585': 'Not Found', '008': 'Intestinal infections due to other organisms', 'E8210': 'Not Found', '7830': 'Not Found', '245': 'Thyroiditis', 'E8191': 'Not Found', 'V652': 'Not Found', 'V4575': 'Not Found', 'V1043': 'Not Found', 'V173': 'Not Found', 'V169': 'Not Found', '047': 'Meningitis due to enterovirus', 'V4512': 'Not Found', '78469': 'Not Found', '236': 'Neoplasm of uncertain behavior of genitourinary organs', 'E9354': 'Not Found', '457': 'Noninfectious disorders of lymphatic channels', 'V017': 'Not Found', '154': 'Malignant neoplasm of rectum, rectosigmoid junction, and anus', 'V071': 'Not Found', '031': 'Diseases due to other mycobacteria', '927': 'Crushing injury of upper limb', '78451': 'Not Found', 'E9315': 'Not Found', 'V8530': 'Not Found', 'E9291': 'Not Found', '738': 'Other acquired deformity', 'E8551': 'Not Found', '428': 'Heart failure', '590': 'Infections of kidney', 'E9356': 'Not Found', '685': 'Pilonidal cyst', '7904': 'Not Found', 'V5489': 'Not Found', '78097': 'Not Found', 'E9201': 'Not Found', 'V5812': 'Not Found', 'E8556': 'Not Found', 'E8583': 'Not Found', 'E9452': 'Not Found', '583': 'Nephritis and nephropathy, not specified as acute or chronic', 'V1203': 'Not Found', '115': 'Histoplasmosis', '562': 'Diverticula of intestine', '299': 'Pervasive developmental disorders', '488': 'Influenza due to identified avian influenza virus', '445': 'Atheroembolism', 'V1741': 'Not Found', '905': 'Late effects of musculoskeletal and connective tissue injuries', '704': 'Diseases of hair and hair follicles', '854': 'Intracranial injury of other and unspecified nature', '7833': 'Not Found', '318': 'Other specified mental retardation', 'V4365': 'Not Found', 'E9447': 'Not Found', 'V8534': 'Not Found', '78841': 'Not Found', 'E8768': 'Not Found', '218': 'Uterine leiomyoma', '749': 'Not Found', 'E8495': 'Not Found', 'V8522': 'Not Found', '533': 'Peptic ulcer, site unspecified', '449': 'Septic arterial embolism', '7881': 'Not Found', '195': 'Malignant neoplasm of other and ill-defined sites', '771': 'Infections specific to the perinatal period', '714': 'Rheumatoid arthritis and other inflammatory polyarthropathies', '444': 'Arterial embolism and thrombosis', '360': 'Disorders of the globe', 'E8543': 'Not Found', 'V425': 'Not Found', 'E9478': 'Not Found', '79319': 'Not Found', 'V1509': 'Not Found', '532': 'Duodenal ulcer', '268': 'Vitamin D deficiency', '7812': 'Not Found', '995': 'Certain adverse effects not elsewhere classified', '752': 'Not Found', '682': 'Other cellulitis and abscess', 'E8181': 'Not Found', 'V058': 'Not Found', '555': 'Regional enteritis', 'E9803': 'Not Found', 'V029': 'Not Found', '7827': 'Not Found', '779': 'Other and ill-defined conditions originating in the perinatal period', '648': 'Other current conditions in the mother classifiable elsewhere, but complicating pregnancy, childbirth, or the puerperium', '594': 'Calculus of lower urinary tract', 'V4501': 'Not Found', '873': 'Other open wound of head', 'V4972': 'Not Found', 'V851': 'Not Found', '853': 'Other and unspecified intracranial hemorrhage following injury', 'E8232': 'Not Found', '374': 'Other disorders of eyelids', 'V4576': 'Not Found', '193': 'Malignant neoplasm of thyroid gland', '78906': 'Not Found', '401': 'Essential hypertension', 'V600': 'Not Found', '864': 'Injury to liver', '332': "Parkinson's disease", '698': 'Pruritus and related conditions', '79431': 'Not Found', '611': 'Other disorders of breast', '815': 'Fracture of metacarpal bone(s)', '916': 'Not Found', '304': 'Drug dependence', '149': 'Malignant neoplasm of other and ill-defined sites within the lip, oral cavity, and pharynx', '363': 'Chorioretinal inflammations, scars, and other disorders of choroid', '724': 'Other and unspecified disorders of back', '693': 'Dermatitis due to substances taken internally', '79551': 'Not Found', 'V714': 'Not Found', 'V461': 'Not Found', '78550': 'Not Found', 'V1041': 'Not Found', '712': 'Crystal arthropathies', 'E9361': 'Not Found', 'E9809': 'Not Found', '805': 'Fracture of vertebral column without mention of spinal cord injury', '618': 'Genital prolapse', 'V502': 'Not Found', 'V5866': 'Not Found', 'V1005': 'Not Found', '136': 'Other and unspecified infectious and parasitic diseases', '276': 'Disorders of fluid, electrolyte, and acid-base balance', '311': 'Depressive disorder, not elsewhere classified', 'V053': 'Not Found', 'V1749': 'Not Found', 'E9392': 'Not Found', '111': 'Dermatomycosis, other and unspecified', 'E989': 'Late effects of injury, undetermined whether accidentally or purposely inflicted', '78907': 'Not Found', '094': 'Neurosyphilis', '78900': 'Not Found', 'E8147': 'Not Found', '703': 'Diseases of nail', '560': 'Intestinal obstruction without mention of hernia', '7931': 'Not Found', '757': 'Not Found', 'V1302': 'Not Found', '216': 'Benign neoplasm of skin', '481': 'Pneumococcal pneumonia [Streptococcus pneumoniae pneumonia]', '333': 'Other extrapyramidal disease and abnormal movement disorders', '751': 'Not Found', '593': 'Other disorders of kidney and ureter', '151': 'Malignant neoplasm of stomach', '525': 'Other diseases and conditions of the teeth and supporting structures', 'E9220': 'Not Found', 'V8524': 'Not Found', '7864': 'Not Found', '646': 'Other complications of pregnancy, not elsewhere classified', '260': 'Kwashiorkor', '487': 'Influenza', 'V168': 'Not Found', 'V854': 'Not Found', '850': 'Concussion', 'V1204': 'Not Found', '726': 'Peripheral enthesopathies and allied syndromes', 'E8490': 'Not Found', '78959': 'Not Found', '391': 'Rheumatic fever with heart involvement', '480': 'Viral pneumonia', 'E9500': 'Not Found', '343': 'Infantile cerebral palsy', '456': 'Varicose veins of other sites', '901': 'Injury to blood vessels of thorax', '733': 'Other disorders of bone and cartilage', '371': 'Corneal opacity and other disorders of cornea', '139': 'Late effects of other infectious and parasitic diseases', 'V145': 'Not Found', '251': 'Other disorders of pancreatic internal secretion', 'V1507': 'Not Found', '7872': 'Not Found', 'V1551': 'Not Found', '280': 'Iron deficiency anemias', 'V555': 'Not Found', '516': 'Other alveolar and parietoalveolar pneumonopathy', '510': 'Empyema', '982': 'Toxic effect of solvents other than petroleum based', '293': 'Transient mental disorders due to conditions classified elsewhere', 'V1061': 'Not Found', 'V1088': 'Not Found', '7845': 'Not Found', '78552': 'Not Found', 'E9429': 'Not Found', '075': 'Infectious mononucleosis', '366': 'Cataract', '427': 'Cardiac dysrhythmias', 'V8537': 'Not Found', 'V270': 'Not Found', '78003': 'Not Found', '710': 'Diffuse diseases of connective tissue', '996': 'Complications peculiar to certain specified procedures', '475': 'Peritonsillar abscess', '851': 'Cerebral laceration and contusion', '185': 'Malignant neoplasm of prostate', '201': "Hodgkin's disease", '565': 'Anal fissure and fistula', 'E9192': 'Not Found', 'E9331': 'Not Found', 'E8120': 'Not Found', '7806': 'Not Found', '297': 'Delusional disorders', '7908': 'Not Found', '78605': 'Not Found', '79094': 'Not Found', 'V0259': 'Not Found', '377': 'Disorders of optic nerve and visual pathways', '825': 'Fracture of one or more tarsal and metatarsal bones', 'V454': 'Not Found', 'E9347': 'Not Found', '196': 'Secondary and unspecified malignant neoplasm of lymph nodes', 'E9394': 'Not Found', '278': 'Overweight, obesity and other hyperalimentation', '7994': 'Not Found', '78720': 'Not Found', 'V1508': 'Not Found', 'E9363': 'Not Found', 'V8525': 'Not Found', 'V1083': 'Not Found', '266': 'Deficiency of B-complex components', 'E9320': 'Not Found', 'E9060': 'Not Found', '466': 'Acute bronchitis and bronchiolitis', '552': 'Other hernia of abdominal cavity, with obstruction, but without mention of gangrene', 'V644': 'Not Found', '386': 'Vertiginous syndromes and other disorders of vestibular system', '379': 'Other disorders of eye', '355': 'Mononeuritis of lower limb', '164': 'Malignant neoplasm of thymus, heart, and mediastinum', '473': 'Chronic sinusitis', 'V0980': 'Not Found', '753': 'Not Found', 'V1641': 'Not Found', '78721': 'Not Found', '212': 'Benign neoplasm of respiratory and intrathoracic organs', '412': 'Old myocardial infarction', '7905': 'Not Found', '454': 'Varicose veins of lower extremities', '79092': 'Not Found', 'V4281': 'Not Found', 'E9229': 'Not Found', '831': 'Dislocation of shoulder', 'E8532': 'Not Found', '566': 'Abscess of anal and rectal regions', '847': 'Sprains and strains of other and unspecified parts of back', '948': 'Burns classified according to extent of body surface involved', 'V4578': 'Not Found', '573': 'Other disorders of liver', 'V6442': 'Not Found', 'E8504': 'Not Found', 'E9689': 'Not Found', 'E9390': 'Not Found', '909': 'Late effects of other and unspecified external causes', '522': 'Diseases of pulp and periapical tissues', 'V5481': 'Not Found', 'E8192': 'Not Found', 'E916': 'Struck accidentally by falling object', 'V1085': 'Not Found', '513': 'Abscess of lung and mediastinum', 'V552': 'Not Found', 'V4577': 'Not Found', '335': 'Anterior horn cell disease', 'E8801': 'Not Found', '511': 'Pleurisy', '334': 'Spinocerebellar disease', '647': 'Infectious and parasitic conditions in the mother classifiable elsewhere, but complicating pregnancy, childbirth, or the puerperium', 'V463': 'Not Found', '252': 'Disorders of parathyroid gland', 'V446': 'Not Found', 'V0261': 'Not Found', 'V0381': 'Not Found', '163': 'Malignant neoplasm of pleura', '568': 'Other disorders of peritoneum', '300': 'Anxiety, dissociative and somatoform disorders', '529': 'Diseases and other conditions of the tongue', '233': 'Carcinoma in situ of breast and genitourinary system', '441': 'Aortic aneurysm and dissection', '822': 'Fracture of patella', '957': 'Injury to other and unspecified nerves', 'E9313': 'Not Found', '951': 'Injury to other cranial nerve(s)', '009': 'Ill-defined intestinal infections', 'V1004': 'Not Found', '7835': 'Not Found', 'V167': 'Not Found', '875': 'Open wound of chest (wall)', '7820': 'Not Found', 'V4573': 'Not Found', 'V4983': 'Not Found', 'V141': 'Not Found', '275': 'Disorders of mineral metabolism', '239': 'NEOPLASMS OF UNSPECIFIED NATURE ', '78459': 'Not Found', '389': 'Hearing loss', '625': 'Pain and other symptoms associated with female genital organs', '325': 'Phlebitis and thrombophlebitis of intracranial venous sinuses', '307': 'Special symptoms or syndromes, not elsewhere classified', '971': 'Poisoning by drugs primarily affecting the autonomic nervous system', '461': 'Acute sinusitis', 'E9571': 'Not Found', 'E9509': 'Not Found', '283': 'Not Found', 'E9530': 'Not Found', 'V174': 'Not Found', 'V4582': 'Not Found', '569': 'Other disorders of intestine', 'V667': 'Not Found', '686': 'Other local infections of skin and subcutaneous tissue', '430': 'Subarachnoid hemorrhage', 'E9179': 'Not Found', '298': 'Other nonorganic psychoses', '279': 'Disorders involving the immune mechanism', 'E9308': 'Not Found', 'E9208': 'Not Found', '767': 'Birth trauma', '716': 'Other and unspecified arthropathies', '368': 'Visual disturbances', 'E8708': 'Not Found', 'V1044': 'Not Found', '214': 'Lipoma', '514': 'Pulmonary congestion and hypostasis', 'V08': 'Asymptomatic human immunodeficiency virus [HIV] infection status', '7825': 'Not Found', 'E8121': 'Not Found', 'V4581': 'Not Found', 'E9346': 'Not Found', 'V5864': 'Not Found', 'E9342': 'Not Found', 'E9383': 'Not Found', '220': 'Benign neoplasm of ovary', '152': 'Malignant neoplasm of small intestine, including duodenum', '259': 'Other endocrine disorders', '540': 'Acute appendicitis', 'E8493': 'Not Found', 'V1252': 'Not Found', '495': 'Extrinsic allergic alveolitis', '78799': 'Not Found', '913': 'Not Found', 'V4574': 'Not Found', '289': 'Not Found', '78079': 'Not Found', 'E966': 'Assault by cutting and piercing instrument', '891': 'Open wound of knee, leg [except thigh], and ankle', '344': 'Other paralytic syndromes', '288': 'Diseases of white blood cells', 'V8532': 'Not Found', '79001': 'Not Found'};
   lab_desc = {'51447': 'Macrophages', '51425': 'Kappa', '51397': 'CD16/56', '51264': 'Platelet Clumps', '51275': 'PTT', '51501': 'Transitional Epithelial Cells', '51499': 'Sperm', '51189': 'CD57', '50866': 'Ammonia', '51476': 'Epithelial Cells', '51194': 'CD8 Cells, Percent', '50825': 'Temperature', '51123': 'Other', '51067': '24 hr Creatinine', '51119': 'Metamyelocytes', '51446': 'Lymphocytes', '51217': 'Glyco A', '51274': 'PT', '51268': 'Polychromasia', '51511': 'Urine Fat Bodies', '51482': 'Hyaline Casts', '51149': 'Bleeding Time', '51262': 'Pencil Cells', '51035': 'LD, Body Fluid', '50898': 'Cancer Antigen 27.29', '51057': 'Potassium, Pleural', '51409': 'CD4/CD8 Ratio', '51124': 'Plasma', '51111': 'Bands', '51530': 'AF-AFP', '51010': 'Vitamin B12', '51068': '24 hr Protein', '51340': 'Kappa', '51347': 'Eosinophils', '50828': 'Ventilator', '51143': 'Atypical Lymphocytes', '51051': 'Cholesterol, Pleural', '51551': 'VOIDED SPECIMEN', '50998': 'Transferrin', '50941': 'Hepatitis B Surface Antigen', '51396': 'CD16', '51478': 'Glucose', '51097': 'Potassium, Urine', '50800': 'SPECIMEN TYPE', '51332': 'CD7', '50938': 'Hepatitis A Virus IgM Antibody', '51169': 'CD20 %', '51376': 'Macrophage', '50919': 'EDTA Hold', '51180': 'CD4 Cells, Percent', '51216': 'Fragmented Cells', '50856': 'Acetaminophen', '51372': 'Joint Crystals, Location', '51185': 'CD5 %', '51307': 'CD13', '51454': 'Plasma Cells', '51341': 'Lambda', '51253': 'Monocyte Count', '51375': 'Lymphocytes', '51078': 'Chloride, Urine', '50962': 'N-Acetylprocainamide (NAPA)', '51467': 'Broad Casts', '51211': 'Factor XIII', '51400': 'CD20', '51070': 'Albumin/Creatinine, Urine', '51113': 'Blasts', '51219': 'H/O Smear', '51311': 'CD16', '50876': 'Anti-Smooth Muscle Antibody', '50905': 'Cholesterol, LDL, Calculated', '51151': 'Burr Cells', '51401': 'CD22', '51431': 'Monos', '51508': 'Urine Color', '51128': 'WBC, Ascites', '50947': 'I', '51299': 'Von Willebrand Factor Antigen', '51316': 'CD22', '51017': 'PEP, CSF', '51550': 'VOIDED SPECIMEN', '50968': 'Phenytoin, Free', '50864': 'Alpha-Fetoprotein', '51540': 'PROBLEM SPECIMEN', '50824': 'Sodium, Whole Blood', '51018': 'Total Protein, CSF', '51343': 'Atypical Lymphocytes', '51291': 'Sickle Cells', '51238': 'Kappa', '51512': 'Urine Mucous', '51545': 'VOIDED SPECIMEN', '50904': 'Cholesterol, HDL', '51421': 'Glyco A', '50860': 'AFP, Maternal Screen', '50985': 'Study Tubes', '51486': 'Leukocytes', '51308': 'CD138', '50881': 'Beta-2 Microglobulin', '50930': 'Globulin', '50833': 'Potassium', '51318': 'CD25', '50970': 'Phosphate', '50988': 'Testosterone', '51389': 'CD103', '50807': 'Comments', '50890': 'C3', '51445': 'Hematocrit, Pleural', '51380': 'NRBC', '51064': 'Potassium, Stool', '51371': 'Joint Crystals, Comment', '50816': 'Oxygen', '50861': 'Alanine Aminotransferase (ALT)', '51394': 'CD14', '51469': 'Calcium Oxalate Crystals', '51434': 'Other Cell', '51261': 'Pappenheimer Bodies', '50869': 'Anti-DGP (IgA/IgG)', '51276': 'Quantitative G6PD', '51096': 'Porphobilinogen Screen', '50865': 'Amikacin', '51426': 'Lambda', '51259': 'Other Cells', '51368': 'Eosinophils', '51083': 'Ethanol, Urine', '51304': 'CD103', '50894': 'Calculated Free Testosterone', '51306': 'CD11c', '51273': 'Protein S, Functional', '51484': 'Ketone', '51227': 'Hemogloblin S', '51414': 'CD57', '51289': 'Serum Viscosity', '51346': 'Blasts', '50913': 'Cryoglobulin', '51348': 'Hematocrit, CSF', '51167': 'CD2', '51336': 'Glyco A', '51505': 'Uric Acid Crystals', '51472': 'Cholesterol Crystals', '51135': 'ADP', '51390': 'CD117', '50831': 'pH', '50873': 'Anti-Nuclear Antibody', '51203': 'Factor IX', '51481': 'Hemosiderin', '51324': 'CD41', '51015': 'Lactate Dehydrogenase, CSF', '51281': 'Reptilase Time Control', '51435': 'Plasma', '50924': 'Ferritin', '51355': 'Monocytes', '50826': 'Tidal Volume', '50811': 'Hemoglobin', '50857': 'Acetone', '51349': 'Hypersegmented Neutrophils', '51313': 'CD19', '51356': 'Myelocytes', '51032': 'Creatinine, Body Fluid', '51497': 'Renal Epithelial Cells', '51526': 'FRUCAMN+', '50837': 'Bicarbonate, Ascites', '51129': 'Young', '51197': 'Elliptocytes', '50984': 'Stat', '51407': 'CD38', '51251': 'Metamyelocytes', '50912': 'Creatinine', '51019': 'Albumin, Joint Fluid', '51080': 'Creatinine Clearance', '51365': 'Atypical Lymphocytes', '51528': 'STDY HOLD', '50867': 'Amylase', '50830': 'pCO2, Body Fluid', '51104': 'Urea Nitrogen, Urine', '51405': 'CD33', '51182': 'CD41', '51471': 'Cellular Cast', '51399': 'CD2', '51179': 'CD38', '51542': 'PROBLEM SPECIMEN', '51029': 'Calcium, Body Fluid', '51430': 'Metamyelocytes', '51206': 'Factor VIII', '51000': 'Triglycerides', '50953': 'Iron Binding Capacity, Total', '51452': 'NRBC', '50829': 'Fluid Type', '51456': 'Promyelocytes', '51242': 'LUC', '51408': 'CD4', '50931': 'Glucose', '51345': 'Basophils', '50879': 'Barbiturate Screen', '51121': 'Myelocytes', '51335': 'FMC-7', '51157': 'CD138', '50982': 'Sex Hormone Binding Globulin', '50979': 'Red Top Hold', '51491': 'pH', '51393': 'CD138', '51050': 'Chloride, Pleural', '51323': 'CD4', '51535': 'CD55', '51552': 'VOIDED SPECIMEN', '50877': 'Anti-Thyroglobulin Antibodies', '51465': 'Bilirubin Crystals', '50902': 'Chloride', '51244': 'Lymphocytes', '51046': 'Albumin, Pleural', '51049': 'Bilirubin, Total, Pleural', '51320': 'CD33', '50992': 'Thyroid Peroxidase Antibodies', '51117': 'Macrophage', '51462': 'Amorphous Crystals', '50896': 'Calculated Thyroxine (T4) Index', '50847': 'Potassium, Ascites', '51213': 'Fibrin Degradation Products', '51315': 'CD20', '51378': 'Metamyelocytes', '51549': 'VOIDED SPECIMEN', '51288': 'Sedimentation Rate', '51233': 'Hypochromia', '51257': 'Nucleated Red Cells', '51475': 'Epithelial Casts', '51120': 'Monocytes', '51379': 'Monocytes', '51022': 'Glucose, Joint Fluid', '51112': 'Basophils', '50883': 'Bilirubin, Direct', '51477': 'Free Fat', '51295': 'TdT', '50850': 'Triglycerides, Ascites', '51110': 'Atypical Lymphocytes', '50845': 'Miscellaneous, Ascites', '51047': 'Amylase, Pleural', '51230': 'HLA-DR', '51279': 'Red Blood Cells', '50960': 'Magnesium', '51333': 'CD71', '51139': 'Anticardiolipin Antibody IgM', '51448': 'Mesothelial Cells', '51460': 'Blood, Occult', '51207': 'Factor VIII Inhibitor', '51079': 'Cocaine, Urine', '51082': 'Creatinine, Urine', '51191': 'CD64', '51105': 'Uric Acid, Urine', '50910': 'Creatine Kinase (CK)', '51009': 'Vancomycin', '51042': 'Sodium, Body Fluid', '51366': 'Bands', '51065': 'Sodium, Stool', '50942': 'Hepatitis B Virus Core Antibody', '50842': 'Glucose, Ascites', '51367': 'Basophils', '51248': 'MCH', '50823': 'Required O2', '51058': 'Sodium, Pleural', '50853': '25-OH Vitamin D', '51069': 'Albumin, Urine', '50803': 'Calculated Bicarbonate, Whole Blood', '51231': 'Howell-Jolly Bodies', '50888': 'Blue Top Hold Frozen', '51359': 'Plasma', '51073': 'Amylase/Creatinine Ratio, Urine', '51547': 'VOIDED SPECIMEN', '50944': 'HIV Antibody', '51294': 'Target Cells', '50897': 'Call', '51360': 'Polys', '51386': 'Bands', '50916': 'DHEA-Sulfate', '51256': 'Neutrophils', '50899': 'Carbamazepine', '50972': 'Procainamide', '51377': 'Mesothelial Cells', '50950': 'Immunoglobulin G', '51493': 'RBC', '51188': 'CD56', '51466': 'Blood', '51140': 'Antithrombin', '51076': 'Bicarbonate, Urine', '51325': 'CD45', '50909': 'Cortisol', '51330': 'CD59', '51272': 'Protein S, Antigen', '51144': 'Bands', '50934': 'H', '50882': 'Bicarbonate', '50955': 'Light Green Top Hold', '51319': 'CD3', '51532': 'PLASMGN', '50855': 'Absolute Hemoglobin', '51458': 'WBC, Pleural', '51006': 'Urea Nitrogen', '51150': 'Blood Parasite Smear', '51159': 'CD15', '51554': 'VOIDED SPECIMEN', '51090': 'Methadone, Urine', '51382': 'Polys', '51176': 'CD3 Cells, Percent', '51171': 'CD22', '51329': 'CD57', '51522': 'PG', '51249': 'MCHC', '50895': 'Calculated TBG', '51305': 'CD117', '51284': 'Reticulocyte Count, Manual', '51222': 'Hemoglobin', '51388': 'CD10', '51212': 'Fetal Hemoglobin', '51518': 'WBC Clumps', '51093': 'Osmolality, Urine', '51513': 'Urine Specimen Type', '51142': 'Arachadonic Acid', '50935': 'Haptoglobin', '50937': 'Hepatitis A Virus Antibody', '50976': 'Protein, Total', '51141': 'APT Test', '51395': 'CD15', '51158': 'CD14', '51161': 'CD16', '51523': 'GR HOLD', '51500': 'Sulfonamides', '51473': 'Cysteine Crystals', '51384': 'WBC, Joint Fluid', '51496': 'Reducing Substances, Urine', '51234': 'Immunophenotyping', '51302': 'Young Cells', '50952': 'Iron', '51344': 'Bands', '51327': 'CD55', '51170': 'CD20 Absolute Count', '51352': 'Macrophage', '51240': 'Large Platelets', '51250': 'MCV', '50964': 'Osmolality, Measured', '51544': 'VOIDED SPECIMEN', '51495': 'RBC Clumps', '50858': 'Acid Phosphatase', '50914': 'Cyclosporin', '51470': 'Calcium Phosphate Crystals', '50929': 'Gentamicin', '51503': 'Triple Phosphate Crystals', '51088': 'Magnesium, Urine', '51398': 'CD19', '51247': 'MacroOvalocytes', '51062': 'Chloride, Stool', '50875': 'Anti-Parietal Cell Antibody', '51108': 'Urine Volume', '50911': 'Creatine Kinase, MB Isoenzyme', '51106': 'Urine Creatinine', '51373': 'Joint Crystals, Number', '51184': 'CD5', '51148': 'Blasts', '50849': 'Total Protein, Ascites', '51282': 'Reticulocyte Count, Absolute', '51298': 'Von Willebrand Factor Activity', '51364': 'Young', '51038': 'Miscellaneous, Body Fluid', '51048': 'Bicarbonate, Pleural', '51370': 'Joint Crystals, Birefringence', '50844': 'Lipase, Ascites', '50870': 'Anti-Gliadin Antibody, IgA', '51515': 'Waxy Casts', '51519': 'Yeast', '51553': 'VOIDED SPECIMEN', '51533': 'WBCP', '51423': 'HLA-DR', '50974': 'Prostate Specific Antigen', '51195': 'Collagen', '51255': 'Myelocytes', '50975': 'Protein Electrophoresis', '50940': 'Hepatitis B Surface Antibody', '50977': 'Quinidine', '51026': 'Amylase, Body Fluid', '51229': 'Heparin, LMW', '51392': 'CD13', '51331': 'CD64', '51228': 'Heparin', '50817': 'Oxygen Saturation', '51258': 'Osmotic Fragility', '51524': 'FATTY', '51450': 'Monos', '51208': 'Factor X', '50813': 'Lactate', '51056': 'Miscellaneous, Pleural', '50945': 'Homocysteine', '51317': 'CD23', '51514': 'Urobilinogen', '51433': 'NRBC', '51427': 'Lymphocytes', '51172': 'CD23', '51439': 'WBC, Other Fluid', '50812': 'Intubated', '50863': 'Alkaline Phosphatase', '51115': 'Hematocrit, Ascites', '51210': 'Factor XII', '50819': 'PEEP', '51334': 'CD8', '51224': 'Hemoglobin C', '50893': 'Calcium, Total', '51152': 'CD10', '51134': 'Acanthocytes', '50958': 'Luteinizing Hormone', '50840': 'Cholesterol, Ascites', '51290': 'Sickle Cell Preparation', '51509': 'Urine Comments', '51102': 'Total Protein, Urine', '51415': 'CD64', '51252': 'Microcytes', '50989': 'Testosterone, Free', '51103': 'Uhold', '50862': 'Albumin', '51548': 'VOIDED SPECIMEN', '51449': 'Metamyelocytes', '50978': 'Rapamycin', '51385': 'Atypical Lymphocytes', '51280': 'Reptilase Time', '51468': 'Calcium Carbonate Crystals', '51297': 'Thrombin', '51285': 'Reticulocyte, Cellular Hemoglobin', '51031': 'Cholesterol, Body Fluid', '51014': 'Glucose, CSF', '50841': 'Creatinine, Ascites', '51361': 'Promyelocytes', '51520': 'ANTI-MC', '50922': 'Ethanol', '51127': 'RBC, Ascites', '51488': 'Non-squamous Epithelial Cells', '51489': 'NonSquamous Epithelial Cell', '50886': 'Blood Culture Hold', '51071': 'Amphetamine Screen, Urine', '51516': 'WBC', '51074': 'Barbiturate Screen, Urine', '50927': 'Gamma Glutamyltransferase', '51541': 'PROBLEM SPECIMEN', '51118': 'Mesothelial Cell', '50994': 'Thyroxine (T4)', '51153': 'CD103', '50868': 'Anion Gap', '50951': 'Immunoglobulin M', '51441': 'Bands', '50880': 'Benzodiazepine Screen', '50980': 'Rheumatoid Factor', '51353': 'Mesothelial cells', '51537': 'TDT', '51043': 'Total Protein, Body Fluid', '50836': 'Amylase, Ascites', '51527': 'MS-DIA', '51225': 'Hemoglobin F', '50839': 'Chloride, Ascites', '51193': 'CD71', '50949': 'Immunoglobulin A', '51293': 'Sugar Water Test', '51008': 'Valproic Acid', '50999': 'Tricyclic Antidepressant Screen', '51339': 'Iron Stain', '51100': 'Sodium, Urine', '51086': 'Immunofixation, Urine', '51136': 'Alpha Antiplasmin', '51164': 'CD19', '51089': 'Marijuana', '50995': 'Thyroxine (T4), Free', '51453': 'Other', '50838': 'Bilirubin, Total, Ascites', '51417': 'CD71', '51403': 'CD25', '50917': 'Digoxin', '51517': 'WBC Casts', '51237': 'INR(PT)', '50936': 'HCG, Maternal Screen', '51357': 'NRBC', '50966': 'Phenobarbital', '51054': 'Lactate Dehydrogenase, Pleural', '50852': '% Hemoglobin A1c', '51461': 'Ammonium Biurate', '51487': 'Nitrite', '51098': 'Prot. Electrophoresis, Urine', '51278': 'Red Blood Cell Fragments', '51536': 'CD59', '51092': 'Opiate Screen, Urine', '51413': 'CD56', '51016': 'Miscellaneous, CSF', '51202': 'Factor II', '51168': 'CD20', '51270': 'Protein C, Antigen', '51442': 'Basophils', '51174': 'CD3 %', '51410': 'CD41', '51095': 'Phosphate, Urine', '50956': 'Lipase', '51199': 'Eosinophil Count', '51177': 'CD33', '51480': 'Hematocrit', '51131': 'Absolute CD4 Count', '50906': 'Cholesterol, LDL, Measured', '51246': 'Macrocytes', '50804': 'Calculated Total CO2', '50821': 'pO2', '51263': 'Plasma Cells', '50809': 'Glucose', '50918': 'Double Stranded DNA', '51429': 'Mesothelial cells', '51374': 'Joint Crystals, Shape', '51215': 'FMC-7', '51292': 'Spherocytes', '50892': 'CA-125', '51063': 'Osmolality, Stool', '51002': 'Troponin I', '50901': 'Centromere', '50933': 'Green Top Hold (plasma)', '50871': 'Anti-Mitochondrial Antibody', '50903': 'Cholesterol Ratio (Total/HDL)', '51192': 'CD7', '50884': 'Bilirubin, Indirect', '51525': 'Billed', '50932': 'Gray Top Hold (plasma)', '51221': 'Hematocrit', '50983': 'Sodium', '51044': 'Triglycer', '51338': 'Immunophenotyping', '51424': 'Immunophenotyping', '50822': 'Potassium, Whole Blood', '50851': 'Urea Nitrogen, Ascites', '50990': 'Theophylline', '51045': 'Urea Nitrogen, Body Fluid', '50802': 'Base Excess', '51283': 'Reticulocyte Count, Automated', '51235': 'Inhibitor Screen', '50808': 'Free Calcium', '51369': 'Hematocrit, Joint Fluid', '51266': 'Platelet Smear', '50959': 'Macro Prolactin', '50925': 'Folate', '51309': 'CD14', '50872': 'Anti-Neutrophil Cytoplasmic Antibody', '50887': 'Blue Top Hold', '50820': 'pH', '51084': 'Glucose, Urine', '50846': 'Osmolality, Ascites', '51432': 'Myelocytes', '50926': 'Follicle Stimulating Hormone', '51166': 'CD19 Absolute Count', '51428': 'Macrophage', '51391': 'CD11c', '51485': 'Leucine Crystals', '51072': 'Amylase, Urine', '51483': 'Hyphenated Yeast', '51241': 'Leukocyte Alkaline Phosphatase', '50907': 'Cholesterol, Total', '51245': 'Lymphocytes, Percent', '51165': 'CD19 %', '51464': 'Bilirubin', '50981': 'Salicylate', '50969': 'Phenytoin, Percent Free', '51200': 'Eosinophils', '51147': 'Bite Cells', '51183': 'CD45', '51260': 'Ovalocytes', '51322': 'CD38', '50993': 'Thyroid Stimulating Hormone', '51269': 'Promyelocytes', '51226': 'Hemogloblin A', '51160': 'CD16/56', '50996': 'Tissue Transglutaminase Ab, IgA', '51201': 'Epinepherine', '50848': 'Sodium, Ascites', '50891': 'C4', '51363': 'WBC, CSF', '51130': 'Absolute CD3 Count', '51267': 'Poikilocytosis', '51271': 'Protein C, Functional', '51531': 'STDYURINE', '51040': 'Phosphate, Body Fluid', '50946': 'Human Chorionic Gonadotropin', '51510': 'Urine Crystals, Other', '51296': 'Teardrop Cells', '51196': 'D-Dimer', '51001': 'Triiodothyronine (T3)', '51406': 'CD34', '51138': 'Anticardiolipin Antibody IgG', '51007': 'Uric Acid', '51024': 'Total Protein, Joint Fluid', '51507': 'Urine Casts, Other', '50997': 'Tobramycin', '50948': 'Immunofixation', '50908': 'CK-MB Index', '51387': 'Basophils', '51155': 'CD11c', '51094': 'pH', '50915': 'D-Dimer', '51358': 'Other', '51021': 'Creatinine, Joint Fluid', '51178': 'CD34', '50954': 'Lactate Dehydrogenase (LD)', '51041': 'Potassium, Body Fluid', '50854': 'Absolute A1c', '51342': 'Wright Giemsa', '50939': 'Hepatitis B Core Antibody, IgM', '51085': 'HCG, Urine, Qualitative', '51498': 'Specific Gravity', '51443': 'Blasts', '50900': 'Carcinoembyronic Antigen (CEA)', '50961': 'Methotrexate', '50859': 'Acid Phosphatase, Non-Prostatic', '51101': 'Total Collection Time', '51404': 'CD3', '51402': 'CD23', '50973': 'Prolactin', '51075': 'Benzodiazepine Screen, Urine', '51381': 'Other', '51186': 'CD5 Absolute Count', '51154': 'CD117', '51312': 'CD16/56', '51543': 'VOIDED SPECIMEN', '51034': 'Glucose, Body Fluid', '50805': 'Carboxyhemoglobin', '51114': 'Eosinophils', '51116': 'Lymphocytes', '51506': 'Urine Appearance', '51218': 'Granulocyte Count', '51087': 'Length of Urine Collection', '51020': 'Amylase, Joint Fluid', '51232': 'Hypersegmented Neutrophils', '51438': 'RBC, Other Fluid', '50928': 'Gastrin', '51190': 'CD59', '51534': 'MYELOS', '50889': 'C-Reactive Protein', '50801': 'Alveolar-arterial Gradient', '50965': 'Parathyroid Hormone', '50814': 'Methemoglobin', '51025': 'Albumin, Body Fluid', '51146': 'Basophils', '50963': 'NTproBNP', '51137': 'Anisocytosis', '51239': 'Lambda', '51463': 'Bacteria', '51436': 'Polys', '50835': 'Albumin, Ascites', '51109': 'Urine Volume, Total', '51555': 'SURFACTANT ALBUMIN RATIO', '51122': 'Nucleated RBC', '51033': 'FetalFN', '51457': 'RBC, Pleural', '51411': 'CD45', '51162': 'CD16/56 Absolute Count', '51077': 'Calcium, Urine', '51494': 'RBC Casts', '51030': 'Chloride, Body Fluid', '51081': 'Creatinine, Serum', '51214': 'Fibrinogen, Functional', '50921': 'Estradiol', '50957': 'Lithium', '50986': 'tacroFK', '51175': 'CD3 Absolute Count', '51060': 'Triglycerides, Pleural', '50967': 'Phenytoin', '51412': 'CD5', '51061': 'Bicarbonate, Stool', '51444': 'Eosinophils', '51133': 'Absolute Lymphocyte Count', '50806': 'Chloride, Whole Blood', '50885': 'Bilirubin, Total', '51416': 'CD7', '51310': 'CD15', '50810': 'Hematocrit, Calculated', '51321': 'CD34', '51362': 'RBC, CSF', '51326': 'CD5', '50834': 'Sodium, Body Fluid', '51243': 'Lupus Anticoagulant', '50874': 'Anti-Nuclear Antibody, Titer', '51479': 'Granular Casts', '51053': 'Glucose, Pleural', '51011': 'Albumin', '51052': 'Creatinine, Pleural', '50832': 'pO2, Body Fluid', '50943': 'Hepatitis C Virus Antibody', '50843': 'Lactate Dehydrogenase, Ascites', '51125': 'Polys', '51004': 'UE3, Maternal Screen', '51419': 'Eosinophils', '50991': 'Thyroglobulin', '51039': 'Osmolality, Body Fluid', '50971': 'Potassium', '51300': 'WBC Count', '51012': 'Bilirubin, Total, CSF', '51420': 'FMC-7', '51055': 'Lipase, Pleural', '50818': 'pCO2', '51254': 'Monocytes', '51265': 'Platelet Count', '51474': 'Eosinophils', '51277': 'RDW', '51337': 'HLA-DR', '51220': 'Heinz Body Prep', '51013': 'Chloride, CSF', '50827': 'Ventilation Rate', '51005': 'Uptake Ratio', '51036': 'Lipase, Body Fluid', '51286': 'Ristocetin', '51459': 'Young Cells', '51132': 'Absolute CD8 Count', '51287': 'Schistocytes', '51187': 'CD55', '51492': 'Protein', '51303': 'CD10', '50923': 'Fax', '51066': '24 hr Calcium', '50815': 'O2 Flow', '51209': 'Factor XI', '51451': 'Myelocytes', '51422': 'Hematocrit, Other Fluid', '51328': 'CD56', '51204': 'Factor V', '51351': 'Lymphs', '51301': 'White Blood Cells', '51181': 'CD4/CD8 Ratio', '50878': 'Asparate Aminotransferase (AST)', '51502': 'Trichomonas', '51418': 'CD8', '51156': 'CD13', '51173': 'CD25', '51099': 'Protein/Creatinine Ratio', '51314': 'CD2', '51028': 'Bilirubin, Total, Body Fluid', '51236': 'Inpatient Hematology/Oncology Smear', '51023': 'LD, Joint Fluid', '51504': 'Tyrosine Crystals', '51059': 'Total Protein, Pleural', '51163': 'CD16/56%', '51107': 'Urine tube, held', '51205': 'Factor VII', '51529': 'Estimated Actual Glucose', '51354': 'Metamyelocytes', '51437': 'Promyelocytes', '51126': 'Promyelocytes', '50920': 'Estimated GFR (MDRD equation)', '51037': 'Magnesium, Body Fluid', '51027': 'Bicarbonate, Other Fluid', '51350': 'Immunophenotyping', '51383': 'RBC, Joint Fluid', '51198': 'Envelope Cells', '51223': 'Hemoglobin A2', '51455': 'Polys', '51440': 'Atypical Lymphocytes', '51490': 'Oval Fat Body', '51145': 'Basophilic Stippling', '51091': 'Myoglobin, Urine', '51521': 'ACID PHOSPHATASE, PROSTATIC', '51546': 'VOIDED SPECIMEN', '51003': 'Troponin T'};
   var i;  //Count
-  var labtests = document.getElementById(labtests_id).innerHTML;
-  var diagnosis = document.getElementById(diagnosis_id).innerHTML;
+  //var labtests = document.getElementById(labtests_id).innerHTML;
+  //var diagnosis = document.getElementById(diagnosis_id).innerHTML;
   var table_element = document.getElementById('labtable');
-  labtests = labtests.split(",");  // Get the lab tests
+  //labtests = labtests.split(",");  // Get the lab tests
+  labtests = ['51475', '51327', '51421', '51497', '51520', '51464', '51433', '51215', '50899', '51394', '51144', '51456', '51508', '51210', '51425', '50867', '51402', '50862', '51238', '50821', '50941', '51175', '50903', '51337', '51060', '51455', '50819', '51173', '50981', '51528', '50818', '51105', '51180', '51549', '51454', '51193', '51074', '51102', '51282', '51224', '50918', '50919', '51482', '51226', '51125', '50913', '51147', '50960', '51113', '51064', '51140', '51015', '50876', '51189', '50839', '51145', '51004', '51366', '51471', '51334', '50884', '50871', '51191', '51406', '51318', '51465', '51489', '51065', '50816', '51202', '50878', '51107', '51494', '50907', '51053', '50968', '51309', '51510', '51481', '51498', '51422', '51416', '51376', '51392', '50865', '51008', '51231', '51181', '51251', '51094', '51195', '51103', '50887', '51090', '51362', '51293', '51302', '51450', '51411', '50859', '51012', '51152', '51038', '51386', '51197', '50885', '50860', '50999', '51294', '51194', '51268', '50998', '51526', '51446', '51273', '51383', '50883', '51023', '50835', '50898', '50963', '51087', '50850', '50964', '51345', '51159', '50975', '51308', '51030', '51274', '51158', '51551', '51398', '50958', '51138', '50953', '51201', '51079', '51022', '51555', '50950', '51001', '51264', '51134', '51491', '50997', '51250', '51207', '51393', '51235', '51358', '50971', '51483', '50888', '51164', '51484', '51530', '51081', '51261', '50820', '50810', '50897', '51270', '51348', '51407', '50961', '51412', '50955', '51239', '51260', '50828', '51118', '50993', '51336', '51104', '51010', '51019', '51330', '51534', '51546', '51121', '51453', '51306', '50922', '51401', '51347', '50902', '51553', '51236', '51517', '51091', '51000', '51321', '51359', '51110', '51133', '51304', '51441', '51444', '51356', '50856', '50800', '51298', '51212', '50937', '51068', '51137', '51351', '51283', '51253', '50870', '50872', '51338', '51472', '51063', '50910', '50858', '50890', '51420', '50972', '50817', '51451', '51095', '50801', '51172', '51198', '51036', '51076', '51020', '50807', '51220', '51026', '50809', '51341', '51417', '51146', '51171', '51208', '51059', '51169', '51323', '51031', '51396', '51044', '51219', '51247', '51487', '51139', '51343', '50852', '51474', '51223', '50861', '51056', '51276', '51275', '51005', '51545', '51123', '51271', '50851', '50954', '51299', '50920', '51442', '50990', '51228', '51319', '51162', '51055', '51547', '51050', '51072', '51384', '51295', '51024', '50827', '50893', '51106', '50904', '50948', '51512', '51537', '51344', '51459', '51397', '51466', '51493', '51419', '51119', '51114', '51290', '51136', '51486', '51122', '51187', '51286', '51221', '50988', '51007', '50805', '51480', '51080', '51382', '50986', '50854', '51092', '51414', '51361', '51535', '51492', '51258', '51168', '51077', '51028', '51054', '51149', '51518', '51203', '51360', '50844', '51536', '51066', '50811', '51062', '51515', '51163', '51367', '51049', '51448', '51206', '51467', '51430', '51333', '51552', '51542', '51357', '51452', '50911', '51350', '50824', '51184', '51100', '51503', '50836', '51265', '51301', '51365', '51280', '51003', '50906', '51284', '51214', '51390', '50849', '50912', '51331', '51473', '50886', '50951', '50842', '51389', '51252', '50806', '51468', '51234', '50833', '51533', '51379', '51543', '50926', '51434', '51083', '51176', '50900', '50959', '51148', '51061', '51167', '51399', '50841', '50929', '51218', '51051', '51495', '50947', '51263', '51499', '51002', '50908', '51047', '50985', '50939', '51101', '50957', '51279', '51501', '51490', '51248', '51009', '51352', '50895', '51314', '51349', '51370', '51322', '51040', '51504', '51229', '50874', '50996', '50847', '51188', '51310', '50848', '51141', '51374', '50944', '50931', '51432', '51391', '50917', '51531', '50970', '51303', '51027', '50815', '51116', '50853', '50808', '50877', '51043', '51240', '51151', '51288', '51186', '50802', '51242', '51209', '50983', '50892', '51089', '51211', '50834', '51082', '51075', '50994', '51067', '51329', '51513', '51439', '51266', '51404', '51120', '51438', '50866', '51285', '50982', '50921', '51160', '51096', '51233', '51328', '51277', '51099', '51216', '51196', '51281', '51364', '51183', '50896', '51541', '51311', '51460', '51178', '50868', '51259', '51447', '51017', '50863', '51488', '51506', '51155', '51400', '51353', '50952', '51385', '50984', '51098', '51418', '50879', '51457', '50855', '51157', '50992', '50989', '51088', '51117', '51511', '51093', '51199', '50956', '51326', '51126', '50942', '51269', '51375', '51237', '50924', '51524', '51548', '50894', '51150', '51426', '51371', '51500', '51315', '51436', '50864', '51463', '51346', '51516', '51505', '51428', '51312', '50969', '50829', '51057', '51070', '51131', '50812', '51204', '51241', '51431', '51041', '51154', '51372', '51479', '51272', '51153', '51073', '51496', '51170', '51313', '51395', '50938', '50979', '51458', '50832', '51069', '50882', '50978', '51011', '51339', '51287', '50875', '51254', '51278', '50837', '51085', '51437', '50935', '50943', '50881', '51405', '51440', '51045', '51142', '50857', '51523', '51381', '50991', '50965', '51190', '51255', '50822', '51013', '51296', '51058', '51246', '50804', '51086', '51112', '51415', '51109', '51521', '51033', '50814', '51262', '50889', '51111', '50930', '50905', '51470', '51128', '51205', '50966', '51355', '51127', '51292', '51006', '51035', '51544', '51182', '51507', '50873', '51429', '50869', '51267', '50934', '51378', '50936', '51165', '51519', '50843', '51478', '51179', '51108', '51217', '51354', '51529', '51289', '51177', '51161', '51316', '51129', '51034', '51514', '51403', '51317', '50973', '50823', '51443', '50825', '51435', '50949', '51449', '51297', '50880', '51227', '51550', '51115', '51424', '51461', '51071', '50977', '51143', '51409', '51532', '51016', '51078', '51325', '50925', '51256', '51477', '51130', '51222', '50933', '51335', '50967', '51305', '51174', '51423', '50891', '51029', '50976', '51124', '51476', '51540', '51097', '51525', '51320', '51245', '50974', '51377', '51363', '51021', '51132', '51410', '51046', '51373', '51039', '50813', '50830', '51332', '51485', '50923', '50845', '51025', '51200', '51230', '51291', '50945', '51522', '51249', '51502', '51243', '51445', '51166', '51232', '50927', '51052', '50803', '51014', '50914', '50915', '50901', '51369', '51342', '51380', '51300', '51408', '50831', '51257', '50840', '50846', '51462', '51340', '50946', '51554', '51225', '51018', '51037', '51527', '51388', '51509', '51084', '50980', '50932', '51387', '51469', '51185', '51368', '51135', '51413', '51156', '50916', '50838', '51042', '50940', '51324', '51032', '51192', '51427', '50995', '51048', '50962', '50928', '51307', '51213', '50909', '51244', '50826'];
   n_labtests = labtests.length;
 
     for (i=0; i<n_labtests; i++){
@@ -555,7 +159,8 @@ function get_summary(labtests_id, diagnosis_id){
     row.insertCell(1).innerHTML = '<b> Name </b>';
 
     var table_element1 = document.getElementById('diagnosistable');
-    diagnosis = diagnosis.split(",");  // Get the previous diagnosis
+    //diagnosis = diagnosis.split(",");  // Get the previous diagnosis
+    diagnosis = ['193', '354', '7944', 'E8782', 'V0381', 'V0259', '383', 'E9060', '295', '397', 'V5866', '488', '766', '78760', '227', '421', 'V4574', '78907', '79989', '78097', '999', '395', 'V141', '7949', 'V1279', '805', 'E9352', '582', 'E8494', '562', '844', '042', 'E9588', '379', 'E8120', 'V1749', 'V4511', '972', '908', '579', '78057', 'E8191', '924', '7827', '203', 'V8538', '596', '7837', 'E9298', 'E8130', '7964', 'E9201', '493', 'V552', '994', 'V4573', 'E9348', '484', '261', 'E989', '318', '750', 'V451', 'V8812', 'V850', '710', '79022', 'V1649', '155', '009', '625', 'E9378', '78899', 'E9500', 'V167', 'V1271', '617', 'E9323', '7881', 'E9229', '78449', '152', 'V3101', '571', 'V462', '731', '572', '584', 'E8708', 'E9502', '438', '879', '373', 'V556', '615', 'V1642', 'V4586', 'E9290', '440', '594', '968', 'V1021', '255', 'V1242', 'E8490', '886', '154', 'E9283', '78909', 'E9390', 'V8541', '78093', 'V8531', '570', 'V4281', '442', 'V0482', 'V8741', '7955', 'E9320', '79029', '237', 'E8830', '458', '995', '810', '422', '78630', '311', '772', '353', 'E8121', '78791', '647', 'E8704', '338', '262', '558', 'V441', '310', '290', 'E9068', '78829', '715', 'V1079', 'E9299', '535', '011', '709', '7831', 'E8888', '823', 'E9307', '905', '777', '528', '733', 'E8160', '511', '745', '78904', 'E8190', 'V0254', 'E9422', '543', '78009', 'V4984', 'V066', '079', 'V721', 'E8550', '996', '411', '461', '202', '507', '568', '039', '800', '550', '041', 'V145', 'V5412', 'E8147', '308', '860', '78469', 'E916', '265', '257', 'E9424', '475', 'V4578', '519', '963', 'E9452', 'E8788', '574', '7963', '150', '502', '935', '235', 'E8794', '79093', '921', 'V166', '333', 'E9306', 'E8791', 'V202', '7812', 'V146', '527', '802', 'E956', '7806', 'V061', '398', '185', '228', '79579', '172', 'V1582', '216', 'E9392', '592', '360', 'E9401', '375', '250', '457', '332', '883', '466', '7808', 'V1001', '480', '148', 'V5419', 'V170', 'V011', 'E9331', '263', 'E8150', 'E9192', '822', 'E966', '331', 'V440', '322', '674', '78609', 'V854', 'V1253', '341', 'E9550', '78039', '327', 'E9800', 'E8528', '047', 'E8849', 'E8161', '205', 'V4365', 'E8493', '7854', '170', '388', '803', '78003', 'V4588', '510', '78903', 'V0261', '578', 'V183', '501', '7991', '389', '445', 'E9010', '891', 'V1087', '220', '723', '864', '320', '249', '7816', 'E8889', 'E8705', 'V1088', 'V8525', 'E927', '070', 'V058', 'V3100', '182', '556', '526', 'E9504', '236', '845', '139', '346', 'V1302', '754', 'V1083', 'V5831', '347', '7994', '428', 'E9358', '78199', '401', '149', '78838', '79001', 'V596', 'E8540', 'E9108', 'V8537', '79389', 'V168', '487', '7993', '362', 'V551', 'V0981', '957', 'V4572', 'V103', '532', '808', '774', '964', '78096', 'V017', 'V1209', 'V1046', '246', '288', 'E8532', 'E9291', 'V641', 'E9319', 'V554', '78842', '521', 'V8523', 'E8700', '746', 'V5811', '266', '436', 'E9393', '427', '684', '909', '78659', '977', '7948', 'E9315', '194', '7990', 'V4983', '281', '778', '342', '882', '112', 'E8210', '378', '314', '7843', '991', '334', '434', '724', '110', '204', '376', '7813', 'E918', '836', '618', '870', '038', 'V8522', 'E8162', 'E8551', 'E9288', '183', 'V4576', '771', '196', '365', 'E9379', 'V463', '540', 'E9278', 'E8706', 'V4611', 'E8880', '278', '811', 'E8780', '7825', '934', '7851', 'V4962', '312', '391', '78604', '7885', 'V652', '7818', '78930', '753', 'V4589', '277', 'V090', 'V5331', '412', 'E8548', '359', '752', '482', '472', 'E9208', '900', 'V1509', '955', '702', '245', '410', '494', 'E8781', 'E8230', '78843', 'E8785', '923', '452', 'V1003', '919', 'V427', '486', '776', '577', '291', '767', '477', '567', '555', '626', 'V5411', '008', '515', '720', '78905', 'E8810', 'V1588', 'E915', '703', '241', '78033', 'V1047', '616', 'V1541', '358', '78062', '054', '7820', 'V1002', '317', 'V1061', 'E969', '357', '79551', '371', 'E9173', '742', '027', '7961', 'V1641', '094', '956', '7824', 'V148', 'V1507', '599', 'V443', '225', 'V2651', 'V5812', 'V8524', 'V1552', 'V1041', '875', '285', '79099', '867', 'V422', '760', '7906', '270', '711', '569', 'V3000', '7866', '301', 'V1053', '201', 'V169', '78321', 'E8792', '7847', 'V3401', '052', '351', 'V1508', '506', 'E9309', '79431', '741', '756', 'V1051', 'E9682', '692', 'V8539', '78939', 'V1009', '437', 'V1011', '705', '704', '78050', '78701', 'V1049', 'V6284', 'V298', 'V555', 'E9317', '608', '593', 'E9359', 'V0991', '325', '614', '78721', 'E9356', '997', 'E8799', '587', 'E8199', '644', '7801', 'V5883', '209', 'V1259', '962', '866', '868', 'V5416', '807', '7876', '156', '7910', '852', 'E8786', 'V1272', '415', 'V8543', '910', 'V1741', '78060', 'E9429', '361', 'E9600', '918', 'E9391', '356', '536', 'E9308', 'E9457', 'V653', '78841', '7833', 'E8789', '998', '824', '533', '78831', '433', '525', 'V444', 'V5417', 'V1044', '7921', 'E9220', '865', 'V5861', '443', 'V5489', '7830', '349', 'E9300', '698', 'V4972', '424', 'V1072', 'V430', '862', '455', '296', '728', '478', '127', '7902', '759', '447', '518', 'V5862', '7862', '880', '405', '130', 'V151', '240', 'E9174', 'V1351', 'E8232', '485', '364', '473', '690', '78863', '581', '737', '78603', 'E9289', 'V4975', '133', '233', '524', '163', '770', '775', '214', 'V4502', '936', 'V581', '164', '7908', 'E8846', 'V0253', '495', 'E8790', '297', '053', 'E888', '911', '557', 'E0010', '115', '435', 'V714', '969', 'V4364', '189', '747', '7802', '280', '601', 'E8192', '751', 'E8843', '7935', 'V1505', 'E8136', 'E9411', '726', '646', '78839', '426', 'E8798', '344', '708', 'E9305', '648', '78099', 'E8496', '902', '620', 'V625', '912', '696', '470', '402', 'E9179', '151', '591', 'V8545', '282', '244', 'V4459', '7823', '430', '7863', 'E9654', '386', 'E8132', '7891', '922', '293', '600', 'V171', 'V1006', '78906', '529', 'E9330', 'V1000', 'V1581', '78059', '335', 'V626', '975', '834', 'E8844', '302', '847', 'V1551', '806', '832', 'E9248', 'E9430', '78071', 'E9478', '78194', '239', '273', '531', 'V1261', '78821', 'E9530', '520', 'E8497', '490', '7907', '370', '279', '621', 'V454', 'V0382', 'V553', '812', 'E9571', 'V3001', 'E9363', 'V270', '78001', 'V0262', '78061', '7960', '835', 'V1251', '904', 'E9421', 'V4976', '449', '481', '851', 'V8535', '7905', '031', '516', 'E0009', 'V4571', '78065', '208', '517', 'V502', '681', 'E9361', '588', '7962', '982', '537', 'V8533', '153', '78079', 'V1085', '603', '7835', 'V860', '586', 'E8495', '78722', 'V4987', 'E8508', '757', 'E8881', '284', '425', '682', '779', '903', '980', 'V6441', '432', 'V053', 'V452', '78820', 'V1042', '275', 'E8783', '78451', '78441', '251', 'E9383', '890', 'V1255', '707', '274', 'V1091', '198', 'V4971', 'V0179', '162', 'V1204', 'V029', '135', '514', '971', '157', '814', '459', '315', 'E9689', '816', '871', '738', '7856', 'E9479', '565', '111', '188', '933', 'E8809', 'V1504', '464', 'E9444', '7845', '951', 'V1043', 'E912', 'V1529', '404', 'E8583', '300', '722', '727', 'V8542', 'E9507', 'V8801', '7861', '825', '294', '7931', '79319', '541', '701', '491', 'V643', '7852', '990', 'V4986', '7937', 'V2652', 'E8504', '174', 'V174', 'V8532', '78442', 'V694', 'V140', '78605', 'V1202', '78552', 'V4282', '801', '573', 'E9398', '694', '854', '446', '260', '553', '287', 'V1201', '853', '512', '881', '7842', '765', '580', 'E8261', 'E9384', '454', '7836', '7850', '768', '7904', '7864', '522', '948', '403', '78723', '585', 'E9310', '926', 'E9412', '158', '523', '763', '483', '394', '423', '691', '958', '303', 'V4579', '372', '714', '324', 'V707', 'E8859', 'V071', '78900', 'E8556', '123', '564', '382', '78559', 'V5867', '7945', '861', '598', '192', '839', 'E9413', 'V5863', '530', 'V431', 'E9194', 'V8544', 'V173', '769', 'V163', 'V180', 'E9809', 'V632', '429', 'E8122', '78720', '343', 'E8529', 'V442', '355', 'V642', 'V425', 'V4973', '78340', '575', '78729', 'V5865', '075', '416', '417', '377', '319', '513', '340', 'V1389', '283', 'V8536', '223', '171', '7868', '965', '256', 'E8543', 'E882', '396', 'V461', '253', '830', '211', '735', 'V5332', 'E8796', '813', '78951', '920', 'E9426', '576', '7840', 'E9688', 'V851', '884', 'V434', '259', 'V0481', 'E9293', '243', '686', '623', 'E8842', '78650', '729', '197', '078', 'E8801', '719', '78639', 'V6442', 'E9346', '907', 'V4512', 'V160', '840', 'E8498', 'V1082', '462', '413', '161', 'V1005', '79439', '604', 'V446', '414', '78094', '276', '748', '180', '444', 'E9353', '304', '78459', '272', '78551', '773', '348', 'E8580', '78607', '716', 'E911', '906', '749', 'V4509', '78901', '299', '78606', '831', '366', '685', '967', '595', '619', '238', 'V290', '627', '695', '309', 'V0251', '7859', '79311', '590', '79902', 'V113', '173', '007', 'V5869', 'V1062', 'V4582', '743', '758', 'V1241', '730', 'V1301', 'V1589', 'E8542', '465', '7873', '78550', '804', '666', '242', '534', '78651', 'V1004', '79092', 'V644', 'V667', 'V1254', '226', '725', '323', 'E8538', '78830', '916', '305', 'V5481', '7892', 'V4283', '927', 'E9447', 'E887', '873', '721', '713', '901', 'E8181', '292', 'V1252', 'V08', '970', '337', '136', '269', 'V4501', '298', '611', 'E9344', '420', '7872', '706', '605', '441', 'V4561', '199', '78799', '815', 'E9385', '252', 'V560', 'E8499', '755', '583', 'V5339', 'V1584', 'E9503', '195', '7810', 'E9354', '7821', 'V550', 'V433', '191', 'E8784', 'E9342', '431', '7895', 'E9351', '892', 'V293', 'V161', '913', 'V4577', '049', '451', 'E9347', '764', '200', 'E8600', '959', '7804', '218', '78652', 'E9420', 'E8501', '336', '368', '78052', '326', 'V1052', 'E9394', '79094', '374', 'V6549', 'E9509', 'V142', '821', '350', 'E9804', '147', 'V8534', '289', '268', 'E8768', '736', '712', '508', 'E9650', 'V620', 'E9670', '78702', 'E9198', '78959', '693', '874', '456', 'V1081', '271', 'E9313', '560', '79415', '212', 'V600', '552', 'V4361', '345', 'V4585', '820', '566', '78703', '496', 'V1084', '826', 'E9803', '141', '307', '117', 'E9443', '363', '872', 'E9301', 'V0980', 'V153', '034', 'V4575', 'V5413', 'V420', 'V453', '607', 'E8502', 'E8500', '040', 'V1203', '966', 'V8530', '138', 'V1089', '863', '453', '492', '850', '088', '385', '286', 'E9501', '369', 'V1007', 'V4581', '7919', '952', 'V292', 'V5864', '380'];
     n_diagnosis = diagnosis.length;
 
     for (i=0; i<n_diagnosis; i++){
@@ -570,6 +175,7 @@ function get_summary(labtests_id, diagnosis_id){
     row1.insertCell(0).innerHTML = '<b> ICD 9 </b>';
     row1.insertCell(1).innerHTML = '<b> Name </b>';
 }
+get_summary();
 
 $(document).ready(function(){
   // Add smooth scrolling to all links
@@ -595,9 +201,8 @@ $(document).ready(function(){
     } // End if
   });
 });
-
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaeH36VG6il24i0R4HcvUG_FBfJCobNpQ&callback=myMap"></script>
 
 </body>
+
 </html>

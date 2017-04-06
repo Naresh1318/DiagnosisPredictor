@@ -107,6 +107,11 @@ def diagnosis_desc():
     return render_template('diagnosis.html')
 
 
+@app.route('/all_tests.html')
+def all_tests():
+    return render_template('all_tests.html')
+
+
 def get_info_for_mail(lab_tests, diagnoses, prediction):
     diag_codes = {'422': 'Acute myocarditis', 'V1301': 'Not Found', '070': 'Viral hepatitis', 'V453': 'Not Found',
                   '502': 'Pneumoconiosis due to other silica or silicates', '921': 'Contusion of eye and adnexa',
@@ -892,11 +897,8 @@ def get_info_for_mail(lab_tests, diagnoses, prediction):
 def sendMail(emailID, name, lab_tests, diagnoses, seq):
     msg = Message('Your Predicted Diagnosis', sender='compvisionnn@gmail.com', recipients=[emailID])
     info = get_info_for_mail(lab_tests.split(','), diagnoses.split(','), seq)
-    # print(info[0])
     html_message = render_template('send_email.html', name=name, lab_test=info[0], diag=info[1], pred=info[2])
     msg.html = html_message
-    # with open('templates/email.html', 'r') as e:
-    #    msg.html = e.read()
     mail.send(msg)
 
 
