@@ -60,7 +60,7 @@ def results():
         emailID = request.form['email']
         # Email id optional
         if emailID != '':
-            sendMail(emailID, name, input_seq, length)
+            sendMail(emailID, name, lab_text, diagnosis_text, length)
 
         return render_template('results_page.html', input_seq=input_seq, length=seq, name=name,
                                lab_text=lab_text, diagnosis_text=diagnosis_text)
@@ -107,51 +107,793 @@ def diagnosis_desc():
     return render_template('diagnosis.html')
 
 
-def sendMail(emailID, name, input_seq, seq):
-    msg = Message('Your Predicted Diagnosis', sender='compvisionnn@gmail.com', recipients=[emailID])
-    html_message = '\
-    <!DOCTYPE>\
-    <html>\
-    <meta name="viewport" content="width=device-width, initial-scale=1">\
-    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />\
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">\
-    <head>\
-    <title> Diagnosis </title>\
-    </head>\
-    <body>\
-    <!-- Header -->\
-    <section class="w3-container w3-center" style="max-with:600px">\
-      <h2 class="w3-wide">Here is your diagnosis {0}</h2>\
-      <p class="w3-opacity"><i>hope it is not too bad</i></p>\
-    </section>\
-    \
-    <div class="w3-container" style="margin-left: auto; margin-right: auto;" class="small_div">\
-    <div class="w3-panel w3-card-8 w3-center">\
-    \
-    <p><span class="w3-wide"> Previous History </span>\
-        <br>\
-        \
-        {1}<br>\
-        \
-        </p>\
-        \
-        </div>\
-        </div>\
-    \
-    <!-- Header of diagnosis -->\
-    <div class="w3-container w3-center small_div_header" style="margin-left: auto; margin-right: auto;">\
-        <div class="w3-panel w3-card-8 w3-dark-grey">\
-        \
-            <p><span class="w3-wide">Predicted Diagnosis</span> </p>\
-        </div>\
-\
-    </div>\
-    <div class="w3-container">\
-    <p> {2} </p>\
-    </div>\
-    </html>\
-    '.format(name, input_seq, seq)
+def get_info_for_mail(lab_tests, diagnoses, prediction):
+    diag_codes = {'422': 'Acute myocarditis', 'V1301': 'Not Found', '070': 'Viral hepatitis', 'V453': 'Not Found',
+                  '502': 'Pneumoconiosis due to other silica or silicates', '921': 'Contusion of eye and adnexa',
+                  'E9502': 'Not Found', '135': 'Sarcoidosis',
+                  '271': 'Disorders of carbohydrate transport and metabolism',
+                  '966': 'Poisoning by anticonvulsants and anti-Parkinsonism drugs', '7964': 'Not Found',
+                  'V142': 'Not Found', '435': 'Transient cerebral ischemia', '482': 'Other bacterial pneumonia',
+                  '769': 'Respiratory distress syndrome', 'V1589': 'Not Found', '758': 'Not Found',
+                  '862': 'Injury to other and unspecified intrathoracic organs', '7840': 'Not Found',
+                  'V1072': 'Not Found', 'E882': 'Fall from or out of building or other structure',
+                  '123': 'Other cestode infection', '518': 'Other diseases of lung', '286': 'Coagulation defects',
+                  'V5416': 'Not Found', 'V550': 'Not Found', 'V1079': 'Not Found', '79022': 'Not Found',
+                  'V632': 'Not Found', 'E888': 'Other and unspecified fall', '78551': 'Not Found',
+                  '303': 'Alcohol dependence syndrome',
+                  '975': 'Poisoning by agents primarily acting on the smooth and skeletal muscles and respiratory system',
+                  '78009': 'Not Found', '991': 'Effects of reduced temperature',
+                  '459': 'Other disorders of circulatory system', 'V153': 'Not Found', 'V1351': 'Not Found',
+                  '383': 'Mastoiditis and related conditions', 'E8501': 'Not Found',
+                  '285': 'Other and unspecified anemias', '78652': 'Not Found',
+                  '156': 'Malignant neoplasm of gallbladder and extrahepatic bile ducts', '117': 'Other mycoses',
+                  'E8705': 'Not Found', 'V0253': 'Not Found', 'V1051': 'Not Found', 'E8792': 'Not Found',
+                  '310': 'Specific nonpsychotic mental disorders due to brain damage',
+                  '902': 'Injury to blood vessels of abdomen and pelvis', '78001': 'Not Found', '7863': 'Not Found',
+                  '619': 'Fistula involving female genital tract', '78449': 'Not Found',
+                  '436': 'Acute, but ill-defined, cerebrovascular disease',
+                  '806': 'Fracture of vertebral column with spinal cord injury', '78052': 'Not Found',
+                  '7906': 'Not Found', '78820': 'Not Found', '7837': 'Not Found',
+                  '879': 'Open wound of other and unspecified sites, except limbs',
+                  '800': 'Fracture of vault of skull', 'E8161': 'Not Found', '959': 'Injury, other and unspecified',
+                  '78096': 'Not Found', '621': 'Disorders of uterus, not elsewhere classified',
+                  '78904': 'Not Found', 'E8580': 'Not Found', 'V8812': 'Not Found', '7907': 'Not Found',
+                  'E8136': 'Not Found', 'V3100': 'Not Found', '261': 'Nutritional marasmus',
+                  '420': 'Acute pericarditis', '7831': 'Not Found', '79029': 'Not Found',
+                  '255': 'Disorders of adrenal glands',
+                  '924': 'Contusion of lower limb and of other and unspecified sites', 'V5863': 'Not Found',
+                  '272': 'Disorders of lipoid metabolism', '78194': 'Not Found', 'V1081': 'Not Found',
+                  '599': 'Other disorders of urethra and urinary tract', 'V4586': 'Not Found', 'V2652': 'Not Found',
+                  '882': 'Open wound of hand except finger(s) alone', '596': 'Other disorders of bladder',
+                  '910': 'Not Found', 'E9413': 'Not Found', '78939': 'Not Found', 'E8799': 'Not Found',
+                  '874': 'Open wound of neck', '324': 'Intracranial and intraspinal abscess', 'V860': 'Not Found',
+                  '141': 'Malignant neoplasm of tongue', '78039': 'Not Found', '911': 'Not Found',
+                  '745': 'Not Found', 'V596': 'Not Found', 'E9300': 'Not Found',
+                  '155': 'Malignant neoplasm of liver and intrahepatic bile ducts', 'V427': 'Not Found',
+                  '7821': 'Not Found', 'V1006': 'Not Found', '801': 'Fracture of base of skull',
+                  '7866': 'Not Found', 'E9278': 'Not Found', '369': 'Blindness and low vision',
+                  '997': 'Complications affecting specified body systems, not elsewhere classified',
+                  '451': 'Phlebitis and thrombophlebitis', 'V4283': 'Not Found',
+                  '242': 'Thyrotoxicosis with or without goiter', '405': 'Secondary hypertension',
+                  'V1242': 'Not Found', '880': 'Open wound of shoulder and upper arm',
+                  '906': 'Late effects of injuries to skin and subcutaneous tissues', 'E8230': 'Not Found',
+                  'V1253': 'Not Found', 'E9288': 'Not Found', '78901': 'Not Found', 'E9507': 'Not Found',
+                  '192': 'Malignant neoplasm of other and unspecified parts of nervous system',
+                  'V0251': 'Not Found', '7876': 'Not Found', '7891': 'Not Found', '133': 'Acariasis',
+                  '707': 'Chronic ulcer of skin', 'V1084': 'Not Found', '78442': 'Not Found', '7948': 'Not Found',
+                  'E8782': 'Not Found', '319': 'Unspecified mental retardation', '836': 'Dislocation of knee',
+                  '78321': 'Not Found', 'E9412': 'Not Found', '425': 'Cardiomyopathy', 'V1588': 'Not Found',
+                  '312': 'Disturbance of conduct, not elsewhere classified', '295': 'Schizophrenic disorders',
+                  '027': 'Other zoonotic bacterial diseases', '410': 'Acute myocardial infarction',
+                  'V5861': 'Not Found', 'E8849': 'Not Found', 'V1007': 'Not Found', '281': 'Not Found',
+                  '570': 'Acute and subacute necrosis of liver', 'V4509': 'Not Found',
+                  '886': 'Traumatic amputation of other finger(s) (complete) (partial)', 'E9588': 'Not Found',
+                  '337': 'Disorders of the autonomic nervous system',
+                  'E969': 'Late effects of injury purposely inflicted by other person',
+                  '161': 'Malignant neoplasm of larynx', '442': 'Other aneurysm', 'V290': 'Not Found',
+                  '923': 'Contusion of upper limb',
+                  '506': 'Respiratory conditions due to chemical fumes and vapors', 'V3000': 'Not Found',
+                  '490': 'Bronchitis, not specified as acute or chronic', 'E9422': 'Not Found',
+                  '78099': 'Not Found', 'E8538': 'Not Found', '7804': 'Not Found', '244': 'Acquired hypothyroidism',
+                  '743': 'Not Found', '79389': 'Not Found', '138': 'Late effects of acute poliomyelitis',
+                  'E9420': 'Not Found', '227': 'Benign neoplasm of other endocrine glands and related structures',
+                  '756': 'Not Found', '434': 'Occlusion of cerebral arteries', 'E8844': 'Not Found',
+                  'V160': 'Not Found', '78651': 'Not Found', 'E8542': 'Not Found', '7859': 'Not Found',
+                  'E9650': 'Not Found', '933': 'Foreign body in pharynx and larynx', '78094': 'Not Found',
+                  'V8801': 'Not Found', '956': 'Injury to peripheral nerve(s) of pelvic girdle and lower limb',
+                  '585': 'Chronic kidney disease (CKD)', '78340': 'Not Found',
+                  '291': 'Alcohol-induced mental disorders', '372': 'Disorders of conjunctiva',
+                  '417': 'Other diseases of pulmonary circulation', '994': 'Effects of other external causes',
+                  '378': 'Strabismus and other disorders of binocular eye movements', 'V5413': 'Not Found',
+                  '7808': 'Not Found', '78863': 'Not Found', 'E8790': 'Not Found', 'V641': 'Not Found',
+                  'V8523': 'Not Found', '484': 'Pneumonia in infectious diseases classified elsewhere',
+                  'E8842': 'Not Found', 'V8544': 'Not Found',
+                  '465': 'Acute upper respiratory infections of multiple or unspecified sites',
+                  '189': 'Malignant neoplasm of kidney and other and unspecified urinary organs',
+                  'V5811': 'Not Found', 'E9804': 'Not Found', 'E9290': 'Not Found', 'V6441': 'Not Found',
+                  '78609': 'Not Found', 'V8545': 'Not Found', '903': 'Injury to blood vessels of upper extremity',
+                  '157': 'Malignant neoplasm of pancreas', 'V551': 'Not Found', 'V6284': 'Not Found',
+                  '415': 'Acute pulmonary heart disease', '403': 'Hypertensive chronic kidney disease',
+                  '079': 'Viral and chlamydial infection in conditions classified elsewhere and of unspecified site',
+                  '980': 'Toxic effect of alcohol', 'V0382': 'Not Found', '7823': 'Not Found', 'E8548': 'Not Found',
+                  'V560': 'Not Found', '240': 'Simple and unspecified goiter', 'E8888': 'Not Found',
+                  'E915': 'Foreign body accidentally entering other orifice', '78659': 'Not Found',
+                  '586': 'Renal failure, unspecified', 'V1201': 'Not Found',
+                  '572': 'Liver abscess and sequelae of chronic liver disease', 'V5411': 'Not Found',
+                  '110': 'Dermatophytosis', '7816': 'Not Found', '038': 'Septicemia',
+                  '429': 'Ill-defined descriptions and complications of heart disease', 'V8536': 'Not Found',
+                  'E9384': 'Not Found', '7990': 'Not Found', 'E9393': 'Not Found', '78722': 'Not Found',
+                  '907': 'Late effects of injuries to the nervous system',
+                  '508': 'Respiratory conditions due to other and unspecified external agents',
+                  '824': 'Fracture of ankle',
+                  '200': 'Lymphosarcoma and reticulosarcoma and other specified malignant tumors of lymphatic tissue',
+                  '7856': 'Not Found', '7895': 'Not Found', '581': 'Nephrotic syndrome', 'E8160': 'Not Found',
+                  'V441': 'Not Found', '729': 'Other disorders of soft tissues', 'E9391': 'Not Found',
+                  '872': 'Open wound of ear', '692': 'Contact dermatitis and other eczema', 'V4588': 'Not Found',
+                  '049': 'Other non-arthropod-borne viral diseases of central nervous system', '78071': 'Not Found',
+                  '78093': 'Not Found', '524': 'Dentofacial anomalies, including malocclusion',
+                  '681': 'Cellulitis and abscess of finger and toe',
+                  '900': 'Injury to blood vessels of head and neck', '357': 'Inflammatory and toxic neuropathy',
+                  '530': 'Diseases of esophagus', '823': 'Fracture of tibia and fibula', 'V8741': 'Not Found',
+                  'E8540': 'Not Found', '711': 'Arthropathy associated with infections', '7868': 'Not Found',
+                  '78702': 'Not Found', '202': 'Other malignant neoplasms of lymphoid and histiocytic tissue',
+                  '437': 'Other and ill-defined cerebrovascular disease', '774': 'Other perinatal jaundice',
+                  '964': 'Poisoning by agents primarily affecting blood constituents', 'E9426': 'Not Found',
+                  '884': 'Multiple and unspecified open wound of upper limb', 'V5419': 'Not Found',
+                  'V430': 'Not Found', '870': 'Open wound of ocular adnexa',
+                  '150': 'Malignant neoplasm of esophagus', '452': 'Portal vein thrombosis', 'V581': 'Not Found',
+                  '269': 'Other nutritional deficiencies', '208': 'Leukemia of unspecified cell type',
+                  '353': 'Nerve root and plexus disorders', '7836': 'Not Found', '373': 'Inflammation of eyelids',
+                  'V113': 'Not Found', '908': 'Late effects of other and unspecified injuries',
+                  '78199': 'Not Found', 'V4572': 'Not Found', 'E9550': 'Not Found',
+                  '777': 'Perinatal disorders of digestive system', '702': 'Other dermatoses',
+                  '990': 'Effects of radiation, unspecified', '241': 'Nontoxic nodular goiter',
+                  'E9194': 'Not Found', 'V1053': 'Not Found', 'E9330': 'Not Found',
+                  '892': 'Open wound of foot except toe(s) alone', '574': 'Cholelithiasis', 'V090': 'Not Found',
+                  '735': 'Acquired deformities of toe', 'E9309': 'Not Found',
+                  '713': 'Arthropathy associated with other disorders classified elsewhere', '747': 'Not Found',
+                  '320': 'Bacterial meningitis', 'V1087': 'Not Found',
+                  '845': 'Sprains and strains of ankle and foot', '191': 'Malignant neoplasm of brain',
+                  'V556': 'Not Found', '341': 'Other demyelinating diseases of central nervous system',
+                  '158': 'Malignant neoplasm of retroperitoneum and peritoneum',
+                  '890': 'Open wound of hip and thigh', '438': 'Late effects of cerebrovascular disease',
+                  '397': 'Diseases of other endocardial structures', '958': 'Certain early complications of trauma',
+                  'V148': 'Not Found', '342': 'Hemiplegia and hemiparesis', 'V5332': 'Not Found',
+                  '290': 'Dementias', '171': 'Malignant neoplasm of connective and other soft tissue',
+                  '211': 'Benign neoplasm of other parts of digestive system', '78607': 'Not Found',
+                  'V443': 'Not Found', '294': 'Persistent mental disorders due to conditions classified elsewhere',
+                  'V140': 'Not Found', '470': 'Deviated nasal septum', '7818': 'Not Found', '78703': 'Not Found',
+                  '7960': 'Not Found', '7801': 'Not Found', '912': 'Not Found',
+                  '674': 'Other and unspecified complications of the puerperium, not elsewhere classified',
+                  '519': 'Other diseases of respiratory system', 'V1541': 'Not Found', 'V1389': 'Not Found',
+                  '394': 'Diseases of mitral valve', '576': 'Other disorders of biliary tract', '501': 'Asbestosis',
+                  'V1049': 'Not Found', 'E9654': 'Not Found', 'E8788': 'Not Found',
+                  'E911': 'Inhalation and ingestion of food causing obstruction of respiratory tract or suffocation',
+                  'E8785': 'Not Found', 'E9688': 'Not Found', 'E0010': 'Not Found', '534': 'Gastrojejunal ulcer',
+                  '256': 'Ovarian dysfunction', '322': 'Meningitis of unspecified cause',
+                  '351': 'Facial nerve disorders', '926': 'Crushing injury of trunk',
+                  '515': 'Postinflammatory pulmonary fibrosis',
+                  '934': 'Foreign body in trachea, bronchus, and lung', 'V4561': 'Not Found', '365': 'Glaucoma',
+                  '404': 'Hypertensive heart and chronic kidney disease', 'E9421': 'Not Found',
+                  '205': 'Myeloid leukemia', 'E887': 'Fracture, cause unspecified',
+                  '088': 'Other arthropod-borne diseases', 'V1642': 'Not Found',
+                  '731': 'Osteitis deformans and osteopathies associated with other disorders classified elsewhere',
+                  '802': 'Fracture of face bones', 'V8541': 'Not Found', '78057': 'Not Found',
+                  '617': 'Endometriosis', '78842': 'Not Found', '494': 'Bronchiectasis', 'E9323': 'Not Found',
+                  '188': 'Malignant neoplasm of bladder', '447': 'Other disorders of arteries and arterioles',
+                  'V1002': 'Not Found', '920': 'Contusion of face, scalp, and neck except eye(s)',
+                  'E8550': 'Not Found',
+                  '237': 'Neoplasm of uncertain behavior of endocrine glands and nervous system',
+                  'V444': 'Not Found', '571': 'Chronic liver disease and cirrhosis', '78606': 'Not Found',
+                  '615': 'Inflammatory diseases of uterus, except cervix', 'V1271': 'Not Found',
+                  '7921': 'Not Found', '7962': 'Not Found',
+                  '199': 'Malignant neoplasm without specification of site', 'E9068': 'Not Found',
+                  'E8789': 'Not Found', '78650': 'Not Found', '746': 'Not Found', '7852': 'Not Found',
+                  '375': 'Disorders of lacrimal system', '755': 'Not Found',
+                  '223': 'Benign neoplasm of kidney and other urinary organs', '79415': 'Not Found',
+                  'V1011': 'Not Found', 'E8497': 'Not Found', '967': 'Poisoning by sedatives and hypnotics',
+                  '270': 'Disorders of amino-acid transport and metabolism', 'E8846': 'Not Found',
+                  'E8780': 'Not Found', 'E9424': 'Not Found', '423': 'Other diseases of pericardium',
+                  '265': 'Thiamine and niacin deficiency states',
+                  '760': 'Fetus or newborn affected by maternal conditions which may be unrelated to present pregnancy',
+                  '832': 'Dislocation of elbow',
+                  '955': 'Injury to peripheral nerve(s) of shoulder girdle and upper limb',
+                  '804': 'Multiple fractures involving skull or face with other bones', '550': 'Inguinal hernia',
+                  '041': 'Bacterial infection in conditions classified elsewhere and of unspecified site',
+                  'V4589': 'Not Found', 'E9248': 'Not Found', '424': 'Other diseases of endocardium',
+                  '883': 'Open wound of finger(s)',
+                  '558': 'Other and unspecified noninfectious gastroenteritis and colitis', '78050': 'Not Found',
+                  '722': 'Intervertebral disc disorders', '764': 'Slow fetal growth and fetal malnutrition',
+                  'E9283': 'Not Found', '370': 'Keratitis', '112': 'Candidiasis',
+                  '904': 'Injury to blood vessels of lower extremity and unspecified sites', 'V161': 'Not Found',
+                  '541': 'Appendicitis, unqualified', '039': 'Actinomycotic infections',
+                  '592': 'Calculus of kidney and ureter', '257': 'Testicular dysfunction',
+                  '349': 'Other and unspecified disorders of the nervous system', 'E8162': 'Not Found',
+                  '7961': 'Not Found', '666': 'Postpartum hemorrhage', 'V1584': 'Not Found', '78951': 'Not Found',
+                  'V5831': 'Not Found', '127': 'Other intestinal helminthiases', 'V642': 'Not Found',
+                  'V694': 'Not Found', '812': 'Fracture of humerus', '844': 'Sprains and strains of knee and leg',
+                  '446': 'Polyarteritis nodosa and allied conditions', '153': 'Malignant neoplasm of colon',
+                  '871': 'Open wound of eyeball', '605': 'Redundant prepuce and phimosis', '78821': 'Not Found',
+                  '7810': 'Not Found', '380': 'Disorders of external ear', '209': 'NEUROENDOCRINE TUMORS ',
+                  'V171': 'Not Found', '477': 'Allergic rhinitis', 'E8796': 'Not Found',
+                  '183': 'Malignant neoplasm of ovary and other uterine adnexa',
+                  '182': 'Malignant neoplasm of body of uterus', 'V1021': 'Not Found',
+                  '315': 'Specific delays in development', '359': 'Muscular dystrophies and other myopathies',
+                  'E9379': 'Not Found', '543': 'Other diseases of appendix', 'V5339': 'Not Found',
+                  '398': 'Other rheumatic heart disease', '346': 'Migraine', '644': 'Early or threatened labor',
+                  '512': 'Pneumothorax', 'E8794': 'Not Found', '521': 'Diseases of hard tissues of teeth',
+                  '263': 'Other and unspecified protein-calorie malnutrition',
+                  '608': 'Other disorders of male genital organs', 'V170': 'Not Found', '7944': 'Not Found',
+                  '7919': 'Not Found', 'V1279': 'Not Found', 'V442': 'Not Found', '274': 'Gout',
+                  'E8783': 'Not Found', 'V4459': 'Not Found', 'E9457': 'Not Found', '78033': 'Not Found',
+                  '277': 'Other and unspecified disorders of metabolism', '600': 'Hyperplasia of prostate',
+                  '595': 'Cystitis', '526': 'Diseases of the jaws', '388': 'Other disorders of ear',
+                  '414': 'Other forms of chronic ischemic heart disease', '603': 'Hydrocele',
+                  '922': 'Contusion of trunk', '623': 'Noninflammatory disorders of vagina', 'V1259': 'Not Found',
+                  '78831': 'Not Found', 'V0481': 'Not Found',
+                  'E956': 'Suicide and self-inflicted injury by cutting and piercing instrument',
+                  '172': 'Malignant melanoma of skin', '78838': 'Not Found',
+                  'E918': 'Caught accidentally in or between objects', '301': 'Personality disorders',
+                  '860': 'Traumatic pneumothorax and hemothorax', 'E9501': 'Not Found', 'E9358': 'Not Found',
+                  '7842': 'Not Found', '347': 'Cataplexy and narcolepsy',
+                  '999': 'Complications of medical care, not elsewhere classified', '340': 'Multiple sclerosis',
+                  '701': 'Other hypertrophic and atrophic conditions of skin', '742': 'Not Found',
+                  '620': 'Noninflammatory disorders of ovary, fallopian tube, and broad ligament',
+                  '426': 'Conduction disorders', '723': 'Other disorders of cervical region',
+                  '690': 'Erythematosquamous dermatosis', '728': 'Disorders of muscle, ligament, and fascia',
+                  'E9319': 'Not Found', '78639': 'Not Found', 'V4975': 'Not Found', '7937': 'Not Found',
+                  '715': 'Osteoarthrosis and allied disorders', '79902': 'Not Found', 'E9108': 'Not Found',
+                  '382': 'Suppurative and unspecified otitis media', '936': 'Foreign body in intestine and colon',
+                  'E9348': 'Not Found', '709': 'Other disorders of skin and subcutaneous tissue',
+                  '7847': 'Not Found', '766': 'Disorders relating to long gestation and high birthweight',
+                  'E9198': 'Not Found', '748': 'Not Found',
+                  '356': 'Hereditary and idiopathic peripheral neuropathy',
+                  '998': 'Other complications of procedures, NEC', 'E9306': 'Not Found', 'E9398': 'Not Found',
+                  '834': 'Dislocation of finger',
+                  '626': 'Disorders of menstruation and other abnormal bleeding from female genital tract',
+                  '78899': 'Not Found', '694': 'Bullous dermatoses', '443': 'Other peripheral vascular disease',
+                  '78930': 'Not Found', 'V202': 'Not Found', '053': 'Herpes zoster', 'V850': 'Not Found',
+                  '362': 'Other retinal disorders', '7935': 'Not Found',
+                  '719': 'Other and unspecified disorders of joint', 'V0482': 'Not Found', 'V4511': 'Not Found',
+                  'V1505': 'Not Found', 'V553': 'Not Found', 'E8798': 'Not Found', 'V298': 'Not Found',
+                  '170': 'Malignant neoplasm of bone and articular cartilage', 'V151': 'Not Found',
+                  'V4364': 'Not Found', 'V5862': 'Not Found', 'V4973': 'Not Found', 'E8859': 'Not Found',
+                  'E8528': 'Not Found', 'V4611': 'Not Found', '416': 'Chronic pulmonary heart disease',
+                  'V4361': 'Not Found', '78760': 'Not Found', '493': 'Asthma',
+                  '768': 'Intrauterine hypoxia and birth asphyxia', '7955': 'Not Found', 'V1255': 'Not Found',
+                  'E8529': 'Not Found', '807': 'Fracture of rib(s), sternum, larynx, and trachea',
+                  'V5867': 'Not Found', '273': 'Disorders of plasma protein metabolism',
+                  '486': 'Pneumonia, organism unspecified', '820': 'Fracture of neck of femur',
+                  'V1504': 'Not Found', '7910': 'Not Found', '79439': 'Not Found', 'E9359': 'Not Found',
+                  '402': 'Hypertensive heart disease', '302': 'Sexual and gender identity disorders',
+                  '432': 'Other and unspecified intracranial hemorrhage', '250': 'Diabetes mellitus',
+                  'E8502': 'Not Found', 'E8830': 'Not Found', 'V4962': 'Not Found',
+                  '327': 'ORGANIC SLEEP DISORDERS ', '759': 'Not Found', 'E8889': 'Not Found', 'E8881': 'Not Found',
+                  '314': 'Hyperkinetic syndrome of childhood', '78829': 'Not Found', 'V3001': 'Not Found',
+                  'E8706': 'Not Found', 'E9299': 'Not Found', '364': 'Disorders of iris and ciliary body',
+                  '557': 'Vascular insufficiency of intestine', 'E9344': 'Not Found', 'E9682': 'Not Found',
+                  'V554': 'Not Found', 'V292': 'Not Found', 'V0991': 'Not Found',
+                  '483': 'Pneumonia due to other specified organism', '865': 'Injury to spleen',
+                  '296': 'Episodic mood disorders', '284': 'Aplastic anemia and other bone marrow failure syndrome',
+                  '627': 'Menopausal and postmenopausal disorders', '040': 'Other bacterial diseases',
+                  '972': 'Poisoning by agents primarily affecting the cardiovascular system',
+                  '821': 'Fracture of other and unspecified parts of femur', 'V1552': 'Not Found',
+                  '7813': 'Not Found', 'E9444': 'Not Found', 'V8542': 'Not Found', 'V643': 'Not Found',
+                  'E9293': 'Not Found', 'E9353': 'Not Found', 'V5417': 'Not Found', 'V4987': 'Not Found',
+                  'V1042': 'Not Found', '507': 'Pneumonitis due to solids and liquids', 'E8132': 'Not Found',
+                  'E8494': 'Not Found', '776': 'Hematological disorders of newborn',
+                  '582': 'Chronic glomerulonephritis', 'E9289': 'Not Found', 'V451': 'Not Found',
+                  'E9504': 'Not Found', '7949': 'Not Found', '180': 'Malignant neoplasm of cervix uteri',
+                  '830': 'Dislocation of jaw', '564': 'Functional digestive disorders, not elsewhere classified',
+                  '7892': 'Not Found', 'V1062': 'Not Found', 'V4571': 'Not Found',
+                  '323': 'Encephalitis, myelitis, and encephalomyelitis', '7873': 'Not Found',
+                  '331': 'Other cerebral degenerations', '962': 'Poisoning by hormones and synthetic substitutes',
+                  '708': 'Urticaria', '7963': 'Not Found', '78903': 'Not Found', '556': 'Ulcerative colitis',
+                  'V4282': 'Not Found', 'V5412': 'Not Found', 'E9800': 'Not Found', 'V1202': 'Not Found',
+                  '358': 'Myoneural disorders', 'V061': 'Not Found', 'V431': 'Not Found', '7861': 'Not Found',
+                  'E9317': 'Not Found', 'V4976': 'Not Found',
+                  '977': 'Poisoning by other and unspecified drugs and medicinal substances', 'V0254': 'Not Found',
+                  '721': 'Spondylosis and allied disorders', '863': 'Injury to gastrointestinal tract',
+                  '840': 'Sprains and strains of shoulder and upper arm',
+                  '968': 'Poisoning by other central nervous system depressants and anesthetics',
+                  '345': 'Epilepsy and recurrent seizures', 'E8496': 'Not Found', 'V1582': 'Not Found',
+                  'V1241': 'Not Found', 'E8809': 'Not Found', 'V721': 'Not Found', 'V4984': 'Not Found',
+                  '7843': 'Not Found', 'V1649': 'Not Found', '567': 'Peritonitis and retroperitoneal infections',
+                  '7945': 'Not Found', '034': 'Streptococcal sore throat and scarlet fever',
+                  'E912': 'Inhalation and ingestion of other object causing obstruction of respiratory tract or suffocation',
+                  'E8791': 'Not Found', '725': 'Polymyalgia rheumatica', '78441': 'Not Found',
+                  '527': 'Diseases of the salivary glands',
+                  '616': 'Inflammatory disease of cervix, vagina, and vulva', '282': 'Not Found',
+                  '348': 'Other conditions of brain', 'V434': 'Not Found',
+                  '197': 'Secondary malignant neoplasm of respiratory and digestive systems',
+                  '174': 'Malignant neoplasm of female breast', 'V1000': 'Not Found', 'E8122': 'Not Found',
+                  '305': 'Nondependent abuse of drugs', 'E8843': 'Not Found',
+                  '225': 'Benign neoplasm of brain and other parts of nervous system', 'V707': 'Not Found',
+                  '262': 'Other severe protein-calorie malnutrition', '317': 'Mild mental retardation',
+                  '7902': 'Not Found', '462': 'Acute pharyngitis', 'E8810': 'Not Found', '052': 'Chickenpox',
+                  '78630': 'Not Found', '578': 'Gastrointestinal hemorrhage', '246': 'Other disorders of thyroid',
+                  'V452': 'Not Found', 'E8508': 'Not Found',
+                  '730': 'Osteomyelitis, periostitis, and other infections involving bone',
+                  '720': 'Ankylosing spondylitis and other inflammatory spondylopathies',
+                  '421': 'Acute and subacute endocarditis', '813': 'Fracture of radius and ulna',
+                  '292': 'Drug-induced mental disorders', '706': 'Diseases of sebaceous glands',
+                  '054': 'Herpes simplex', '396': 'Diseases of mitral and aortic valves', 'E8500': 'Not Found',
+                  '763': 'Fetus or newborn affected by other complications of labor and delivery',
+                  '736': 'Other acquired deformities of limbs', '485': 'Bronchopneumonia, organism unspecified',
+                  'V1251': 'Not Found', 'V4986': 'Not Found', '866': 'Injury to kidney', '7824': 'Not Found',
+                  '919': 'Not Found', '455': 'Hemorrhoids', 'E8190': 'Not Found', 'V1001': 'Not Found',
+                  '7885': 'Not Found', 'V4502': 'Not Found', 'E9401': 'Not Found',
+                  '852': 'Subarachnoid, subdural, and extradural hemorrhage, following injury',
+                  '517': 'Lung involvement in conditions classified elsewhere', 'V1009': 'Not Found',
+                  '591': 'Hydronephrosis', 'V1003': 'Not Found', '147': 'Malignant neoplasm of nasopharynx',
+                  '935': 'Foreign body in mouth, esophagus, and stomach', 'V1047': 'Not Found', 'V163': 'Not Found',
+                  '78559': 'Not Found',
+                  '553': 'Other hernia of abdominal cavity without mention of obstruction or gangrene',
+                  '491': 'Chronic bronchitis', '198': 'Secondary malignant neoplasm of other specified sites',
+                  'V8539': 'Not Found', '496': 'Chronic airway obstruction, not elsewhere classified',
+                  '78905': 'Not Found', 'V8543': 'Not Found', '7991': 'Not Found', 'E8700': 'Not Found',
+                  '413': 'Angina pectoris', 'V0981': 'Not Found', '440': 'Atherosclerosis', 'E9174': 'Not Found',
+                  '173': 'Other malignant neoplasm of skin', '78723': 'Not Found',
+                  '839': 'Other, multiple, and ill-defined dislocations', '79311': 'Not Found',
+                  '614': 'Inflammatory disease of ovary, fallopian tube, pelvic cellular tissue, and peritoneum',
+                  '194': 'Malignant neoplasm of other endocrine glands and related structures', 'V183': 'Not Found',
+                  '7993': 'Not Found', '811': 'Fracture of scapula', '523': 'Gingival and periodontal diseases',
+                  '204': 'Lymphoid leukemia', '78059': 'Not Found', 'V8531': 'Not Found', 'V6549': 'Not Found',
+                  '691': 'Atopic dermatitis and related conditions', 'V0262': 'Not Found', '458': 'Hypotension',
+                  '78062': 'Not Found', 'E9378': 'Not Found', 'E8199': 'Not Found', '737': 'Curvature of spine',
+                  '528': 'Diseases of the oral soft tissues, excluding lesions specific for gingiva and tongue',
+                  '727': 'Other disorders of synovium, tendon, and bursa', '580': 'Acute glomerulonephritis',
+                  '7802': 'Not Found', 'V433': 'Not Found', '695': 'Erythematous conditions', 'E8499': 'Not Found',
+                  '607': 'Disorders of penis',
+                  '778': 'Conditions involving the integument and temperature regulation of fetus and newborn',
+                  'V166': 'Not Found', '808': 'Fracture of pelvis', 'V626': 'Not Found', 'V1091': 'Not Found',
+                  'E8261': 'Not Found', 'E0009': 'Not Found', 'V180': 'Not Found', 'V4579': 'Not Found',
+                  '79099': 'Not Found', '803': 'Other and unqualified skull fractures',
+                  '520': 'Disorders of tooth development and eruption', '684': 'Impetigo', '78839': 'Not Found',
+                  'V1089': 'Not Found', 'E9307': 'Not Found', 'E9385': 'Not Found', 'V0179': 'Not Found',
+                  'V1052': 'Not Found', 'V1529': 'Not Found',
+                  '433': 'Occlusion and stenosis of precerebral arteries', '235': 'Not Found',
+                  '472': 'Chronic pharyngitis and nasopharyngitis', '395': 'Diseases of aortic valve',
+                  'V462': 'Not Found', 'V8533': 'Not Found', '308': 'Acute reaction to stress', 'V066': 'Not Found',
+                  'V1254': 'Not Found', '78791': 'Not Found', 'V011': 'Not Found', 'E9301': 'Not Found',
+                  'V422': 'Not Found', 'E9310': 'Not Found',
+                  'E927': 'Overexertion and strenuous and repetitive movements or loads',
+                  '249': 'Secondary diabetes mellitus', 'E9298': 'Not Found',
+                  '478': 'Other diseases of upper respiratory tract', 'E8600': 'Not Found',
+                  '376': 'Disorders of the orbit', 'V1082': 'Not Found', 'E8130': 'Not Found',
+                  '963': 'Poisoning by primarily systemic agents', '579': 'Intestinal malabsorption',
+                  '78830': 'Not Found', 'V1272': 'Not Found', '601': 'Inflammatory diseases of prostate',
+                  'V1046': 'Not Found', 'E8786': 'Not Found', '078': 'Other diseases due to viruses and Chlamydiae',
+                  '867': 'Injury to pelvic organs', '814': 'Fracture of carpal bone(s)', 'E8150': 'Not Found',
+                  '577': 'Diseases of pancreas', '78701': 'Not Found',
+                  '868': 'Injury to other intra-abdominal organs', 'V625': 'Not Found',
+                  '810': 'Fracture of clavicle', 'V8535': 'Not Found', '861': 'Injury to heart and lung',
+                  '79989': 'Not Found', 'V1581': 'Not Found', 'E8781': 'Not Found', 'E9479': 'Not Found',
+                  '7862': 'Not Found', '598': 'Urethral stricture', 'V3101': 'Not Found', '78065': 'Not Found',
+                  '79579': 'Not Found', '535': 'Gastritis and duodenitis',
+                  '775': 'Endocrine and metabolic disturbances specific to the fetus and newborn',
+                  '007': 'Other protozoal intestinal diseases', '78909': 'Not Found', 'V5331': 'Not Found',
+                  'E9305': 'Not Found', '411': 'Other acute and subacute forms of ischemic heart disease',
+                  '243': 'Congenital hypothyroidism', '130': 'Toxoplasmosis',
+                  '770': 'Other respiratory conditions of fetus and newborn',
+                  '696': 'Psoriasis and similar disorders', 'V103': 'Not Found',
+                  '238': 'Neoplasm of uncertain behavior of other and unspecified sites and tissues',
+                  'V440': 'Not Found', '78603': 'Not Found', '78843': 'Not Found', '309': 'Adjustment reaction',
+                  'V420': 'Not Found', '826': 'Fracture of one or more phalanges of foot',
+                  '253': 'Disorders of the pituitary gland and its hypothalamic control',
+                  '162': 'Malignant neoplasm of trachea, bronchus, and lung', 'V5869': 'Not Found',
+                  '773': 'Hemolytic disease of fetus or newborn, due to isoimmunization',
+                  '965': 'Poisoning by analgesics, antipyretics, and antirheumatics', '78060': 'Not Found',
+                  '78604': 'Not Found', 'V653': 'Not Found', 'V620': 'Not Found', 'E9503': 'Not Found',
+                  '575': 'Other disorders of gallbladder', 'V1261': 'Not Found',
+                  '537': 'Other disorders of stomach and duodenum', '531': 'Gastric ulcer', 'V2651': 'Not Found',
+                  '011': 'Pulmonary tuberculosis', '042': 'Human immunodeficiency virus [HIV] disease',
+                  '750': 'Not Found', '336': 'Other diseases of spinal cord', 'E8784': 'Not Found',
+                  '816': 'Fracture of one or more phalanges of hand',
+                  '326': 'Late effects of intracranial abscess or pyogenic infection',
+                  '772': 'Fetal and neonatal hemorrhage', 'E8498': 'Not Found', '7851': 'Not Found',
+                  '203': 'Multiple myeloma and immunoproliferative neoplasms', '918': 'Not Found',
+                  '226': 'Benign neoplasm of thyroid glands', '492': 'Emphysema',
+                  '970': 'Poisoning by central nervous system stimulants', 'V8538': 'Not Found',
+                  '78729': 'Not Found', '969': 'Poisoning by psychotropic agents', 'V293': 'Not Found',
+                  'E9173': 'Not Found', 'E8880': 'Not Found', '835': 'Dislocation of hip', 'V3401': 'Not Found',
+                  '385': 'Other disorders of middle ear and mastoid', '741': 'Not Found',
+                  '228': 'Hemangioma and lymphangioma, any site', '350': 'Trigeminal nerve disorders',
+                  '587': 'Renal sclerosis, unspecified', '148': 'Malignant neoplasm of hypopharynx',
+                  'E8704': 'Not Found', '952': 'Spinal cord injury without evidence of spinal bone injury',
+                  '584': 'Acute renal failure', 'E9443': 'Not Found', '361': 'Retinal detachments and defects',
+                  'V146': 'Not Found', 'E9670': 'Not Found', '7850': 'Not Found',
+                  '287': 'Purpura and other hemorrhagic conditions', '78061': 'Not Found', '754': 'Not Found',
+                  'V5883': 'Not Found', 'E9411': 'Not Found', '705': 'Disorders of sweat glands',
+                  '7854': 'Not Found', '338': 'PAIN ', '604': 'Orchitis and epididymitis',
+                  '354': 'Mononeuritis of upper limb and mononeuritis multiplex', '79093': 'Not Found',
+                  'E9600': 'Not Found', 'E9430': 'Not Found',
+                  '588': 'Disorders resulting from impaired renal function', 'E9010': 'Not Found',
+                  'V4971': 'Not Found', 'E9351': 'Not Found', '536': 'Disorders of function of stomach',
+                  'E9352': 'Not Found', '881': 'Open wound of elbow, forearm, and wrist', 'V5865': 'Not Found',
+                  '453': 'Other venous embolism and thrombosis',
+                  '765': 'Disorders relating to short gestation and low birthweight', 'V1209': 'Not Found',
+                  '431': 'Intracerebral hemorrhage', '464': 'Acute laryngitis and tracheitis', 'V4585': 'Not Found',
+                  '008': 'Intestinal infections due to other organisms', 'E8210': 'Not Found', '7830': 'Not Found',
+                  '245': 'Thyroiditis', 'E8191': 'Not Found', 'V652': 'Not Found', 'V4575': 'Not Found',
+                  'V1043': 'Not Found', 'V173': 'Not Found', 'V169': 'Not Found',
+                  '047': 'Meningitis due to enterovirus', 'V4512': 'Not Found', '78469': 'Not Found',
+                  '236': 'Neoplasm of uncertain behavior of genitourinary organs', 'E9354': 'Not Found',
+                  '457': 'Noninfectious disorders of lymphatic channels', 'V017': 'Not Found',
+                  '154': 'Malignant neoplasm of rectum, rectosigmoid junction, and anus', 'V071': 'Not Found',
+                  '031': 'Diseases due to other mycobacteria', '927': 'Crushing injury of upper limb',
+                  '78451': 'Not Found', 'E9315': 'Not Found', 'V8530': 'Not Found', 'E9291': 'Not Found',
+                  '738': 'Other acquired deformity', 'E8551': 'Not Found', '428': 'Heart failure',
+                  '590': 'Infections of kidney', 'E9356': 'Not Found', '685': 'Pilonidal cyst', '7904': 'Not Found',
+                  'V5489': 'Not Found', '78097': 'Not Found', 'E9201': 'Not Found', 'V5812': 'Not Found',
+                  'E8556': 'Not Found', 'E8583': 'Not Found', 'E9452': 'Not Found',
+                  '583': 'Nephritis and nephropathy, not specified as acute or chronic', 'V1203': 'Not Found',
+                  '115': 'Histoplasmosis', '562': 'Diverticula of intestine',
+                  '299': 'Pervasive developmental disorders',
+                  '488': 'Influenza due to identified avian influenza virus', '445': 'Atheroembolism',
+                  'V1741': 'Not Found', '905': 'Late effects of musculoskeletal and connective tissue injuries',
+                  '704': 'Diseases of hair and hair follicles',
+                  '854': 'Intracranial injury of other and unspecified nature', '7833': 'Not Found',
+                  '318': 'Other specified mental retardation', 'V4365': 'Not Found', 'E9447': 'Not Found',
+                  'V8534': 'Not Found', '78841': 'Not Found', 'E8768': 'Not Found', '218': 'Uterine leiomyoma',
+                  '749': 'Not Found', 'E8495': 'Not Found', 'V8522': 'Not Found',
+                  '533': 'Peptic ulcer, site unspecified', '449': 'Septic arterial embolism', '7881': 'Not Found',
+                  '195': 'Malignant neoplasm of other and ill-defined sites',
+                  '771': 'Infections specific to the perinatal period',
+                  '714': 'Rheumatoid arthritis and other inflammatory polyarthropathies',
+                  '444': 'Arterial embolism and thrombosis', '360': 'Disorders of the globe', 'E8543': 'Not Found',
+                  'V425': 'Not Found', 'E9478': 'Not Found', '79319': 'Not Found', 'V1509': 'Not Found',
+                  '532': 'Duodenal ulcer', '268': 'Vitamin D deficiency', '7812': 'Not Found',
+                  '995': 'Certain adverse effects not elsewhere classified', '752': 'Not Found',
+                  '682': 'Other cellulitis and abscess', 'E8181': 'Not Found', 'V058': 'Not Found',
+                  '555': 'Regional enteritis', 'E9803': 'Not Found', 'V029': 'Not Found', '7827': 'Not Found',
+                  '779': 'Other and ill-defined conditions originating in the perinatal period',
+                  '648': 'Other current conditions in the mother classifiable elsewhere, but complicating pregnancy, childbirth, or the puerperium',
+                  '594': 'Calculus of lower urinary tract', 'V4501': 'Not Found', '873': 'Other open wound of head',
+                  'V4972': 'Not Found', 'V851': 'Not Found',
+                  '853': 'Other and unspecified intracranial hemorrhage following injury', 'E8232': 'Not Found',
+                  '374': 'Other disorders of eyelids', 'V4576': 'Not Found',
+                  '193': 'Malignant neoplasm of thyroid gland', '78906': 'Not Found',
+                  '401': 'Essential hypertension', 'V600': 'Not Found', '864': 'Injury to liver',
+                  '332': "Parkinson's disease", '698': 'Pruritus and related conditions', '79431': 'Not Found',
+                  '611': 'Other disorders of breast', '815': 'Fracture of metacarpal bone(s)', '916': 'Not Found',
+                  '304': 'Drug dependence',
+                  '149': 'Malignant neoplasm of other and ill-defined sites within the lip, oral cavity, and pharynx',
+                  '363': 'Chorioretinal inflammations, scars, and other disorders of choroid',
+                  '724': 'Other and unspecified disorders of back',
+                  '693': 'Dermatitis due to substances taken internally', '79551': 'Not Found', 'V714': 'Not Found',
+                  'V461': 'Not Found', '78550': 'Not Found', 'V1041': 'Not Found', '712': 'Crystal arthropathies',
+                  'E9361': 'Not Found', 'E9809': 'Not Found',
+                  '805': 'Fracture of vertebral column without mention of spinal cord injury',
+                  '618': 'Genital prolapse', 'V502': 'Not Found', 'V5866': 'Not Found', 'V1005': 'Not Found',
+                  '136': 'Other and unspecified infectious and parasitic diseases',
+                  '276': 'Disorders of fluid, electrolyte, and acid-base balance',
+                  '311': 'Depressive disorder, not elsewhere classified', 'V053': 'Not Found', 'V1749': 'Not Found',
+                  'E9392': 'Not Found', '111': 'Dermatomycosis, other and unspecified',
+                  'E989': 'Late effects of injury, undetermined whether accidentally or purposely inflicted',
+                  '78907': 'Not Found', '094': 'Neurosyphilis', '78900': 'Not Found', 'E8147': 'Not Found',
+                  '703': 'Diseases of nail', '560': 'Intestinal obstruction without mention of hernia',
+                  '7931': 'Not Found', '757': 'Not Found', 'V1302': 'Not Found', '216': 'Benign neoplasm of skin',
+                  '481': 'Pneumococcal pneumonia [Streptococcus pneumoniae pneumonia]',
+                  '333': 'Other extrapyramidal disease and abnormal movement disorders', '751': 'Not Found',
+                  '593': 'Other disorders of kidney and ureter', '151': 'Malignant neoplasm of stomach',
+                  '525': 'Other diseases and conditions of the teeth and supporting structures',
+                  'E9220': 'Not Found', 'V8524': 'Not Found', '7864': 'Not Found',
+                  '646': 'Other complications of pregnancy, not elsewhere classified', '260': 'Kwashiorkor',
+                  '487': 'Influenza', 'V168': 'Not Found', 'V854': 'Not Found', '850': 'Concussion',
+                  'V1204': 'Not Found', '726': 'Peripheral enthesopathies and allied syndromes',
+                  'E8490': 'Not Found', '78959': 'Not Found', '391': 'Rheumatic fever with heart involvement',
+                  '480': 'Viral pneumonia', 'E9500': 'Not Found', '343': 'Infantile cerebral palsy',
+                  '456': 'Varicose veins of other sites', '901': 'Injury to blood vessels of thorax',
+                  '733': 'Other disorders of bone and cartilage',
+                  '371': 'Corneal opacity and other disorders of cornea',
+                  '139': 'Late effects of other infectious and parasitic diseases', 'V145': 'Not Found',
+                  '251': 'Other disorders of pancreatic internal secretion', 'V1507': 'Not Found',
+                  '7872': 'Not Found', 'V1551': 'Not Found', '280': 'Iron deficiency anemias', 'V555': 'Not Found',
+                  '516': 'Other alveolar and parietoalveolar pneumonopathy', '510': 'Empyema',
+                  '982': 'Toxic effect of solvents other than petroleum based',
+                  '293': 'Transient mental disorders due to conditions classified elsewhere', 'V1061': 'Not Found',
+                  'V1088': 'Not Found', '7845': 'Not Found', '78552': 'Not Found', 'E9429': 'Not Found',
+                  '075': 'Infectious mononucleosis', '366': 'Cataract', '427': 'Cardiac dysrhythmias',
+                  'V8537': 'Not Found', 'V270': 'Not Found', '78003': 'Not Found',
+                  '710': 'Diffuse diseases of connective tissue',
+                  '996': 'Complications peculiar to certain specified procedures', '475': 'Peritonsillar abscess',
+                  '851': 'Cerebral laceration and contusion', '185': 'Malignant neoplasm of prostate',
+                  '201': "Hodgkin's disease", '565': 'Anal fissure and fistula', 'E9192': 'Not Found',
+                  'E9331': 'Not Found', 'E8120': 'Not Found', '7806': 'Not Found', '297': 'Delusional disorders',
+                  '7908': 'Not Found', '78605': 'Not Found', '79094': 'Not Found', 'V0259': 'Not Found',
+                  '377': 'Disorders of optic nerve and visual pathways',
+                  '825': 'Fracture of one or more tarsal and metatarsal bones', 'V454': 'Not Found',
+                  'E9347': 'Not Found', '196': 'Secondary and unspecified malignant neoplasm of lymph nodes',
+                  'E9394': 'Not Found', '278': 'Overweight, obesity and other hyperalimentation',
+                  '7994': 'Not Found', '78720': 'Not Found', 'V1508': 'Not Found', 'E9363': 'Not Found',
+                  'V8525': 'Not Found', 'V1083': 'Not Found', '266': 'Deficiency of B-complex components',
+                  'E9320': 'Not Found', 'E9060': 'Not Found', '466': 'Acute bronchitis and bronchiolitis',
+                  '552': 'Other hernia of abdominal cavity, with obstruction, but without mention of gangrene',
+                  'V644': 'Not Found', '386': 'Vertiginous syndromes and other disorders of vestibular system',
+                  '379': 'Other disorders of eye', '355': 'Mononeuritis of lower limb',
+                  '164': 'Malignant neoplasm of thymus, heart, and mediastinum', '473': 'Chronic sinusitis',
+                  'V0980': 'Not Found', '753': 'Not Found', 'V1641': 'Not Found', '78721': 'Not Found',
+                  '212': 'Benign neoplasm of respiratory and intrathoracic organs',
+                  '412': 'Old myocardial infarction', '7905': 'Not Found',
+                  '454': 'Varicose veins of lower extremities', '79092': 'Not Found', 'V4281': 'Not Found',
+                  'E9229': 'Not Found', '831': 'Dislocation of shoulder', 'E8532': 'Not Found',
+                  '566': 'Abscess of anal and rectal regions',
+                  '847': 'Sprains and strains of other and unspecified parts of back',
+                  '948': 'Burns classified according to extent of body surface involved', 'V4578': 'Not Found',
+                  '573': 'Other disorders of liver', 'V6442': 'Not Found', 'E8504': 'Not Found',
+                  'E9689': 'Not Found', 'E9390': 'Not Found',
+                  '909': 'Late effects of other and unspecified external causes',
+                  '522': 'Diseases of pulp and periapical tissues', 'V5481': 'Not Found', 'E8192': 'Not Found',
+                  'E916': 'Struck accidentally by falling object', 'V1085': 'Not Found',
+                  '513': 'Abscess of lung and mediastinum', 'V552': 'Not Found', 'V4577': 'Not Found',
+                  '335': 'Anterior horn cell disease', 'E8801': 'Not Found', '511': 'Pleurisy',
+                  '334': 'Spinocerebellar disease',
+                  '647': 'Infectious and parasitic conditions in the mother classifiable elsewhere, but complicating pregnancy, childbirth, or the puerperium',
+                  'V463': 'Not Found', '252': 'Disorders of parathyroid gland', 'V446': 'Not Found',
+                  'V0261': 'Not Found', 'V0381': 'Not Found', '163': 'Malignant neoplasm of pleura',
+                  '568': 'Other disorders of peritoneum', '300': 'Anxiety, dissociative and somatoform disorders',
+                  '529': 'Diseases and other conditions of the tongue',
+                  '233': 'Carcinoma in situ of breast and genitourinary system',
+                  '441': 'Aortic aneurysm and dissection', '822': 'Fracture of patella',
+                  '957': 'Injury to other and unspecified nerves', 'E9313': 'Not Found',
+                  '951': 'Injury to other cranial nerve(s)', '009': 'Ill-defined intestinal infections',
+                  'V1004': 'Not Found', '7835': 'Not Found', 'V167': 'Not Found',
+                  '875': 'Open wound of chest (wall)', '7820': 'Not Found', 'V4573': 'Not Found',
+                  'V4983': 'Not Found', 'V141': 'Not Found', '275': 'Disorders of mineral metabolism',
+                  '239': 'NEOPLASMS OF UNSPECIFIED NATURE ', '78459': 'Not Found', '389': 'Hearing loss',
+                  '625': 'Pain and other symptoms associated with female genital organs',
+                  '325': 'Phlebitis and thrombophlebitis of intracranial venous sinuses',
+                  '307': 'Special symptoms or syndromes, not elsewhere classified',
+                  '971': 'Poisoning by drugs primarily affecting the autonomic nervous system',
+                  '461': 'Acute sinusitis', 'E9571': 'Not Found', 'E9509': 'Not Found', '283': 'Not Found',
+                  'E9530': 'Not Found', 'V174': 'Not Found', 'V4582': 'Not Found',
+                  '569': 'Other disorders of intestine', 'V667': 'Not Found',
+                  '686': 'Other local infections of skin and subcutaneous tissue', '430': 'Subarachnoid hemorrhage',
+                  'E9179': 'Not Found', '298': 'Other nonorganic psychoses',
+                  '279': 'Disorders involving the immune mechanism', 'E9308': 'Not Found', 'E9208': 'Not Found',
+                  '767': 'Birth trauma', '716': 'Other and unspecified arthropathies', '368': 'Visual disturbances',
+                  'E8708': 'Not Found', 'V1044': 'Not Found', '214': 'Lipoma',
+                  '514': 'Pulmonary congestion and hypostasis',
+                  'V08': 'Asymptomatic human immunodeficiency virus [HIV] infection status', '7825': 'Not Found',
+                  'E8121': 'Not Found', 'V4581': 'Not Found', 'E9346': 'Not Found', 'V5864': 'Not Found',
+                  'E9342': 'Not Found', 'E9383': 'Not Found', '220': 'Benign neoplasm of ovary',
+                  '152': 'Malignant neoplasm of small intestine, including duodenum',
+                  '259': 'Other endocrine disorders', '540': 'Acute appendicitis', 'E8493': 'Not Found',
+                  'V1252': 'Not Found', '495': 'Extrinsic allergic alveolitis', '78799': 'Not Found',
+                  '913': 'Not Found', 'V4574': 'Not Found', '289': 'Not Found', '78079': 'Not Found',
+                  'E966': 'Assault by cutting and piercing instrument',
+                  '891': 'Open wound of knee, leg [except thigh], and ankle', '344': 'Other paralytic syndromes',
+                  '288': 'Diseases of white blood cells', 'V8532': 'Not Found', '79001': 'Not Found'}
+    lab_codes = {'51447': 'Macrophages', '51425': 'Kappa', '51397': 'CD16/56', '51264': 'Platelet Clumps',
+                 '51275': 'PTT', '51501': 'Transitional Epithelial Cells', '51499': 'Sperm', '51189': 'CD57',
+                 '50866': 'Ammonia', '51476': 'Epithelial Cells', '51194': 'CD8 Cells, Percent', '50825': 'Temperature',
+                 '51123': 'Other', '51067': '24 hr Creatinine', '51119': 'Metamyelocytes', '51446': 'Lymphocytes',
+                 '51217': 'Glyco A', '51274': 'PT', '51268': 'Polychromasia', '51511': 'Urine Fat Bodies',
+                 '51482': 'Hyaline Casts', '51149': 'Bleeding Time', '51262': 'Pencil Cells', '51035': 'LD, Body Fluid',
+                 '50898': 'Cancer Antigen 27.29', '51057': 'Potassium, Pleural', '51409': 'CD4/CD8 Ratio',
+                 '51124': 'Plasma', '51111': 'Bands', '51530': 'AF-AFP', '51010': 'Vitamin B12',
+                 '51068': '24 hr Protein', '51340': 'Kappa', '51347': 'Eosinophils', '50828': 'Ventilator',
+                 '51143': 'Atypical Lymphocytes', '51051': 'Cholesterol, Pleural', '51551': 'VOIDED SPECIMEN',
+                 '50998': 'Transferrin', '50941': 'Hepatitis B Surface Antigen', '51396': 'CD16', '51478': 'Glucose',
+                 '51097': 'Potassium, Urine', '50800': 'SPECIMEN TYPE', '51332': 'CD7',
+                 '50938': 'Hepatitis A Virus IgM Antibody', '51169': 'CD20 %', '51376': 'Macrophage',
+                 '50919': 'EDTA Hold', '51180': 'CD4 Cells, Percent', '51216': 'Fragmented Cells',
+                 '50856': 'Acetaminophen', '51372': 'Joint Crystals, Location', '51185': 'CD5 %', '51307': 'CD13',
+                 '51454': 'Plasma Cells', '51341': 'Lambda', '51253': 'Monocyte Count', '51375': 'Lymphocytes',
+                 '51078': 'Chloride, Urine', '50962': 'N-Acetylprocainamide (NAPA)', '51467': 'Broad Casts',
+                 '51211': 'Factor XIII', '51400': 'CD20', '51070': 'Albumin/Creatinine, Urine', '51113': 'Blasts',
+                 '51219': 'H/O Smear', '51311': 'CD16', '50876': 'Anti-Smooth Muscle Antibody',
+                 '50905': 'Cholesterol, LDL, Calculated', '51151': 'Burr Cells', '51401': 'CD22', '51431': 'Monos',
+                 '51508': 'Urine Color', '51128': 'WBC, Ascites', '50947': 'I',
+                 '51299': 'Von Willebrand Factor Antigen',
+                 '51316': 'CD22', '51017': 'PEP, CSF', '51550': 'VOIDED SPECIMEN', '50968': 'Phenytoin, Free',
+                 '50864': 'Alpha-Fetoprotein', '51540': 'PROBLEM SPECIMEN', '50824': 'Sodium, Whole Blood',
+                 '51018': 'Total Protein, CSF', '51343': 'Atypical Lymphocytes', '51291': 'Sickle Cells',
+                 '51238': 'Kappa', '51512': 'Urine Mucous', '51545': 'VOIDED SPECIMEN', '50904': 'Cholesterol, HDL',
+                 '51421': 'Glyco A', '50860': 'AFP, Maternal Screen', '50985': 'Study Tubes', '51486': 'Leukocytes',
+                 '51308': 'CD138', '50881': 'Beta-2 Microglobulin', '50930': 'Globulin', '50833': 'Potassium',
+                 '51318': 'CD25', '50970': 'Phosphate', '50988': 'Testosterone', '51389': 'CD103', '50807': 'Comments',
+                 '50890': 'C3', '51445': 'Hematocrit, Pleural', '51380': 'NRBC', '51064': 'Potassium, Stool',
+                 '51371': 'Joint Crystals, Comment', '50816': 'Oxygen', '50861': 'Alanine Aminotransferase (ALT)',
+                 '51394': 'CD14', '51469': 'Calcium Oxalate Crystals', '51434': 'Other Cell',
+                 '51261': 'Pappenheimer Bodies', '50869': 'Anti-DGP (IgA/IgG)', '51276': 'Quantitative G6PD',
+                 '51096': 'Porphobilinogen Screen', '50865': 'Amikacin', '51426': 'Lambda', '51259': 'Other Cells',
+                 '51368': 'Eosinophils', '51083': 'Ethanol, Urine', '51304': 'CD103',
+                 '50894': 'Calculated Free Testosterone', '51306': 'CD11c', '51273': 'Protein S, Functional',
+                 '51484': 'Ketone', '51227': 'Hemogloblin S', '51414': 'CD57', '51289': 'Serum Viscosity',
+                 '51346': 'Blasts', '50913': 'Cryoglobulin', '51348': 'Hematocrit, CSF', '51167': 'CD2',
+                 '51336': 'Glyco A', '51505': 'Uric Acid Crystals', '51472': 'Cholesterol Crystals', '51135': 'ADP',
+                 '51390': 'CD117', '50831': 'pH', '50873': 'Anti-Nuclear Antibody', '51203': 'Factor IX',
+                 '51481': 'Hemosiderin', '51324': 'CD41', '51015': 'Lactate Dehydrogenase, CSF',
+                 '51281': 'Reptilase Time Control', '51435': 'Plasma', '50924': 'Ferritin', '51355': 'Monocytes',
+                 '50826': 'Tidal Volume', '50811': 'Hemoglobin', '50857': 'Acetone',
+                 '51349': 'Hypersegmented Neutrophils', '51313': 'CD19', '51356': 'Myelocytes',
+                 '51032': 'Creatinine, Body Fluid', '51497': 'Renal Epithelial Cells', '51526': 'FRUCAMN+',
+                 '50837': 'Bicarbonate, Ascites', '51129': 'Young', '51197': 'Elliptocytes', '50984': 'Stat',
+                 '51407': 'CD38', '51251': 'Metamyelocytes', '50912': 'Creatinine', '51019': 'Albumin, Joint Fluid',
+                 '51080': 'Creatinine Clearance', '51365': 'Atypical Lymphocytes', '51528': 'STDY HOLD',
+                 '50867': 'Amylase', '50830': 'pCO2, Body Fluid', '51104': 'Urea Nitrogen, Urine', '51405': 'CD33',
+                 '51182': 'CD41', '51471': 'Cellular Cast', '51399': 'CD2', '51179': 'CD38',
+                 '51542': 'PROBLEM SPECIMEN',
+                 '51029': 'Calcium, Body Fluid', '51430': 'Metamyelocytes', '51206': 'Factor VIII',
+                 '51000': 'Triglycerides', '50953': 'Iron Binding Capacity, Total', '51452': 'NRBC',
+                 '50829': 'Fluid Type', '51456': 'Promyelocytes', '51242': 'LUC', '51408': 'CD4', '50931': 'Glucose',
+                 '51345': 'Basophils', '50879': 'Barbiturate Screen', '51121': 'Myelocytes', '51335': 'FMC-7',
+                 '51157': 'CD138', '50982': 'Sex Hormone Binding Globulin', '50979': 'Red Top Hold', '51491': 'pH',
+                 '51393': 'CD138', '51050': 'Chloride, Pleural', '51323': 'CD4', '51535': 'CD55',
+                 '51552': 'VOIDED SPECIMEN', '50877': 'Anti-Thyroglobulin Antibodies', '51465': 'Bilirubin Crystals',
+                 '50902': 'Chloride', '51244': 'Lymphocytes', '51046': 'Albumin, Pleural',
+                 '51049': 'Bilirubin, Total, Pleural', '51320': 'CD33', '50992': 'Thyroid Peroxidase Antibodies',
+                 '51117': 'Macrophage', '51462': 'Amorphous Crystals', '50896': 'Calculated Thyroxine (T4) Index',
+                 '50847': 'Potassium, Ascites', '51213': 'Fibrin Degradation Products', '51315': 'CD20',
+                 '51378': 'Metamyelocytes', '51549': 'VOIDED SPECIMEN', '51288': 'Sedimentation Rate',
+                 '51233': 'Hypochromia', '51257': 'Nucleated Red Cells', '51475': 'Epithelial Casts',
+                 '51120': 'Monocytes', '51379': 'Monocytes', '51022': 'Glucose, Joint Fluid', '51112': 'Basophils',
+                 '50883': 'Bilirubin, Direct', '51477': 'Free Fat', '51295': 'TdT', '50850': 'Triglycerides, Ascites',
+                 '51110': 'Atypical Lymphocytes', '50845': 'Miscellaneous, Ascites', '51047': 'Amylase, Pleural',
+                 '51230': 'HLA-DR', '51279': 'Red Blood Cells', '50960': 'Magnesium', '51333': 'CD71',
+                 '51139': 'Anticardiolipin Antibody IgM', '51448': 'Mesothelial Cells', '51460': 'Blood, Occult',
+                 '51207': 'Factor VIII Inhibitor', '51079': 'Cocaine, Urine', '51082': 'Creatinine, Urine',
+                 '51191': 'CD64', '51105': 'Uric Acid, Urine', '50910': 'Creatine Kinase (CK)', '51009': 'Vancomycin',
+                 '51042': 'Sodium, Body Fluid', '51366': 'Bands', '51065': 'Sodium, Stool',
+                 '50942': 'Hepatitis B Virus Core Antibody', '50842': 'Glucose, Ascites', '51367': 'Basophils',
+                 '51248': 'MCH', '50823': 'Required O2', '51058': 'Sodium, Pleural', '50853': '25-OH Vitamin D',
+                 '51069': 'Albumin, Urine', '50803': 'Calculated Bicarbonate, Whole Blood',
+                 '51231': 'Howell-Jolly Bodies', '50888': 'Blue Top Hold Frozen', '51359': 'Plasma',
+                 '51073': 'Amylase/Creatinine Ratio, Urine', '51547': 'VOIDED SPECIMEN', '50944': 'HIV Antibody',
+                 '51294': 'Target Cells', '50897': 'Call', '51360': 'Polys', '51386': 'Bands', '50916': 'DHEA-Sulfate',
+                 '51256': 'Neutrophils', '50899': 'Carbamazepine', '50972': 'Procainamide',
+                 '51377': 'Mesothelial Cells',
+                 '50950': 'Immunoglobulin G', '51493': 'RBC', '51188': 'CD56', '51466': 'Blood',
+                 '51140': 'Antithrombin',
+                 '51076': 'Bicarbonate, Urine', '51325': 'CD45', '50909': 'Cortisol', '51330': 'CD59',
+                 '51272': 'Protein S, Antigen', '51144': 'Bands', '50934': 'H', '50882': 'Bicarbonate',
+                 '50955': 'Light Green Top Hold', '51319': 'CD3', '51532': 'PLASMGN', '50855': 'Absolute Hemoglobin',
+                 '51458': 'WBC, Pleural', '51006': 'Urea Nitrogen', '51150': 'Blood Parasite Smear', '51159': 'CD15',
+                 '51554': 'VOIDED SPECIMEN', '51090': 'Methadone, Urine', '51382': 'Polys',
+                 '51176': 'CD3 Cells, Percent', '51171': 'CD22', '51329': 'CD57', '51522': 'PG', '51249': 'MCHC',
+                 '50895': 'Calculated TBG', '51305': 'CD117', '51284': 'Reticulocyte Count, Manual',
+                 '51222': 'Hemoglobin', '51388': 'CD10', '51212': 'Fetal Hemoglobin', '51518': 'WBC Clumps',
+                 '51093': 'Osmolality, Urine', '51513': 'Urine Specimen Type', '51142': 'Arachadonic Acid',
+                 '50935': 'Haptoglobin', '50937': 'Hepatitis A Virus Antibody', '50976': 'Protein, Total',
+                 '51141': 'APT Test', '51395': 'CD15', '51158': 'CD14', '51161': 'CD16', '51523': 'GR HOLD',
+                 '51500': 'Sulfonamides', '51473': 'Cysteine Crystals', '51384': 'WBC, Joint Fluid',
+                 '51496': 'Reducing Substances, Urine', '51234': 'Immunophenotyping', '51302': 'Young Cells',
+                 '50952': 'Iron', '51344': 'Bands', '51327': 'CD55', '51170': 'CD20 Absolute Count',
+                 '51352': 'Macrophage', '51240': 'Large Platelets', '51250': 'MCV', '50964': 'Osmolality, Measured',
+                 '51544': 'VOIDED SPECIMEN', '51495': 'RBC Clumps', '50858': 'Acid Phosphatase', '50914': 'Cyclosporin',
+                 '51470': 'Calcium Phosphate Crystals', '50929': 'Gentamicin', '51503': 'Triple Phosphate Crystals',
+                 '51088': 'Magnesium, Urine', '51398': 'CD19', '51247': 'MacroOvalocytes', '51062': 'Chloride, Stool',
+                 '50875': 'Anti-Parietal Cell Antibody', '51108': 'Urine Volume',
+                 '50911': 'Creatine Kinase, MB Isoenzyme', '51106': 'Urine Creatinine',
+                 '51373': 'Joint Crystals, Number', '51184': 'CD5', '51148': 'Blasts',
+                 '50849': 'Total Protein, Ascites',
+                 '51282': 'Reticulocyte Count, Absolute', '51298': 'Von Willebrand Factor Activity', '51364': 'Young',
+                 '51038': 'Miscellaneous, Body Fluid', '51048': 'Bicarbonate, Pleural',
+                 '51370': 'Joint Crystals, Birefringence', '50844': 'Lipase, Ascites',
+                 '50870': 'Anti-Gliadin Antibody, IgA', '51515': 'Waxy Casts', '51519': 'Yeast',
+                 '51553': 'VOIDED SPECIMEN', '51533': 'WBCP', '51423': 'HLA-DR', '50974': 'Prostate Specific Antigen',
+                 '51195': 'Collagen', '51255': 'Myelocytes', '50975': 'Protein Electrophoresis',
+                 '50940': 'Hepatitis B Surface Antibody', '50977': 'Quinidine', '51026': 'Amylase, Body Fluid',
+                 '51229': 'Heparin, LMW', '51392': 'CD13', '51331': 'CD64', '51228': 'Heparin',
+                 '50817': 'Oxygen Saturation', '51258': 'Osmotic Fragility', '51524': 'FATTY', '51450': 'Monos',
+                 '51208': 'Factor X', '50813': 'Lactate', '51056': 'Miscellaneous, Pleural', '50945': 'Homocysteine',
+                 '51317': 'CD23', '51514': 'Urobilinogen', '51433': 'NRBC', '51427': 'Lymphocytes', '51172': 'CD23',
+                 '51439': 'WBC, Other Fluid', '50812': 'Intubated', '50863': 'Alkaline Phosphatase',
+                 '51115': 'Hematocrit, Ascites', '51210': 'Factor XII', '50819': 'PEEP', '51334': 'CD8',
+                 '51224': 'Hemoglobin C', '50893': 'Calcium, Total', '51152': 'CD10', '51134': 'Acanthocytes',
+                 '50958': 'Luteinizing Hormone', '50840': 'Cholesterol, Ascites', '51290': 'Sickle Cell Preparation',
+                 '51509': 'Urine Comments', '51102': 'Total Protein, Urine', '51415': 'CD64', '51252': 'Microcytes',
+                 '50989': 'Testosterone, Free', '51103': 'Uhold', '50862': 'Albumin', '51548': 'VOIDED SPECIMEN',
+                 '51449': 'Metamyelocytes', '50978': 'Rapamycin', '51385': 'Atypical Lymphocytes',
+                 '51280': 'Reptilase Time', '51468': 'Calcium Carbonate Crystals', '51297': 'Thrombin',
+                 '51285': 'Reticulocyte, Cellular Hemoglobin', '51031': 'Cholesterol, Body Fluid',
+                 '51014': 'Glucose, CSF', '50841': 'Creatinine, Ascites', '51361': 'Promyelocytes', '51520': 'ANTI-MC',
+                 '50922': 'Ethanol', '51127': 'RBC, Ascites', '51488': 'Non-squamous Epithelial Cells',
+                 '51489': 'NonSquamous Epithelial Cell', '50886': 'Blood Culture Hold',
+                 '51071': 'Amphetamine Screen, Urine', '51516': 'WBC', '51074': 'Barbiturate Screen, Urine',
+                 '50927': 'Gamma Glutamyltransferase', '51541': 'PROBLEM SPECIMEN', '51118': 'Mesothelial Cell',
+                 '50994': 'Thyroxine (T4)', '51153': 'CD103', '50868': 'Anion Gap', '50951': 'Immunoglobulin M',
+                 '51441': 'Bands', '50880': 'Benzodiazepine Screen', '50980': 'Rheumatoid Factor',
+                 '51353': 'Mesothelial cells', '51537': 'TDT', '51043': 'Total Protein, Body Fluid',
+                 '50836': 'Amylase, Ascites', '51527': 'MS-DIA', '51225': 'Hemoglobin F', '50839': 'Chloride, Ascites',
+                 '51193': 'CD71', '50949': 'Immunoglobulin A', '51293': 'Sugar Water Test', '51008': 'Valproic Acid',
+                 '50999': 'Tricyclic Antidepressant Screen', '51339': 'Iron Stain', '51100': 'Sodium, Urine',
+                 '51086': 'Immunofixation, Urine', '51136': 'Alpha Antiplasmin', '51164': 'CD19', '51089': 'Marijuana',
+                 '50995': 'Thyroxine (T4), Free', '51453': 'Other', '50838': 'Bilirubin, Total, Ascites',
+                 '51417': 'CD71', '51403': 'CD25', '50917': 'Digoxin', '51517': 'WBC Casts', '51237': 'INR(PT)',
+                 '50936': 'HCG, Maternal Screen', '51357': 'NRBC', '50966': 'Phenobarbital',
+                 '51054': 'Lactate Dehydrogenase, Pleural', '50852': '% Hemoglobin A1c', '51461': 'Ammonium Biurate',
+                 '51487': 'Nitrite', '51098': 'Prot. Electrophoresis, Urine', '51278': 'Red Blood Cell Fragments',
+                 '51536': 'CD59', '51092': 'Opiate Screen, Urine', '51413': 'CD56', '51016': 'Miscellaneous, CSF',
+                 '51202': 'Factor II', '51168': 'CD20', '51270': 'Protein C, Antigen', '51442': 'Basophils',
+                 '51174': 'CD3 %', '51410': 'CD41', '51095': 'Phosphate, Urine', '50956': 'Lipase',
+                 '51199': 'Eosinophil Count', '51177': 'CD33', '51480': 'Hematocrit', '51131': 'Absolute CD4 Count',
+                 '50906': 'Cholesterol, LDL, Measured', '51246': 'Macrocytes', '50804': 'Calculated Total CO2',
+                 '50821': 'pO2', '51263': 'Plasma Cells', '50809': 'Glucose', '50918': 'Double Stranded DNA',
+                 '51429': 'Mesothelial cells', '51374': 'Joint Crystals, Shape', '51215': 'FMC-7',
+                 '51292': 'Spherocytes', '50892': 'CA-125', '51063': 'Osmolality, Stool', '51002': 'Troponin I',
+                 '50901': 'Centromere', '50933': 'Green Top Hold (plasma)', '50871': 'Anti-Mitochondrial Antibody',
+                 '50903': 'Cholesterol Ratio (Total/HDL)', '51192': 'CD7', '50884': 'Bilirubin, Indirect',
+                 '51525': 'Billed', '50932': 'Gray Top Hold (plasma)', '51221': 'Hematocrit', '50983': 'Sodium',
+                 '51044': 'Triglycer', '51338': 'Immunophenotyping', '51424': 'Immunophenotyping',
+                 '50822': 'Potassium, Whole Blood', '50851': 'Urea Nitrogen, Ascites', '50990': 'Theophylline',
+                 '51045': 'Urea Nitrogen, Body Fluid', '50802': 'Base Excess', '51283': 'Reticulocyte Count, Automated',
+                 '51235': 'Inhibitor Screen', '50808': 'Free Calcium', '51369': 'Hematocrit, Joint Fluid',
+                 '51266': 'Platelet Smear', '50959': 'Macro Prolactin', '50925': 'Folate', '51309': 'CD14',
+                 '50872': 'Anti-Neutrophil Cytoplasmic Antibody', '50887': 'Blue Top Hold', '50820': 'pH',
+                 '51084': 'Glucose, Urine', '50846': 'Osmolality, Ascites', '51432': 'Myelocytes',
+                 '50926': 'Follicle Stimulating Hormone', '51166': 'CD19 Absolute Count', '51428': 'Macrophage',
+                 '51391': 'CD11c', '51485': 'Leucine Crystals', '51072': 'Amylase, Urine', '51483': 'Hyphenated Yeast',
+                 '51241': 'Leukocyte Alkaline Phosphatase', '50907': 'Cholesterol, Total',
+                 '51245': 'Lymphocytes, Percent', '51165': 'CD19 %', '51464': 'Bilirubin', '50981': 'Salicylate',
+                 '50969': 'Phenytoin, Percent Free', '51200': 'Eosinophils', '51147': 'Bite Cells', '51183': 'CD45',
+                 '51260': 'Ovalocytes', '51322': 'CD38', '50993': 'Thyroid Stimulating Hormone',
+                 '51269': 'Promyelocytes', '51226': 'Hemogloblin A', '51160': 'CD16/56',
+                 '50996': 'Tissue Transglutaminase Ab, IgA', '51201': 'Epinepherine', '50848': 'Sodium, Ascites',
+                 '50891': 'C4', '51363': 'WBC, CSF', '51130': 'Absolute CD3 Count', '51267': 'Poikilocytosis',
+                 '51271': 'Protein C, Functional', '51531': 'STDYURINE', '51040': 'Phosphate, Body Fluid',
+                 '50946': 'Human Chorionic Gonadotropin', '51510': 'Urine Crystals, Other', '51296': 'Teardrop Cells',
+                 '51196': 'D-Dimer', '51001': 'Triiodothyronine (T3)', '51406': 'CD34',
+                 '51138': 'Anticardiolipin Antibody IgG', '51007': 'Uric Acid', '51024': 'Total Protein, Joint Fluid',
+                 '51507': 'Urine Casts, Other', '50997': 'Tobramycin', '50948': 'Immunofixation',
+                 '50908': 'CK-MB Index',
+                 '51387': 'Basophils', '51155': 'CD11c', '51094': 'pH', '50915': 'D-Dimer', '51358': 'Other',
+                 '51021': 'Creatinine, Joint Fluid', '51178': 'CD34', '50954': 'Lactate Dehydrogenase (LD)',
+                 '51041': 'Potassium, Body Fluid', '50854': 'Absolute A1c', '51342': 'Wright Giemsa',
+                 '50939': 'Hepatitis B Core Antibody, IgM', '51085': 'HCG, Urine, Qualitative',
+                 '51498': 'Specific Gravity', '51443': 'Blasts', '50900': 'Carcinoembyronic Antigen (CEA)',
+                 '50961': 'Methotrexate', '50859': 'Acid Phosphatase, Non-Prostatic', '51101': 'Total Collection Time',
+                 '51404': 'CD3', '51402': 'CD23', '50973': 'Prolactin', '51075': 'Benzodiazepine Screen, Urine',
+                 '51381': 'Other', '51186': 'CD5 Absolute Count', '51154': 'CD117', '51312': 'CD16/56',
+                 '51543': 'VOIDED SPECIMEN', '51034': 'Glucose, Body Fluid', '50805': 'Carboxyhemoglobin',
+                 '51114': 'Eosinophils', '51116': 'Lymphocytes', '51506': 'Urine Appearance',
+                 '51218': 'Granulocyte Count', '51087': 'Length of Urine Collection', '51020': 'Amylase, Joint Fluid',
+                 '51232': 'Hypersegmented Neutrophils', '51438': 'RBC, Other Fluid', '50928': 'Gastrin',
+                 '51190': 'CD59',
+                 '51534': 'MYELOS', '50889': 'C-Reactive Protein', '50801': 'Alveolar-arterial Gradient',
+                 '50965': 'Parathyroid Hormone', '50814': 'Methemoglobin', '51025': 'Albumin, Body Fluid',
+                 '51146': 'Basophils', '50963': 'NTproBNP', '51137': 'Anisocytosis', '51239': 'Lambda',
+                 '51463': 'Bacteria', '51436': 'Polys', '50835': 'Albumin, Ascites', '51109': 'Urine Volume, Total',
+                 '51555': 'SURFACTANT ALBUMIN RATIO', '51122': 'Nucleated RBC', '51033': 'FetalFN',
+                 '51457': 'RBC, Pleural', '51411': 'CD45', '51162': 'CD16/56 Absolute Count', '51077': 'Calcium, Urine',
+                 '51494': 'RBC Casts', '51030': 'Chloride, Body Fluid', '51081': 'Creatinine, Serum',
+                 '51214': 'Fibrinogen, Functional', '50921': 'Estradiol', '50957': 'Lithium', '50986': 'tacroFK',
+                 '51175': 'CD3 Absolute Count', '51060': 'Triglycerides, Pleural', '50967': 'Phenytoin', '51412': 'CD5',
+                 '51061': 'Bicarbonate, Stool', '51444': 'Eosinophils', '51133': 'Absolute Lymphocyte Count',
+                 '50806': 'Chloride, Whole Blood', '50885': 'Bilirubin, Total', '51416': 'CD7', '51310': 'CD15',
+                 '50810': 'Hematocrit, Calculated', '51321': 'CD34', '51362': 'RBC, CSF', '51326': 'CD5',
+                 '50834': 'Sodium, Body Fluid', '51243': 'Lupus Anticoagulant', '50874': 'Anti-Nuclear Antibody, Titer',
+                 '51479': 'Granular Casts', '51053': 'Glucose, Pleural', '51011': 'Albumin',
+                 '51052': 'Creatinine, Pleural', '50832': 'pO2, Body Fluid', '50943': 'Hepatitis C Virus Antibody',
+                 '50843': 'Lactate Dehydrogenase, Ascites', '51125': 'Polys', '51004': 'UE3, Maternal Screen',
+                 '51419': 'Eosinophils', '50991': 'Thyroglobulin', '51039': 'Osmolality, Body Fluid',
+                 '50971': 'Potassium', '51300': 'WBC Count', '51012': 'Bilirubin, Total, CSF', '51420': 'FMC-7',
+                 '51055': 'Lipase, Pleural', '50818': 'pCO2', '51254': 'Monocytes', '51265': 'Platelet Count',
+                 '51474': 'Eosinophils', '51277': 'RDW', '51337': 'HLA-DR', '51220': 'Heinz Body Prep',
+                 '51013': 'Chloride, CSF', '50827': 'Ventilation Rate', '51005': 'Uptake Ratio',
+                 '51036': 'Lipase, Body Fluid', '51286': 'Ristocetin', '51459': 'Young Cells',
+                 '51132': 'Absolute CD8 Count', '51287': 'Schistocytes', '51187': 'CD55', '51492': 'Protein',
+                 '51303': 'CD10', '50923': 'Fax', '51066': '24 hr Calcium', '50815': 'O2 Flow', '51209': 'Factor XI',
+                 '51451': 'Myelocytes', '51422': 'Hematocrit, Other Fluid', '51328': 'CD56', '51204': 'Factor V',
+                 '51351': 'Lymphs', '51301': 'White Blood Cells', '51181': 'CD4/CD8 Ratio',
+                 '50878': 'Asparate Aminotransferase (AST)', '51502': 'Trichomonas', '51418': 'CD8', '51156': 'CD13',
+                 '51173': 'CD25', '51099': 'Protein/Creatinine Ratio', '51314': 'CD2',
+                 '51028': 'Bilirubin, Total, Body Fluid', '51236': 'Inpatient Hematology/Oncology Smear',
+                 '51023': 'LD, Joint Fluid', '51504': 'Tyrosine Crystals', '51059': 'Total Protein, Pleural',
+                 '51163': 'CD16/56%', '51107': 'Urine tube, held', '51205': 'Factor VII',
+                 '51529': 'Estimated Actual Glucose', '51354': 'Metamyelocytes', '51437': 'Promyelocytes',
+                 '51126': 'Promyelocytes', '50920': 'Estimated GFR (MDRD equation)', '51037': 'Magnesium, Body Fluid',
+                 '51027': 'Bicarbonate, Other Fluid', '51350': 'Immunophenotyping', '51383': 'RBC, Joint Fluid',
+                 '51198': 'Envelope Cells', '51223': 'Hemoglobin A2', '51455': 'Polys', '51440': 'Atypical Lymphocytes',
+                 '51490': 'Oval Fat Body', '51145': 'Basophilic Stippling', '51091': 'Myoglobin, Urine',
+                 '51521': 'ACID PHOSPHATASE, PROSTATIC', '51546': 'VOIDED SPECIMEN', '51003': 'Troponin T'}
 
+    # create dict for lab tests
+    lab_dict = {}
+    for lab_test in lab_tests:
+        lab_dict[lab_test] = lab_codes[lab_test]
+
+    # create dict for current diagnoses
+    diag_dict = {}
+    for diagnosis in diagnoses:
+        diag_dict[diagnosis] = diag_codes[diagnosis]
+
+    # create dict for predicted diagnoses
+    predicted_diag_dict = {}
+    for i in prediction:
+        i = i.split()
+        predicted_diag_dict[i[2]] = (i[5], ' '.join(i[8:]))
+
+    return [lab_dict, diag_dict, predicted_diag_dict]
+
+
+def sendMail(emailID, name, lab_tests, diagnoses, seq):
+    msg = Message('Your Predicted Diagnosis', sender='compvisionnn@gmail.com', recipients=[emailID])
+    info = get_info_for_mail(lab_tests.split(','), diagnoses.split(','), seq)
+    # print(info[0])
+    html_message = render_template('send_email.html', name=name, lab_test=info[0], diag=info[1], pred=info[2])
     msg.html = html_message
     # with open('templates/email.html', 'r') as e:
     #    msg.html = e.read()
@@ -327,8 +1069,9 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_414':
         # 8
-        return ["https://lh6.googleusercontent.com/-QpabjwjhUL0/VON57Y4FA6I/AAAAAAAAAU8/niuD3Xv0Mq8/w1200-h900/Heart-Disease-Infographic_FINAL%2B%25282%2529.JPG",
-                Markup("""
+        return [
+            "https://lh6.googleusercontent.com/-QpabjwjhUL0/VON57Y4FA6I/AAAAAAAAAU8/niuD3Xv0Mq8/w1200-h900/Heart-Disease-Infographic_FINAL%2B%25282%2529.JPG",
+            Markup("""
         <b>Description</b> <br>Ischemic heart disease is a condition of recurring chest pain or discomfort that occurs when a part of the heart does not receive enough blood. This condition occurs most often during exertion or excitement, when the heart requires greater blood flow. <br><br>
         <b>Symptoms</b> <br><u1>
                                  <li>Extreme fatigue</li>
@@ -454,8 +1197,9 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_599':
         # 14
-        return ["https://image.slidesharecdn.com/urinarydisordersfinal-120910013646-phpapp02/95/urinary-disorders-final-18-728.jpg?cb=1347241176",
-                Markup("""
+        return [
+            "https://image.slidesharecdn.com/urinarydisordersfinal-120910013646-phpapp02/95/urinary-disorders-final-18-728.jpg?cb=1347241176",
+            Markup("""
         <b>Description</b> <br>A urinary tract infection (UTI) is an infection in any part of your urinary system — your kidneys, ureters, bladder and urethra. Most infections involve the lowerurinary tract — the bladder and the urethra. However, serious consequences can occur if a UTI spreads to your kidneys.<br><br>
         <b>Symptoms</b> <br><u1>
                                   <li>Strong and frequent urge to urinate.</li>
@@ -522,7 +1266,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_707':
         # 17
         return ["http://oi66.tinypic.com/euonwi.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>A skin disease characterized by dark wartlike patches in the body folds; can be benign or malignant. acne. an inflammatory disease involving the sebaceous glands of the skin; characterized by papules or pustules or comedones.<br><br>
         <b>Symptoms</b> <br><u1>
                                   <li>Measles</li>
@@ -543,7 +1287,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_995':
         # 18
         return ["http://oi67.tinypic.com/2hga1ch.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Anaphylaxis is a serious allergic reaction that is rapid in onset and may cause death.<br><br>
         <b>Symptoms</b> <br><u1>
                                   <li>Gastrointestinal: nausea or vomiting</li>
@@ -562,7 +1306,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_998':
         # 19
-        return ["http://www.carecor.com/sites/default/files/styles/article_banner/public/assets/news/185/coverimage/aa043385-2.jpg?itok=fxq03A3Y",
+        return [
+            "http://www.carecor.com/sites/default/files/styles/article_banner/public/assets/news/185/coverimage/aa043385-2.jpg?itok=fxq03A3Y",
             Markup("""
         <b>Description</b> <br>Surgical shock is a condition of shock that may occur during or after surgery, with signs of profound hypotension, decreased urine, increased heart rate, restlessness, and cyanosis of the extremities. Hemoglobin for blood volume may be low, or patient may be bleeding or have a severe infection.<br><br>
         <b>Symptoms</b> <br><u1>
@@ -583,7 +1328,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_041':
         # 20
-        return ["https://edc2.healthtap.com/ht-staging/user_answer/reference_image/11208/large/Bacterial_Infection.jpeg?1386670561",
+        return [
+            "https://edc2.healthtap.com/ht-staging/user_answer/reference_image/11208/large/Bacterial_Infection.jpeg?1386670561",
             Markup("""
         <b>Description</b> <br>Streptococcal infections are any type of infection caused by the streptococcus("strep") group of bacteria. There are many different types of Streptococci bacteria, and infections vary in severity from mild throat infections to life-threateninginfections of the blood or organs.<br><br>
         <b>Symptoms</b> <br><u1>
@@ -606,7 +1352,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_244':
         # 21
-        return ["https://share.baptisthealth.com//wp-content/uploads/2016/03/infographic-foods-to-avoid-hypothyroidism.jpg",
+        return [
+            "https://share.baptisthealth.com//wp-content/uploads/2016/03/infographic-foods-to-avoid-hypothyroidism.jpg",
             Markup("""
         <b>Description</b> <br>Acquired hypothyroidism is a condition that develops when your child's thyroidgland makes little or no thyroid hormone. Thyroid hormones help control body temperature, heart rate, and how your child gains or loses weight. Thyroidhormones play an important role in normal growth and development of children.<br><br>
         <b>Symptoms</b> <br><u1>
@@ -627,8 +1374,9 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_486':
         # 22
-        return ["https://www.ipsos-mori.com/Assets/Images/Infographics/ipsos-healthcare-pneu-vue-infographic_lightbox.jpg",
-                Markup("""
+        return [
+            "https://www.ipsos-mori.com/Assets/Images/Infographics/ipsos-healthcare-pneu-vue-infographic_lightbox.jpg",
+            Markup("""
         <b>Description</b> <br>Pneumonia, organism unspecified. Also called: Bronchopneumonia. Pneumoniais an infection in one or both of the lungs. Many germs, such as bacteria, viruses, and fungi, can cause pneumonia. You can also get pneumonia by inhaling a liquid or chemical.<br><br><br>
         <b>Symptoms</b> <br><u1>
                                   <li>Pain types: can be sharp in the chest</li>
@@ -668,7 +1416,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_424':
         # 24
-        return ["https://aos.iacpublishinglabs.com/question/aq/1400px-788px/many-times-heart-beat-day_55e78b7fbeb0bff6.jpg?domain=cx.aos.ask.com",
+        return [
+            "https://aos.iacpublishinglabs.com/question/aq/1400px-788px/many-times-heart-beat-day_55e78b7fbeb0bff6.jpg?domain=cx.aos.ask.com",
             Markup("""
         <b>Description</b> <br>A disorder characterized by a defect in mitral valve function or structure. A heart disorder characterized by a defect in mitral valve structure or function.<br><br>
         <b>Symptoms</b> <br><u1>
@@ -706,7 +1455,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_997':
         # 26
         return ["http://www.brainline.org/images/uploads/orig/2012/TBIStats_Causes.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>This class of diseases usually includes conditions like blood supply problems (vascular disorders), injuries (trauma), especially injuries to the head and spinal cord,  problems that are present at birth (congenital).<br><br>
         <b>Symptoms</b> <br><u1>
                                   <li>Persistent or sudden onset of a headache</li>
@@ -727,7 +1476,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_305':
         # 27
         return ["https://paradigmmalibu.com/wp-content/uploads/2014/06/alcohol.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Nondependent alcohol abuse means that their drinking causes distress and harm. It includes alcoholism and alcohol abuse. When you abuse alcohol, you continue to drink even though you know your drinking is causing problems. If you continue to abuse alcohol, it can lead toalcohol dependence. Alcohol dependence is also called alcoholism. You are physically or mentally addicted to alcohol<br><br>
         <b>Symptoms</b> <br><ul>
                                     <li>Anxiety</li>
@@ -760,7 +1509,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_410':
         # 28
         return ["https://s-media-cache-ak0.pinimg.com/originals/74/95/ed/7495ed1656e817bc505ffc0386ca5550.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Myocardial infarction (MI) or acute myocardial infarction (AMI), commonly known as a heart attack, occurs when blood flow stops to a part of the heart causing damage to the heart muscle. The most common symptom is chest pain or discomfort which may travel into the shoulder, arm, back, neck, or jaw. <br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Pain areas: in the area between shoulder blades, arm, chest, chest, jaw, left arm, or upper abdomen </li>
@@ -787,7 +1536,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_287':
         # 29
         return ["https://s-media-cache-ak0.pinimg.com/736x/1b/61/fe/1b61fe64d8490ac2e829d90332f738aa.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Allergic purpura (AP) is an allergic reaction of unknown origin causing red patches on the skin and other symptoms. AP is also called Henoch-Schonlein purpura<br><br>
         <b>Symptoms</b> <br><ul>
                                     <li>Skin: red spots or rash of small purplish spots </li>
@@ -799,7 +1548,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_571':
         # 30
-        return ["http://thumbnails-visually.netdna-ssl.com/how-alcohol-travels-through-the-body_50ca3deb65aab_w1500.jpeg",
+        return [
+            "http://thumbnails-visually.netdna-ssl.com/how-alcohol-travels-through-the-body_50ca3deb65aab_w1500.jpeg",
             Markup("""
         <b>Description</b> <br>Alcoholic fatty liver disease results from the deposition of fat in liver cells.<br><br>
         <b>Symptoms</b> <br><ul>
@@ -820,7 +1570,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_493':
         # 31
         return ["https://s-media-cache-ak0.pinimg.com/originals/0d/c6/22/0dc622792a21fd0d6ee2d50f9b579500.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Allergic or atopic asthma (sometimes called extrinsic asthma) is due to an allergy to antigens; usually the offending allergens are suspended in the air in the form of pollen, dust, smoke, automobile exhaust, or animal dander.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Many of the symptoms of allergic and non-allergic asthma are the same</li>
@@ -841,7 +1591,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_311':
         # 32
         return ["https://s-media-cache-ak0.pinimg.com/originals/e5/0e/9e/e50e9ebbe21117f84b6bd479c595f008.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>A depressive disorder is not a passing blue mood but rather persistent feelings of sadness and worthlessness and a lack of desire to engage in formerly pleasurable activities.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Pain areas: in the back </li>
@@ -868,7 +1618,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_412':
         # 33
         return ["https://s-media-cache-ak0.pinimg.com/originals/74/95/ed/7495ed1656e817bc505ffc0386ca5550.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Chest pain is the most common symptom of acute MI and is often described as a sensation of tightness, pressure, or squeezing. Chest pain due to ischemia (a lack of blood and hence oxygen supply) of the heart muscle is termed angina pectoris.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Myocardial infarction (MI) or acute myocardial infarction (AMI), commonly known as a heart attack, occurs when blood flow stops to a part of the heart causing damage to the heart muscle.</li>
@@ -894,7 +1644,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_070':
         # 34
-        return ["http://www.fs-researchcenter.com/admin/Pub_Events/121130_FSRC-Infographic_Burden-of-Viral-Hepatitis.jpg",
+        return [
+            "http://www.fs-researchcenter.com/admin/Pub_Events/121130_FSRC-Infographic_Burden-of-Viral-Hepatitis.jpg",
             Markup("""
         <b>Description</b> <br>Hepatitis A is preventable by vaccine. It spreads from contaminated food or water or contact with someone who is infected.<br><br>
         <b>Symptoms</b> <br><ul>
@@ -918,7 +1669,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_511':
         # 35
         return ["https://upload.wikimedia.org/wikipedia/commons/0/06/Pleurisy.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Inflammation of the pleurae, which impairs their lubricating function and causes pain when breathing. It is caused by pneumonia and other diseases of the chest or abdomen.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Pain areas: in the chest or side part of the body </li>
@@ -939,7 +1690,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_507':
         # 36
         return ["https://www.healthunits.com/wp-content/uploads/2017/03/signs-dignosis-of-Pneumonia.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Pneumonia is a breathing condition in which there is swelling or an infection of the lungs or large airways. Aspiration pneumonia occurs when food, saliva, liquids, orvomit is breathed into the lungs or airways leading to the lungs, instead of being swallowed into the esophagus and stomach.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Symptoms of aspiration pneumonitis from inhaling food/vomitus can include difficulty breathing </li>
@@ -959,7 +1710,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_416':
         # 37
         return ["https://www.curascriptsd.com/Assets/Pulmonary%20Hypertension_December%202015.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Idiopathic pulmonary arterial hypertension (IPAH) is a rare disease characterized by elevated pulmonary artery pressure with no apparent cause. IPAH is also termed precapillary pulmonary hypertension and was previously termed primary pulmonary hypertension.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Pulmonary hypertension affects arteries in the lungs and the right side of the heart.</li>
@@ -979,7 +1730,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_327':
         # 38
         return ["http://www.pindex.com/uploads/post_images/original/image_502.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>If the insomnia is caused by a physical change in the structure of an organ, such as the brain or thyroid, it is called organic insomnia.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Difficulty falling asleep, including difficulty finding a Domfortable sleeping position. </li>
@@ -993,7 +1744,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_733':
         # 39
         return ["https://s-media-cache-ak0.pinimg.com/originals/46/e0/01/46e0019883bd92d5d300713196c256c1.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br> Cartilage is the tough but flexible tissue that covers the ends of yourbones at a joint. It also protects bones by preventing them from rubbing against each other. Injured, inflamed, or damaged cartilage can cause symptoms such as pain and limited movement. It can also lead to joint damage and deformity.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Arthritis is inflammation of the joints. </li>
@@ -1018,7 +1769,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_300':
         # 40
         return ["http://naomigoodlet.com/wp-content/uploads/2014/01/Anxiety-Infographic-www.naomigoodlet.com_1.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Anxiety states are defined as the presence of anxiety in a situation or to a degree where it becomes maladaptive. Simple states are agoraphobia, a fear of crowds, claustrophobia, fear of enclosed spaces eg lifts, and stage fright.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Pounding heart, sweating. </li>
@@ -1042,7 +1793,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_278':
         # 41
-        return ["https://infographiclist.files.wordpress.com/2014/04/vicious-circle-of-the-os-obesity-and-osteoarthritis_5252bc9086287.jpg",
+        return [
+            "https://infographiclist.files.wordpress.com/2014/04/vicious-circle-of-the-os-obesity-and-osteoarthritis_5252bc9086287.jpg",
             Markup("""
         <b>Description</b> <br>Overweight and obesity are defined as abnormal or excessive fat accumulation that may impair health. Body mass index (BMI) is a simple index of weight-for-height that is commonly used to classify overweight and obesity in adults.<br><br>
         <b>Symptoms</b> <br><ul>
@@ -1075,7 +1827,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_348':
         # 42
-        return ["http://zliving.azureedge.net/zliving/zliving/media/zliving/health/prevention-healing/articles/1076x616/70lesser-known-symptoms-of-brain-cancer-760x428.jpg?ext=.jpg",
+        return [
+            "http://zliving.azureedge.net/zliving/zliving/media/zliving/health/prevention-healing/articles/1076x616/70lesser-known-symptoms-of-brain-cancer-760x428.jpg?ext=.jpg",
             Markup("""
         <b>Description</b> <br>Arachnoid cysts are cerebrospinal fluid covered by arachnoidal cells and collagen that may develop between the surface of thebrain and the cranial base or on the arachnoid membrane, one of the 3 meningeal layers that cover the brain and the spinal cord.<br><br>
         <b>Symptoms</b> <br><ul>
@@ -1102,7 +1855,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_578':
         # 43
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Hematemesis or haematemesis is the vomiting of blood.  The source is generally the upper gastrointestinal tract, typically above the suspensory muscle of duodenum.  Patients can easily confuse it with hemoptysis (coughing up blood), although the latter is more common.<br><br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Mallory-Weiss syndrome: bleeding tears in the esophagal mucosa, usually caused by prolonged and vigorous retching. </li>
@@ -1121,7 +1874,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_572':
         # 44
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>A liver abscess is a pus-filled mass inside the liver. Common causes are abdominal infections such as appendicitis or diverticulitis due to haematogenous spread through the portal vein.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Abdominal pain, particularly in the right, upper part of the abdomen; pain is intense, continuous or stabbing. </li>
@@ -1144,7 +1897,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_482':
         # 45
         return ["https://s-media-cache-ak0.pinimg.com/originals/c9/e3/fd/c9e3fdf6993f611790dad8564b8522eb.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Inflammation of the lung (pneumonia) caused by the GRAM NEGATIVE organism Klebsiella pneumoniae .One or more lobes of the lungs become solidified and partially destroyed. Large amounts of purulent, brownish sputum are produced. The organisms is resistant to many antibiotics.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Bloodstream infections (bacteremia and sepsis) from Klebsiella cause fever, chills, rash, light-headedness, and altered mental states. </li>
@@ -1164,7 +1917,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_425':
         # 46
         return ["https://s-media-cache-ak0.pinimg.com/originals/29/59/e8/2959e89c4f6f939850d84ba38ccbf988.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>An acquired or hereditary disease of heart muscle, this condition makes it hard for the heart to deliver blood to the body, and can lead to heart failure.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Breathlessness</li>
@@ -1193,7 +1946,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_280':
         # 47
         return ["http://www.who.int/mediacentre/infographic/nutrition/anemia-jpg-large.jpg?ua=1",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Blood contains iron within red blood cells. Women with heavy periods are at risk of iron deficiency anemia because they lose blood during menstruation. Slow,chronic blood loss within the body — such as from a peptic ulcer, a hiatal hernia, a colon polyp or colorectal cancer — can cause iron deficiency anemia.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Extreme fatigue. </li>
@@ -1224,7 +1977,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_274':
         # 48
-        return ["http://orangecountyfootandankle.com/wp-content/uploads/2014/05/Gout-by-Orange-County-Foot-and-Ankle1.jpg",
+        return [
+            "http://orangecountyfootandankle.com/wp-content/uploads/2014/05/Gout-by-Orange-County-Foot-and-Ankle1.jpg",
             Markup("""
         <b>Description</b> <br>Gout is a kind of arthritis. It can cause an attack of sudden burning pain, stiffness, and swelling in a joint, usually a big toe. These attacks can happen over and over unless gout is treated. Over time, they can harm your joints, tendons, and other tissues.<br><br>
         <b>Symptoms</b> <br><ul>
@@ -1239,7 +1993,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_440':
         # 49
-        return ["https://static1.squarespace.com/static/54a7706de4b039f26ff67092/54f3e43de4b0b75ae55d6095/54f3e9a1e4b0a87b1adf97d0/1429028152607/Inflammation_Milner-02.jpg?format=1500w",
+        return [
+            "https://static1.squarespace.com/static/54a7706de4b039f26ff67092/54f3e43de4b0b75ae55d6095/54f3e9a1e4b0a87b1adf97d0/1429028152607/Inflammation_Milner-02.jpg?format=1500w",
             Markup("""
         <b>Description</b> <br>The build-up of fats, cholesterol and other substances in and on the artery walls.<br><br>
         <b>Symptoms</b> <br><ul>
@@ -1258,7 +2013,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_357':
         # 50
         return ["https://s-media-cache-ak0.pinimg.com/originals/d5/88/59/d5885994fa6222a779bd5813beb726c6.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Peripheral neuropathy. Any syndrome in which muscle weakness, paresthesias, impaired reflexes, and autonomic symptoms in the hands and feet are common. This syndrome occurs in patients with diabetes mellitus, renal or hepatic failure, alcoholism, or in those who take certain medications such as phenytoin and isoniazid.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Sensory nerves that receive sensation, such as temperature, pain, vibration or touch, from the skin</li>
@@ -1283,7 +2038,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_198':
         # 51
         return ["http://www.wcisu.wales.nhs.uk/sitesplus/contentimages/1111/Kidney%20Cancer%20English.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Kidney cancer is a disease in which the cells in certain tissues of the kidney start to grow uncontrollably and form tumors. Renal cell carcinoma, which occurs in the cells lining the kidneys (epithelial cells), is the most common type ofkidney cancer.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Blood in your urine. </li>
@@ -1313,7 +2068,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_443':
         # 52
         return ["https://s-media-cache-ak0.pinimg.com/736x/54/98/a0/5498a07772960fc2a9c9a0a4c298fc86.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Kidney cancer is a disease in which the cells in certain tissues of the kidney start to grow uncontrollably and form tumors. Renal cell carcinoma, which occurs in the cells lining the kidneys (epithelial cells), is the most common type of kidney cancer.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Painful cramping in your hip, thigh or calf muscles after certain activities, such as walking or climbing stairs (claudication) </li>
@@ -1340,7 +2095,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_197':
         # 53
         return ["https://www.nationaljewish.org/NJH/media/img/stock/lung-infographic-full.JPG",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>When cancer cells travel to other organs in the body, it's called metastasis. Metastatic lung cancer is a life-threatening condition that develops when cancer in another area of the body metastasizes, or spreads, to the lung. Cancer that develops at any primary site can form metastatic tumors.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>a persistent cough. </li>
@@ -1369,7 +2124,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_008':
         # 54
         return ["http://www.lumibyte.eu/wp-content/uploads/E.coli-Infographic.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>E. coli (Escherichia coli) is the name of a germ, or bacterium, that lives in the digestive tracts of humans and animals. Some strains of E. coli bacteria may also cause severe anemia or kidney failure, which can lead to death. Other strains of E. coli can cause urinary tract infections or other infections.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Bloody diarrhea. </li>
@@ -1399,7 +2154,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_438':
         # 55
-        return ["http://thumbnails-visually.netdna-ssl.com/mental-health-cause-and-prevention-of-mental-disorder_51f852af6a55c.jpg",
+        return [
+            "http://thumbnails-visually.netdna-ssl.com/mental-health-cause-and-prevention-of-mental-disorder_51f852af6a55c.jpg",
             Markup("""
         <b>Description</b> <br>Cognitive deficit is an inclusive term used to describe impairment in an individual's mental processes that lead to the acquisition of information and knowledge, and drive how an individual understands and acts in the world. <br>
         <b>Symptoms</b> <br><ul>
@@ -1424,7 +2180,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_303':
         # 56
         return ["https://www.cdc.gov/vitalsigns/alcohol-poisoning-deaths/images/graphic1_970px.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>A disturbance in behaviour or mental function during or after alcohol consumption.Acute alcohol poisoning is a related medical term used to indicate a dangerously high concentration of alcohol in the blood, high enough to induce coma, respiratory depression, or even death.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Depression</li>
@@ -1444,7 +2200,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_453':
         # 57
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Budd–Chiari syndrome is a very rare condition, affecting 1 in a million adults. The condition is caused by occlusion of the hepatic veins that drain the liver. It presents with the classical triad of abdominal pain, ascites, and liver enlargement. <br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>The formation of a blood clot within the hepatic veins can lead to Budd–Chiari syndrome. </li>
@@ -1456,7 +2212,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_345':
         # 58
         return ["https://stroke.nih.gov/images/NINDS_LYR_infographic.jpeg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>A transient ischemic attack (TIA) is a transient episode of neurologic dysfunction caused by ischemia (loss of blood flow) – either focal brain, spinal cord, or retinal – without acute infarction (tissue death)<br>
         <b>Symptoms</b> <br><ul>
                                 <li>Whole body: feeling faint, light-headedness, or vertigo </li>
@@ -1486,7 +2242,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_682':
         # 59
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Cellulitis is a bacterial infection involving the inner layers of the skin. It specifically affects the dermis and subcutaneous fat. ... For facial infections, a break in the skin beforehand is not usually the case. The bacteria most commonly involved are streptococci and Staphylococcus aureus.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Redness. </li>
@@ -1515,7 +2271,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_286':
         # 60
         return ["http://www.phoenix-cardiology.com/images/medium/862829.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Coagulopathy (also called a bleeding disorder) is a condition in which the blood's ability to coagulate (form clots) is impaired. This condition can cause a tendency toward prolonged or excessive bleeding (bleeding diathesis), which may occur spontaneously or following an injury or medical and dental procedures.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Blood in the urine or stool. </li>
@@ -1548,7 +2304,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_112':
         # 61
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Candidiasis is an infection caused by a species of the yeast Candida, usually Candida albicans. This is a common cause of vaginal infections in women. Also, Candida may cause mouth infections in people with reduced immune function, or in patients taking certain antibiotics.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Vaginal yeast infection </li>
@@ -1570,7 +2326,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_491':
         # 62
         return ["http://www.fabhow.com/wp-content/uploads/2017/02/intro-bronchitis-1.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Chronic bronchitis is one type of COPD (chronic obstructive pulmonary disease). The inflamed bronchial tubes produce a lot of mucus. This leads to coughing and difficulty breathing. Cigarette smoking is the most common cause.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Cough: can be dry, with phlegm, can occur due to smoking, during exercise, or severe </li>
@@ -1590,7 +2346,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_288':
         # 63
-        return ["https://aos.iacpublishinglabs.com/question/aq/1400px-788px/happens-many-red-blood-cells_891c9a08c6bfe4aa.jpg?domain=cx.aos.ask.com",
+        return [
+            "https://aos.iacpublishinglabs.com/question/aq/1400px-788px/happens-many-red-blood-cells_891c9a08c6bfe4aa.jpg?domain=cx.aos.ask.com",
             Markup("""
         <b>Description</b> <br>Neutropenia or neutropenia, is an abnormally low concentration of neutrophils in the blood. Neutrophils make up the majority of circulating white blood cells.It can be caused by diseases that damage the bone marrow, infections or certain medication. <br><br>
         <b>Symptoms</b> <br>There can be no symptoms other than an increased vulnerability to infection.<br><br>
@@ -1609,7 +2366,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_600':
         # 64
-        return ["https://www.cookmedical.com/urology/wp-content/uploads/sites/14/2015/06/URO-D19526_2015-06-15_124326.jpg",
+        return [
+            "https://www.cookmedical.com/urology/wp-content/uploads/sites/14/2015/06/URO-D19526_2015-06-15_124326.jpg",
             Markup("""
         <b>Description</b> <br>Age-associated prostate gland enlargement that can cause urination difficulty. With this condition, the urinary stream may be weak or stop and start. In some cases, it can lead to infection, bladder stones and reduced kidney function.<br><br>
         <b>Symptoms</b> <br><ul>
@@ -1628,7 +2386,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_577':
         # 65
-        return ["http://www.good-legal-advice.com/wp-content/uploads/2012/08/victoza-injuries-cancer-of-the-pancreas-infographic-victoza-lawyer.jpg",
+        return [
+            "http://www.good-legal-advice.com/wp-content/uploads/2012/08/victoza-injuries-cancer-of-the-pancreas-infographic-victoza-lawyer.jpg",
             Markup("""
         <b>Description</b> <br>An inflammation of the organ lying behind the lower part of the stomach (pancreas). Pancreatitis may start suddenly and last for days or it can occur over many years. It has many causes, including gallstones and chronic, heavy alcohol use.<br><br>
         <b>Symptoms</b> <br><ul>
@@ -1651,7 +2410,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_362':
         # 66
         return ["https://c1.staticflickr.com/1/757/20739543108_08694a8447_b.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Diabetic retinopathy affects blood vessels in the light-sensitive tissue called the retina that lines the back of the eye. It is the most common cause of vision loss among people with diabetes and the leading cause of vision impairment and blindness among working-age adults. Diabetic macular edema (DME).<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Spots or dark strings floating in your vision (floaters) </li>
@@ -1673,7 +2432,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_519':
         # 67
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Tracheostomy is a surgical procedure to create an opening in the neck for direct access to the trachea (the breathing tube).Tracheostomy is performed because of airway obstruction, problems with secretions, and inefficient oxygen delivery. Tracheostomy can havecomplications.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Bleeding. </li>
@@ -1697,7 +2456,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_562':
         # 68
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Diverticula can form while straining during a bowel movement, such as with constipation. They are most common in the lower portion of the large intestine(called the sigmoid colon). Diverticulosis is very common and occurs in 10% of people over age 40 and in 50% of people over age 60.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Pain areas: in the abdomen or side part of the body </li>
@@ -1717,7 +2476,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_294':
         # 69
         return ["http://cdn2.factorialist.com/wp-content/uploads/2015/05/factorialist_snapchat_infographic_thumb.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>The amnestic disorders are a group of disorders that involve loss of memories previously established, loss of the ability to create new memories, or loss of the ability to learn new information.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Difficulty recalling remote events or information. </li>
@@ -1741,7 +2500,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_275':
         # 70
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Iron metabolism disorder. Genes involved in iron metabolism disorders include HFE and TFR2. Hepcidin is the master regulator of iron metabolism and, therefore, most genetic forms of iron overload can be thought of as relative hepcidin deficiency in one way or another.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Iron Overload. </li>
@@ -1768,14 +2527,14 @@ def get_disease_info(ICD):
     elif ICD == 'd_E8798':
         # 71
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Abn react-procedure NEC (Other specified procedures as the cause of abnormal reaction of patient, or of later complication, without mention of misadventure at time of procedure).<br><br>
         """)]
 
     elif ICD == 'd_263':
         # 72
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Protein-energy undernutrition (PEU), previously called protein-energy malnutrition, is an energy deficit due to chronic deficiency of all macronutrients. It commonly includes deficiencies of many micronutrients. PEU can be sudden and total (starvation) or gradual.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Poor weight gain. </li>
@@ -1798,7 +2557,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_441':
         # 73
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>An aneurysm that bleeds into the brain can lead to stroke or death. Aortic dissection occurs when the layers of the wall of the aorta separate or are torn, allowing blood to flow between those layers and causing them to separate further.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Anxiety and a feeling of doom. </li>
@@ -1829,7 +2588,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_569':
         # 74
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>An intestinal polyp is any mass of tissue that arises from the bowel wall and protrudes into the lumen. Most are asymptomatic except for minor bleeding, which is usually occult. The main concern is malignant transformation; most colon cancers arise in a previously benign adenomatous polyp.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>blood in the stool or rectal bleeding. </li>
@@ -1851,7 +2610,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_564':
         # 75
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>A condition in which there is difficulty in emptying the bowels, usually associated with hardened faeces. <br><br>
         <b>Symptoms</b> <br><ul>
                             <li>Passing fewer than three stools a week </li>
@@ -1878,7 +2637,8 @@ def get_disease_info(ICD):
 
     elif ICD == 'd_293':
         # 76
-        return ["https://static1.squarespace.com/static/546e1217e4b093626abfbae7/t/580743aa5016e12d2c5b4441/1476871098342/Recognising+Delirium+in+the+ED+%5Binfographic%5D.png",
+        return [
+            "https://static1.squarespace.com/static/546e1217e4b093626abfbae7/t/580743aa5016e12d2c5b4441/1476871098342/Recognising+Delirium+in+the+ED+%5Binfographic%5D.png",
             Markup("""
         <b>Description</b> <br>An acutely disturbed state of mind characterized by restlessness, illusions, and incoherence, occurring in intoxication, fever, and other disorders. <br><br>
         <b>Symptoms</b> <br><ul>
@@ -1898,7 +2658,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_338':
         # 77
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Central pain syndrome is a neurological condition caused by damage to or dysfunction of the central nervous system (CNS), which includes the brain, brainstem, and spinal cord. This syndrome can be caused by stroke, multiple sclerosis, tumors, epilepsy, brain or spinal cord trauma, or Parkinson's disease.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>brain hemorrhage. </li>
@@ -1927,7 +2687,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_456':
         # 78
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>This increased pressure in the portal vein causes the development of large, swollen veins (varices) within the esophagus and stomach. The varices are fragile and can rupture easily, resulting in a large amount of blood loss. The most common cause of portal hypertension is cirrhosis of the liver<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Gastrointestinal: bloating, blood in stool, dark stool from digested blood, fluid in the abdomen, or vomiting blood </li>
@@ -1946,7 +2706,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_715':
         # 79
         return ["http://thumbnails-visually.netdna-ssl.com/living-with-osteoarthritis_53d6dee8df8e1_w1500.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Osteoarthrosis is a non-inflammatory joint disease characterized by degeneration of the articular cartilage, hypertrophy of bone at the margins, and changes in the synovial membrane. It is also known as Degenerative Arthritis, Hypertrophic Arthritis and Degenerative Joint Disease.<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Pain areas: in the joints, knee, hip, lower back, or neck </li>
@@ -1972,7 +2732,7 @@ def get_disease_info(ICD):
     elif ICD == 'd_996':
         # 80
         return ["http://www.oklahomaheart.com/sites/default/files/Cardiac%20Monitoring%20Infographic_FINAL.jpg",
-            Markup("""
+                Markup("""
         <b>Description</b> <br>Breakdown (mechanical), Displacement, Leakage, Obstruction, mechanical, Perforation, Protrusion<br><br>
         <b>Symptoms</b> <br><ul>
                                 <li>Symptoms can vary considerably and also vary in severity. </li>
@@ -1994,6 +2754,7 @@ def get_disease_info(ICD):
     else:
         return ["https://www.unitedwaynems.org/wp-content/uploads/2014/03/Flag_of_the_Red_Cross.png",
                 Markup(""" Information Currently Unavailable!""")]
+
 
 if __name__ == '__main__':
     app.run(debug=True)
