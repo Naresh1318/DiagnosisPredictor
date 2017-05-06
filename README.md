@@ -1,5 +1,5 @@
 # DiagnosisPredictor
-Predicts chronic diseases using a patients previous history.
+Predicts chronic diseases using a patient's previous history.
 
 **Checkout the website: http://naresh1318.pythonanywhere.com/**
 
