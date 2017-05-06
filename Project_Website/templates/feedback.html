@@ -21,6 +21,14 @@
   width: 80%
 }
 
+.small_textarea{
+  width: 90%;
+}
+
+.small_button{
+  margin-left: 5%;
+}
+
 /* Turn off parallax scrolling for tablets and phones */
 @media screen and (min-width: 480px) {
     .small_div {
@@ -28,6 +36,12 @@
     }
     .small_div_header{
       width: 30%
+    }
+    .small_textarea{
+        width: 50%;
+    }
+    .small_button{
+        margin-left: 25%;
     }
 }
 
@@ -109,11 +123,9 @@ textarea{
         </div>
     </div>
 
-
 </div>
 
 <br>
-
 
 <!-- Header of diagnosis -->
 <div class="w3-container w3-center small_div_header" style="margin-left: auto; margin-right: auto;">
@@ -125,14 +137,11 @@ textarea{
 <form class="w3-container" method="POST" action="/thankyou">
     <p class="w3-text-dark-grey w3-center font-heading">Please enter the icd 9 codes</p>
     <textarea class="w3-hide" name="input_seq" id="input_seq">{{input_seq}}</textarea>
-    <div class="w3-card-8" style="width:50%; margin-left: auto; margin-right: auto">
+    <div class="w3-card-8 small_textarea" style="margin-left: auto; margin-right: auto">
         <textarea name="diagnosis_feedback" id="diagnosis_feedback" rows="4" cols="100" class="w3-hover-light-grey w3-margin-bottom w3-animate-right" placeholder="ICD 9 codes"></textarea>
     </div>
-    <input class="w3-btn w3-dark-grey w3-center font-heading" type="submit" style="margin-left: 25%;" value="Submit"/>
+    <input class="w3-btn w3-dark-grey w3-center font-heading small_button" type="submit" value="Submit"/>
 </form>
-
-
-
 
 
 <br>

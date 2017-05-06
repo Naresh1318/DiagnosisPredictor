@@ -74,6 +74,7 @@ body, html {
       width: 60%
     }
 }
+}
 
 /* Button transition */
 .trans{
@@ -154,7 +155,7 @@ textarea{
 
 
 <!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container" id="home">
+<div class="bgimg-1 w3-display-container small_bgimg-1" id="home">
   <div class="w3-display-middle" style="white-space:now rap;">
     <span class="w3-center w3-padding-xlarge w3-transparent w3-text-white font-heading"
           style="font-size: 50px">Diagnosis <span class="w3-hide-small">Predictor</span></span>
@@ -206,7 +207,7 @@ textarea{
 
 
 <!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min" id="application">
+<div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
     <span class="w3-xxlarge w3-text-white w3-wide w3-animate-opacity font-heading"><b>Application</b></span>
   </div>
@@ -240,8 +241,7 @@ textarea{
   <h3 class="w3-center font-heading"> Description <br/> <br/> </h3>
     <p class="font-paragraph">
       This application is trained only on these
-    <a href="all_tests.html">200 lab tests</a> and <a href="all_tests.html">1271 diagnosis</a>. You can refer these links to know the labtest codes and
-      the diagnosis icd 9 codes.<br />
+    <a href="all_tests.html">200 lab tests</a> and <a href="all_tests.html">1271 diagnosis</a>. You can refer these links to know the labtest codes and the diagnosis icd 9 codes.<br />
     </p>
 
 
@@ -270,8 +270,7 @@ textarea{
     <br />
 
 
-
-  <div class="w3-container w3-dark-grey w3-card-8">
+  <div class="w3-container w3-dark-grey w3-card-8" id="application">
       <h2 class="font-heading">Here we go</h2>
   </div>
 
@@ -518,6 +517,7 @@ function myFunction(id) {
 }
 
 function content_text(id){
+      //Controls the close button on the content entry section
     var x = document.getElementById(id);
     if (x.innerHTML != 'Close X'){
           x.innerHTML = 'Close X';
