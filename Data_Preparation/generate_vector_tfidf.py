@@ -7,7 +7,7 @@ from sklearn.externals import joblib
 # Parameters
 size = 1391  # Size of each sequence vector
 sequence = []  # Stores the sequences of each patient
-column_names = np.arange(size)  # The column names of the 100 vector sequence
+column_names = np.arange(size)  # The column names of the 1391 vector sequence
 diagnosis_req = {}  # Used to store the patients diagnosed with a particular disease
 # Get the 80 most common diagnosis from the vocab file
 with open('../Data/patient_sequences/vocab') as f:

@@ -48,7 +48,7 @@ Create a virtual environment and install the dependencies:
  * *All the above steps must be execute from the DiagnosisPredictor directory.*     
  * *Install tensorflow version r.10 follow [this](https://www.tensorflow.org/versions/r0.10/get_started/os_setup#virtualenv_installation) guide.*
  * ***It is recommended that you install GPU version of tensorflow if you don't want to wait for days for all the models to be trained.***  
- * *Install tflearn after installing tensorflow. `pip3 install tflearn`*
+ * *Install tflearn after installing tensorflow. `pip3 install tflearn==0.2.1`*
 ## Run the predictor
 
 ### 1. Data Preparation

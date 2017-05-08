@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, Markup
 from flask_mail import Mail, Message
-# import dense_fully_connected_tfidf
-import test
+import dense_fully_connected_tfidf
+# import test
 import os
 import sys
 
@@ -42,8 +42,8 @@ def results():
 
         input_seq = input_seq.strip()
 
-        length = test.delay(input_seq)
-        # length = dense_fully_connected_tfidf.predict(input_seq)
+        #length = test.delay(input_seq)
+        length = dense_fully_connected_tfidf.predict(input_seq)
         seq = []
 
         for each_seq in length:
